@@ -25,10 +25,18 @@ public class FollowAtDistance : MonoBehaviour
     [SerializeField] private int minDistanceFromTaker;
     private string takerTag;
 
-    // Attack parameters
+    // Attack parameters.
     [SerializeField] private bool isAttacking = false;
     [SerializeField] private int attackDamage = 1;
     public List<string> enemyTags;
+
+    // Follow generic leader parameters.
+    [SerializeField] bool isMovingTowards;
+    [SerializeField] float distanceToClosestLeader;
+    private List<string> leaderTag = new List<string>();
+    private int searchLeaderRadius;
+    private int minDistanceFromLeader;
+
 
     void Start()
     {
@@ -55,6 +63,16 @@ public class FollowAtDistance : MonoBehaviour
             "Taker",
             "Enemy"
         };
+
+        // Follow generic leader parameters.
+        searchLeaderRadius = 400;
+        minDistanceFromLeader = 50;
+        leaderTag = new List<string>()
+        {
+            // Entities will prioritize following the tag that's higher in the list.
+            "Taker",
+            "Player"
+        };
     }
 
     void Update()
@@ -65,6 +83,7 @@ public class FollowAtDistance : MonoBehaviour
             Attack("Taker");
         }
 
+        /*
         // Dog can't be seduced by takers.
         if (this.tag == "Dog")
         {
@@ -84,6 +103,9 @@ public class FollowAtDistance : MonoBehaviour
                 FindPlayerInRadius();
             }
         }
+        */
+
+        FindLeaderInRadius();
     }
 
     void FindTakerInRadius(bool attacking)
@@ -171,6 +193,53 @@ public class FollowAtDistance : MonoBehaviour
             else if (closestTarget != null && distanceToClosestPlayer <= minDistanceFromPlayer)
             {
                 isFollowingPlayer = false;
+            }
+        }
+    }
+
+    void FindLeaderInRadius()
+    {
+        // Set the default distance to infinity, so we can revert to a value.
+        distanceToClosestLeader = Mathf.Infinity;
+        // Set the default closest target to null.
+        GameObject closestTarget = null;
+        // Create an array of all GameObjects with the the tag "target" in the scene.
+        foreach (string tag in leaderTag)
+        {
+            GameObject[] allTargets = GameObject.FindGameObjectsWithTag(tag);
+
+            foreach (GameObject currentTarget in allTargets)
+            {
+                // Find the distance between this GameObject and each target's position.
+                float distanceToTarget = (currentTarget.transform.position - this.transform.position).sqrMagnitude;
+                // If the distance to the target is less than the distance to other targets, set currentTarget to be closestTarget.
+                if (distanceToTarget < distanceToClosestLeader)
+                {
+                    distanceToClosestLeader = distanceToTarget;
+                    closestTarget = currentTarget;
+                }
+            }
+
+            if (closestTarget != null && distanceToClosestLeader > minDistanceFromLeader && distanceToClosestLeader <= searchLeaderRadius)
+            {
+                Debug.DrawLine(this.transform.position, closestTarget.transform.position);
+
+                isMovingTowards = true;
+                // Automatically move towards the target.
+                transform.position = Vector3.MoveTowards(transform.position, closestTarget.transform.position, moveTowardsSpeed * Time.deltaTime);
+
+                // Auto rotate towards the target.
+                Vector3 targetDirection = closestTarget.transform.position - transform.position;
+
+                Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, rotateSpeed * Time.deltaTime, 0.0f);
+                Debug.DrawRay(transform.position, newDirection, Color.red);
+
+                // Move position a step towards to the target.
+                transform.rotation = Quaternion.LookRotation(newDirection);
+            }
+            else if (closestTarget != null && distanceToClosestLeader <= minDistanceFromLeader)
+            {
+                isMovingTowards = false;
             }
         }
     }
