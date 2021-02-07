@@ -244,6 +244,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Taker
       objectReference: {fileID: 0}
+    - target: {fileID: 8723099091681394095, guid: 6bab3e57136850141a788f4b4f89a566,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bab3e57136850141a788f4b4f89a566, type: 3}
 --- !u!4 &593085602 stripped
@@ -486,7 +491,7 @@ PrefabInstance:
     - target: {fileID: 3711798213193647166, guid: 88fb164a0e299814e980da6ab5964c4d,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3711798213193647167, guid: 88fb164a0e299814e980da6ab5964c4d,
         type: 3}
@@ -1157,6 +1162,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Taker (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8723099091681394095, guid: 6bab3e57136850141a788f4b4f89a566,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bab3e57136850141a788f4b4f89a566, type: 3}
 --- !u!4 &1413526315 stripped
@@ -1236,6 +1246,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Taker (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8723099091681394095, guid: 6bab3e57136850141a788f4b4f89a566,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bab3e57136850141a788f4b4f89a566, type: 3}
@@ -2207,7 +2222,7 @@ PrefabInstance:
     - target: {fileID: 3711798213193647166, guid: 88fb164a0e299814e980da6ab5964c4d,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3711798213193647167, guid: 88fb164a0e299814e980da6ab5964c4d,
         type: 3}
@@ -2382,6 +2397,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Taker
+      objectReference: {fileID: 0}
+    - target: {fileID: 8723099091681394095, guid: 6bab3e57136850141a788f4b4f89a566,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bab3e57136850141a788f4b4f89a566, type: 3}
