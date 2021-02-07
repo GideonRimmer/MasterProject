@@ -23,8 +23,9 @@ public class RaiseProgressBar : MonoBehaviour
     void Update()
     {
         // Raise player progress bar when clicking Space.
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
+        //if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.anyKeyDown)
+            {
             playerProgressBar.GetComponent<ProgressBar>().currentProgress += playerRaiseAmount;
         }
 

@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 4f;
     private Vector3 forward, right;
+    public int startingCharisma = 5;
+    [SerializeField] private int currentCharisma;
 
     void Start()
     {
@@ -14,6 +16,8 @@ public class PlayerController : MonoBehaviour
         forward.y = 0;
         forward = Vector3.Normalize(forward);
         right = Quaternion.Euler(new Vector3(0, 90, 0)) * forward;
+
+        currentCharisma = startingCharisma;
     }
 
     void Update()
