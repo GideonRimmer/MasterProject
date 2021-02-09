@@ -7,8 +7,7 @@ public class SlapManager : MonoBehaviour
     public Transform defaultPosition;
     public Transform dodgePosition;
 
-    public GameObject slapColliderEast;
-    public GameObject slapColliderWest;
+    private AudioSource slapSound;
 
     public bool isDodging = false;
     public bool isSlapped = false;
@@ -25,6 +24,7 @@ public class SlapManager : MonoBehaviour
     {
         currentDodgeTime = startingDodgeTime;
         currentSlapTimer = startingSlapTimer;
+        slapSound = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -86,6 +86,7 @@ public class SlapManager : MonoBehaviour
             Debug.Log("POW!");
             this.GetComponent<HitPointsManager>().RegisterHit(1);
             this.transform.localEulerAngles = new Vector3(0, yRotation, 0);
+            slapSound.Play();
         }
     }
 }
