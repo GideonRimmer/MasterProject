@@ -83,7 +83,6 @@ public class FollowAtDistance : MonoBehaviour
             Attack("Taker");
         }
 
-        /*
         // Dog can't be seduced by takers.
         if (this.tag == "Dog")
         {
@@ -103,9 +102,8 @@ public class FollowAtDistance : MonoBehaviour
                 FindPlayerInRadius();
             }
         }
-        */
 
-        FindLeaderInRadius();
+        //FindLeaderInRadius();
     }
 
     void FindTakerInRadius(bool attacking)
@@ -256,7 +254,7 @@ public class FollowAtDistance : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         // On collision with enemy, inflict damage.
-        if (collision.collider.tag == "Taker")
+        if ((collision.collider.tag == "Taker" || collision.collider.tag == "Enemy") && isAttacking)
         {
             //Debug.Log(this.name + " hit taker.");
             collision.gameObject.GetComponent<HitPointsManager>().RegisterHit(attackDamage);
