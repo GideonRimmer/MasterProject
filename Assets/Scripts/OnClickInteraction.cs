@@ -5,8 +5,11 @@ using UnityEngine;
 
 public class OnClickInteraction : MonoBehaviour
 {
+    public bool isClickable;
+    public bool isFollowing;
     public GameObject contextualMenu;
     public GameObject popupMenuPlaceholder;
+    public int leaderCharisma;
 
     public Material idleMaterial;
     public Material followerMaterial;
@@ -15,21 +18,60 @@ public class OnClickInteraction : MonoBehaviour
     void Start()
     {
         children = GetComponentsInChildren<Renderer>();
+        isClickable = false;
+        isFollowing = false;
     }
 
     private void OnMouseDown()
     {
-        // Change the materials of all children. Test for interaction, might remove later.
-        foreach (Renderer renderer in children)
-        {
-            var mats = new Material[renderer.materials.Length];
-            for (var i = 0; i < renderer.materials.Length; i++)
-            {
-                mats[i] = followerMaterial;
-            }
-            renderer.materials = mats;
-        }
+        int loyalty = GetComponent<LoyaltyManager>().currentLoyalty;
 
-        //Instantiate(contextualMenu, popupMenuPlaceholder.transform.position, Quaternion.identity);
+        //Debug.Log("Clicked follower " + this.name);
+
+        // Allow the follower to be clicked only of within the player's sphere.
+        if (isClickable && loyalty < leaderCharisma)
+        {
+            isFollowing = true;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        leaderCharisma = other.gameObject.GetComponentInParent<SphereOfInfluence>().currentCharisma;
+
+        if (other.tag == "Player")
+        {
+            isClickable = true;
+
+            // Change material to indicate that follower is interactable.
+            foreach (Renderer renderer in children)
+            {
+                var mats = new Material[renderer.materials.Length];
+                for (var i = 0; i < renderer.materials.Length; i++)
+                {
+                    mats[i] = followerMaterial;
+                }
+                renderer.materials = mats;
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (isFollowing == false || GetComponent<MoveToTarget>().currentTarget.tag != "Player")
+        {
+            isClickable = false;
+
+            // Change material back to default if not in sphere and not following player.
+            foreach (Renderer renderer in children)
+            {
+                var mats = new Material[renderer.materials.Length];
+                for (var i = 0; i < renderer.materials.Length; i++)
+                {
+                    mats[i] = idleMaterial;
+                }
+                renderer.materials = mats;
+            }
+        }
     }
 }

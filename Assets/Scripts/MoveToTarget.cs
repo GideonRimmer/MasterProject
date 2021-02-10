@@ -19,7 +19,7 @@ public class MoveToTarget : MonoBehaviour
 
     void Update()
     {
-        if (currentTarget != null)
+        if (currentTarget != null && GetComponent<OnClickInteraction>().isFollowing == true)
         {
             FollowTarget();
         }

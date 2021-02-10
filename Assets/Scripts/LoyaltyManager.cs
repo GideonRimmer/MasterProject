@@ -1,19 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class LoyaltyManager : MonoBehaviour
 {
-    [SerializeField] private int maxLoyalty = 20;
-    [SerializeField] private int minLoyalty = 0;
-    [SerializeField] private int startingLoyalty = 5;
-    [SerializeField] private int autoAttackLoyalty = 10;
-    [SerializeField] private int currentLoyalty;
-    [SerializeField] private GameObject leaderEntity;
+    public int maxLoyalty = 20;
+    public int minLoyalty = 3;
+    public int autoAttackLoyalty = 10;
+    public int startingLoyalty;
+    public int currentLoyalty;
+    public GameObject leaderEntity;
+
+    public TextMeshProUGUI loyaltyText;
 
     void Start()
     {
+        startingLoyalty = Random.Range(minLoyalty, maxLoyalty);
         currentLoyalty = startingLoyalty;
+
+        loyaltyText.text = currentLoyalty.ToString();
     }
 
     private void Update()
@@ -21,9 +27,7 @@ public class LoyaltyManager : MonoBehaviour
         // Test: Auto attack if loyalty > something.
         if (currentLoyalty >= autoAttackLoyalty)
         {
-            this.GetComponent<FollowAtDistance>().Attack("Taker");
 
-            Debug.Log(this.name + " Auto attack.");
         }
     }
 
@@ -36,12 +40,5 @@ public class LoyaltyManager : MonoBehaviour
     public void SwitchTag(string newTag)
     {
         this.tag = newTag;
-    }
-
-    // Test: Increase loyalty on mouse click.
-    private void OnMouseDown()
-    {
-        ModifyLoyalty(1);
-        Debug.Log("Modify loyalty");
     }
 }

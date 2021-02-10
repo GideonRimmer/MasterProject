@@ -1,42 +1,37 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class SphereOfInfluence : MonoBehaviour
 {
     public int startingCharisma = 10;
     public int currentCharisma;
 
+    private SphereCollider sphereCollider;
     public float sphereInitialRadius = 10f;
     public float sphereCurrentRadius;
 
-    Collider[] followersInSphere;
+    public TextMeshProUGUI charismaText;
 
     private void Start()
     {
+        //sphereCollider = GetComponent<SphereCollider>();
+        sphereCollider = GetComponentInChildren<SphereCollider>();
         currentCharisma = startingCharisma;
         sphereCurrentRadius = sphereInitialRadius;
+        sphereCollider.radius = sphereCurrentRadius;
+
+        // DEBUG: Show charisma text in game.
+        charismaText.text = currentCharisma.ToString();
     }
 
-    private void FixedUpdate()
+    private void OnTriggerEnter(Collider other)
     {
-        // Detect when a collider enters the sphere.
-        // Note that this happens in every frame for evert collider (including terrain!).
-        followersInSphere = Physics.OverlapSphere(this.transform.position, sphereCurrentRadius);
-
-        foreach(var follower in followersInSphere)
+        if (other.tag == "Follower")
         {
-            if (follower.tag == "Follower")
-            {
-                //Debug.Log(follower.name + " entered sphere.");
-                follower.GetComponentInParent<MoveToTarget>().SetTarget(this.transform);
-            }
+            //Debug.Log(other.name + " entered sphere.");
+            other.GetComponentInParent<MoveToTarget>().SetTarget(this.transform);
         }
-    }
-
-    // Show sphere radius in scene view.
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(this.transform.position, sphereCurrentRadius);
     }
 }
