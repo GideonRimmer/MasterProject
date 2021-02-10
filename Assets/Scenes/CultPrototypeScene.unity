@@ -346,16 +346,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 719525818}
     m_Modifications:
-    - target: {fileID: 2993790178688201340, guid: 6bab3e57136850141a788f4b4f89a566,
-        type: 3}
-      propertyPath: minCharisma
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2993790178688201340, guid: 6bab3e57136850141a788f4b4f89a566,
-        type: 3}
-      propertyPath: maxCharisma
-      value: 30
-      objectReference: {fileID: 0}
     - target: {fileID: 7090553746196046770, guid: 6bab3e57136850141a788f4b4f89a566,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2037,14 +2027,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 528971929, guid: f824e7ff14e01c642bf82be20e874a9b, type: 3}
-      propertyPath: minCharisma
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 528971929, guid: f824e7ff14e01c642bf82be20e874a9b, type: 3}
-      propertyPath: maxCharisma
-      value: 30
-      objectReference: {fileID: 0}
     - target: {fileID: 528971931, guid: f824e7ff14e01c642bf82be20e874a9b, type: 3}
       propertyPath: playerProgressBar
       value: 
@@ -2122,11 +2104,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 719525818}
     m_Modifications:
-    - target: {fileID: 3570538735888603916, guid: 084c694cf0068d340a904c8eea34feb0,
-        type: 3}
-      propertyPath: minLoyalty
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 7309968004987802846, guid: 084c694cf0068d340a904c8eea34feb0,
         type: 3}
       propertyPath: m_LocalPosition.x
