@@ -34,7 +34,7 @@ public class MoveToTarget : MonoBehaviour
             // If switched targets, register that the old target lost a follower.
             if (newTarget != currentTarget && currentTarget != null)
             {
-                currentTarget.GetComponent<SphereOfInfluence>().LoseFollower();
+                currentTarget.GetComponent<SphereOfInfluence>().LoseFollower(this.gameObject);
             }
 
             // Assign new target to follow.
@@ -42,7 +42,7 @@ public class MoveToTarget : MonoBehaviour
             //Debug.Log(this.name + "is following" + newTarget.name);
             if (newTarget.tag != "Player")
             {
-                newTarget.GetComponent<SphereOfInfluence>().GainFollower();
+                newTarget.GetComponent<SphereOfInfluence>().GainFollower(this.gameObject);
             }
         }
     }

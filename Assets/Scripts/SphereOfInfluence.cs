@@ -17,6 +17,8 @@ public class SphereOfInfluence : MonoBehaviour
     public TextMeshProUGUI charismaText;
     private Camera mainCamera;
 
+    public List<GameObject> activeFollowers = new List<GameObject>();
+
     private void Start()
     {
         //sphereCollider = GetComponent<SphereCollider>();
@@ -50,15 +52,26 @@ public class SphereOfInfluence : MonoBehaviour
         currentCharisma = Mathf.Clamp(currentCharisma, minCharisma, maxCharisma);
     }
 
-    public void GainFollower()
+    public void GainFollower(GameObject followerName)
     {
         Debug.Log("Gain follower");
         ModifyCharisma(1);
+        activeFollowers.Add(followerName);
+        ChangeAllLoyalty(1);
     }
 
-    public void LoseFollower()
+    public void LoseFollower(GameObject followerName)
     {
         Debug.Log("Lose follower");
         ModifyCharisma(-1);
+        activeFollowers.Remove(followerName);
+    }
+
+    private void ChangeAllLoyalty(int change)
+    {
+        foreach (GameObject follower in activeFollowers)
+        {
+            follower.GetComponent<LoyaltyManager>().ModifyLoyalty(change);
+        }
     }
 }
