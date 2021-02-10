@@ -5,6 +5,8 @@ using TMPro;
 
 public class SphereOfInfluence : MonoBehaviour
 {
+    public int minCharisma;
+    public int maxCharisma;
     public int startingCharisma = 10;
     public int currentCharisma;
 
@@ -13,6 +15,7 @@ public class SphereOfInfluence : MonoBehaviour
     public float sphereCurrentRadius;
 
     public TextMeshProUGUI charismaText;
+    private Camera mainCamera;
 
     private void Start()
     {
@@ -21,9 +24,15 @@ public class SphereOfInfluence : MonoBehaviour
         currentCharisma = startingCharisma;
         sphereCurrentRadius = sphereInitialRadius;
         sphereCollider.radius = sphereCurrentRadius;
+        mainCamera = Camera.main;
+    }
 
+    private void Update()
+    {
         // DEBUG: Show charisma text in game.
         charismaText.text = currentCharisma.ToString();
+        charismaText.transform.LookAt(mainCamera.transform);
+        charismaText.transform.rotation = Quaternion.LookRotation(mainCamera.transform.forward);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -33,5 +42,23 @@ public class SphereOfInfluence : MonoBehaviour
             //Debug.Log(other.name + " entered sphere.");
             other.GetComponentInParent<MoveToTarget>().SetTarget(this.transform);
         }
+    }
+
+    public void ModifyCharisma(int change)
+    {
+        currentCharisma += change;
+        currentCharisma = Mathf.Clamp(currentCharisma, minCharisma, maxCharisma);
+    }
+
+    public void GainFollower()
+    {
+        Debug.Log("Gain follower");
+        ModifyCharisma(1);
+    }
+
+    public void LoseFollower()
+    {
+        Debug.Log("Lose follower");
+        ModifyCharisma(-1);
     }
 }

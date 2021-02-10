@@ -13,17 +13,23 @@ public class LoyaltyManager : MonoBehaviour
     public GameObject leaderEntity;
 
     public TextMeshProUGUI loyaltyText;
+    private Camera mainCamera;
 
     void Start()
     {
         startingLoyalty = Random.Range(minLoyalty, maxLoyalty);
         currentLoyalty = startingLoyalty;
 
-        loyaltyText.text = currentLoyalty.ToString();
+        mainCamera = Camera.main;
     }
 
     private void Update()
-    {    
+    {
+        // DEBUG: Show loyalty text in game.
+        loyaltyText.text = currentLoyalty.ToString();
+        loyaltyText.transform.LookAt(mainCamera.transform);
+        loyaltyText.transform.rotation = Quaternion.LookRotation(mainCamera.transform.forward);
+
         // Test: Auto attack if loyalty > something.
         if (currentLoyalty >= autoAttackLoyalty)
         {

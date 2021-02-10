@@ -32,6 +32,7 @@ public class OnClickInteraction : MonoBehaviour
         if (isClickable && loyalty < leaderCharisma)
         {
             isFollowing = true;
+            GetComponent<MoveToTarget>().currentTarget.GetComponent<SphereOfInfluence>().GainFollower();
         }
     }
 
