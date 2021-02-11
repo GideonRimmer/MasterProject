@@ -21,7 +21,6 @@ public class SphereOfInfluence : MonoBehaviour
 
     private void Start()
     {
-        //sphereCollider = GetComponent<SphereCollider>();
         sphereCollider = GetComponentInChildren<SphereCollider>();
         currentCharisma = startingCharisma;
         sphereCurrentRadius = sphereInitialRadius;

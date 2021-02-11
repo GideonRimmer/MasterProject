@@ -38,7 +38,10 @@ public class OnClickInteraction : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        leaderCharisma = other.gameObject.GetComponentInParent<SphereOfInfluence>().currentCharisma;
+        if (other.tag == "Player" || other.tag == "Taker")
+        {
+            leaderCharisma = other.gameObject.GetComponentInParent<SphereOfInfluence>().currentCharisma;
+        }
 
         if (other.tag == "Player")
         {
