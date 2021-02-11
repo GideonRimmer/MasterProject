@@ -5,7 +5,7 @@ using UnityEngine;
 public class HitPointsManager : MonoBehaviour
 {
     [SerializeField] private int maxHitPoints = 10;
-    [SerializeField] private int currentHitPoints;
+    public int currentHitPoints;
 
     void Start()
     {
