@@ -57,19 +57,14 @@ public class MoveToTarget : MonoBehaviour
             case State.Attack:
                 if (enemyTarget != null)
                 {
-                    AttackTarget();
+                    FollowAndAttackTarget();
+                }
+                else if (currentTarget != null)
+                {
+                    currentState = State.Follow;
                 }
                 break;
         }
-
-        /*
-        // Simple follow logic before implementing state machine
-        //(keep for now as backup, delete is state machine is running as it should).
-        if (currentTarget != null && GetComponent<OnClickInteraction>().isFollowing == true)
-        {
-            FollowTarget();
-        }
-        */
     }
 
     // Acquire a new target to follow.
@@ -108,25 +103,31 @@ public class MoveToTarget : MonoBehaviour
         enemyTarget = newEnemy;
     }
 
-    private void AttackTarget()
+    private void FollowAndAttackTarget()
     {
         transform.position = Vector3.MoveTowards(transform.position, enemyTarget.transform.position, moveSpeed * Time.deltaTime);
         distanceToEnemy = Vector3.Distance(transform.position, enemyTarget.transform.position);
+
+        if (enemyTarget == null)
+        {
+            Debug.Log("Target destroyed");
+            currentState = State.Follow;
+        }
     }
 
     // Detect enemy in sphere
     private void OnTriggerEnter(Collider other)
     {
-        //if (other.gameObject.tag == "Enemy" && this.GetComponent<LoyaltyManager>().currentLoyalty >= 10)
-        if (other.gameObject.tag == "Enemy")
+        //if (other.gameObject.tag == "Enemy")
+        if (other.gameObject.tag == "Taker" && this.GetComponent<LoyaltyManager>().currentLoyalty > other.GetComponentInParent<SphereOfInfluence>().currentCharisma)
         {
-            SetAttackTarget(other.gameObject.transform);
+            SetAttackTarget(other.gameObject.GetComponentInParent<Transform>());
         }
     }
     private void OnCollisionEnter(Collision collision)
     {
         // On collision with enemy, inflict damage.
-        if (collision.collider.tag == "Enemy" && currentState == State.Attack)
+        if (collision.collider.tag == "Taker" && currentState == State.Attack)
         {
             collision.gameObject.GetComponent<HitPointsManager>().RegisterHit(attackDamage);
         }
