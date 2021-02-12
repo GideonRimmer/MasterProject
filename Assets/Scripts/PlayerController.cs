@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Timeline;
+//using UnityEditor.Timeline;
+using UnityEditor;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
