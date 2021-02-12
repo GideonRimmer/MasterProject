@@ -665,7 +665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3634d3ef0081c424c8891fee490f7868, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxLoyalty: 20
+  maxLoyalty: 30
   minLoyalty: 3
   autoAttackLoyalty: 10
   startingLoyalty: 5
@@ -692,5 +692,6 @@ MonoBehaviour:
   maxDistanceToTarget: 100
   currentDistanceToTarget: 0
   isAttacking: 0
-  attackDistance: 0
+  attackDamage: 1
   enemyTarget: {fileID: 0}
+  distanceToEnemy: 0

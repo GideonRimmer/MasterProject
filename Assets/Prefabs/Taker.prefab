@@ -545,6 +545,7 @@ GameObject:
   - component: {fileID: 3476806515860371270}
   - component: {fileID: 8723099091681394093}
   - component: {fileID: 2993790178688201340}
+  - component: {fileID: -463669808109389104}
   m_Layer: 0
   m_Name: Taker
   m_TagString: Taker
@@ -620,3 +621,18 @@ MonoBehaviour:
   sphereCurrentRadius: 0
   charismaText: {fileID: 1559165014}
   activeFollowers: []
+--- !u!114 &-463669808109389104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8723099091681394095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9954335cb7dd8b245bfaa70687a2cf49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minCharisma: 10
+  maxCharisma: 29
+  randomCharisma: 0
