@@ -691,6 +691,7 @@ MonoBehaviour:
   minDistanceToTarget: 5
   maxDistanceToTarget: 100
   currentDistanceToTarget: 0
+  rotateSpeed: 5
   isAttacking: 0
   attackDamage: 1
   enemyTarget: {fileID: 0}

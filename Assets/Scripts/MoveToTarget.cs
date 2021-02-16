@@ -24,6 +24,7 @@ public class MoveToTarget : MonoBehaviour
     public float minDistanceToTarget;
     public float maxDistanceToTarget;
     public float currentDistanceToTarget;
+    public float rotateSpeed;
 
     public bool isAttacking;
     public int attackDamage = 1;
@@ -95,6 +96,15 @@ public class MoveToTarget : MonoBehaviour
         if (Vector3.Distance(transform.position, currentTarget.transform.position) < maxDistanceToTarget && Vector3.Distance(transform.position, currentTarget.transform.position) > minDistanceToTarget)
         {
             transform.position = Vector3.MoveTowards(transform.position, currentTarget.transform.position, moveSpeed * Time.deltaTime);
+
+            // Auto rotate towards the target.
+            Vector3 targetDirection = currentTarget.transform.position - transform.position;
+
+            Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, rotateSpeed * Time.deltaTime, 0.0f);
+            Debug.DrawRay(transform.position, newDirection, Color.red);
+
+            // Move position a step towards to the target.
+            transform.rotation = Quaternion.LookRotation(newDirection);
         }
     }
 
@@ -109,6 +119,15 @@ public class MoveToTarget : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, enemyTarget.transform.position, moveSpeed * Time.deltaTime);
         distanceToEnemy = Vector3.Distance(transform.position, enemyTarget.transform.position);
 
+        // Auto rotate towards the target.
+        Vector3 targetDirection = enemyTarget.transform.position - transform.position;
+
+        Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, rotateSpeed * Time.deltaTime, 0.0f);
+        Debug.DrawRay(transform.position, newDirection, Color.red);
+
+        // Move position a step towards to the target.
+        transform.rotation = Quaternion.LookRotation(newDirection);
+
         if (enemyTarget == null)
         {
             Debug.Log("Target destroyed");
@@ -116,7 +135,7 @@ public class MoveToTarget : MonoBehaviour
         }
     }
 
-    // Detect enemy in sphere
+    // Detect enemy in sphere.
     private void OnTriggerEnter(Collider other)
     {
         //if (other.gameObject.tag == "Enemy")
@@ -125,6 +144,16 @@ public class MoveToTarget : MonoBehaviour
             SetAttackTarget(other.gameObject.GetComponentInParent<Transform>());
         }
     }
+
+    public void OnTriggerStay(Collider other)
+    {
+        //if (other.gameObject.tag == "Enemy")
+        if (other.gameObject.tag == "Taker" && this.GetComponent<LoyaltyManager>().currentLoyalty > other.GetComponentInParent<SphereOfInfluence>().currentCharisma)
+        {
+            SetAttackTarget(other.gameObject.GetComponentInParent<Transform>());
+        }
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         // On collision with enemy, inflict damage.
