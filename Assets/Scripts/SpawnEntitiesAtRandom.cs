@@ -12,7 +12,7 @@ public class SpawnEntitiesAtRandom : MonoBehaviour
     public int minZ;
     public int maxZ;
     private int xPosition;
-    private int yPosition = 3;
+    private int yPosition = 1;
     private int zPosition;
 
     public int followerCount;
