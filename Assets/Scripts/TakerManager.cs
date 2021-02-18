@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class TakerManager : MonoBehaviour
 {
-    public int minCharisma;
-    public int maxCharisma;
-    [SerializeField] private int randomCharisma;
+    public int minStartingCharisma;
+    public int maxStartingCharisma;
+    [SerializeField] private int startingCharisma;
 
     public float moveSpeed = 5.0f;
     public float rotateSpeed = 5.0f;
@@ -18,8 +18,8 @@ public class TakerManager : MonoBehaviour
 
     void Awake()
     {
-        randomCharisma = Random.Range(minCharisma, maxCharisma + 1);
-        this.GetComponent<SphereOfInfluence>().startingCharisma = randomCharisma;
+        startingCharisma = Random.Range(minStartingCharisma, maxStartingCharisma);
+        GetComponent<SphereOfInfluence>().startingCharisma = startingCharisma;
     }
 
     private void Start()
@@ -41,7 +41,7 @@ public class TakerManager : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(newDirection);
 
         // If reached roaming position, set new target position.
-        if (Vector3.Distance(transform.position, roamingPosition) < 1.0f)
+        if (Vector3.Distance(transform.position, roamingPosition) < 0.1f)
         {
             // Reached roaming position.
             roamingPosition = GetRoamingPosition();
