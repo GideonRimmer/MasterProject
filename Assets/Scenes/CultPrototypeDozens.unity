@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 188ad8a52e43cd448bb50fe8fb7b9414, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followerPrefab: {fileID: 9086610739197889219, guid: 084c694cf0068d340a904c8eea34feb0,
+  followerPrefab: {fileID: 1605260892821789235, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
     type: 3}
   takerPrefab: {fileID: 8723099091681394095, guid: 6bab3e57136850141a788f4b4f89a566,
     type: 3}
