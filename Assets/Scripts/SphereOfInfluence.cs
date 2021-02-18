@@ -11,7 +11,7 @@ public class SphereOfInfluence : MonoBehaviour
     public int currentCharisma;
 
     private SphereCollider sphereCollider;
-    public float sphereInitialRadius = 10f;
+    public float sphereInitialRadius;
     public float sphereCurrentRadius;
 
     public TextMeshProUGUI charismaText;
@@ -34,15 +34,6 @@ public class SphereOfInfluence : MonoBehaviour
         charismaText.text = currentCharisma.ToString();
         charismaText.transform.LookAt(mainCamera.transform);
         charismaText.transform.rotation = Quaternion.LookRotation(mainCamera.transform.forward);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Follower")
-        {
-            //Debug.Log(other.name + " entered sphere.");
-            other.GetComponentInParent<MoveToTarget>().SetTarget(this.transform);
-        }
     }
 
     public void ModifyCharisma(int change)
@@ -70,7 +61,8 @@ public class SphereOfInfluence : MonoBehaviour
     {
         foreach (GameObject follower in activeFollowers)
         {
-            follower.GetComponent<LoyaltyManager>().ModifyLoyalty(change);
+            //follower.GetComponent<LoyaltyManager>().ModifyLoyalty(change);
+            follower.GetComponent<FollowerManager>().ModifyCharisma(change);
         }
     }
 }

@@ -33,11 +33,9 @@ public class MoveToTarget : MonoBehaviour
 
     void Start()
     {
-        //sphereCollider.GetComponentInChildren<SphereCollider>();
         sphereCurrentRadius = sphereInitialRadius;
 
         currentState = State.Idle;
-        //isAttacking = false;
     }
 
     void Update()
@@ -46,18 +44,19 @@ public class MoveToTarget : MonoBehaviour
         {
             default:
             case State.Idle:
+                //sphereCollider.enabled = false;
 
                 break;
 
             case State.Follow:
-                if (currentTarget != null && GetComponent<OnClickInteraction>().isFollowing == true)
+                if (currentTarget != null && currentTarget.GetComponentInParent<SphereOfInfluence>().currentCharisma > GetComponent<LoyaltyManager>().currentLoyalty && (GetComponent<OnClickInteraction>().isFollowing == true || currentTarget.tag == "Taker"))
                 {
                     FollowTarget();
                 }
                 break;
 
             case State.Attack:
-                if (enemyTarget != null)
+                if (enemyTarget != null && currentState == State.Follow)
                 {
                     FollowAndAttackTarget();
                 }
@@ -135,11 +134,11 @@ public class MoveToTarget : MonoBehaviour
         }
     }
 
-    // Detect enemy in sphere.
+    // Detect enemy. Conditions: tag = Taker, loyalty > Taker charisma, Taker is in range (enter sphere trigger), follower is not neutral (already following someone else).
     private void OnTriggerEnter(Collider other)
     {
         //if (other.gameObject.tag == "Enemy")
-        if (other.gameObject.tag == "Taker" && this.GetComponent<LoyaltyManager>().currentLoyalty > other.GetComponentInParent<SphereOfInfluence>().currentCharisma)
+        if (other.gameObject.tag == "Taker" && this.GetComponent<LoyaltyManager>().currentLoyalty > other.GetComponentInParent<SphereOfInfluence>().currentCharisma && currentState == State.Follow)
         {
             SetAttackTarget(other.gameObject.GetComponentInParent<Transform>());
         }
