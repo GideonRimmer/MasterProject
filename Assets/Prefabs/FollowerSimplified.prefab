@@ -687,7 +687,7 @@ MonoBehaviour:
   sphereCollider: {fileID: 2277482189264614695}
   currentState: 0
   currentTarget: {fileID: 0}
-  moveSpeed: 10
+  moveSpeed: 6
   minDistanceToTarget: 5
   maxDistanceToTarget: 100
   currentDistanceToTarget: 0

@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0b6b434184340246bdabb9df62a1a74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveTowardsSpeed: 12
+  moveTowardsSpeed: 7
   rotateSpeed: 20
   isFollowingPlayer: 0
   distanceToClosestPlayer: 0
@@ -110,6 +110,8 @@ MonoBehaviour:
   isAttacking: 0
   attackDamage: 1
   enemyTags: []
+  isMovingTowards: 0
+  distanceToClosestLeader: 0
 --- !u!114 &88590450102421257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,9 +124,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37e9ce9c59b246849840557905e2a1e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isClickable: 0
+  isFollowing: 0
   contextualMenu: {fileID: 3001862948168809331, guid: 29aa93983d57ab74ebad4a8818042cb0,
     type: 3}
   popupMenuPlaceholder: {fileID: 3316319824337754327}
+  leaderCharisma: 0
   idleMaterial: {fileID: 2100000, guid: f9178494407876a4699828c0cc34315b, type: 2}
   followerMaterial: {fileID: 2100000, guid: 16f8c3b129fe4904fb64ed7c61314b65, type: 2}
 --- !u!114 &7217727461249537949
@@ -155,10 +160,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxLoyalty: 20
   minLoyalty: 0
-  startingLoyalty: 5
   autoAttackLoyalty: 10
+  startingLoyalty: 5
   currentLoyalty: 0
   leaderEntity: {fileID: 0}
+  loyaltyText: {fileID: 0}
 --- !u!1 &7320506636496799892
 GameObject:
   m_ObjectHideFlags: 0

@@ -613,11 +613,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c30b6ac841744cc4cb0be8b7b94ee7c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minCharisma: 3
-  maxCharisma: 30
-  startingCharisma: 20
+  minCharisma: 1
+  maxCharisma: 100
+  startingCharisma: 0
   currentCharisma: 0
-  sphereInitialRadius: 7
+  sphereInitialRadius: 12
   sphereCurrentRadius: 0
   charismaText: {fileID: 1559165014}
   activeFollowers: []
@@ -633,10 +633,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9954335cb7dd8b245bfaa70687a2cf49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minCharisma: 10
-  maxCharisma: 29
-  randomCharisma: 0
-  moveSpeed: 10
+  minStartingCharisma: 9
+  maxStartingCharisma: 20
+  startingCharisma: 0
+  moveSpeed: 6
+  rotateSpeed: 10
   roamingRangeMin: 10
   roamingRangeMax: 30
   startingPosition: {x: 0, y: 0, z: 0}

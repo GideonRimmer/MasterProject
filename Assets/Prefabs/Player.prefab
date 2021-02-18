@@ -536,8 +536,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c30b6ac841744cc4cb0be8b7b94ee7c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minCharisma: 3
-  maxCharisma: 30
+  minCharisma: 1
+  maxCharisma: 100
   startingCharisma: 10
   currentCharisma: 0
   sphereInitialRadius: 10
