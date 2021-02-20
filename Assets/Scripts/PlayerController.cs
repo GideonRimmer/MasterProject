@@ -6,6 +6,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private bool isIdle;
+    [SerializeField] private bool isWalking;
+    private Animator animator;
+
     [SerializeField] float moveSpeed = 4f;
     private Vector3 forward, right;
     public int startingCharisma = 5;
@@ -13,6 +17,10 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        isIdle = true;
+        isWalking = false;
+        animator = GetComponent<Animator>();
+
         forward = Camera.main.transform.forward;
         forward.y = 0;
         forward = Vector3.Normalize(forward);
@@ -27,6 +35,12 @@ public class PlayerController : MonoBehaviour
         {
             Move();
         }
+        else
+        {
+            isIdle = true;
+            isWalking = false;
+            animator.SetBool("isWalking", false);
+        }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -36,6 +50,10 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
+        isIdle = false;
+        isWalking = true;
+        animator.SetBool("isWalking", true);
+
         Vector3 direction = new Vector3(Input.GetAxis("HorizontalKey"), 0, Input.GetAxis("VerticalKey"));
         Vector3 rightMovement = right * moveSpeed * Time.deltaTime * Input.GetAxis("HorizontalKey");
         Vector3 upMovement = forward * moveSpeed * Time.deltaTime * Input.GetAxis("VerticalKey");

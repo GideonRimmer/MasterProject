@@ -5,6 +5,7 @@ using TMPro;
 
 public class FollowerManager : MonoBehaviour
 {
+    private Animator animator;
     private enum State
     {
         Idle,
@@ -45,6 +46,8 @@ public class FollowerManager : MonoBehaviour
 
     void Start()
     {
+        animator = GetComponent<Animator>();
+
         currentState = State.Idle;
         isClickable = false;
         attackStateSpeed = moveSpeed + 2;
@@ -72,12 +75,14 @@ public class FollowerManager : MonoBehaviour
         {
             default:
             case State.Idle:
+                animator.SetBool("isWalking", false);
                 break;
 
             case State.FollowPlayer:
                 if (currentTarget != null)
                 {
                     FollowTarget();
+                    animator.SetBool("isWalking", true);
                 }
                 else if (currentTarget == null)
                 {
@@ -86,8 +91,10 @@ public class FollowerManager : MonoBehaviour
                 break;
 
             case State.FollowOther:
+
                 if (currentTarget != null)
                 {
+                    animator.SetBool("isWalking", true);
                     FollowTarget();
                 }
                 else if (currentTarget == null)
@@ -100,6 +107,7 @@ public class FollowerManager : MonoBehaviour
                 if (enemyTarget != null)
                 {
                     FollowAndAttackTarget();
+                    animator.SetBool("isWalking", true);
                 }
                 else if (enemyTarget == null && currentTarget.tag == "Player")
                 {
@@ -153,6 +161,7 @@ public class FollowerManager : MonoBehaviour
         // If state is clickable and player charisma > this entity's charisma, start following the player when clicked.
         if (isClickable == true && (currentCharisma < player.GetComponent<SphereOfInfluence>().currentCharisma || currentTarget.GetComponentInParent<SphereOfInfluence>().currentCharisma < player.GetComponent<SphereOfInfluence>().currentCharisma))
         {
+            //Debug.Log("Clicked on " + this.name);
             SetFollowTarget(player.transform);
         }
     }
