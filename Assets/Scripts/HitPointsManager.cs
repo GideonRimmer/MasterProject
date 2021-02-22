@@ -25,6 +25,6 @@ public class HitPointsManager : MonoBehaviour
     public void Die()
     {
         Debug.Log(this.name + " died.");
-        Destroy(this.gameObject);
+        //Destroy(this.gameObject);
     }
 }

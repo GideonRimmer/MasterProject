@@ -16,6 +16,9 @@ public class TakerManager : MonoBehaviour
     [SerializeField] private Vector3 startingPosition;
     [SerializeField] private Vector3 roamingPosition;
 
+    private HitPointsManager hitPointsManager;
+    private PlayParticleEffect playParticleEffect;
+
     void Awake()
     {
         startingCharisma = Random.Range(minStartingCharisma, maxStartingCharisma);
@@ -26,6 +29,9 @@ public class TakerManager : MonoBehaviour
     {
         startingPosition = transform.position;
         roamingPosition = GetRoamingPosition();
+
+        hitPointsManager = GetComponent<HitPointsManager>();
+        playParticleEffect = GetComponent<PlayParticleEffect>();
     }
 
     private void Update()
@@ -46,6 +52,11 @@ public class TakerManager : MonoBehaviour
             // Reached roaming position.
             roamingPosition = GetRoamingPosition();
         }
+
+        if (hitPointsManager.currentHitPoints <= 0)
+        {
+            Die();
+        }
     }
 
     private Vector3 GetRoamingPosition()
@@ -65,5 +76,11 @@ public class TakerManager : MonoBehaviour
         {
             roamingPosition = GetRoamingPosition();
         }
+    }
+
+    private void Die()
+    {
+        playParticleEffect.PlayParticleSystem();
+        Destroy(this.gameObject);
     }
 }

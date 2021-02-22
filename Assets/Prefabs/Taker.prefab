@@ -546,6 +546,7 @@ GameObject:
   - component: {fileID: 8723099091681394093}
   - component: {fileID: 2993790178688201340}
   - component: {fileID: -463669808109389104}
+  - component: {fileID: 4833404102798361122}
   m_Layer: 0
   m_Name: Taker
   m_TagString: Taker
@@ -642,3 +643,17 @@ MonoBehaviour:
   roamingRangeMax: 30
   startingPosition: {x: 0, y: 0, z: 0}
   roamingPosition: {x: 0, y: 0, z: 0}
+--- !u!114 &4833404102798361122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8723099091681394095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93dc6b9ee2cf1ec439fbb45719d0fb8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleEffect: {fileID: 9190275972324511695, guid: 0357353dccfabe44f97b68d54a29bf03,
+    type: 3}
