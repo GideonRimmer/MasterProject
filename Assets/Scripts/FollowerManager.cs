@@ -6,12 +6,14 @@ using TMPro;
 public class FollowerManager : MonoBehaviour
 {
     private Animator animator;
+    private float sphereRadius = 10f;
     private enum State
     {
         Idle,
         FollowPlayer,
         FollowOther,
         Attack,
+        RunAway,
     }
     [SerializeField] private State currentState;
     [SerializeField] private bool isClickable;
@@ -37,6 +39,8 @@ public class FollowerManager : MonoBehaviour
     public Transform enemyTarget;
     [SerializeField] private float distanceToEnemy;
 
+    public float runAwaySpeed;
+
     public TextMeshProUGUI charismaText;
     private Camera mainCamera;
 
@@ -60,6 +64,11 @@ public class FollowerManager : MonoBehaviour
 
         children = GetComponentsInChildren<Renderer>();
         player = GameObject.FindGameObjectWithTag("Player");
+    }
+
+    private void FixedUpdate()
+    {
+        Physics.OverlapSphere(transform.position, sphereRadius);
     }
 
     void Update()
@@ -117,7 +126,10 @@ public class FollowerManager : MonoBehaviour
                 {
                     currentState = State.FollowOther;
                 }
+                break;
 
+            case State.RunAway:
+                RunAway();
                 break;
         }
     }
@@ -250,6 +262,11 @@ public class FollowerManager : MonoBehaviour
         }
     }
 
+    private void RunAway()
+    {
+
+    }
+
     public void ModifyCharisma(int change)
     {
         currentCharisma += change;
@@ -268,5 +285,10 @@ public class FollowerManager : MonoBehaviour
             }
             renderer.materials = mats;
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, sphereRadius);
     }
 }
