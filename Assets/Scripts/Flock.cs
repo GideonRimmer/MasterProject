@@ -8,6 +8,8 @@ public class Flock : MonoBehaviour
     public FlockAgent agentPrefab;
     List<FlockAgent> agents = new List<FlockAgent>();
     public FlockBehavior behavior;
+    public bool showAgentRadius = false;
+    public bool changeColorDebug = false;
 
     // Generate number of agents.
     [Range(10, 500)]
@@ -52,7 +54,7 @@ public class Flock : MonoBehaviour
                 agentPrefab,
                 newPosition,
                 //Random.insideUnitCircle * startingCount * AgentDensity,
-                Quaternion.Euler(Vector3.forward * Random.Range(0, 360f)),
+                Quaternion.Euler(Vector3.up * Random.Range(0, 360f)),
                 transform
                 );
             newAgent.name = "Agent" + i;
@@ -68,8 +70,11 @@ public class Flock : MonoBehaviour
             // Make a list of everything in the context of the agent's radius.
             List<Transform> context = GetNearbyObjects(agent);
 
-            // DEBUG, FOR DEMO ONLY: Change agent color based on how many agents are near it (0 = white, max 6 = red).
-            agent.GetComponentInChildren<Renderer>().material.color = Color.Lerp(Color.white, Color.red, context.Count / 6f);
+            if (changeColorDebug == true)
+            {
+                // DEBUG, FOR DEMO ONLY: Change agent color based on how many agents are near it (0 = white, max 6 = red).
+                agent.GetComponentInChildren<Renderer>().material.color = Color.Lerp(Color.white, Color.red, context.Count / 6f);
+            }
 
             // Calculate how the agent should move based on nearby objects.
             // The calculation is done in FlockBehavior.CalculateMove.
@@ -107,9 +112,12 @@ public class Flock : MonoBehaviour
     // Show overlapSpheres for every agent in scene view.
     private void OnDrawGizmos()
     {
-        foreach (FlockAgent agent in agents)
+        if (showAgentRadius == true)
         {
-            Gizmos.DrawWireSphere(agent.transform.position, neighbourRadius);
+            foreach (FlockAgent agent in agents)
+            {
+                Gizmos.DrawWireSphere(agent.transform.position, neighbourRadius);
+            }
         }
     }
 }

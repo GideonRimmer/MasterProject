@@ -27,6 +27,6 @@ public class FlockAgent : MonoBehaviour
         transform.forward = velocity;
 
         // Move the flocking agent in the direction.
-        transform.position += (Vector3)velocity * Time.deltaTime;
+        transform.position += velocity * Time.deltaTime;
     }
 }
