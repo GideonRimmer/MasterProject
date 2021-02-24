@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Flock/Behavior/Composite")]
-
 public class CompositeBehavior : FlockBehavior
 {
     public FlockBehavior[] behaviors;
