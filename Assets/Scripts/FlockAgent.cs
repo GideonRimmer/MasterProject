@@ -16,6 +16,7 @@ public class FlockAgent : MonoBehaviour
         agentCollider = GetComponent<Collider>();
     }
 
+    // When the flock creates the agent, link the agent to the flock.
     public void Initialize(Flock flock)
     {
         agentFlock = flock;
