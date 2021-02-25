@@ -4,7 +4,7 @@ using UnityEngine;
 
 [CreateAssetMenu(menuName = "Flock/Behavior/Alignment")]
 
-public class AlignmentBehavior : FlockBehavior
+public class AlignmentBehavior : FilteredFlockBehavior
 {
     public override Vector3 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock)
     {
@@ -15,7 +15,11 @@ public class AlignmentBehavior : FlockBehavior
         // Find the alignment of all neighbours and align agent according to their average alignment.
         // 1. Add all context points together.
         Vector3 alignmentMove = Vector3.zero;
-        foreach (Transform item in context)
+
+        // Check if a filter is applied. If the filter is null, use normal context. If there is a filter, use the filter.
+        List<Transform> filteredContex = (filter == null) ? context : filter.Filter(agent, context);
+
+        foreach (Transform item in filteredContex)
         {
             alignmentMove += item.transform.forward;
         }

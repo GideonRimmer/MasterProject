@@ -4,7 +4,7 @@ using UnityEngine;
 
 [CreateAssetMenu(menuName = "Flock/Behavior/Avoidance")]
 
-public class AvoidanceBehavior : FlockBehavior
+public class AvoidanceBehavior : FilteredFlockBehavior
 {
     public override Vector3 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock)
     {
@@ -17,7 +17,11 @@ public class AvoidanceBehavior : FlockBehavior
 
         // Create an int for number of things to avoid.
         int nAvoid = 0;
-        foreach (Transform item in context)
+
+        // Check if a filter is applied. If the filter is null, use normal context. If there is a filter, use the filter.
+        List<Transform> filteredContex = (filter == null) ? context : filter.Filter(agent, context);
+
+        foreach (Transform item in filteredContex)
         {
             // Get the distance between the agent and the item to avoid.
             // If item is in avoidance distance (distance to item < distance to avoid), add to items to avoid..
