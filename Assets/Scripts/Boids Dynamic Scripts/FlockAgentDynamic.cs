@@ -36,7 +36,11 @@ public class FlockAgentDynamic : MonoBehaviour
 
     private void OnMouseDown()
     {
-        AssignToFlock(newFlock);
+        if (tag != "Player")
+        {
+            Debug.Log("clicked on " + this.name);
+            AssignToFlock(newFlock);
+        }
     }
 
     public void Move(Vector3 velocity)
