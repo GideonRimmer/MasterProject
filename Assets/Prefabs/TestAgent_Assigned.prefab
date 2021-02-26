@@ -89,7 +89,7 @@ BoxCollider:
   m_GameObject: {fileID: 1995608133825289203}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 7787377646799687517}
   - component: {fileID: 4193557049883828438}
   - component: {fileID: 7012208437767151612}
-  - component: {fileID: 3317037247985959242}
+  - component: {fileID: 7865282204354067729}
   m_Layer: 0
   m_Name: TestAgent_Assigned
   m_TagString: Untagged
@@ -156,7 +156,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
---- !u!114 &3317037247985959242
+--- !u!114 &7865282204354067729
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -165,6 +165,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 6602298182510121203}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c545a40bcdd0e447af11f3fd3f36fe4, type: 3}
+  m_Script: {fileID: 11500000, guid: b5f73b99a0141f74595964ca8b16f837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agentFlock: {fileID: 0}
+  newFlock: {fileID: 0}
