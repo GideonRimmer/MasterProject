@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b0927cbb874f064c94a610644d439af, type: 3}
   m_Name: Dyn_Avoid Obstacles
   m_EditorClassIdentifier: 
-  filter: {fileID: 0}
+  filter: {fileID: 11400000, guid: b6e3c56c404d16440a84a83a4c031ef4, type: 2}

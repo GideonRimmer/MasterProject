@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Dyn_Stay In Radius 100
   m_EditorClassIdentifier: 
   center: {x: 0, y: 0, z: 0}
-  circleRadius: 15
+  circleRadius: 100

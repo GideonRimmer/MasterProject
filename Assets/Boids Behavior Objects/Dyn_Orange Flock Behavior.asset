@@ -12,5 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e108888ebd7e61b4a8b62e256de91fff, type: 3}
   m_Name: Dyn_Orange Flock Behavior
   m_EditorClassIdentifier: 
-  behaviors: []
-  weights: []
+  behaviors:
+  - {fileID: 11400000, guid: 507bbfb5045472342ac574893752918a, type: 2}
+  - {fileID: 11400000, guid: f7febf7524f9029489af931e4817989a, type: 2}
+  - {fileID: 11400000, guid: b278c3d89d50b944385098d74ca68de8, type: 2}
+  - {fileID: 11400000, guid: 501186e0c5c16a4489357c1fdca945a2, type: 2}
+  - {fileID: 11400000, guid: 825665569482e094ea95ee4aad2c0ec4, type: 2}
+  weights:
+  - 1
+  - 1
+  - 1
+  - 0
+  - 5
