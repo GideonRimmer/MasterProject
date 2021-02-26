@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 950af324586b0cd49a0733601055ac12, type: 3}
   m_Name: Dyn_Obstacle Layer Filter
-  m_EditorClassIdentifier: Assembly-CSharp::PhysicsLayerFilterDynamic
+  m_EditorClassIdentifier: 
   mask:
     serializedVersion: 2
     m_Bits: 256
