@@ -17,7 +17,7 @@ public class SphereOfInfluence : MonoBehaviour
     public TextMeshProUGUI charismaText;
     private Camera mainCamera;
 
-    public List<GameObject> activeFollowers = new List<GameObject>();
+    [SerializeField] private List<GameObject> activeFollowers = new List<GameObject>();
 
     private void Start()
     {
@@ -44,20 +44,32 @@ public class SphereOfInfluence : MonoBehaviour
 
     public void GainFollower(GameObject followerName)
     {
-        Debug.Log("Gain follower");
+        //Debug.Log(this. name + " Gained follower");
         ModifyCharisma(1);
-        activeFollowers.Add(followerName);
-        ChangeAllLoyalty(1);
+
+        
+        if (activeFollowers.Contains(followerName) == false)
+        {
+            activeFollowers.Add(followerName);
+        }
+        
+        ChangeAllCharisma(1);
     }
 
     public void LoseFollower(GameObject followerName)
     {
-        Debug.Log("Lose follower");
+        //Debug.Log(this.name + " Lost follower");
         ModifyCharisma(-1);
         activeFollowers.Remove(followerName);
     }
 
-    private void ChangeAllLoyalty(int change)
+    public void RemoveDeadFollower(GameObject followerName)
+    {
+        Debug.Log(followerName + "index " + activeFollowers.IndexOf(followerName));
+        activeFollowers.RemoveAt(activeFollowers.IndexOf(followerName));
+    }
+
+    private void ChangeAllCharisma(int change)
     {
         foreach (GameObject follower in activeFollowers)
         {

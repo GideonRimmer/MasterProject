@@ -48,6 +48,15 @@ public class FollowerManager : MonoBehaviour
     public Material followerMaterial;
     Renderer[] children;
 
+
+    private Collider agentCollider;
+    //public Collider AgentCollider { get { return agentCollider; } }
+    [SerializeField] private float distanceToClosest;
+    [SerializeField] private Collider closestObject;
+
+    [SerializeField] Collider[] agentsInSphere;
+
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -64,11 +73,21 @@ public class FollowerManager : MonoBehaviour
 
         children = GetComponentsInChildren<Renderer>();
         player = GameObject.FindGameObjectWithTag("Player");
+
+        agentCollider = GetComponent<Collider>();
     }
 
     private void FixedUpdate()
     {
-        Physics.OverlapSphere(transform.position, sphereRadius);
+        LayerMask layerMask = LayerMask.GetMask("Characters");
+        agentsInSphere = Physics.OverlapSphere(this.transform.position, sphereRadius, layerMask);
+        foreach (Collider agent in agentsInSphere)
+        {
+            if (currentTarget != null && agent.tag == "Follower" && currentCharisma > agent.GetComponent<FollowerManager>().currentCharisma)
+            {
+                SetAttackTarget(agent.transform);
+            }
+        }
     }
 
     void Update()
@@ -78,6 +97,8 @@ public class FollowerManager : MonoBehaviour
         charismaText.transform.LookAt(mainCamera.transform);
         charismaText.transform.rotation = Quaternion.LookRotation(mainCamera.transform.forward);
 
+        //List<Transform> context = GetNearbyObjects(this.gameObject);
+        //GetNearbyObjects(this.gameObject);
 
         // State machine.
         switch (currentState)
@@ -132,6 +153,11 @@ public class FollowerManager : MonoBehaviour
                 RunAway();
                 break;
         }
+
+        if (GetComponent<HitPointsManager>().currentHitPoints <= 0)
+        {
+            Die();
+        }
     }
 
     // Most interactions between the follower and other entities happen on OnTriggerEnter, when the follower steps into their sphere of influence.
@@ -171,7 +197,7 @@ public class FollowerManager : MonoBehaviour
     private void OnMouseDown()
     {
         // If state is clickable and player charisma > this entity's charisma, start following the player when clicked.
-        if (isClickable == true && (currentCharisma < player.GetComponent<SphereOfInfluence>().currentCharisma || currentTarget.GetComponentInParent<SphereOfInfluence>().currentCharisma < player.GetComponent<SphereOfInfluence>().currentCharisma))
+        if (isClickable == true && (currentCharisma < player.GetComponentInParent<SphereOfInfluence>().currentCharisma || currentTarget.GetComponentInParent<SphereOfInfluence>().currentCharisma < player.GetComponent<SphereOfInfluence>().currentCharisma))
         {
             //Debug.Log("Clicked on " + this.name);
             SetFollowTarget(player.transform);
@@ -251,12 +277,13 @@ public class FollowerManager : MonoBehaviour
         currentState = State.Attack;
         //newEnemy.gameObject.transform.parent = enemyTarget;
         enemyTarget = newEnemy;
+        //Debug.Log(this.name + " attacks " + enemyTarget.name);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         // If attacking, damage attack target.
-        if (collision.collider.tag == "Taker" && currentState == State.Attack)
+        if (currentState == State.Attack && (collision.collider.tag == "Taker" || (collision.collider.tag == "Follower" && collision.gameObject.GetComponent<FollowerManager>().currentTarget != null && currentTarget != collision.gameObject.GetComponent<FollowerManager>().currentTarget)))
         {
             collision.gameObject.GetComponent<HitPointsManager>().RegisterHit(attackDamage);
         }
@@ -286,9 +313,54 @@ public class FollowerManager : MonoBehaviour
             renderer.materials = mats;
         }
     }
+    
+    /*
+    public List<Transform> GetNearbyObjects(GameObject agent)
+    {
+        //distanceToClosest = Mathf.Infinity;
+        LayerMask layerMask = LayerMask.GetMask("Characters");
+        List<Transform> context = new List<Transform>();
+        // Get an array of all colliders in a the radius, using OverlapSphere.
+        Collider[] contextColliders = Physics.OverlapSphere(agent.transform.position, sphereRadius);
+        //Collider2D[] contextColliders = Physics2D.OverlapCircleAll(agent.transform.position, neighbourRadius);
+
+        foreach (Collider collider in contextColliders)
+        {
+            if ((currentState == State.FollowPlayer || currentState == State.FollowOther) && currentCharisma > agent.GetComponent<FollowerManager>().currentCharisma && currentTarget != agent.GetComponent<FollowerManager>().currentTarget)
+            {
+                SetAttackTarget(collider.gameObject.transform);
+            }
+            // Add all of the transforms of the colliders in the sphere, except this object's (agent's) transform.
+            if (collider.gameObject != this)
+            {
+                //Debug.Log(agent.name + "in range of " + this.name);
+                context.Add(collider.transform);
+                float dist = Vector3.Distance(transform.position, collider.transform.position);
+                if (dist < distanceToClosest)
+                {
+                    distanceToClosest = dist;
+                    closestObject = collider;
+                }
+            }
+        }
+        return context;
+    }
+    */
+
+    public void Die()
+    {
+        Debug.Log(this.name + "register death");
+        if (currentTarget != null)
+        {
+            currentTarget.GetComponentInParent<SphereOfInfluence>().RemoveDeadFollower(this.gameObject);
+        }
+
+        GetComponent<HitPointsManager>().PlayParticleSystem();
+        Destroy(this.gameObject);
+    }
 
     private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(transform.position, sphereRadius);
-    }
+        {
+            Gizmos.DrawWireSphere(transform.position, sphereRadius);
+        }
 }
