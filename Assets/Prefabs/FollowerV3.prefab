@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1756143887018617844}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LegRight_pivot (1)
   m_TagString: Follower
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3927750625052010173}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LegLeft_pivot (1)
   m_TagString: Follower
   m_Icon: {fileID: 0}
@@ -75,7 +75,9 @@ GameObject:
   - component: {fileID: 2698435985635302165}
   - component: {fileID: 1605260892821789234}
   - component: {fileID: 1172241809}
-  m_Layer: 0
+  - component: {fileID: 8978855291247846464}
+  - component: {fileID: -3028409234055010523}
+  m_Layer: 9
   m_Name: FollowerV3
   m_TagString: Follower
   m_Icon: {fileID: 0}
@@ -90,7 +92,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1605260892821789235}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 29.070047, y: 2.5051951, z: 43}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2103501767807032398}
@@ -127,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec65d9bab838ed240890db399ca63bdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHitPoints: 10
+  maxHitPoints: 1
   currentHitPoints: 0
 --- !u!114 &1605260892821789234
 MonoBehaviour:
@@ -158,9 +160,13 @@ MonoBehaviour:
   attackStateSpeed: 0
   enemyTarget: {fileID: 0}
   distanceToEnemy: 0
+  runAwaySpeed: 0
   charismaText: {fileID: 7520211026532066191}
   idleMaterial: {fileID: 2100000, guid: c5aa32d7182b2c54ea4c2712516569b7, type: 2}
   followerMaterial: {fileID: 2100000, guid: ae779ead40d6afa46962cb2dc8aba285, type: 2}
+  distanceToClosest: 0
+  closestObject: {fileID: 0}
+  agentsInSphere: []
 --- !u!95 &1172241809
 Animator:
   serializedVersion: 3
@@ -180,6 +186,34 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!136 &8978855291247846464
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605260892821789235}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.0954843
+  m_Height: 5.623181
+  m_Direction: 1
+  m_Center: {x: 0, y: 2.8246176, z: 0.07197189}
+--- !u!114 &-3028409234055010523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605260892821789235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93dc6b9ee2cf1ec439fbb45719d0fb8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleEffect: {fileID: 9190275972324511695, guid: 0357353dccfabe44f97b68d54a29bf03,
+    type: 3}
 --- !u!1 &1663431834749476022
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,7 +223,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8550886166795069068}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ArmRight_pivot (1)
   m_TagString: Follower
   m_Icon: {fileID: 0}
@@ -223,7 +257,7 @@ GameObject:
   - component: {fileID: 7416043004694440970}
   - component: {fileID: 2636405044980275698}
   - component: {fileID: 3518224319113785612}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Head (1)
   m_TagString: Follower
   m_Icon: {fileID: 0}
@@ -301,7 +335,7 @@ BoxCollider:
   m_GameObject: {fileID: 1758283541135427291}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -317,7 +351,7 @@ GameObject:
   - component: {fileID: 8946193119094209405}
   - component: {fileID: 4135956358098061852}
   - component: {fileID: 4363030156741206192}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Body (1)
   m_TagString: Follower
   m_Icon: {fileID: 0}
@@ -394,7 +428,7 @@ BoxCollider:
   m_GameObject: {fileID: 2231555209939048487}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -410,7 +444,7 @@ GameObject:
   - component: {fileID: 2521078981484899942}
   - component: {fileID: 2556662352950687129}
   - component: {fileID: 8744216710361619671}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ArmLeft
   m_TagString: Follower
   m_Icon: {fileID: 0}
@@ -487,7 +521,7 @@ BoxCollider:
   m_GameObject: {fileID: 2700123009495948597}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -503,7 +537,7 @@ GameObject:
   - component: {fileID: 5262844588902767412}
   - component: {fileID: 2914058579425745170}
   - component: {fileID: 3699853559519548177}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Nose
   m_TagString: Follower
   m_Icon: {fileID: 0}
@@ -580,7 +614,7 @@ BoxCollider:
   m_GameObject: {fileID: 3118865641970852884}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -593,7 +627,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4111208325352779841}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ArmLeft_pivot (1)
   m_TagString: Follower
   m_Icon: {fileID: 0}
@@ -627,7 +661,7 @@ GameObject:
   - component: {fileID: 961894812054872833}
   - component: {fileID: 1333810638339846173}
   - component: {fileID: 2940115443167516440}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ArmRight
   m_TagString: Follower
   m_Icon: {fileID: 0}
@@ -704,7 +738,7 @@ BoxCollider:
   m_GameObject: {fileID: 4369496720797146387}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -717,7 +751,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5060835852063794337}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Graphics
   m_TagString: Follower
   m_Icon: {fileID: 0}
@@ -755,7 +789,7 @@ GameObject:
   - component: {fileID: 7520211026532066190}
   - component: {fileID: 7520211026532066160}
   - component: {fileID: 7520211026532066191}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: CharismaText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -911,7 +945,7 @@ GameObject:
   - component: {fileID: 7520211027291628956}
   - component: {fileID: 7520211027291628955}
   - component: {fileID: 7520211027291628954}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1007,7 +1041,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2103501767807032398}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PopupMenuPlaceholder
   m_TagString: Follower
   m_Icon: {fileID: 0}
@@ -1040,7 +1074,7 @@ GameObject:
   - component: {fileID: 2286113452750308454}
   - component: {fileID: 1025439001744651206}
   - component: {fileID: 2124479761605149547}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LegLeft
   m_TagString: Follower
   m_Icon: {fileID: 0}
@@ -1117,7 +1151,7 @@ BoxCollider:
   m_GameObject: {fileID: 8390730352709170717}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -1133,7 +1167,7 @@ GameObject:
   - component: {fileID: 7018376655880453497}
   - component: {fileID: 2067549492622095070}
   - component: {fileID: 8372485330210750150}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LegRight
   m_TagString: Follower
   m_Icon: {fileID: 0}
@@ -1210,7 +1244,7 @@ BoxCollider:
   m_GameObject: {fileID: 8575676607564595741}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 18238648}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LegLeft_pivot (1)
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 229173131}
   - component: {fileID: 229173130}
   - component: {fileID: 229173129}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ArmRight
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 241668254}
   - component: {fileID: 241668253}
   - component: {fileID: 241668252}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Head (1)
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -230,7 +230,7 @@ GameObject:
   - component: {fileID: 292389487}
   - component: {fileID: 292389486}
   - component: {fileID: 292389485}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ArmLeft
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -323,7 +323,7 @@ GameObject:
   - component: {fileID: 506297374}
   - component: {fileID: 506297373}
   - component: {fileID: 506297372}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Body (1)
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -413,7 +413,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 650775481}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ArmLeft_pivot (1)
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -447,7 +447,7 @@ GameObject:
   - component: {fileID: 859179398}
   - component: {fileID: 859179397}
   - component: {fileID: 859179396}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LegLeft
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -540,7 +540,7 @@ GameObject:
   - component: {fileID: 883566596}
   - component: {fileID: 883566595}
   - component: {fileID: 883566594}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Canvas (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -639,7 +639,7 @@ GameObject:
   - component: {fileID: 891535363}
   - component: {fileID: 891535362}
   - component: {fileID: 891535361}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LegRight
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -822,7 +822,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1150384040}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LegRight_pivot (1)
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -853,7 +853,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1506710288}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ArmRight_pivot (1)
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -886,7 +886,7 @@ GameObject:
   - component: {fileID: 1728864792}
   - component: {fileID: 1728864794}
   - component: {fileID: 1728864793}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: CharismaText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1042,7 +1042,7 @@ GameObject:
   - component: {fileID: 1849876345}
   - component: {fileID: 1849876344}
   - component: {fileID: 1849876343}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Nose
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1132,7 +1132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1912728847}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Graphics
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1173,7 +1173,7 @@ GameObject:
   - component: {fileID: 528971928}
   - component: {fileID: 528971929}
   - component: {fileID: 586826873}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 310682531}
   - component: {fileID: 310682530}
   - component: {fileID: 310682529}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Canvas
   m_TagString: Taker
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 1559165013}
   - component: {fileID: 1559165015}
   - component: {fileID: 1559165014}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: CharismaText
   m_TagString: Taker
   m_Icon: {fileID: 0}
@@ -359,7 +359,7 @@ GameObject:
   - component: {fileID: 1681933151799967933}
   - component: {fileID: 189143316637104783}
   - component: {fileID: 2391156278641188921}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (1)
   m_TagString: Taker
   m_Icon: {fileID: 0}
@@ -452,7 +452,7 @@ GameObject:
   - component: {fileID: 4599781446276849202}
   - component: {fileID: 7929932559453799210}
   - component: {fileID: 5447212617763038578}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Taker
   m_Icon: {fileID: 0}
@@ -547,7 +547,7 @@ GameObject:
   - component: {fileID: 2993790178688201340}
   - component: {fileID: -463669808109389104}
   - component: {fileID: 4833404102798361122}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Taker
   m_TagString: Taker
   m_Icon: {fileID: 0}
