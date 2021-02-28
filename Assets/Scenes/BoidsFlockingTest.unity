@@ -175,6 +175,9 @@ MonoBehaviour:
   maxSpeed: 5
   neighbourRadius: 1.5
   avoidanceRadiusMultiplier: 0.5
+  minDistance: 0
+  distanceToClosest: 0
+  closestObject: {fileID: 0}
 --- !u!1 &146648892
 GameObject:
   m_ObjectHideFlags: 0
@@ -896,10 +899,13 @@ MonoBehaviour:
   changeColorDebug: 0
   startingCount: 250
   AgentDensity: 1
-  driveFactor: 10
-  maxSpeed: 10
-  neighbourRadius: 20
+  driveFactor: 1
+  maxSpeed: 5
+  neighbourRadius: 10
   avoidanceRadiusMultiplier: 0.5
+  minDistance: 5
+  distanceToClosest: 0
+  closestObject: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -2192,6 +2198,9 @@ MonoBehaviour:
   maxSpeed: 5
   neighbourRadius: 1.5
   avoidanceRadiusMultiplier: 0.5
+  minDistance: 0
+  distanceToClosest: 0
+  closestObject: {fileID: 0}
 --- !u!1 &1713557908
 GameObject:
   m_ObjectHideFlags: 0
@@ -2755,10 +2764,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 231096338, guid: 45d4c9bffd2f1de4787eeec800d078e9, type: 3}
-      propertyPath: newFlock
-      value: 
-      objectReference: {fileID: 547822835}
     - target: {fileID: 6602298182510121203, guid: 45d4c9bffd2f1de4787eeec800d078e9,
         type: 3}
       propertyPath: m_Name
@@ -2895,12 +2900,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9042632149768637861, guid: 7d80d771a2b739e459ad4b8211678346,
         type: 3}
-      propertyPath: newFlock
+      propertyPath: agentFlock
       value: 
       objectReference: {fileID: 547822835}
     - target: {fileID: 9042632149768637861, guid: 7d80d771a2b739e459ad4b8211678346,
         type: 3}
-      propertyPath: agentFlock
+      propertyPath: newFlock
       value: 
       objectReference: {fileID: 547822835}
     m_RemovedComponents: []

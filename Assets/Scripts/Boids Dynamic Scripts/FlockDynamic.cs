@@ -20,7 +20,7 @@ public class FlockDynamic : MonoBehaviour
     public float AgentDensity = 1f;
 
     // Agent parameters.
-    [Range(1f, 100f)]
+    [Range(0f, 100f)]
     public float driveFactor = 10f;
     [Range(1f, 100f)]
     public float maxSpeed = 5f;
@@ -28,6 +28,11 @@ public class FlockDynamic : MonoBehaviour
     public float neighbourRadius = 1.5f;
     [Range(0f, 1f)]
     public float avoidanceRadiusMultiplier = 0.5f;
+    private float currentDrive;
+
+    public float minDistance = 2f;
+    [SerializeField] private float distanceToClosest;
+    [SerializeField] private Collider closestObject;
 
     // Utility parameters.
     private float squareMaxSpeed;
@@ -42,6 +47,7 @@ public class FlockDynamic : MonoBehaviour
         squareMaxSpeed = maxSpeed * maxSpeed;
         squareNeighbourRadius = neighbourRadius * neighbourRadius;
         squareAvoidanceRadius = squareNeighbourRadius * avoidanceRadiusMultiplier * avoidanceRadiusMultiplier;
+        currentDrive = driveFactor;
 
         // Keep the instantiation code for reference, delete later.
         /*
@@ -84,14 +90,17 @@ public class FlockDynamic : MonoBehaviour
             // Calculate how the agent should move based on nearby objects.
             // The calculation is done in FlockBehavior.CalculateMove.
             Vector3 move = behavior.CalculateMove(agent, context, this);
-            move *= driveFactor;
+            move *= currentDrive;
 
             // Cap the speed (bring it back to maxSpeed if greater).
             if (move.sqrMagnitude > squareMaxSpeed)
             {
                 move = move.normalized * maxSpeed;
             }
-            agent.Move(move);
+            if (distanceToClosest >= minDistance)
+            {
+                agent.Move(move);
+            }
         }
     }
 
@@ -102,6 +111,8 @@ public class FlockDynamic : MonoBehaviour
 
     List<Transform> GetNearbyObjects(FlockAgentDynamic agent)
     {
+        distanceToClosest = Mathf.Infinity;
+
         List<Transform> context = new List<Transform>();
 
         // Get an array of all colliders in a the radius, using OverlapSphere.
@@ -114,6 +125,12 @@ public class FlockDynamic : MonoBehaviour
             if (collider != agent.AgentCollider && collider.tag != "Ground")
             {
                 context.Add(collider.transform);
+                float dist = Vector3.Distance(transform.position, collider.transform.position);
+                if (dist < distanceToClosest)
+                {
+                    distanceToClosest = dist;
+                    closestObject = collider;
+                }
             }
         }
         return context;
