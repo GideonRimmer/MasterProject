@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SpawnEntitiesAtRandom : MonoBehaviour
 {
-    public GameObject followerPrefab;
-    public GameObject takerPrefab;
+    public FollowerManager followerPrefab;
+    public TakerManager takerPrefab;
 
     public int minX;
     public int maxX;
@@ -15,30 +15,36 @@ public class SpawnEntitiesAtRandom : MonoBehaviour
     private int yPosition = 1;
     private int zPosition;
 
-    public int followerCount;
     public int numberOfFollowers;
-    private int takerCount;
     public int numberOfTakers = 10;
 
     void Start()
     {
-        StartCoroutine(SpawnFollowers());
-        StartCoroutine(SpawnTakers());
-    }
+        //StartCoroutine(SpawnFollowers());
+        //StartCoroutine(SpawnTakers());
 
-    IEnumerator SpawnFollowers()
-    {
-        while (followerCount < numberOfFollowers)
+        // Spawn followers.
+        for (int i = 0; i < numberOfFollowers; i++)
         {
             xPosition = Random.Range(minX, maxX);
             zPosition = Random.Range(minZ, maxZ);
-            Instantiate(followerPrefab, new Vector3(xPosition, yPosition, zPosition), Quaternion.identity);
+            
+            FollowerManager newFollower = Instantiate(followerPrefab, new Vector3(xPosition, yPosition, zPosition), Quaternion.Euler(Vector3.up * Random.Range(0, 360)));
+            newFollower.name = "Follower" + i;
+        }
 
-            yield return new WaitForSeconds(0.01f);
-            followerCount += 1;
+        // Spawn takers.
+        for (int i = 0; i < numberOfTakers; i++)
+        {
+            xPosition = Random.Range(minX, maxX);
+            zPosition = Random.Range(minZ, maxZ);
+
+            TakerManager newTaker = Instantiate(takerPrefab, new Vector3(xPosition, yPosition, zPosition), Quaternion.Euler(Vector3.up * Random.Range(0, 360)));
+            newTaker.name = "Taker" + i;
         }
     }
 
+    /*
     IEnumerator SpawnTakers()
     {
         while (takerCount < numberOfTakers)
@@ -51,4 +57,5 @@ public class SpawnEntitiesAtRandom : MonoBehaviour
             takerCount += 1;
         }
     }
+    */
 }
