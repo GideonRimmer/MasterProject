@@ -116,7 +116,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 80
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &2698435985635302165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,7 +163,9 @@ MonoBehaviour:
   runAwaySpeed: 0
   charismaText: {fileID: 7520211026532066191}
   idleMaterial: {fileID: 2100000, guid: c5aa32d7182b2c54ea4c2712516569b7, type: 2}
+  clickableMaterial: {fileID: 0}
   followerMaterial: {fileID: 2100000, guid: ae779ead40d6afa46962cb2dc8aba285, type: 2}
+  attackMaterial: {fileID: 2100000, guid: caf05fc311d82434ab833d859e80f7ac, type: 2}
   distanceToClosest: 0
   closestObject: {fileID: 0}
   agentsInSphere: []

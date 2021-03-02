@@ -67,6 +67,7 @@ public class SphereOfInfluence : MonoBehaviour
     {
         Debug.Log(followerName + "index " + activeFollowers.IndexOf(followerName));
         activeFollowers.RemoveAt(activeFollowers.IndexOf(followerName));
+        ModifyCharisma(-1);
     }
 
     private void ChangeAllCharisma(int change)

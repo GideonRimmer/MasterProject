@@ -45,7 +45,9 @@ public class FollowerManager : MonoBehaviour
     private Camera mainCamera;
 
     public Material idleMaterial;
+    public Material clickableMaterial;
     public Material followerMaterial;
+    public Material attackMaterial;
     Renderer[] children;
 
 
@@ -75,6 +77,7 @@ public class FollowerManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
 
         agentCollider = GetComponent<Collider>();
+        ChangeMaterial(idleMaterial);
     }
 
     private void FixedUpdate()
@@ -83,9 +86,14 @@ public class FollowerManager : MonoBehaviour
         agentsInSphere = Physics.OverlapSphere(this.transform.position, sphereRadius, layerMask);
         foreach (Collider agent in agentsInSphere)
         {
-            if (currentTarget != null && agent.tag == "Follower" && currentCharisma > agent.GetComponent<FollowerManager>().currentCharisma)
+            if (agent.tag == "Follower")
             {
-                SetAttackTarget(agent.transform);
+                FollowerManager agentFollower = agent.GetComponentInParent<FollowerManager>();
+
+                if (currentTarget != null && agentFollower.currentTarget != null && currentTarget != agentFollower.currentTarget && currentCharisma > agentFollower.currentCharisma)
+                {
+                    SetAttackTarget(agent.transform);
+                }
             }
         }
     }
@@ -141,10 +149,12 @@ public class FollowerManager : MonoBehaviour
                 }
                 else if (enemyTarget == null && currentTarget.tag == "Player")
                 {
+                    ChangeMaterial(followerMaterial);
                     currentState = State.FollowPlayer;
                 }
                 else if (enemyTarget == null && currentTarget.tag == "Taker")
                 {
+                    ChangeMaterial(idleMaterial);
                     currentState = State.FollowOther;
                 }
                 break;
@@ -168,7 +178,8 @@ public class FollowerManager : MonoBehaviour
         // OR if following another entity AND player charisma > current leader charisma, become clickable.
         if (other.gameObject.tag == "Player")
         {
-            if (currentState == State.Idle || (currentState == State.FollowOther && other.gameObject.GetComponentInParent<SphereOfInfluence>().currentCharisma > currentTarget.GetComponentInParent<SphereOfInfluence>().currentCharisma))
+            SphereOfInfluence playerSphere = other.gameObject.GetComponentInParent<SphereOfInfluence>();
+            if (currentState == State.Idle || (currentState == State.FollowOther && playerSphere.currentCharisma > currentTarget.GetComponentInParent<SphereOfInfluence>().currentCharisma))
             {
                 //Debug.Log(this.name + " becomes clickable.");
                 ChangeMaterial(followerMaterial);
@@ -180,13 +191,14 @@ public class FollowerManager : MonoBehaviour
         // OR if following another entity AND Taker charisma is higher than current leader's charisma, start following the new taker.
         if (other.gameObject.tag == "Taker")
         {
-            if ((currentState == State.Idle && other.gameObject.GetComponentInParent<SphereOfInfluence>().currentCharisma > currentCharisma) || ((currentState == State.FollowOther || currentState == State.FollowPlayer) && other.gameObject.GetComponentInParent<SphereOfInfluence>().currentCharisma > currentTarget.GetComponentInParent<SphereOfInfluence>().currentCharisma))
+            SphereOfInfluence takerSphere = other.gameObject.GetComponentInParent<SphereOfInfluence>();
+            if ((currentState == State.Idle && takerSphere.currentCharisma > currentCharisma) || ((currentState == State.FollowOther || currentState == State.FollowPlayer) && takerSphere.currentCharisma > currentTarget.GetComponentInParent<SphereOfInfluence>().currentCharisma))
             {
                 SetFollowTarget(other.transform);
             }
 
             // If is already following a leader AND walks into Taker sphere AND new taker charisma < this.currentCharisma -> Attack.
-            if ((currentState == State.FollowPlayer || currentState == State.FollowOther) && other.gameObject.GetComponentInParent<SphereOfInfluence>().currentCharisma < currentCharisma)
+            if ((currentState == State.FollowPlayer || currentState == State.FollowOther) && takerSphere.currentCharisma < currentCharisma)
             {
                 //Debug.Log(this.name + " attack " + other.gameObject.name);
                 SetAttackTarget(other.transform);
@@ -278,12 +290,13 @@ public class FollowerManager : MonoBehaviour
         //newEnemy.gameObject.transform.parent = enemyTarget;
         enemyTarget = newEnemy;
         //Debug.Log(this.name + " attacks " + enemyTarget.name);
+        ChangeMaterial(attackMaterial);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         // If attacking, damage attack target.
-        if (currentState == State.Attack && (collision.collider.tag == "Taker" || (collision.collider.tag == "Follower" && collision.gameObject.GetComponent<FollowerManager>().currentTarget != null && currentTarget != collision.gameObject.GetComponent<FollowerManager>().currentTarget)))
+        if (currentState == State.Attack && (collision.collider.tag == "Taker" || (collision.collider.tag == "Follower" && currentTarget != collision.gameObject.GetComponent<FollowerManager>().currentTarget)))
         {
             collision.gameObject.GetComponent<HitPointsManager>().RegisterHit(attackDamage);
         }

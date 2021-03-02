@@ -53,12 +53,10 @@ public class TakerManager : MonoBehaviour
             roamingPosition = GetRoamingPosition();
         }
 
-        /*
         if (hitPointsManager.currentHitPoints <= 0)
         {
             Die();
         }
-        */
     }
 
     private Vector3 GetRoamingPosition()
