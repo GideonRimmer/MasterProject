@@ -137,7 +137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8483689
 Transform:
   m_ObjectHideFlags: 0
@@ -528,6 +528,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestAgent_Assigned (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6602298182510121203, guid: 45d4c9bffd2f1de4787eeec800d078e9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7787377646799687517, guid: 45d4c9bffd2f1de4787eeec800d078e9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -609,6 +614,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TestAgent_Assigned (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6602298182510121203, guid: 45d4c9bffd2f1de4787eeec800d078e9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7787377646799687517, guid: 45d4c9bffd2f1de4787eeec800d078e9,
         type: 3}
@@ -787,6 +797,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestAgent_Assigned (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 6602298182510121203, guid: 45d4c9bffd2f1de4787eeec800d078e9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7787377646799687517, guid: 45d4c9bffd2f1de4787eeec800d078e9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -865,7 +880,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &547822834
 Transform:
   m_ObjectHideFlags: 0
@@ -906,6 +921,60 @@ MonoBehaviour:
   minDistance: 5
   distanceToClosest: 0
   closestObject: {fileID: 0}
+--- !u!1 &684939852
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 684939854}
+  - component: {fileID: 684939853}
+  m_Layer: 0
+  m_Name: FlockStatic01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &684939853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684939852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c840afbe20d24dc4eb85262e995cb4de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentPrefab: {fileID: 765075334850136790, guid: d635859583f8ae849a069ff82fbee334,
+    type: 3}
+  behavior: {fileID: 11400000, guid: e0d0da8fe01c127499aabfd2dc1f5a73, type: 2}
+  showAgentRadius: 0
+  changeColorDebug: 0
+  startingCount: 250
+  AgentDensity: 0.3
+  driveFactor: 10
+  maxSpeed: 5
+  neighbourRadius: 1.5
+  avoidanceRadiusMultiplier: 0.5
+--- !u!4 &684939854
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684939852}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1529,6 +1598,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TestAgent_Assigned (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6602298182510121203, guid: 45d4c9bffd2f1de4787eeec800d078e9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7787377646799687517, guid: 45d4c9bffd2f1de4787eeec800d078e9,
         type: 3}
@@ -2160,7 +2234,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1666116630
 Transform:
   m_ObjectHideFlags: 0
@@ -2551,6 +2625,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestAgent_Assigned (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6602298182510121203, guid: 45d4c9bffd2f1de4787eeec800d078e9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7787377646799687517, guid: 45d4c9bffd2f1de4787eeec800d078e9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2769,6 +2848,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestAgent_Assigned
       objectReference: {fileID: 0}
+    - target: {fileID: 6602298182510121203, guid: 45d4c9bffd2f1de4787eeec800d078e9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7787377646799687517, guid: 45d4c9bffd2f1de4787eeec800d078e9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2842,6 +2926,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player_FlockAgent
+      objectReference: {fileID: 0}
+    - target: {fileID: 3580370406115041219, guid: 7d80d771a2b739e459ad4b8211678346,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3580370406115041222, guid: 7d80d771a2b739e459ad4b8211678346,
         type: 3}
