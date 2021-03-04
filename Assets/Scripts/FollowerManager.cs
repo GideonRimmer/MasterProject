@@ -80,20 +80,31 @@ public class FollowerManager : MonoBehaviour
         ChangeMaterial(idleMaterial);
     }
 
+    // Use FixedUpdate for OverlapSphere.
     private void FixedUpdate()
     {
         LayerMask layerMask = LayerMask.GetMask("Characters");
         agentsInSphere = Physics.OverlapSphere(this.transform.position, sphereRadius, layerMask);
+
+        // Get all of the agents in the sphere in each FixedUpdate.
         foreach (Collider agent in agentsInSphere)
         {
             if (agent.tag == "Follower")
             {
                 FollowerManager agentFollower = agent.GetComponentInParent<FollowerManager>();
 
-                if (currentTarget != null && agentFollower.currentTarget != null && currentTarget != agentFollower.currentTarget && currentCharisma > agentFollower.currentCharisma)
+                // Attack conditions: IF agent is a follower, with a different leader, 
+                // IF this has higher charisma -> attacks the lower charisma. OR if the agent is currently attacking, attack it back.
+                if (currentTarget != null && agentFollower.currentTarget != null && currentTarget != agentFollower.currentTarget &&
+                   (currentCharisma > agentFollower.currentCharisma || agentFollower.currentState == State.Attack))
                 {
                     SetAttackTarget(agent.transform);
                 }
+            }
+            // Also attack any Innocents in range (MUWAHAHAHA).
+            else if (agent.tag == "Innocent" && currentTarget != null)
+            {
+                SetAttackTarget(agent.transform);
             }
         }
     }
@@ -142,10 +153,15 @@ public class FollowerManager : MonoBehaviour
                 break;
 
             case State.Attack:
-                if (enemyTarget != null)
+                if (enemyTarget != null && currentTarget != null)
                 {
                     FollowAndAttackTarget();
                     animator.SetBool("isWalking", true);
+                }
+                else if (enemyTarget == null && currentTarget == null)
+                {
+                    ChangeMaterial(idleMaterial);
+                    currentState = State.Idle;
                 }
                 else if (enemyTarget == null && currentTarget.tag == "Player")
                 {
@@ -263,8 +279,6 @@ public class FollowerManager : MonoBehaviour
 
             Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, rotateSpeed * Time.deltaTime, 0.0f);
             //Debug.DrawRay(transform.position, newDirection, Color.red);
-
-            // Move position a step towards to the target.
             transform.rotation = Quaternion.LookRotation(newDirection);
         }
     }
@@ -296,7 +310,7 @@ public class FollowerManager : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         // If attacking, damage attack target.
-        if (currentState == State.Attack && (collision.collider.tag == "Taker" || (collision.collider.tag == "Follower" && currentTarget != collision.gameObject.GetComponent<FollowerManager>().currentTarget)))
+        if (currentState == State.Attack && (collision.collider.tag == "Taker" || (collision.collider.tag == "Follower" && currentTarget != collision.gameObject.GetComponent<FollowerManager>().currentTarget) || collision.collider.tag == "Innocent"))
         {
             collision.gameObject.GetComponent<HitPointsManager>().RegisterHit(attackDamage);
         }
@@ -373,7 +387,7 @@ public class FollowerManager : MonoBehaviour
     }
 
     private void OnDrawGizmos()
-        {
-            Gizmos.DrawWireSphere(transform.position, sphereRadius);
-        }
+    {
+        Gizmos.DrawWireSphere(transform.position, sphereRadius);
+    }
 }
