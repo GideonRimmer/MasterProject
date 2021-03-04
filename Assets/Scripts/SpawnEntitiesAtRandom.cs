@@ -20,9 +20,6 @@ public class SpawnEntitiesAtRandom : MonoBehaviour
 
     void Start()
     {
-        //StartCoroutine(SpawnFollowers());
-        //StartCoroutine(SpawnTakers());
-
         // Spawn followers.
         for (int i = 0; i < numberOfFollowers; i++)
         {
@@ -43,19 +40,4 @@ public class SpawnEntitiesAtRandom : MonoBehaviour
             newTaker.name = "Taker" + i;
         }
     }
-
-    /*
-    IEnumerator SpawnTakers()
-    {
-        while (takerCount < numberOfTakers)
-        {
-            xPosition = Random.Range(minX, maxX);
-            zPosition = Random.Range(minZ, maxZ);
-            Instantiate(takerPrefab, new Vector3(xPosition, yPosition, zPosition), Quaternion.identity);
-
-            yield return new WaitForSeconds(0.01f);
-            takerCount += 1;
-        }
-    }
-    */
 }
