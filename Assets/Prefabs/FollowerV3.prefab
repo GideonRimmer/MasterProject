@@ -115,7 +115,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &2698435985635302165
 MonoBehaviour:
@@ -153,7 +153,7 @@ MonoBehaviour:
   currentCharisma: 0
   player: {fileID: 0}
   currentTarget: {fileID: 0}
-  moveSpeed: 8
+  moveSpeed: 9
   minDistanceToTarget: 10
   rotateSpeed: 8
   attackDamage: 1
@@ -163,7 +163,7 @@ MonoBehaviour:
   runAwaySpeed: 0
   charismaText: {fileID: 7520211026532066191}
   idleMaterial: {fileID: 2100000, guid: c5aa32d7182b2c54ea4c2712516569b7, type: 2}
-  clickableMaterial: {fileID: 0}
+  clickableMaterial: {fileID: 2100000, guid: 8c1484e134e31934e9badcb07688e544, type: 2}
   followerMaterial: {fileID: 2100000, guid: ae779ead40d6afa46962cb2dc8aba285, type: 2}
   attackMaterial: {fileID: 2100000, guid: caf05fc311d82434ab833d859e80f7ac, type: 2}
   distanceToClosest: 0
@@ -195,7 +195,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1605260892821789235}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 2c0c7ff127af7c24ba906c0a019735e2, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 1.0954843

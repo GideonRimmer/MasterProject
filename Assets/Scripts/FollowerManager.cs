@@ -5,6 +5,7 @@ using TMPro;
 
 public class FollowerManager : MonoBehaviour
 {
+    private Rigidbody rigidbody;
     private Animator animator;
     private float sphereRadius = 10f;
     private enum State
@@ -61,6 +62,7 @@ public class FollowerManager : MonoBehaviour
 
     void Start()
     {
+        rigidbody = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
 
         currentState = State.Idle;
@@ -131,7 +133,7 @@ public class FollowerManager : MonoBehaviour
                 if (currentTarget != null)
                 {
                     FollowTarget();
-                    animator.SetBool("isWalking", true);
+                    //animator.SetBool("isWalking", true);
                 }
                 else if (currentTarget == null)
                 {
@@ -198,7 +200,7 @@ public class FollowerManager : MonoBehaviour
             if (currentState == State.Idle || (currentState == State.FollowOther && playerSphere.currentCharisma > currentTarget.GetComponentInParent<SphereOfInfluence>().currentCharisma))
             {
                 //Debug.Log(this.name + " becomes clickable.");
-                ChangeMaterial(followerMaterial);
+                ChangeMaterial(clickableMaterial);
                 isClickable = true;
             }
         }
@@ -250,6 +252,7 @@ public class FollowerManager : MonoBehaviour
 
             if (newTarget.tag == "Player")
             {
+                ChangeMaterial(followerMaterial);
                 currentState = State.FollowPlayer;
             }
             else if (newTarget.tag == "Taker")
@@ -270,22 +273,25 @@ public class FollowerManager : MonoBehaviour
 
     private void FollowTarget()
     {
-        if (Vector3.Distance(transform.position, currentTarget.transform.position) > minDistanceToTarget)
+        Vector3 direction = (currentTarget.position - rigidbody.transform.position).normalized;
+        if (Vector3.Distance(transform.position, currentTarget.position) >= minDistanceToTarget)
         {
-            transform.position = Vector3.MoveTowards(transform.position, currentTarget.transform.position, moveSpeed * Time.deltaTime);
-
+            rigidbody.MovePosition(rigidbody.transform.position + direction * moveSpeed * Time.fixedDeltaTime);
+            animator.SetBool("isWalking", true);
             // Auto rotate towards the target.
-            Vector3 targetDirection = currentTarget.transform.position - transform.position;
+            Vector3 targetDirection = currentTarget.position - transform.position;
 
             Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, rotateSpeed * Time.deltaTime, 0.0f);
             //Debug.DrawRay(transform.position, newDirection, Color.red);
             transform.rotation = Quaternion.LookRotation(newDirection);
         }
+        else animator.SetBool("isWalking", false);
     }
 
     private void FollowAndAttackTarget()
     {
-        transform.position = Vector3.MoveTowards(transform.position, enemyTarget.transform.position, attackStateSpeed * Time.deltaTime);
+        Vector3 direction = (enemyTarget.position - rigidbody.transform.position).normalized;
+        rigidbody.MovePosition(rigidbody.transform.position + direction * attackStateSpeed * Time.fixedDeltaTime);
         distanceToEnemy = Vector3.Distance(transform.position, enemyTarget.transform.position);
 
         // Auto rotate towards the target.

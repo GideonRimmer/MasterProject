@@ -5,6 +5,7 @@ using System.Linq;
 
 public class InnocentManager : MonoBehaviour
 {
+    private Rigidbody rigidbody;
     public float moveSpeed = 4f;
     public float rotateSpeed = 8f;
     [SerializeField] private float runAwaySpeed;
@@ -23,6 +24,7 @@ public class InnocentManager : MonoBehaviour
 
     private void Start()
     {
+        rigidbody = GetComponent<Rigidbody>();
         currentState = State.Idle;
         runAwaySpeed = moveSpeed + 1f;
     }
@@ -76,7 +78,9 @@ public class InnocentManager : MonoBehaviour
     private void RunAway(Transform target)
     {
         currentDistanceFromTarget = Vector3.Distance(transform.position, target.position);
-        transform.position = Vector3.MoveTowards(transform.position, target.position, runAwaySpeed * -1 * Time.deltaTime);
+        Vector3 direction = (currentTarget.position - rigidbody.transform.position).normalized;
+        rigidbody.MovePosition(rigidbody.transform.position + direction * moveSpeed * -1 * Time.fixedDeltaTime);
+
 
         // Auto rotate towards the target.
         Vector3 targetDirection = target.position - transform.position;
