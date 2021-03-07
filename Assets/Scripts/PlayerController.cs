@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private bool isIdle;
     [SerializeField] private bool isWalking;
-    private Animator animator;
+    public Animator animator;
 
     [SerializeField] float moveSpeed = 4f;
     private Vector3 forward, right;
@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     {
         isIdle = true;
         isWalking = false;
-        animator = GetComponent<Animator>();
+        //animator = GetComponentInChildren<Animator>();
 
         forward = Camera.main.transform.forward;
         forward.y = 0;

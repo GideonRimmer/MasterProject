@@ -6,8 +6,8 @@ using TMPro;
 public class FollowerManager : MonoBehaviour
 {
     private Rigidbody rigidbody;
-    private Animator animator;
-    private float sphereRadius = 10f;
+    public Animator animator;
+    private float sphereRadius = 13f;
     private enum State
     {
         Idle,
@@ -63,7 +63,7 @@ public class FollowerManager : MonoBehaviour
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
-        animator = GetComponent<Animator>();
+        //animator = GetComponent<Animator>();
 
         currentState = State.Idle;
         isClickable = false;
@@ -127,6 +127,7 @@ public class FollowerManager : MonoBehaviour
             default:
             case State.Idle:
                 animator.SetBool("isWalking", false);
+                //ChangeMaterial(idleMaterial);
                 break;
 
             case State.FollowPlayer:
@@ -160,8 +161,9 @@ public class FollowerManager : MonoBehaviour
                     FollowAndAttackTarget();
                     animator.SetBool("isWalking", true);
                 }
-                else if (enemyTarget == null && currentTarget == null)
+                else if (currentTarget == null)
                 {
+                    enemyTarget = null;
                     ChangeMaterial(idleMaterial);
                     currentState = State.Idle;
                 }
@@ -172,7 +174,7 @@ public class FollowerManager : MonoBehaviour
                 }
                 else if (enemyTarget == null && currentTarget.tag == "Taker")
                 {
-                    ChangeMaterial(idleMaterial);
+                    ChangeMaterial(followerMaterial);
                     currentState = State.FollowOther;
                 }
                 break;
@@ -257,6 +259,7 @@ public class FollowerManager : MonoBehaviour
             }
             else if (newTarget.tag == "Taker")
             {
+                ChangeMaterial(followerMaterial);
                 currentState = State.FollowOther;
             }
 

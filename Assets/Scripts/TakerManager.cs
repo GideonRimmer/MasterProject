@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TakerManager : MonoBehaviour
 {
+    public Animator animator;
+    private Rigidbody rigidbody;
     public int minStartingCharisma;
     public int maxStartingCharisma;
     [SerializeField] private int startingCharisma;
@@ -27,6 +29,7 @@ public class TakerManager : MonoBehaviour
 
     private void Start()
     {
+        rigidbody = GetComponent<Rigidbody>();
         startingPosition = transform.position;
         roamingPosition = GetRoamingPosition();
 
@@ -41,13 +44,14 @@ public class TakerManager : MonoBehaviour
         Vector3 targetDirection = roamingPosition - transform.position;
 
         Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, rotateSpeed * Time.deltaTime, 0.0f);
-        Debug.DrawRay(transform.position, newDirection, Color.red);
+        //Debug.DrawRay(transform.position, newDirection, Color.red);
 
         // Move position a step towards to the target.
         transform.rotation = Quaternion.LookRotation(newDirection);
+        animator.SetBool("isWalking", true);
 
         // If reached roaming position, set new target position.
-        if (Vector3.Distance(transform.position, roamingPosition) < 0.1f)
+        if (Vector3.Distance(transform.position, roamingPosition) < 0.5f)
         {
             // Reached roaming position.
             roamingPosition = GetRoamingPosition();
