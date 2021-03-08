@@ -7,13 +7,16 @@ public class SpawnEntitiesAtRandom : MonoBehaviour
     public FollowerManager followerPrefab;
     public TakerManager takerPrefab;
 
-    public int minX;
-    public int maxX;
-    public int minZ;
-    public int maxZ;
-    private int xPosition;
-    private int yPosition = 1;
-    private int zPosition;
+    public Transform limitMarkerMin;
+    public Transform limitMarkerMax;
+
+    public float minX;
+    public float maxX;
+    public float minZ;
+    public float maxZ;
+    private float xPosition;
+    private float yPosition = 1;
+    private float zPosition;
 
     public int numberOfFollowers;
     public int numberOfTakers = 10;
@@ -23,6 +26,11 @@ public class SpawnEntitiesAtRandom : MonoBehaviour
         // Spawn followers.
         for (int i = 0; i < numberOfFollowers; i++)
         {
+            minX = limitMarkerMin.position.x;
+            minZ = limitMarkerMin.position.z;
+            maxX = limitMarkerMax.position.x;
+            maxZ = limitMarkerMax.position.z;
+
             xPosition = Random.Range(minX, maxX);
             zPosition = Random.Range(minZ, maxZ);
             
