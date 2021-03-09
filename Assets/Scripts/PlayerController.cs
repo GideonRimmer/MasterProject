@@ -15,6 +15,9 @@ public class PlayerController : MonoBehaviour
     public int startingCharisma = 5;
     [SerializeField] private int currentCharisma;
 
+    private HitPointsManager hitPointsManager;
+    private PlayParticleEffect playParticleEffect;
+
     void Start()
     {
         isIdle = true;
@@ -27,6 +30,9 @@ public class PlayerController : MonoBehaviour
         right = Quaternion.Euler(new Vector3(0, 90, 0)) * forward;
 
         currentCharisma = startingCharisma;
+
+        hitPointsManager = GetComponent<HitPointsManager>();
+        playParticleEffect = GetComponent<PlayParticleEffect>();
     }
 
     void Update()
@@ -46,6 +52,11 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Clicked space.");
         }
+
+        if (hitPointsManager.currentHitPoints <= 0)
+        {
+            Die();
+        }
     }
 
     void Move()
@@ -63,5 +74,11 @@ public class PlayerController : MonoBehaviour
         transform.forward = heading;
         transform.position += rightMovement;
         transform.position += upMovement;
+    }
+
+    private void Die()
+    {
+        playParticleEffect.PlayParticleSystem();
+        Destroy(this.gameObject);
     }
 }
