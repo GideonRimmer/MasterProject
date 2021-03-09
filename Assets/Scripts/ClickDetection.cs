@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ClickDetection : MonoBehaviour
 {
+    /*
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -17,4 +18,5 @@ public class ClickDetection : MonoBehaviour
             }
         }
     }
+    */
 }
