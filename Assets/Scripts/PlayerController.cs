@@ -39,7 +39,11 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.anyKey)
         {
-            Move();
+            if (Input.GetKey(KeyCode.Mouse0) || Input.GetKey(KeyCode.Mouse1))
+            {
+                return;
+            }
+            else Move();
         }
         else
         {
