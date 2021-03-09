@@ -826,6 +826,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: FollowerV3_Bulky Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 8729737161810002502, guid: a703df21e33c6e547b8e09cc3593c784,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c5aa32d7182b2c54ea4c2712516569b7, type: 2}
+    - target: {fileID: 8893366343166067472, guid: a703df21e33c6e547b8e09cc3593c784,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c5aa32d7182b2c54ea4c2712516569b7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a703df21e33c6e547b8e09cc3593c784, type: 3}
 --- !u!4 &638158909 stripped
