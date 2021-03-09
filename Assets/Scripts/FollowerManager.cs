@@ -8,7 +8,7 @@ public class FollowerManager : MonoBehaviour
     private Rigidbody rigidbody;
     public Animator animator;
     private float sphereRadius = 13f;
-    private enum State
+    public enum State
     {
         Idle,
         FollowPlayer,
@@ -16,7 +16,7 @@ public class FollowerManager : MonoBehaviour
         Attack,
         RunAway,
     }
-    [SerializeField] private State currentState;
+    public State currentState;
     [SerializeField] private bool isClickable;
 
     public int minCharisma;
