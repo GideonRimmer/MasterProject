@@ -21,14 +21,17 @@ public class CameraFollowPlayer : MonoBehaviour
     // LateUpdate is called after all Update functions have been called
     void LateUpdate()
     {
-        Vector3 newCameraPosition = Player.transform.position + cameraOffset;
-
-        this.transform.position = Vector3.Slerp(transform.position, newCameraPosition, smoothFactor);
-
-        // Rotate camera in the direction the player is walking
-        if (lookAtPlayer == true)
+        if (Player != null)
         {
-            transform.LookAt(Player);
+            Vector3 newCameraPosition = Player.transform.position + cameraOffset;
+
+            this.transform.position = Vector3.Slerp(transform.position, newCameraPosition, smoothFactor);
+
+            // Rotate camera in the direction the player is walking
+            if (lookAtPlayer == true)
+            {
+                transform.LookAt(Player);
+            }
         }
     }
 }
