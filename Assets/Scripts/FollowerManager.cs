@@ -173,16 +173,19 @@ public class FollowerManager : MonoBehaviour
                 {
                     enemyTarget = null;
                     ChangeMaterial(clothes, idleMaterial);
+                    ChangeMaterial(skin, skinMaterial);
                     currentState = State.Idle;
                 }
                 else if (enemyTarget == null && currentTarget.tag == "Player")
                 {
                     ChangeMaterial(clothes, followPlayerMaterial);
+                    ChangeMaterial(skin, skinMaterial);
                     currentState = State.FollowPlayer;
                 }
                 else if (enemyTarget == null && currentTarget.tag == "Taker")
                 {
                     ChangeMaterial(clothes, followOtherMaterial);
+                    ChangeMaterial(skin, skinMaterial);
                     currentState = State.FollowOther;
                 }
                 break;
@@ -210,7 +213,7 @@ public class FollowerManager : MonoBehaviour
             if (currentState == State.Idle || (currentState == State.FollowOther && playerSphere.currentCharisma > currentTarget.GetComponentInParent<SphereOfInfluence>().currentCharisma))
             {
                 //Debug.Log(this.name + " becomes clickable.");
-                ChangeMaterial(skin, clickableMaterial);
+                ChangeMaterial(clothes, clickableMaterial);
                 isClickable = true;
             }
 
@@ -254,7 +257,7 @@ public class FollowerManager : MonoBehaviour
         if (isClickable == true && (currentTarget == null || currentTarget.tag != "Player"))
         {
             isClickable = false;
-            ChangeMaterial(skin, idleMaterial);
+            ChangeMaterial(skin, skinMaterial);
         }
     }
 
@@ -268,11 +271,13 @@ public class FollowerManager : MonoBehaviour
             if (newTarget.tag == "Player")
             {
                 ChangeMaterial(clothes, followPlayerMaterial);
+                ChangeMaterial(skin, skinMaterial);
                 currentState = State.FollowPlayer;
             }
             else if (newTarget.tag == "Taker")
             {
                 ChangeMaterial(clothes, followOtherMaterial);
+                ChangeMaterial(skin, skinMaterial);
                 currentState = State.FollowOther;
             }
 
