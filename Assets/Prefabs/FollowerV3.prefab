@@ -163,13 +163,23 @@ MonoBehaviour:
   distanceToEnemy: 0
   runAwaySpeed: 0
   charismaText: {fileID: 7520211026532066191}
-  idleMaterial: {fileID: 2100000, guid: c5aa32d7182b2c54ea4c2712516569b7, type: 2}
-  clickableMaterial: {fileID: 2100000, guid: 8c1484e134e31934e9badcb07688e544, type: 2}
-  followerMaterial: {fileID: 2100000, guid: ae779ead40d6afa46962cb2dc8aba285, type: 2}
-  attackMaterial: {fileID: 2100000, guid: caf05fc311d82434ab833d859e80f7ac, type: 2}
   distanceToClosest: 0
   closestObject: {fileID: 0}
   agentsInSphere: []
+  idleMaterial: {fileID: 2100000, guid: c5aa32d7182b2c54ea4c2712516569b7, type: 2}
+  skinMaterial: {fileID: 2100000, guid: ae779ead40d6afa46962cb2dc8aba285, type: 2}
+  clickableMaterial: {fileID: 2100000, guid: 8c1484e134e31934e9badcb07688e544, type: 2}
+  followPlayerMaterial: {fileID: 2100000, guid: 4f30c1adb9ec5c849b36746e980649a6,
+    type: 2}
+  followOtherMaterial: {fileID: 2100000, guid: 9f71f288f49f6d24488c569e2c0252ec, type: 2}
+  attackMaterial: {fileID: 2100000, guid: caf05fc311d82434ab833d859e80f7ac, type: 2}
+  skin:
+  - {fileID: 7079963538346310879}
+  - {fileID: 2332770814991219626}
+  clothes:
+  - {fileID: 1754451477452502486}
+  - {fileID: 2813121321757197362}
+  - {fileID: 6867359839582254176}
 --- !u!95 &1172241809
 Animator:
   serializedVersion: 3

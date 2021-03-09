@@ -45,11 +45,6 @@ public class FollowerManager : MonoBehaviour
     public TextMeshProUGUI charismaText;
     private Camera mainCamera;
 
-    public Material idleMaterial;
-    public Material clickableMaterial;
-    public Material followerMaterial;
-    public Material attackMaterial;
-    Renderer[] children;
 
 
     private Collider agentCollider;
@@ -59,6 +54,17 @@ public class FollowerManager : MonoBehaviour
 
     [SerializeField] Collider[] agentsInSphere;
 
+    [Header("Materials")]
+    public Material idleMaterial;
+    public Material skinMaterial;
+    public Material clickableMaterial;
+    public Material followPlayerMaterial;
+    public Material followOtherMaterial;
+    public Material attackMaterial;
+
+    [Header("Body Parts")]
+    public Renderer[] skin;
+    public Renderer[] clothes;
 
     void Start()
     {
@@ -75,11 +81,13 @@ public class FollowerManager : MonoBehaviour
 
         mainCamera = Camera.main;
 
-        children = GetComponentsInChildren<Renderer>();
+        //bodyParts = GetComponentsInChildren<Renderer>();
         player = GameObject.FindGameObjectWithTag("Player");
 
         agentCollider = GetComponent<Collider>();
-        ChangeMaterial(idleMaterial);
+
+        ChangeMaterial(clothes, idleMaterial);
+        ChangeMaterial(skin, skinMaterial);
     }
 
     // Use FixedUpdate for OverlapSphere.
@@ -164,17 +172,17 @@ public class FollowerManager : MonoBehaviour
                 else if (currentTarget == null)
                 {
                     enemyTarget = null;
-                    ChangeMaterial(idleMaterial);
+                    ChangeMaterial(clothes, idleMaterial);
                     currentState = State.Idle;
                 }
                 else if (enemyTarget == null && currentTarget.tag == "Player")
                 {
-                    ChangeMaterial(followerMaterial);
+                    ChangeMaterial(clothes, followPlayerMaterial);
                     currentState = State.FollowPlayer;
                 }
                 else if (enemyTarget == null && currentTarget.tag == "Taker")
                 {
-                    ChangeMaterial(followerMaterial);
+                    ChangeMaterial(clothes, followOtherMaterial);
                     currentState = State.FollowOther;
                 }
                 break;
@@ -202,7 +210,7 @@ public class FollowerManager : MonoBehaviour
             if (currentState == State.Idle || (currentState == State.FollowOther && playerSphere.currentCharisma > currentTarget.GetComponentInParent<SphereOfInfluence>().currentCharisma))
             {
                 //Debug.Log(this.name + " becomes clickable.");
-                ChangeMaterial(clickableMaterial);
+                ChangeMaterial(skin, clickableMaterial);
                 isClickable = true;
             }
 
@@ -246,7 +254,7 @@ public class FollowerManager : MonoBehaviour
         if (isClickable == true && (currentTarget == null || currentTarget.tag != "Player"))
         {
             isClickable = false;
-            ChangeMaterial(idleMaterial);
+            ChangeMaterial(skin, idleMaterial);
         }
     }
 
@@ -259,12 +267,12 @@ public class FollowerManager : MonoBehaviour
 
             if (newTarget.tag == "Player")
             {
-                ChangeMaterial(followerMaterial);
+                ChangeMaterial(clothes, followPlayerMaterial);
                 currentState = State.FollowPlayer;
             }
             else if (newTarget.tag == "Taker")
             {
-                ChangeMaterial(followerMaterial);
+                ChangeMaterial(clothes, followOtherMaterial);
                 currentState = State.FollowOther;
             }
 
@@ -317,12 +325,12 @@ public class FollowerManager : MonoBehaviour
         {
             if (currentTarget.tag == "Player")
             {
-                ChangeMaterial(followerMaterial);
+                ChangeMaterial(followPlayerMaterial);
                 currentState = State.FollowPlayer;
             }
             if (currentTarget.tag == "Taker")
             {
-                ChangeMaterial(followerMaterial);
+                ChangeMaterial(followPlayerMaterial);
                 currentState = State.FollowOther;
             }
         }
@@ -335,7 +343,7 @@ public class FollowerManager : MonoBehaviour
         //newEnemy.gameObject.transform.parent = enemyTarget;
         enemyTarget = newEnemy;
         //Debug.Log(this.name + " attacks " + enemyTarget.name);
-        ChangeMaterial(attackMaterial);
+        ChangeMaterial(skin, attackMaterial);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -358,10 +366,10 @@ public class FollowerManager : MonoBehaviour
         currentCharisma = Mathf.Clamp(currentCharisma, minCharisma, maxCharisma);
     }
 
-    private void ChangeMaterial(Material newMaterial)
+    private void ChangeMaterial(Renderer[] parts , Material newMaterial)
     {
         // Change children materials to indicate a change of state.
-        foreach (Renderer renderer in children)
+        foreach (Renderer renderer in parts)
         {
             var mats = new Material[renderer.materials.Length];
             for (var i = 0; i < renderer.materials.Length; i++)
