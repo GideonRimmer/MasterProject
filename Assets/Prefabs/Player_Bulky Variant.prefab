@@ -33,6 +33,20 @@ CapsuleCollider:
   m_Height: 6.8028235
   m_Direction: 1
   m_Center: {x: 0, y: 3.3656576, z: 0}
+--- !u!114 &914365206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6993851966450205977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93dc6b9ee2cf1ec439fbb45719d0fb8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleEffect: {fileID: 9190275972324511695, guid: 0357353dccfabe44f97b68d54a29bf03,
+    type: 3}
 --- !u!1001 &3347586988018237285
 PrefabInstance:
   m_ObjectHideFlags: 0
