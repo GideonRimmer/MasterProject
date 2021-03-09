@@ -205,6 +205,11 @@ public class FollowerManager : MonoBehaviour
                 ChangeMaterial(clickableMaterial);
                 isClickable = true;
             }
+
+            if (currentState == State.FollowOther && currentCharisma > playerSphere.currentCharisma)
+            {
+                SetAttackTarget(other.transform.parent.gameObject.transform);
+            }
         }
 
         // If is in Taker range AND is idle AND Taker charisma is higher than currentCharisma,
@@ -220,8 +225,8 @@ public class FollowerManager : MonoBehaviour
             // If is already following a leader AND walks into Taker sphere AND new taker charisma < this.currentCharisma -> Attack.
             if ((currentState == State.FollowPlayer || currentState == State.FollowOther) && takerSphere.currentCharisma < currentCharisma)
             {
-                //Debug.Log(this.name + " attack " + other.gameObject.name);
-                SetAttackTarget(other.transform);
+                //Debug.Log(this.name + " attack " + other.transform.gameObject.name);
+                SetAttackTarget(other.transform.parent.gameObject.transform);
             }
         }
     }
@@ -295,16 +300,33 @@ public class FollowerManager : MonoBehaviour
     {
         Vector3 direction = (enemyTarget.position - rigidbody.transform.position).normalized;
         rigidbody.MovePosition(rigidbody.transform.position + direction * attackStateSpeed * Time.fixedDeltaTime);
-        distanceToEnemy = Vector3.Distance(transform.position, enemyTarget.transform.position);
+        distanceToEnemy = Vector3.Distance(transform.position, enemyTarget.position);
 
         // Auto rotate towards the target.
-        Vector3 targetDirection = enemyTarget.transform.position - transform.position;
+        Vector3 targetDirection = enemyTarget.position - transform.position;
 
         Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, rotateSpeed * Time.deltaTime, 0.0f);
         //Debug.DrawRay(transform.position, newDirection, Color.red);
 
         // Move position a step towards to the target.
         transform.rotation = Quaternion.LookRotation(newDirection);
+
+        /*
+        // If the enemy target has the same followTarget as this entity, or if the enemy doesn't have a follow target, stop attacking.
+        if (enemyTarget.tag == "Follower" && ((enemyTarget.GetComponentInParent<FollowerManager>().currentTarget == null) || (enemyTarget.GetComponentInParent<FollowerManager>().currentTarget = this.currentTarget)))
+        {
+            if (currentTarget.tag == "Player")
+            {
+                ChangeMaterial(followerMaterial);
+                currentState = State.FollowPlayer;
+            }
+            if (currentTarget.tag == "Taker")
+            {
+                ChangeMaterial(followerMaterial);
+                currentState = State.FollowOther;
+            }
+        }
+        */
     }
 
     public void SetAttackTarget(Transform newEnemy)
@@ -318,8 +340,8 @@ public class FollowerManager : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        // If attacking, damage attack target.
-        if (currentState == State.Attack && (collision.collider.tag == "Taker" || (collision.collider.tag == "Follower" && currentTarget != collision.gameObject.GetComponent<FollowerManager>().currentTarget) || collision.collider.tag == "Innocent"))
+        // On collision, inflict damage on the enemy target, only if colliding with the enemy target.
+        if (enemyTarget != null && collision.gameObject.name == enemyTarget.name)
         {
             collision.gameObject.GetComponent<HitPointsManager>().RegisterHit(attackDamage);
         }
