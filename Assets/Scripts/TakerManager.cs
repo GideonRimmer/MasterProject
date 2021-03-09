@@ -6,6 +6,7 @@ public class TakerManager : MonoBehaviour
 {
     public Animator animator;
     private Rigidbody rigidbody;
+    public bool remainStationary;
     public int minStartingCharisma;
     public int maxStartingCharisma;
     [SerializeField] private int startingCharisma;
@@ -39,22 +40,25 @@ public class TakerManager : MonoBehaviour
 
     private void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, roamingPosition, moveSpeed * Time.deltaTime);
-        // Auto rotate towards the target.
-        Vector3 targetDirection = roamingPosition - transform.position;
-
-        Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, rotateSpeed * Time.deltaTime, 0.0f);
-        //Debug.DrawRay(transform.position, newDirection, Color.red);
-
-        // Move position a step towards to the target.
-        transform.rotation = Quaternion.LookRotation(newDirection);
-        animator.SetBool("isWalking", true);
-
-        // If reached roaming position, set new target position.
-        if (Vector3.Distance(transform.position, roamingPosition) < 0.5f)
+        if (remainStationary == false)
         {
-            // Reached roaming position.
-            roamingPosition = GetRoamingPosition();
+            transform.position = Vector3.MoveTowards(transform.position, roamingPosition, moveSpeed * Time.deltaTime);
+            // Auto rotate towards the target.
+            Vector3 targetDirection = roamingPosition - transform.position;
+
+            Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, rotateSpeed * Time.deltaTime, 0.0f);
+            //Debug.DrawRay(transform.position, newDirection, Color.red);
+
+            // Move position a step towards to the target.
+            transform.rotation = Quaternion.LookRotation(newDirection);
+            animator.SetBool("isWalking", true);
+
+            // If reached roaming position, set new target position.
+            if (Vector3.Distance(transform.position, roamingPosition) < 0.5f)
+            {
+                // Reached roaming position.
+                roamingPosition = GetRoamingPosition();
+            }
         }
 
         if (hitPointsManager.currentHitPoints <= 0)

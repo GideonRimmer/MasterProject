@@ -417,8 +417,10 @@ public class FollowerManager : MonoBehaviour
         Destroy(this.gameObject);
     }
 
+    /*
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, sphereRadius);
     }
+    */
 }
