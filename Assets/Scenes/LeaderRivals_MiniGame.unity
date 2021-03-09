@@ -133,6 +133,16 @@ PrefabInstance:
       propertyPath: remainStationary
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -463669808109389104, guid: 6bab3e57136850141a788f4b4f89a566,
+        type: 3}
+      propertyPath: minStartingCharisma
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -463669808109389104, guid: 6bab3e57136850141a788f4b4f89a566,
+        type: 3}
+      propertyPath: maxStartingCharisma
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1559165014, guid: 6bab3e57136850141a788f4b4f89a566, type: 3}
       propertyPath: m_textInfo.characterCount
       value: 0
@@ -208,6 +218,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Taker
+      objectReference: {fileID: 0}
+    - target: {fileID: 8723099091681394095, guid: 6bab3e57136850141a788f4b4f89a566,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bab3e57136850141a788f4b4f89a566, type: 3}

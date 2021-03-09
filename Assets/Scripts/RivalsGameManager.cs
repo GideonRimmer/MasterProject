@@ -9,7 +9,6 @@ public class RivalsGameManager : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<PlayerController>();
-        
     }
 
     void Update()
