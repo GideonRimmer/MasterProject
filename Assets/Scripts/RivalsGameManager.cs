@@ -4,37 +4,65 @@ using UnityEngine;
 
 public class RivalsGameManager : MonoBehaviour
 {
+    public bool minigameActive = false;
     private PlayerController player;
+    public TakerManager rivalTaker;
+    public float takerClickMaxTime = 0.2f;
+    [SerializeField] private float takerClickTime;
+    [SerializeField] private List<GameObject> playerFollowers;
+    [SerializeField] List<GameObject> playerSphere;
 
     void Start()
     {
         player = FindObjectOfType<PlayerController>();
+        takerClickTime = takerClickMaxTime;
+        playerSphere = player.GetComponentInParent<SphereOfInfluence>().activeFollowers;
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (minigameActive == true)
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit, 100))
+            if (Input.GetMouseButtonDown(0))
             {
-                if (hit.transform.gameObject.tag == "Follower" && hit.transform.GetComponentInParent<FollowerManager>().currentState == FollowerManager.State.FollowOther)
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit, 100))
                 {
-                    FollowerManager followerManager = hit.transform.GetComponentInParent<FollowerManager>();
-                    Debug.Log("Clicked on " + hit.transform.gameObject.name);
+                    if (hit.transform.gameObject.tag == "Follower" && hit.transform.GetComponentInParent<FollowerManager>().currentState == FollowerManager.State.FollowOther)
+                    {
+                        FollowerManager followerManager = hit.transform.GetComponentInParent<FollowerManager>();
+                        Debug.Log("Clicked on " + hit.transform.gameObject.name);
 
-                    followerManager.SetFollowTarget(player.transform);
-
-                    // TODO:
-                    // 1. Create a new function OverrideFollowTarget, that ignores all other parameters to set the follow target.
-                    // 2. Create an indication of follower who is in transition. Test before, might not be necessary.
-                    // 3. Simple AI for when the taker "clicks" on one of the player's followers.
-                    // 4. Change follower color to indicate currentTarget (player or taker).
-                    // 5. Traitors?
+                        followerManager.overrideTarget = true;
+                        followerManager.SetFollowTarget(player.GetComponentInParent<SphereOfInfluence>().followPoint);
+                    }
                 }
             }
+
+            takerClickTime -= Time.deltaTime;
+            if (takerClickTime <= 0)
+            {
+                //Debug.Log("Click");
+
+                if (playerSphere.Count > 0)
+                {
+                    int indexNumber = Random.Range(0, playerSphere.Count);
+                    Debug.Log(indexNumber);
+                    TakerOverride(indexNumber);
+                }
+
+                takerClickTime = takerClickMaxTime;
+            }
         }
+    }
+
+    void TakerOverride(int index)
+    {
+        FollowerManager followerManager = playerSphere[index].GetComponentInParent<FollowerManager>();
+
+        followerManager.overrideTarget = true;
+        followerManager.SetFollowTarget(rivalTaker.GetComponentInParent<SphereOfInfluence>().followPoint);
     }
 }

@@ -162,7 +162,7 @@ PrefabInstance:
     - target: {fileID: 7090553746196046770, guid: 6bab3e57136850141a788f4b4f89a566,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.13
       objectReference: {fileID: 0}
     - target: {fileID: 7090553746196046770, guid: 6bab3e57136850141a788f4b4f89a566,
         type: 3}
@@ -172,7 +172,7 @@ PrefabInstance:
     - target: {fileID: 7090553746196046770, guid: 6bab3e57136850141a788f4b4f89a566,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 13.71
+      value: 15.31
       objectReference: {fileID: 0}
     - target: {fileID: 7090553746196046770, guid: 6bab3e57136850141a788f4b4f89a566,
         type: 3}
@@ -242,7 +242,7 @@ PrefabInstance:
     - target: {fileID: 606741962947186919, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.4
+      value: -6.41
       objectReference: {fileID: 0}
     - target: {fileID: 606741962947186919, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
@@ -252,7 +252,7 @@ PrefabInstance:
     - target: {fileID: 606741962947186919, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 25.2
+      value: 23.06
       objectReference: {fileID: 0}
     - target: {fileID: 606741962947186919, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
@@ -298,6 +298,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FollowerV3_Bulky Variant (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
+        type: 3}
+      propertyPath: overrideTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7861505605259638598, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
@@ -394,6 +399,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FollowerV3_Bulky Variant (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
+        type: 3}
+      propertyPath: overrideTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7861505605259638598, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -488,6 +498,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FollowerV3_Bulky Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
+        type: 3}
+      propertyPath: overrideTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7861505605259638598, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
@@ -613,6 +628,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db09eb10e4e40bf46b09549478379681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minigameActive: 0
+  rivalTaker: {fileID: 802722815}
+  takerClickMaxTime: 1
+  takerClickTime: 0
+  playerFollowers: []
+  playerSphere: []
 --- !u!1 &351895703
 GameObject:
   m_ObjectHideFlags: 0
@@ -789,6 +810,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FollowerV3_Bulky Variant (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
+        type: 3}
+      propertyPath: overrideTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7861505605259638598, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
@@ -1051,6 +1077,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83749f1e318a9c94486bea7cf3de006f, type: 3}
+--- !u!114 &802722815 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -463669808109389104, guid: 6bab3e57136850141a788f4b4f89a566,
+    type: 3}
+  m_PrefabInstance: {fileID: 94528821}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9954335cb7dd8b245bfaa70687a2cf49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &837742179
 GameObject:
   m_ObjectHideFlags: 0
@@ -1228,6 +1266,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FollowerV3_Bulky Variant (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
+        type: 3}
+      propertyPath: overrideTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7861505605259638598, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -1322,6 +1365,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FollowerV3_Bulky Variant (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
+        type: 3}
+      propertyPath: overrideTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7861505605259638598, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
@@ -1970,6 +2018,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FollowerV3_Bulky Variant (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
+        type: 3}
+      propertyPath: overrideTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7861505605259638598, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -2064,6 +2117,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FollowerV3_Bulky Variant (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
+        type: 3}
+      propertyPath: overrideTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7861505605259638598, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
@@ -2193,6 +2251,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FollowerV3_Bulky Variant (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
+        type: 3}
+      propertyPath: overrideTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7861505605259638598, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
@@ -2526,6 +2589,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FollowerV3_Bulky Variant (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
+        type: 3}
+      propertyPath: overrideTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7861505605259638598, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
