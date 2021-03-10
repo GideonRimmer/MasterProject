@@ -5,9 +5,23 @@ using TMPro;
 
 public class FollowerManager : MonoBehaviour
 {
-    private Rigidbody rigidbody;
+    [Header("Setup")]
     public Animator animator;
+    private Rigidbody rigidbody;
     private float sphereRadius = 13f;
+    public GameObject player;
+    public int minCharisma;
+    public int maxCharisma;
+    public int minStartingCharisma;
+    public int maxStartingCharisma;
+    public int startingCharisma;
+    public int currentCharisma;
+    public TextMeshProUGUI charismaText;
+    private Camera mainCamera;
+
+    [Header("State Machine")]
+    public State currentState;
+    [SerializeField] private bool isClickable;
     public enum State
     {
         Idle,
@@ -16,43 +30,19 @@ public class FollowerManager : MonoBehaviour
         Attack,
         RunAway,
     }
-    public State currentState;
-    [SerializeField] private bool isClickable;
 
-    public int minCharisma;
-    public int maxCharisma;
-    public int minStartingCharisma;
-    public int maxStartingCharisma;
-    public int startingCharisma;
-    public int currentCharisma;
-
-    public GameObject player;
-
+    [Header("Movement Parameters")]
     public Transform currentTarget;
     public float moveSpeed;
+    public float rotateSpeed;
     public float minDistanceToTarget;
     //public float maxDistanceToTarget;
     //[SerializeField] private float currentDistanceToTarget;
-    public float rotateSpeed;
-
     public int attackDamage = 1;
     public float attackStateSpeed;
     public Transform enemyTarget;
     [SerializeField] private float distanceToEnemy;
-
     public float runAwaySpeed;
-
-    public TextMeshProUGUI charismaText;
-    private Camera mainCamera;
-
-
-
-    private Collider agentCollider;
-    //public Collider AgentCollider { get { return agentCollider; } }
-    [SerializeField] private float distanceToClosest;
-    [SerializeField] private Collider closestObject;
-
-    [SerializeField] Collider[] agentsInSphere;
 
     [Header("Materials")]
     public Material idleMaterial;
@@ -66,10 +56,18 @@ public class FollowerManager : MonoBehaviour
     public Renderer[] skin;
     public Renderer[] clothes;
 
+    [Header("OverlapSphere Parameters")]
+    private Collider agentCollider;
+    //public Collider AgentCollider { get { return agentCollider; } }
+    [SerializeField] private float distanceToClosest;
+    [SerializeField] private Collider closestObject;
+    [SerializeField] Collider[] agentsInSphere;
+
+
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
-        //animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
 
         currentState = State.Idle;
         isClickable = false;
@@ -81,7 +79,7 @@ public class FollowerManager : MonoBehaviour
 
         mainCamera = Camera.main;
 
-        //bodyParts = GetComponentsInChildren<Renderer>();
+        // Find the player.
         player = GameObject.FindGameObjectWithTag("Player");
 
         agentCollider = GetComponent<Collider>();
@@ -99,10 +97,12 @@ public class FollowerManager : MonoBehaviour
         // Get all of the agents in the sphere in each FixedUpdate.
         foreach (Collider agent in agentsInSphere)
         {
+            
             if (agent.tag == "Follower")
             {
                 FollowerManager agentFollower = agent.GetComponentInParent<FollowerManager>();
 
+                /*
                 // Attack conditions: IF agent is a follower, with a different leader, 
                 // IF this has higher charisma -> attacks the lower charisma. OR if the agent is currently attacking, attack it back.
                 if (currentTarget != null && agentFollower.currentTarget != null && currentTarget != agentFollower.currentTarget &&
@@ -110,7 +110,15 @@ public class FollowerManager : MonoBehaviour
                 {
                     SetAttackTarget(agent.transform);
                 }
+                */
+
+                // Attack followers in range who are attacking your leader.
+                if (currentTarget != null && agentFollower.currentTarget != null && currentTarget != agentFollower.currentTarget && agentFollower.currentState == State.Attack)
+                {
+                    SetAttackTarget(agent.transform);
+                }
             }
+
             // Also attack any Innocents in range (MUWAHAHAHA).
             else if (agent.tag == "Innocent" && currentTarget != null)
             {
@@ -257,7 +265,7 @@ public class FollowerManager : MonoBehaviour
         if (isClickable == true && (currentTarget == null || currentTarget.tag != "Player"))
         {
             isClickable = false;
-            ChangeMaterial(skin, skinMaterial);
+            ChangeMaterial(clothes, idleMaterial);
         }
     }
 
