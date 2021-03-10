@@ -5,6 +5,7 @@ using TMPro;
 
 public class SphereOfInfluence : MonoBehaviour
 {
+    public Transform followPoint;
     public int minCharisma;
     public int maxCharisma;
     public int startingCharisma = 10;
@@ -17,7 +18,7 @@ public class SphereOfInfluence : MonoBehaviour
     public TextMeshProUGUI charismaText;
     private Camera mainCamera;
 
-    [SerializeField] private List<GameObject> activeFollowers = new List<GameObject>();
+    public List<GameObject> activeFollowers = new List<GameObject>();
 
     private void Start()
     {

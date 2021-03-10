@@ -185,6 +185,11 @@ PrefabInstance:
       propertyPath: clickableMaterial
       value: 
       objectReference: {fileID: 2100000, guid: e4c38486527b3ad4583cfc964e5f0456, type: 2}
+    - target: {fileID: 1605260892821789234, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
+        type: 3}
+      propertyPath: minDistanceToTarget
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1605260892821789235, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
         type: 3}
       propertyPath: m_Name

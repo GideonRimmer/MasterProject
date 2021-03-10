@@ -22,12 +22,14 @@ public class FollowerManager : MonoBehaviour
     [Header("State Machine")]
     public State currentState;
     [SerializeField] private bool isClickable;
+    public bool overrideTarget;
     public enum State
     {
         Idle,
         FollowPlayer,
         FollowOther,
         Attack,
+        OverrideFollow,
         RunAway,
     }
 
@@ -67,10 +69,10 @@ public class FollowerManager : MonoBehaviour
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
-        animator = GetComponent<Animator>();
 
         currentState = State.Idle;
         isClickable = false;
+        overrideTarget = false;
         attackStateSpeed = moveSpeed + 2;
 
         // Generate random charisma.
@@ -133,7 +135,10 @@ public class FollowerManager : MonoBehaviour
         charismaText.text = currentCharisma.ToString();
         charismaText.transform.LookAt(mainCamera.transform);
         charismaText.transform.rotation = Quaternion.LookRotation(mainCamera.transform.forward);
-
+        if (overrideTarget == true)
+        {
+            currentState = State.OverrideFollow;
+        }
         //List<Transform> context = GetNearbyObjects(this.gameObject);
         //GetNearbyObjects(this.gameObject);
 
@@ -198,6 +203,13 @@ public class FollowerManager : MonoBehaviour
                 }
                 break;
 
+            case State.OverrideFollow:
+                if (overrideTarget == true)
+                {
+                    FollowTarget();
+                }
+                break;
+
             case State.RunAway:
                 RunAway();
                 break;
@@ -215,7 +227,7 @@ public class FollowerManager : MonoBehaviour
     {
         // If is in player range and not already following the player,
         // OR if following another entity AND player charisma > current leader charisma, become clickable.
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && overrideTarget == false)
         {
             SphereOfInfluence playerSphere = other.gameObject.GetComponentInParent<SphereOfInfluence>();
             if (currentState == State.Idle || (currentState == State.FollowOther && playerSphere.currentCharisma > currentTarget.GetComponentInParent<SphereOfInfluence>().currentCharisma))
@@ -233,7 +245,7 @@ public class FollowerManager : MonoBehaviour
 
         // If is in Taker range AND is idle AND Taker charisma is higher than currentCharisma,
         // OR if following another entity AND Taker charisma is higher than current leader's charisma, start following the new taker.
-        if (other.gameObject.tag == "Taker")
+        if (other.gameObject.tag == "Taker" &&  overrideTarget == false)
         {
             SphereOfInfluence takerSphere = other.gameObject.GetComponentInParent<SphereOfInfluence>();
             if ((currentState == State.Idle && takerSphere.currentCharisma > currentCharisma) || ((currentState == State.FollowOther || currentState == State.FollowPlayer) && takerSphere.currentCharisma > currentTarget.GetComponentInParent<SphereOfInfluence>().currentCharisma))
@@ -262,10 +274,23 @@ public class FollowerManager : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (isClickable == true && (currentTarget == null || currentTarget.tag != "Player"))
+        if (isClickable == true)
         {
             isClickable = false;
-            ChangeMaterial(clothes, idleMaterial);
+
+            if (currentTarget == null)
+            {
+                ChangeMaterial(clothes, idleMaterial);
+            }
+            else if (currentTarget.tag == "Taker")
+            {
+                ChangeMaterial(clothes, followOtherMaterial);
+            }
+        }
+
+        if (overrideTarget == true)
+        {
+            overrideTarget = false;
         }
     }
 
