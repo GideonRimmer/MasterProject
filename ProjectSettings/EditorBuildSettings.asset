@@ -5,7 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/CultPrototypeDozens.unity
     guid: c45908437976b304f83af3918e640308
+  - enabled: 1
+    path: Assets/Scenes/TestLevel_01.unity
+    guid: c1782f45ac8f1184597d922236b02ab0
   m_configObjects: {}
