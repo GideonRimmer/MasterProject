@@ -288,10 +288,12 @@ public class FollowerManager : MonoBehaviour
             }
         }
 
+        /*
         if (overrideTarget == true)
         {
             overrideTarget = false;
         }
+        */
     }
 
     // Acquire a new target to follow.

@@ -4,19 +4,18 @@ using UnityEngine;
 
 public class RivalsGameManager : MonoBehaviour
 {
-    public bool minigameActive = false;
+    public bool minigameActive;
     private PlayerController player;
     public TakerManager rivalTaker;
     public float takerClickMaxTime = 0.2f;
     [SerializeField] private float takerClickTime;
     [SerializeField] private List<GameObject> playerFollowers;
-    [SerializeField] List<GameObject> playerSphere;
 
     void Start()
     {
         player = FindObjectOfType<PlayerController>();
         takerClickTime = takerClickMaxTime;
-        playerSphere = player.GetComponentInParent<SphereOfInfluence>().activeFollowers;
+        playerFollowers = player.GetComponentInParent<SphereOfInfluence>().activeFollowers;
     }
 
     void Update()
@@ -36,7 +35,7 @@ public class RivalsGameManager : MonoBehaviour
                         Debug.Log("Clicked on " + hit.transform.gameObject.name);
 
                         followerManager.overrideTarget = true;
-                        followerManager.SetFollowTarget(player.GetComponentInParent<SphereOfInfluence>().followPoint);
+                        followerManager.SetFollowTarget(player.transform);
                     }
                 }
             }
@@ -46,9 +45,9 @@ public class RivalsGameManager : MonoBehaviour
             {
                 //Debug.Log("Click");
 
-                if (playerSphere.Count > 0)
+                if (playerFollowers.Count > 0)
                 {
-                    int indexNumber = Random.Range(0, playerSphere.Count);
+                    int indexNumber = Random.Range(0, playerFollowers.Count);
                     Debug.Log(indexNumber);
                     TakerOverride(indexNumber);
                 }
@@ -60,9 +59,9 @@ public class RivalsGameManager : MonoBehaviour
 
     void TakerOverride(int index)
     {
-        FollowerManager followerManager = playerSphere[index].GetComponentInParent<FollowerManager>();
+        FollowerManager followerManager = playerFollowers[index].GetComponentInParent<FollowerManager>();
 
         followerManager.overrideTarget = true;
-        followerManager.SetFollowTarget(rivalTaker.GetComponentInParent<SphereOfInfluence>().followPoint);
+        followerManager.SetFollowTarget(rivalTaker.transform);
     }
 }

@@ -628,12 +628,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db09eb10e4e40bf46b09549478379681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minigameActive: 0
+  minigameActive: 1
   rivalTaker: {fileID: 802722815}
   takerClickMaxTime: 1
   takerClickTime: 0
   playerFollowers: []
-  playerSphere: []
 --- !u!1 &351895703
 GameObject:
   m_ObjectHideFlags: 0
