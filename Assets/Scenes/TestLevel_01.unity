@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &219200106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,6 +164,10 @@ MonoBehaviour:
   maxZ: 100
   numberOfFollowers: 50
   numberOfTakers: 8
+  followerMinChar: 7
+  followerMaxChar: 25
+  takerMinChar: 9
+  takerMaxChar: 20
 --- !u!4 &219200107
 Transform:
   m_ObjectHideFlags: 0

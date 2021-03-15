@@ -18,6 +18,7 @@ public class FollowerManager : MonoBehaviour
     public int currentCharisma;
     public TextMeshProUGUI charismaText;
     private Camera mainCamera;
+    private SpawnEntitiesAtRandom spawnEntitiesScript;
 
     [Header("State Machine")]
     public State currentState;
@@ -69,6 +70,7 @@ public class FollowerManager : MonoBehaviour
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
+        spawnEntitiesScript = FindObjectOfType<SpawnEntitiesAtRandom>();
 
         currentState = State.Idle;
         isClickable = false;
@@ -76,7 +78,14 @@ public class FollowerManager : MonoBehaviour
         attackStateSpeed = moveSpeed + 2;
 
         // Generate random charisma.
-        startingCharisma = Random.Range(minStartingCharisma, maxStartingCharisma);
+        if (spawnEntitiesScript != null)
+        {
+            startingCharisma = Random.Range(spawnEntitiesScript.followerMinChar, spawnEntitiesScript.followerMaxChar);
+        }
+        else
+        {
+            startingCharisma = Random.Range(minStartingCharisma, maxStartingCharisma);
+        }
         currentCharisma = startingCharisma;
 
         mainCamera = Camera.main;

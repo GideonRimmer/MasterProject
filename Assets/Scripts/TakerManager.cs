@@ -10,6 +10,7 @@ public class TakerManager : MonoBehaviour
     public int minStartingCharisma;
     public int maxStartingCharisma;
     [SerializeField] private int startingCharisma;
+    private SpawnEntitiesAtRandom spawnEntitiesScript;
 
     public float moveSpeed = 5.0f;
     public float rotateSpeed = 5.0f;
@@ -24,7 +25,15 @@ public class TakerManager : MonoBehaviour
 
     void Awake()
     {
-        startingCharisma = Random.Range(minStartingCharisma, maxStartingCharisma);
+        spawnEntitiesScript = FindObjectOfType<SpawnEntitiesAtRandom>();
+        if (spawnEntitiesScript != null)
+        {
+            startingCharisma = Random.Range(spawnEntitiesScript.takerMinChar, spawnEntitiesScript.takerMaxChar);
+        }
+        else
+        {
+            startingCharisma = Random.Range(minStartingCharisma, maxStartingCharisma);
+        }
         GetComponent<SphereOfInfluence>().startingCharisma = startingCharisma;
     }
 

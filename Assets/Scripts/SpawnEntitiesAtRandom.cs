@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class SpawnEntitiesAtRandom : MonoBehaviour
 {
+    [Header("Entity Prefabs")]
     public FollowerManager followerPrefab;
     public TakerManager takerPrefab;
 
+    [Header("Spawn Limits")]
     public Transform limitMarkerMin;
     public Transform limitMarkerMax;
-
     public float minX;
     public float maxX;
     public float minZ;
@@ -18,8 +19,13 @@ public class SpawnEntitiesAtRandom : MonoBehaviour
     private float yPosition = 1;
     private float zPosition;
 
+    [Header("Entity Parameters")]
     public int numberOfFollowers;
     public int numberOfTakers = 10;
+    public int followerMinChar = 7;
+    public int followerMaxChar = 25;
+    public int takerMinChar = 9;
+    public int takerMaxChar = 20;
 
     void Start()
     {
