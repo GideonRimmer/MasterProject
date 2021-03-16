@@ -75,8 +75,11 @@ public class SphereOfInfluence : MonoBehaviour
     {
         foreach (GameObject follower in activeFollowers)
         {
-            //follower.GetComponent<LoyaltyManager>().ModifyLoyalty(change);
-            follower.GetComponent<FollowerManager>().ModifyCharisma(change);
+            if (follower != null)
+            {
+                //follower.GetComponent<LoyaltyManager>().ModifyLoyalty(change);
+                follower.GetComponent<FollowerManager>().ModifyCharisma(change);
+            }
         }
     }
 }
