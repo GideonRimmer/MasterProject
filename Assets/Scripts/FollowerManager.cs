@@ -429,6 +429,7 @@ public class FollowerManager : MonoBehaviour
             if (enemyTarget.GetComponent<HitPointsManager>().currentHitPoints <= 0)
             {
                 ModifyCharisma(2);
+                currentTarget.GetComponentInParent<SphereOfInfluence>().ModifyCharisma(1);
             }
         }
     }
@@ -513,7 +514,7 @@ public class FollowerManager : MonoBehaviour
     {
         if (currentTarget != null)
         {
-            currentTarget.GetComponentInParent<SphereOfInfluence>().RemoveDeadFollower(this.gameObject);
+            currentTarget.GetComponentInParent<SphereOfInfluence>().RemoveFollower(this.gameObject);
         }
         Destroy(gameObject);
         takerPrefab.GetComponent<SphereOfInfluence>().startingCharisma = currentCharisma;

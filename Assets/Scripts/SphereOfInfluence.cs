@@ -63,6 +63,11 @@ public class SphereOfInfluence : MonoBehaviour
         ModifyCharisma(-1);
         activeFollowers.Remove(followerName);
     }
+    public void RemoveFollower(GameObject followerName)
+    {
+        Debug.Log(followerName + "index " + activeFollowers.IndexOf(followerName));
+        activeFollowers.RemoveAt(activeFollowers.IndexOf(followerName));
+    }
 
     public void RemoveDeadFollower(GameObject followerName)
     {
