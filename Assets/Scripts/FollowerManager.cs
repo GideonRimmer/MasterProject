@@ -45,6 +45,8 @@ public class FollowerManager : MonoBehaviour
     //[SerializeField] private float currentDistanceToTarget;
     public int attackDamage = 1;
     public float attackStateSpeed;
+    public float attackTimer = 1.0f;
+    [SerializeField] private float attackCurrentTime;
     public Transform enemyTarget;
     [SerializeField] private float distanceToEnemy;
     public float runAwaySpeed;
@@ -79,6 +81,7 @@ public class FollowerManager : MonoBehaviour
         overrideTarget = false;
         isTraitor = false;
         attackStateSpeed = moveSpeed + 2;
+        attackCurrentTime = attackTimer;
 
         // Generate random charisma.
         if (spawnEntitiesScript != null)
@@ -419,20 +422,44 @@ public class FollowerManager : MonoBehaviour
         ChangeMaterial(skin, attackMaterial);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay (Collision collision)
     {
         // On collision, inflict damage on the enemy target, only if colliding with the enemy target.
         if (enemyTarget != null && collision.gameObject.name == enemyTarget.name)
         {
+            attackCurrentTime -= Time.deltaTime;
+            if (attackCurrentTime <= 0)
+            {
+                Attack(collision.gameObject.GetComponent<HitPointsManager>(), attackDamage);
+                attackCurrentTime = attackTimer;
+            }
+
+            /*
             collision.gameObject.GetComponent<HitPointsManager>().RegisterHit(attackDamage);
+            
             // After destroying the target, gain charisma.
             if (enemyTarget.GetComponent<HitPointsManager>().currentHitPoints <= 0)
             {
                 ModifyCharisma(2);
                 currentTarget.GetComponentInParent<SphereOfInfluence>().ModifyCharisma(1);
             }
+            */
         }
     }
+
+    public void Attack(HitPointsManager enemy, int damage)
+    {
+        enemy.RegisterHit(damage);
+        Debug.Log(name + " attacks " + enemy.gameObject.name);
+
+        // After destroying the target, gain charisma.
+        if (enemyTarget.GetComponent<HitPointsManager>().currentHitPoints <= 0)
+        {
+            ModifyCharisma(2);
+            currentTarget.GetComponentInParent<SphereOfInfluence>().ModifyCharisma(1);
+        }
+    }
+
 
     private void RunAway()
     {
