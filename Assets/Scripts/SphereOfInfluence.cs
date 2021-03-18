@@ -10,6 +10,9 @@ public class SphereOfInfluence : MonoBehaviour
     public int maxCharisma;
     public int startingCharisma = 10;
     public int currentCharisma;
+    public int startingEnergy = 10;
+    public int currentEnergy;
+    public int maxCurrentEnergy;
 
     private SphereCollider sphereCollider;
     public float sphereInitialRadius;
@@ -27,6 +30,9 @@ public class SphereOfInfluence : MonoBehaviour
         sphereCurrentRadius = sphereInitialRadius;
         sphereCollider.radius = sphereCurrentRadius;
         mainCamera = Camera.main;
+
+        currentEnergy = startingEnergy;
+        maxCurrentEnergy = startingEnergy;
     }
 
     private void Update()
@@ -35,6 +41,12 @@ public class SphereOfInfluence : MonoBehaviour
         charismaText.text = currentCharisma.ToString();
         charismaText.transform.LookAt(mainCamera.transform);
         charismaText.transform.rotation = Quaternion.LookRotation(mainCamera.transform.forward);
+
+        // Manifest sphere when pressing a key.
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            ConvinceInRadius(sphereCurrentRadius);
+        }
     }
 
     public void ModifyCharisma(int change)
@@ -86,5 +98,29 @@ public class SphereOfInfluence : MonoBehaviour
                 follower.GetComponent<FollowerManager>().ModifyCharisma(change);
             }
         }
+    }
+
+    void ConvinceInRadius(float radius)
+    {
+        if (currentEnergy >= 1)
+        {
+            currentEnergy -= 1;
+        }
+
+        LayerMask layerMask = LayerMask.GetMask("Characters");
+        Collider[] agentsInSphere = Physics.OverlapSphere(transform.position, radius, layerMask);
+        foreach (Collider agent in agentsInSphere)
+        {
+            if (agent.tag == "Follower" && currentEnergy > 0)
+            {
+                FollowerManager followerScript = agent.GetComponentInParent<FollowerManager>();
+                followerScript.SetFollowTarget(this.transform);
+            }
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, sphereCurrentRadius);
     }
 }
