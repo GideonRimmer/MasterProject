@@ -111,9 +111,10 @@ public class SphereOfInfluence : MonoBehaviour
         Collider[] agentsInSphere = Physics.OverlapSphere(transform.position, radius, layerMask);
         foreach (Collider agent in agentsInSphere)
         {
-            if (agent.tag == "Follower" && currentEnergy > 0)
+            FollowerManager followerScript = agent.GetComponentInParent<FollowerManager>();
+
+            if (agent.tag == "Follower" && currentEnergy > 0 && followerScript.currentCharisma < currentCharisma)
             {
-                FollowerManager followerScript = agent.GetComponentInParent<FollowerManager>();
                 followerScript.SetFollowTarget(this.transform);
             }
         }
