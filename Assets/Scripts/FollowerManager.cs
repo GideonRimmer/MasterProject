@@ -11,6 +11,11 @@ public class FollowerManager : MonoBehaviour
     public GameObject takerPrefab;
     private float sphereRadius = 13f;
     public GameObject player;
+    private Camera mainCamera;
+    private SpawnEntitiesAtRandom spawnEntitiesScript;
+    public bool isTraitor;
+
+    [Header("Charisma")]
     public int minCharisma;
     public int maxCharisma;
     public int minStartingCharisma;
@@ -18,9 +23,12 @@ public class FollowerManager : MonoBehaviour
     public int startingCharisma;
     public int currentCharisma;
     public TextMeshProUGUI charismaText;
-    private Camera mainCamera;
-    private SpawnEntitiesAtRandom spawnEntitiesScript;
-    public bool isTraitor;
+
+    [Header("Loyalty")]
+    public int currentLoyalty = 0;
+
+    [Header("Violence")]
+    public int currentViolence = 0;
 
     [Header("State Machine")]
     public State currentState;
@@ -129,16 +137,25 @@ public class FollowerManager : MonoBehaviour
                 }
                 */
 
+                /*
                 // Attack followers in range who are attacking your leader, OR a follower of the same leader that's marked as a traitor.
                 if ((currentTarget != null && agentFollower.currentTarget != null && currentTarget != agentFollower.currentTarget && agentFollower.currentState == State.Attack) ||
                     (agentFollower.isTraitor == true && agentFollower.currentTarget == currentTarget && agentFollower.gameObject != this.gameObject))
                 {
                     SetAttackTarget(agent.transform);
                 }
+                */
+
+                // If this is one of the player's followers, attack a taker follower, and vice versa.
+                if ((currentTarget != null && agentFollower.currentTarget != null && currentTarget.tag != agentFollower.currentTarget.tag && agentFollower.currentState == State.Attack)
+                    || (agentFollower.isTraitor == true && agentFollower.currentTarget == currentTarget && agentFollower.gameObject != this.gameObject))
+                {
+                    SetAttackTarget(agent.transform);
+                }
             }
 
             // Also attack any Innocents in range (MUWAHAHAHA).
-            else if (agent.tag == "Innocent" && currentTarget != null)
+            else if (currentTarget != null && currentTarget.tag == "Player" && agent.tag == "Innocent")
             {
                 SetAttackTarget(agent.transform);
             }
@@ -274,8 +291,9 @@ public class FollowerManager : MonoBehaviour
             }
 
             // If is already following a leader AND walks into Taker sphere AND new taker charisma < this.currentCharisma -> Attack.
-            if ((currentState == State.FollowPlayer || currentState == State.FollowOther) && takerSphere.currentCharisma < currentCharisma)
-            {
+            //if ((currentState == State.FollowPlayer || currentState == State.FollowOther) && takerSphere.currentCharisma < currentCharisma)
+            if (currentState == State.FollowPlayer && takerSphere.currentCharisma < currentCharisma)
+                {
                 //Debug.Log(this.name + " attack " + other.transform.gameObject.name);
                 SetAttackTarget(other.transform.parent.gameObject.transform);
             }
@@ -427,23 +445,13 @@ public class FollowerManager : MonoBehaviour
         // On collision, inflict damage on the enemy target, only if colliding with the enemy target.
         if (enemyTarget != null && collision.gameObject.name == enemyTarget.name)
         {
+            // Damage the target every X seconds (attackTimer), then start a cooldown.
             attackCurrentTime -= Time.deltaTime;
             if (attackCurrentTime <= 0)
             {
                 Attack(collision.gameObject.GetComponent<HitPointsManager>(), attackDamage);
                 attackCurrentTime = attackTimer;
             }
-
-            /*
-            collision.gameObject.GetComponent<HitPointsManager>().RegisterHit(attackDamage);
-            
-            // After destroying the target, gain charisma.
-            if (enemyTarget.GetComponent<HitPointsManager>().currentHitPoints <= 0)
-            {
-                ModifyCharisma(2);
-                currentTarget.GetComponentInParent<SphereOfInfluence>().ModifyCharisma(1);
-            }
-            */
         }
     }
 
@@ -452,14 +460,15 @@ public class FollowerManager : MonoBehaviour
         enemy.RegisterHit(damage);
         Debug.Log(name + " attacks " + enemy.gameObject.name);
 
-        // After destroying the target, gain charisma.
+        // After destroying the target, gain charisma. Follower and leader gain Violence.
         if (enemyTarget.GetComponent<HitPointsManager>().currentHitPoints <= 0)
         {
             ModifyCharisma(2);
+            currentViolence += 1;
             currentTarget.GetComponentInParent<SphereOfInfluence>().ModifyCharisma(1);
+            currentTarget.GetComponentInParent<SphereOfInfluence>().currentViolence += 1;
         }
     }
-
 
     private void RunAway()
     {

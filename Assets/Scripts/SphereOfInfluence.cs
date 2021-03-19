@@ -6,13 +6,22 @@ using TMPro;
 public class SphereOfInfluence : MonoBehaviour
 {
     public Transform followPoint;
+    [Header("Charisma")]
     public int minCharisma;
     public int maxCharisma;
     public int startingCharisma = 10;
     public int currentCharisma;
+
+    [Header("Energy")]
     public int startingEnergy = 10;
     public int currentEnergy;
-    public int maxCurrentEnergy;
+    public int maxEnergy;
+    public float energyRegenMaxTime = 0.5f;
+    [SerializeField] private float energyRegenCurrentTime;
+
+    [Header("Violence level")]
+    public int startingViolence = 0;
+    public int currentViolence;
 
     private SphereCollider sphereCollider;
     public float sphereInitialRadius;
@@ -32,7 +41,8 @@ public class SphereOfInfluence : MonoBehaviour
         mainCamera = Camera.main;
 
         currentEnergy = startingEnergy;
-        maxCurrentEnergy = startingEnergy;
+        maxEnergy = startingEnergy;
+        energyRegenCurrentTime = energyRegenMaxTime;
     }
 
     private void Update()
@@ -46,6 +56,17 @@ public class SphereOfInfluence : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             ConvinceInRadius(sphereCurrentRadius);
+        }
+
+        // Regenerate energy at a fixed rate.
+        if (currentEnergy < maxEnergy)
+        {
+            energyRegenCurrentTime -= Time.deltaTime;
+            if (energyRegenCurrentTime <= 0)
+            {
+                currentEnergy += 1;
+                energyRegenCurrentTime = energyRegenMaxTime;
+            }
         }
     }
 
