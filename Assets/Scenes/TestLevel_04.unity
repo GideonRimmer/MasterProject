@@ -3914,6 +3914,11 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3347586988997560053, guid: 83749f1e318a9c94486bea7cf3de006f,
+        type: 3}
+      propertyPath: energyRegenMaxTime
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6993851966450205977, guid: 83749f1e318a9c94486bea7cf3de006f,
         type: 3}
       propertyPath: m_Name
