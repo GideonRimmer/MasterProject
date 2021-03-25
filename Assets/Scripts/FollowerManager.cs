@@ -6,14 +6,17 @@ using TMPro;
 public class FollowerManager : MonoBehaviour
 {
     [Header("Setup")]
+    public GameObject popupMenu;
     public Animator animator;
     private Rigidbody rigidbody;
+    //public string[] charClass = { "Citizen", "Soldier", "Intelligentsia" };
     public GameObject takerPrefab;
     private float sphereRadius = 13f;
     public GameObject player;
     private Camera mainCamera;
     private SpawnEntitiesAtRandom spawnEntitiesScript;
     public bool isTraitor;
+    public bool isAttackTarget;
 
     [Header("Charisma")]
     public int minCharisma;
@@ -25,9 +28,11 @@ public class FollowerManager : MonoBehaviour
     public TextMeshProUGUI charismaText;
 
     [Header("Loyalty")]
+    public int startingLoyalty = 5;
     public int currentLoyalty = 0;
 
     [Header("Violence")]
+    public int startingViolence = 5;
     public int currentViolence = 0;
 
     [Header("State Machine")]
@@ -83,11 +88,13 @@ public class FollowerManager : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody>();
         spawnEntitiesScript = FindObjectOfType<SpawnEntitiesAtRandom>();
+        popupMenu.SetActive(false);
 
         currentState = State.Idle;
         isClickable = false;
         overrideTarget = false;
         isTraitor = false;
+        isAttackTarget = false;
         attackStateSpeed = moveSpeed + 2;
         attackCurrentTime = attackTimer;
 
@@ -148,7 +155,8 @@ public class FollowerManager : MonoBehaviour
 
                 // If this is one of the player's followers, attack a taker follower, and vice versa.
                 if ((currentTarget != null && agentFollower.currentTarget != null && currentTarget.tag != agentFollower.currentTarget.tag && agentFollower.currentState == State.Attack)
-                    || (agentFollower.isTraitor == true && agentFollower.currentTarget == currentTarget && agentFollower.gameObject != this.gameObject))
+                    || (agentFollower.isTraitor == true && agentFollower.currentTarget == currentTarget && agentFollower.gameObject != this.gameObject)
+                    || (agentFollower.isAttackTarget == true && agentFollower.gameObject != this.gameObject))
                 {
                     SetAttackTarget(agent.transform);
                 }
@@ -172,6 +180,10 @@ public class FollowerManager : MonoBehaviour
         {
             currentState = State.OverrideFollow;
         }
+        // Align popup menu to camera.
+        popupMenu.transform.LookAt(mainCamera.transform);
+        popupMenu.transform.rotation = Quaternion.LookRotation(mainCamera.transform.forward);
+
         //List<Transform> context = GetNearbyObjects(this.gameObject);
         //GetNearbyObjects(this.gameObject);
 
@@ -300,6 +312,16 @@ public class FollowerManager : MonoBehaviour
         }
     }
 
+    // Show popup menu on MouseOver, close menu on MouseExit.
+    private void OnMouseOver()
+    {
+        popupMenu.SetActive(true);
+    }
+    private void OnMouseExit()
+    {
+        popupMenu.SetActive(false);
+    }
+
     private void OnMouseDown()
     {
         // If state is clickable and player charisma > this entity's charisma, start following the player when clicked.
@@ -310,11 +332,14 @@ public class FollowerManager : MonoBehaviour
             //Debug.Log("Clicked on " + this.name);
             SetFollowTarget(player.transform);
         }
+
+        /*
         // Click on a current follower to mark it as a traitor.
         else if (currentTarget != null && currentTarget.tag == "Player")
         {
             isTraitor = true;
         }
+        */
 
         /*
         // DEBUG: Click on your follower to transform it into a leader.
@@ -438,6 +463,12 @@ public class FollowerManager : MonoBehaviour
         enemyTarget = newEnemy;
         //Debug.Log(this.name + " attacks " + enemyTarget.name);
         ChangeMaterial(skin, attackMaterial);
+    }
+
+    public void SetThisAsAttackTarget()
+    {
+        Debug.Log("Set this as attack target " + this.name);
+        isAttackTarget = true;
     }
 
     private void OnCollisionStay (Collision collision)

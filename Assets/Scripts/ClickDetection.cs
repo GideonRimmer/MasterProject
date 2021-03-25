@@ -4,19 +4,21 @@ using UnityEngine;
 
 public class ClickDetection : MonoBehaviour
 {
-    /*
+    public bool debugClicks = false;
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (debugClicks == true)
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit, 100))
+            if (Input.GetMouseButtonDown(0))
             {
-                Debug.Log("Clicked on " + hit.transform.gameObject.name);
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit, 100))
+                {
+                    Debug.Log("Clicked on " + hit.transform.gameObject.name);
+                }
             }
         }
     }
-    */
 }
