@@ -88,7 +88,7 @@ public class FollowerManager : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody>();
         spawnEntitiesScript = FindObjectOfType<SpawnEntitiesAtRandom>();
-        popupMenu.SetActive(false);
+        popupMenu.SetActive(true);
 
         currentState = State.Idle;
         isClickable = false;
@@ -312,6 +312,7 @@ public class FollowerManager : MonoBehaviour
         }
     }
 
+    /*
     // Show popup menu on MouseOver, close menu on MouseExit.
     private void OnMouseOver()
     {
@@ -321,6 +322,7 @@ public class FollowerManager : MonoBehaviour
     {
         popupMenu.SetActive(false);
     }
+    */
 
     private void OnMouseDown()
     {
