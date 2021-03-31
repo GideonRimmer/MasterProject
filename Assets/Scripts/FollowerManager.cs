@@ -17,6 +17,7 @@ public class FollowerManager : MonoBehaviour
     private SpawnEntitiesAtRandom spawnEntitiesScript;
     public bool isTraitor;
     public bool isAttackTarget;
+    public bool isConversionTarget;
 
     [Header("Charisma")]
     public int minCharisma;
@@ -29,11 +30,11 @@ public class FollowerManager : MonoBehaviour
 
     [Header("Loyalty")]
     public int startingLoyalty = 5;
-    public int currentLoyalty = 0;
+    public int currentLoyalty;
 
     [Header("Violence")]
     public int startingViolence = 5;
-    public int currentViolence = 0;
+    public int currentViolence;
 
     [Header("State Machine")]
     public State currentState;
@@ -50,7 +51,7 @@ public class FollowerManager : MonoBehaviour
     }
 
     [Header("Movement Parameters")]
-    public Transform currentTarget;
+    public Transform currentLeader;
     public float moveSpeed;
     public float rotateSpeed;
     public float minDistanceToTarget;
@@ -59,6 +60,7 @@ public class FollowerManager : MonoBehaviour
     public int attackDamage = 1;
     public float attackStateSpeed;
     public float attackTimer = 1.0f;
+    public int convertDamage = 1;
     [SerializeField] private float attackCurrentTime;
     public Transform enemyTarget;
     [SerializeField] private float distanceToEnemy;
@@ -95,6 +97,7 @@ public class FollowerManager : MonoBehaviour
         overrideTarget = false;
         isTraitor = false;
         isAttackTarget = false;
+        isConversionTarget = false;
         attackStateSpeed = moveSpeed + 2;
         attackCurrentTime = attackTimer;
 
@@ -108,6 +111,8 @@ public class FollowerManager : MonoBehaviour
             startingCharisma = Random.Range(minStartingCharisma, maxStartingCharisma);
         }
         currentCharisma = startingCharisma;
+        currentLoyalty = startingLoyalty;
+        currentViolence = startingViolence;
 
         mainCamera = Camera.main;
 
@@ -137,7 +142,7 @@ public class FollowerManager : MonoBehaviour
                 /*
                 // Attack conditions: IF agent is a follower, with a different leader, 
                 // IF this has higher charisma -> attacks the lower charisma. OR if the agent is currently attacking, attack it back.
-                if (currentTarget != null && agentFollower.currentTarget != null && currentTarget != agentFollower.currentTarget &&
+                if (currentLeader != null && agentFollower.currentLeader != null && currentLeader != agentFollower.currentLeader &&
                    (currentCharisma > agentFollower.currentCharisma || agentFollower.currentState == State.Attack))
                 {
                     SetAttackTarget(agent.transform);
@@ -146,27 +151,31 @@ public class FollowerManager : MonoBehaviour
 
                 /*
                 // Attack followers in range who are attacking your leader, OR a follower of the same leader that's marked as a traitor.
-                if ((currentTarget != null && agentFollower.currentTarget != null && currentTarget != agentFollower.currentTarget && agentFollower.currentState == State.Attack) ||
-                    (agentFollower.isTraitor == true && agentFollower.currentTarget == currentTarget && agentFollower.gameObject != this.gameObject))
+                if ((currentLeader != null && agentFollower.currentLeader != null && currentLeader != agentFollower.currentLeader && agentFollower.currentState == State.Attack) ||
+                    (agentFollower.isTraitor == true && agentFollower.currentLeader == currentLeader && agentFollower.gameObject != this.gameObject))
                 {
                     SetAttackTarget(agent.transform);
                 }
                 */
 
                 // If this is one of the player's followers, attack a taker follower, and vice versa.
-                if ((currentTarget != null && agentFollower.currentTarget != null && currentTarget.tag != agentFollower.currentTarget.tag && agentFollower.currentState == State.Attack)
-                    || (agentFollower.isTraitor == true && agentFollower.currentTarget == currentTarget && agentFollower.gameObject != this.gameObject)
-                    || (agentFollower.isAttackTarget == true && agentFollower.gameObject != this.gameObject))
+                if ((currentLeader != null && agentFollower.currentLeader != null && currentLeader.tag != agentFollower.currentLeader.tag && agentFollower.currentState == State.Attack)
+                    || (agentFollower.isTraitor == true && agentFollower.currentLeader == currentLeader && agentFollower.gameObject != this.gameObject)
+                    || (agentFollower.isAttackTarget == true && agentFollower.gameObject != this.gameObject && currentLeader != null && currentLeader.tag == "Player")
+                    || (agentFollower.isConversionTarget == true && agentFollower.gameObject != this.gameObject && currentLeader != null &&currentLeader.tag == "Player")
+                    || (currentLeader != null && currentLeader.tag == "Player" && agent.tag == "Innocent"))
                 {
                     SetAttackTarget(agent.transform);
                 }
             }
 
+            /*
             // Also attack any Innocents in range (MUWAHAHAHA).
-            else if (currentTarget != null && currentTarget.tag == "Player" && agent.tag == "Innocent")
+            else if (currentLeader != null && currentLeader.tag == "Player" && agent.tag == "Innocent")
             {
                 SetAttackTarget(agent.transform);
             }
+            */
         }
     }
 
@@ -194,17 +203,16 @@ public class FollowerManager : MonoBehaviour
             case State.Idle:
                 animator.SetBool("isWalking", false);
                 animator.speed = 1;
-                //ChangeMaterial(idleMaterial);
                 break;
 
             case State.FollowPlayer:
-                if (currentTarget != null)
+                if (currentLeader != null)
                 {
                     FollowTarget();
                     animator.SetBool("isWalking", true);
                     animator.speed = 1;
                 }
-                else if (currentTarget == null)
+                else if (currentLeader == null)
                 {
                     currentState = State.Idle;
                 }
@@ -212,39 +220,39 @@ public class FollowerManager : MonoBehaviour
 
             case State.FollowOther:
 
-                if (currentTarget != null)
+                if (currentLeader != null)
                 {
                     animator.SetBool("isWalking", true);
                     animator.speed = 1;
                     FollowTarget();
                 }
-                else if (currentTarget == null)
+                else if (currentLeader == null)
                 {
                     currentState = State.Idle;
                 }
                 break;
 
             case State.Attack:
-                if (enemyTarget != null && currentTarget != null)
+                if (enemyTarget != null && currentLeader != null)
                 {
                     FollowAndAttackTarget();
                     animator.SetBool("isWalking", true);
                     animator.speed = 2;
                 }
-                else if (currentTarget == null)
+                else if (currentLeader == null)
                 {
                     enemyTarget = null;
                     ChangeMaterial(clothes, idleMaterial);
                     ChangeMaterial(skin, skinMaterial);
                     currentState = State.Idle;
                 }
-                else if (enemyTarget == null && currentTarget.tag == "Player")
+                else if (enemyTarget == null && currentLeader.tag == "Player")
                 {
                     ChangeMaterial(clothes, followPlayerMaterial);
                     ChangeMaterial(skin, skinMaterial);
                     currentState = State.FollowPlayer;
                 }
-                else if (enemyTarget == null && currentTarget.tag == "Taker")
+                else if (enemyTarget == null && currentLeader.tag == "Taker")
                 {
                     ChangeMaterial(clothes, followOtherMaterial);
                     ChangeMaterial(skin, skinMaterial);
@@ -279,7 +287,7 @@ public class FollowerManager : MonoBehaviour
         if (other.gameObject.tag == "Player" && overrideTarget == false)
         {
             SphereOfInfluence playerSphere = other.gameObject.GetComponentInParent<SphereOfInfluence>();
-            if (currentState == State.Idle || (currentState == State.FollowOther && playerSphere.currentCharisma > currentTarget.GetComponentInParent<SphereOfInfluence>().currentCharisma))
+            if (currentState == State.Idle || (currentState == State.FollowOther && playerSphere.currentCharisma > currentLeader.GetComponentInParent<SphereOfInfluence>().currentCharisma))
             {
                 //Debug.Log(this.name + " becomes clickable.");
                 ChangeMaterial(clothes, clickableMaterial);
@@ -297,9 +305,9 @@ public class FollowerManager : MonoBehaviour
         if (other.gameObject.tag == "Taker" &&  overrideTarget == false)
         {
             SphereOfInfluence takerSphere = other.gameObject.GetComponentInParent<SphereOfInfluence>();
-            if ((currentState == State.Idle && takerSphere.currentCharisma > currentCharisma) || ((currentState == State.FollowOther || currentState == State.FollowPlayer) && takerSphere.currentCharisma > currentTarget.GetComponentInParent<SphereOfInfluence>().currentCharisma))
+            if ((currentState == State.Idle && takerSphere.currentCharisma > currentCharisma) || ((currentState == State.FollowOther || currentState == State.FollowPlayer) && takerSphere.currentCharisma > currentLeader.GetComponentInParent<SphereOfInfluence>().currentCharisma))
             {
-                SetFollowTarget(other.transform);
+                SetFollowLeader(other.transform);
             }
 
             // If is already following a leader AND walks into Taker sphere AND new taker charisma < this.currentCharisma -> Attack.
@@ -327,31 +335,21 @@ public class FollowerManager : MonoBehaviour
     private void OnMouseDown()
     {
         // If state is clickable and player charisma > this entity's charisma, start following the player when clicked.
-        //if ((currentTarget == null && isClickable == true && currentCharisma < player.GetComponentInParent<SphereOfInfluence>().currentCharisma) || currentTarget.GetComponentInParent<SphereOfInfluence>().currentCharisma < player.GetComponentInParent<SphereOfInfluence>().currentCharisma)
-        if ((currentTarget == null && isClickable == true && currentCharisma < player.GetComponentInParent<SphereOfInfluence>().currentCharisma) ||
-            (currentTarget != null && currentTarget.GetComponentInParent<SphereOfInfluence>().currentCharisma < player.GetComponentInParent<SphereOfInfluence>().currentCharisma))
+        //if ((currentLeader == null && isClickable == true && currentCharisma < player.GetComponentInParent<SphereOfInfluence>().currentCharisma) || currentLeader.GetComponentInParent<SphereOfInfluence>().currentCharisma < player.GetComponentInParent<SphereOfInfluence>().currentCharisma)
+        if ((currentLeader == null && isClickable == true && currentCharisma < player.GetComponentInParent<SphereOfInfluence>().currentCharisma) ||
+            (currentLeader != null && currentLeader.GetComponentInParent<SphereOfInfluence>().currentCharisma < player.GetComponentInParent<SphereOfInfluence>().currentCharisma))
         {
             //Debug.Log("Clicked on " + this.name);
-            SetFollowTarget(player.transform);
+            SetFollowLeader(player.transform);
         }
 
         /*
         // Click on a current follower to mark it as a traitor.
-        else if (currentTarget != null && currentTarget.tag == "Player")
+        else if (currentLeader != null && currentLeader.tag == "Player")
         {
             isTraitor = true;
         }
         */
-
-        /*
-        // DEBUG: Click on your follower to transform it into a leader.
-        else if (currentTarget != null && currentTarget.tag == "Player")
-        {
-            Debug.Log("Click active follower " + name);
-            BecomeLeader();
-        }
-        */
-
     }
 
     private void OnTriggerExit(Collider other)
@@ -360,11 +358,11 @@ public class FollowerManager : MonoBehaviour
         {
             isClickable = false;
 
-            if (currentTarget == null)
+            if (currentLeader == null)
             {
                 ChangeMaterial(clothes, idleMaterial);
             }
-            else if (currentTarget.tag == "Taker")
+            else if (currentLeader.tag == "Taker")
             {
                 ChangeMaterial(clothes, followOtherMaterial);
             }
@@ -379,9 +377,9 @@ public class FollowerManager : MonoBehaviour
     }
 
     // Acquire a new target to follow.
-    public void SetFollowTarget(Transform newTarget)
+    public void SetFollowLeader(Transform newTarget)
     {
-        if (currentTarget == null || newTarget.GetComponentInParent<SphereOfInfluence>().currentCharisma > currentTarget.GetComponentInParent<SphereOfInfluence>().currentCharisma)
+        if (currentLeader == null || newTarget.GetComponentInParent<SphereOfInfluence>().currentCharisma > currentLeader.GetComponentInParent<SphereOfInfluence>().currentCharisma)
         {
             newTarget.GetComponentInParent<SphereOfInfluence>().GainFollower(this.gameObject);
 
@@ -399,24 +397,24 @@ public class FollowerManager : MonoBehaviour
             }
 
             // If switched targets, register that the old target lost a follower.
-            if (newTarget != currentTarget && currentTarget != null)
+            if (newTarget != currentLeader && currentLeader != null)
             {
-                currentTarget.GetComponentInParent<SphereOfInfluence>().LoseFollower(this.gameObject);
+                currentLeader.GetComponentInParent<SphereOfInfluence>().LoseFollower(this.gameObject);
             }
 
             // Assign new target to follow.
-            currentTarget = newTarget;
+            currentLeader = newTarget;
         }
     }
 
     private void FollowTarget()
     {
-        Vector3 direction = (currentTarget.position - rigidbody.transform.position).normalized;
-        if (Vector3.Distance(transform.position, currentTarget.position) >= minDistanceToTarget)
+        Vector3 direction = (currentLeader.position - rigidbody.transform.position).normalized;
+        if (Vector3.Distance(transform.position, currentLeader.position) >= minDistanceToTarget)
         {
             rigidbody.MovePosition(rigidbody.transform.position + direction * moveSpeed * Time.fixedDeltaTime);
             // Auto rotate towards the target.
-            Vector3 targetDirection = currentTarget.position - transform.position;
+            Vector3 targetDirection = currentLeader.position - transform.position;
 
             Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, rotateSpeed * Time.deltaTime, 0.0f);
             //Debug.DrawRay(transform.position, newDirection, Color.red);
@@ -440,16 +438,33 @@ public class FollowerManager : MonoBehaviour
         // Move position a step towards to the target.
         transform.rotation = Quaternion.LookRotation(newDirection);
 
+        if (enemyTarget == null || (enemyTarget.GetComponentInParent<FollowerManager>().currentLoyalty >= 0 && enemyTarget.GetComponentInParent<FollowerManager>().currentLeader == currentLeader))
+        {
+            SetAttackTarget(null);
+            if (currentLeader != null && currentLeader.tag == "Player")
+            {
+                currentState = State.FollowPlayer;
+            }
+            else if (currentLeader != null && currentLeader.tag != "Player")
+            {
+                currentState = State.FollowOther;
+            }
+            else
+            {
+                currentState = State.Idle;
+            }
+        }
+
         /*
         // If the enemy target has the same followTarget as this entity, or if the enemy doesn't have a follow target, stop attacking.
-        if (enemyTarget.tag == "Follower" && ((enemyTarget.GetComponentInParent<FollowerManager>().currentTarget == null) || (enemyTarget.GetComponentInParent<FollowerManager>().currentTarget = this.currentTarget)))
+        if (enemyTarget.tag == "Follower" && ((enemyTarget.GetComponentInParent<FollowerManager>().currentLeader == null) || (enemyTarget.GetComponentInParent<FollowerManager>().currentLeader = this.currentLeader)))
         {
-            if (currentTarget.tag == "Player")
+            if (currentLeader.tag == "Player")
             {
                 ChangeMaterial(followPlayerMaterial);
                 currentState = State.FollowPlayer;
             }
-            if (currentTarget.tag == "Taker")
+            if (currentLeader.tag == "Taker")
             {
                 ChangeMaterial(followPlayerMaterial);
                 currentState = State.FollowOther;
@@ -461,7 +476,6 @@ public class FollowerManager : MonoBehaviour
     public void SetAttackTarget(Transform newEnemy)
     {
         currentState = State.Attack;
-        //newEnemy.gameObject.transform.parent = enemyTarget;
         enemyTarget = newEnemy;
         //Debug.Log(this.name + " attacks " + enemyTarget.name);
         ChangeMaterial(skin, attackMaterial);
@@ -471,6 +485,16 @@ public class FollowerManager : MonoBehaviour
     {
         Debug.Log("Set this as attack target " + this.name);
         isAttackTarget = true;
+        isConversionTarget = false;
+    }
+    public void SetThisAsConversionTarget()
+    {
+        if (currentLeader == null || currentLeader.tag != "Player")
+        {
+            Debug.Log("Set this as conversion target " + this.name);
+            isConversionTarget = true;
+            isAttackTarget = false;
+        }
     }
 
     private void OnCollisionStay (Collision collision)
@@ -482,8 +506,18 @@ public class FollowerManager : MonoBehaviour
             attackCurrentTime -= Time.deltaTime;
             if (attackCurrentTime <= 0)
             {
-                Attack(collision.gameObject.GetComponent<HitPointsManager>(), attackDamage);
-                attackCurrentTime = attackTimer;
+                if (enemyTarget.tag != "Follower"
+                    || (enemyTarget.tag == "Follower" && enemyTarget.GetComponentInParent<FollowerManager>().currentLeader != currentLeader && enemyTarget.GetComponentInParent<FollowerManager>().isConversionTarget == false)
+                    || (enemyTarget.tag == "Follower" && enemyTarget.GetComponentInParent<FollowerManager>().currentLeader == currentLeader && enemyTarget.GetComponentInParent<FollowerManager>().isTraitor == true))
+                {
+                    Attack(collision.gameObject.GetComponent<HitPointsManager>(), attackDamage);
+                    attackCurrentTime = attackTimer;
+                }
+                else if (enemyTarget.tag == "Follower" && enemyTarget.GetComponentInParent<FollowerManager>().isConversionTarget == true)
+                {
+                    Convert(collision.gameObject.GetComponentInParent<FollowerManager>(), convertDamage);
+                    attackCurrentTime = attackTimer;
+                }
             }
         }
     }
@@ -497,9 +531,27 @@ public class FollowerManager : MonoBehaviour
         if (enemyTarget.GetComponent<HitPointsManager>().currentHitPoints <= 0)
         {
             ModifyCharisma(2);
-            currentViolence += 1;
-            currentTarget.GetComponentInParent<SphereOfInfluence>().ModifyCharisma(1);
-            currentTarget.GetComponentInParent<SphereOfInfluence>().currentViolence += 1;
+            ModifyViolence(1);
+            currentLeader.GetComponentInParent<SphereOfInfluence>().ModifyCharisma(1);
+            currentLeader.GetComponentInParent<SphereOfInfluence>().currentViolence += 1;
+        }
+    }
+
+    public void Convert(FollowerManager enemy, int damage)
+    {
+        enemy.ModifyLoyalty(damage);
+        Debug.Log(name + " is converting " + enemy.gameObject.name);
+
+        // After converting the target, gain charisma and loyalty.
+        if (enemy.currentLoyalty <= 0)
+        {
+            enemy.isConversionTarget = false;
+            enemy.SetFollowLeader(currentLeader.transform);
+            currentState = State.FollowPlayer;
+            //SetAttackTarget(null);
+            ModifyCharisma(1);
+            ModifyLoyalty(1);
+            currentLeader.GetComponentInParent<SphereOfInfluence>().ModifyCharisma(1);
         }
     }
 
@@ -514,10 +566,21 @@ public class FollowerManager : MonoBehaviour
         currentCharisma = Mathf.Clamp(currentCharisma, minCharisma, maxCharisma);
 
         // If follower charisma is higher than leader charisma, the follower becomes a new leader.
-        if (currentTarget != null && currentCharisma > currentTarget.GetComponentInParent<SphereOfInfluence>().currentCharisma)
+        if (currentLeader != null && currentCharisma > currentLeader.GetComponentInParent<SphereOfInfluence>().currentCharisma)
         {
             BecomeLeader();
         }
+    }
+
+    public void ModifyLoyalty(int change)
+    {
+        currentLoyalty += change;
+        currentLoyalty = Mathf.Min(0);
+    }
+    public void ModifyViolence(int change)
+    {
+        currentViolence += change;
+        currentViolence = Mathf.Min(0);
     }
 
     private void ChangeMaterial(Renderer[] parts , Material newMaterial)
@@ -546,7 +609,7 @@ public class FollowerManager : MonoBehaviour
 
         foreach (Collider collider in contextColliders)
         {
-            if ((currentState == State.FollowPlayer || currentState == State.FollowOther) && currentCharisma > agent.GetComponent<FollowerManager>().currentCharisma && currentTarget != agent.GetComponent<FollowerManager>().currentTarget)
+            if ((currentState == State.FollowPlayer || currentState == State.FollowOther) && currentCharisma > agent.GetComponent<FollowerManager>().currentCharisma && currentLeader != agent.GetComponent<FollowerManager>().currentLeader)
             {
                 SetAttackTarget(collider.gameObject.transform);
             }
@@ -570,9 +633,9 @@ public class FollowerManager : MonoBehaviour
     public void Die()
     {
         Debug.Log(this.name + "register death");
-        if (currentTarget != null)
+        if (currentLeader != null)
         {
-            currentTarget.GetComponentInParent<SphereOfInfluence>().RemoveDeadFollower(this.gameObject);
+            currentLeader.GetComponentInParent<SphereOfInfluence>().RemoveDeadFollower(this.gameObject);
         }
 
         GetComponent<HitPointsManager>().PlayParticleSystem();
@@ -581,9 +644,9 @@ public class FollowerManager : MonoBehaviour
 
     void BecomeLeader()
     {
-        if (currentTarget != null)
+        if (currentLeader != null)
         {
-            currentTarget.GetComponentInParent<SphereOfInfluence>().RemoveFollower(this.gameObject);
+            currentLeader.GetComponentInParent<SphereOfInfluence>().RemoveFollower(this.gameObject);
         }
         Destroy(gameObject);
         takerPrefab.GetComponent<SphereOfInfluence>().startingCharisma = currentCharisma;

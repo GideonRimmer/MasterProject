@@ -136,7 +136,7 @@ public class SphereOfInfluence : MonoBehaviour
 
             if (agent.tag == "Follower" && currentEnergy > 0 && followerScript.currentCharisma < currentCharisma)
             {
-                followerScript.SetFollowTarget(this.transform);
+                followerScript.SetFollowLeader(this.transform);
             }
         }
     }

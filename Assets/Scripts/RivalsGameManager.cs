@@ -35,7 +35,7 @@ public class RivalsGameManager : MonoBehaviour
                         Debug.Log("Clicked on " + hit.transform.gameObject.name);
 
                         followerManager.overrideTarget = true;
-                        followerManager.SetFollowTarget(player.transform);
+                        followerManager.SetFollowLeader(player.transform);
                     }
                 }
             }
@@ -62,6 +62,6 @@ public class RivalsGameManager : MonoBehaviour
         FollowerManager followerManager = playerFollowers[index].GetComponentInParent<FollowerManager>();
 
         followerManager.overrideTarget = true;
-        followerManager.SetFollowTarget(rivalTaker.transform);
+        followerManager.SetFollowLeader(rivalTaker.transform);
     }
 }
