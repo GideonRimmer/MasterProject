@@ -438,9 +438,11 @@ public class FollowerManager : MonoBehaviour
         // Move position a step towards to the target.
         transform.rotation = Quaternion.LookRotation(newDirection);
 
-        if (enemyTarget == null || (enemyTarget.GetComponentInParent<FollowerManager>().currentLoyalty >= 0 && enemyTarget.GetComponentInParent<FollowerManager>().currentLeader == currentLeader))
+        if (enemyTarget == null || (enemyTarget.GetComponentInParent<FollowerManager>().currentLeader == currentLeader && enemyTarget.GetComponentInParent<FollowerManager>().isTraitor == false))
         {
+            Debug.Log(name + ": Target eliminated.");
             SetAttackTarget(null);
+            ChangeMaterial(skin, skinMaterial);
             if (currentLeader != null && currentLeader.tag == "Player")
             {
                 currentState = State.FollowPlayer;
@@ -542,13 +544,13 @@ public class FollowerManager : MonoBehaviour
         enemy.ModifyLoyalty(damage);
         Debug.Log(name + " is converting " + enemy.gameObject.name);
 
-        // After converting the target, gain charisma and loyalty.
+        // After converting the target, gain charisma and loyalty and return to "Follow" state.
         if (enemy.currentLoyalty <= 0)
         {
             enemy.isConversionTarget = false;
             enemy.SetFollowLeader(currentLeader.transform);
             currentState = State.FollowPlayer;
-            //SetAttackTarget(null);
+            SetAttackTarget(null);
             ModifyCharisma(1);
             ModifyLoyalty(1);
             currentLeader.GetComponentInParent<SphereOfInfluence>().ModifyCharisma(1);
