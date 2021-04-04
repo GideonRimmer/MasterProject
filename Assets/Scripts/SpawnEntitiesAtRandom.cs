@@ -51,6 +51,7 @@ public class SpawnEntitiesAtRandom : MonoBehaviour
             zPosition = Random.Range(minZ, maxZ);
 
             TakerManager newTaker = Instantiate(takerPrefab, new Vector3(xPosition, yPosition, zPosition), Quaternion.Euler(Vector3.up * Random.Range(0, 360)));
+            newTaker.randomCharisma = true;
             newTaker.name = "Taker" + i;
         }
     }

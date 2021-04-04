@@ -10,6 +10,7 @@ public class FollowerManager : MonoBehaviour
     public Animator animator;
     private Rigidbody rigidbody;
     //public string[] charClass = { "Citizen", "Soldier", "Intelligentsia" };
+    //public GameObject takerPrefab;
     public GameObject takerPrefab;
     private float sphereRadius = 13f;
     public GameObject player;
@@ -438,7 +439,7 @@ public class FollowerManager : MonoBehaviour
         // Move position a step towards to the target.
         transform.rotation = Quaternion.LookRotation(newDirection);
 
-        if (enemyTarget == null || (enemyTarget.GetComponentInParent<FollowerManager>().currentLeader == currentLeader && enemyTarget.GetComponentInParent<FollowerManager>().isTraitor == false))
+        if (enemyTarget.tag == "Follower" && (enemyTarget == null || (enemyTarget.GetComponentInParent<FollowerManager>().currentLeader == currentLeader && enemyTarget.GetComponentInParent<FollowerManager>().isTraitor == false)))
         {
             Debug.Log(name + ": Target eliminated.");
             SetAttackTarget(null);
@@ -644,15 +645,23 @@ public class FollowerManager : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    void BecomeLeader()
+    public void BecomeLeader()
     {
         if (currentLeader != null)
         {
             currentLeader.GetComponentInParent<SphereOfInfluence>().RemoveFollower(this.gameObject);
         }
+        GameObject newLeader;
+        newLeader = Instantiate(takerPrefab, transform.position, Quaternion.identity);
+        GameObject[] takers = GameObject.FindGameObjectsWithTag("Taker");
+        int numberOfTakers = takers.Length;
+        newLeader.name = "Taker" + (numberOfTakers + 1);
+        Debug.Log("newLeader " + newLeader.name);
+
+        newLeader.GetComponent<TakerManager>().randomCharisma = false;
+        newLeader.GetComponentInParent<SphereOfInfluence>().startingCharisma = currentCharisma;
         Destroy(gameObject);
-        takerPrefab.GetComponent<SphereOfInfluence>().startingCharisma = currentCharisma;
-        Instantiate(takerPrefab, transform.position, Quaternion.identity);
+
 
         Debug.Log("Become leader " + name);
     }

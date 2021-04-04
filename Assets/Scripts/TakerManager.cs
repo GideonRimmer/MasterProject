@@ -9,7 +9,8 @@ public class TakerManager : MonoBehaviour
     public bool remainStationary;
     public int minStartingCharisma;
     public int maxStartingCharisma;
-    [SerializeField] private int startingCharisma;
+    public int inheritedCharisma;
+    public int startingCharisma;
     private SpawnEntitiesAtRandom spawnEntitiesScript;
 
     public float moveSpeed = 5.0f;
@@ -22,23 +23,53 @@ public class TakerManager : MonoBehaviour
 
     private HitPointsManager hitPointsManager;
     private PlayParticleEffect playParticleEffect;
+    public bool randomCharisma;
 
+    /*
     void Awake()
     {
-        spawnEntitiesScript = FindObjectOfType<SpawnEntitiesAtRandom>();
-        if (spawnEntitiesScript != null)
+        if (randomCharisma == true)
         {
-            startingCharisma = Random.Range(spawnEntitiesScript.takerMinChar, spawnEntitiesScript.takerMaxChar);
+            Debug.Log("Random charisma");
+            spawnEntitiesScript = FindObjectOfType<SpawnEntitiesAtRandom>();
+            if (spawnEntitiesScript != null)
+            {
+                startingCharisma = Random.Range(spawnEntitiesScript.takerMinChar, spawnEntitiesScript.takerMaxChar);
+            }
+            else
+            {
+                startingCharisma = Random.Range(minStartingCharisma, maxStartingCharisma);
+            }
+            GetComponent<SphereOfInfluence>().startingCharisma = startingCharisma;
         }
         else
         {
-            startingCharisma = Random.Range(minStartingCharisma, maxStartingCharisma);
+            Debug.Log("Inherited charisma");
         }
-        GetComponent<SphereOfInfluence>().startingCharisma = startingCharisma;
     }
+    */
 
     private void Start()
     {
+        if (randomCharisma == true)
+        {
+            Debug.Log("Random charisma");
+            spawnEntitiesScript = FindObjectOfType<SpawnEntitiesAtRandom>();
+            if (spawnEntitiesScript != null)
+            {
+                startingCharisma = Random.Range(spawnEntitiesScript.takerMinChar, spawnEntitiesScript.takerMaxChar);
+            }
+            else
+            {
+                startingCharisma = Random.Range(minStartingCharisma, maxStartingCharisma);
+            }
+            GetComponent<SphereOfInfluence>().currentCharisma = startingCharisma;
+        }
+        else
+        {
+            Debug.Log("Inherited charisma");
+        }
+        
         rigidbody = GetComponent<Rigidbody>();
         startingPosition = transform.position;
         roamingPosition = GetRoamingPosition();

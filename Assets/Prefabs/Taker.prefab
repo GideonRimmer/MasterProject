@@ -826,11 +826,15 @@ MonoBehaviour:
   followPoint: {fileID: 2639661959937031080}
   minCharisma: 1
   maxCharisma: 100
-  startingCharisma: 0
+  startingCharisma: 7
   currentCharisma: 0
   startingEnergy: 10
   currentEnergy: 0
-  maxCurrentEnergy: 0
+  maxEnergy: 0
+  energyRegenMaxTime: 0.5
+  energyRegenCurrentTime: 0
+  startingViolence: 0
+  currentViolence: 0
   sphereInitialRadius: 12
   sphereCurrentRadius: 0
   charismaText: {fileID: 1559165014}
@@ -851,6 +855,7 @@ MonoBehaviour:
   remainStationary: 0
   minStartingCharisma: 9
   maxStartingCharisma: 20
+  inheritedCharisma: 0
   startingCharisma: 0
   moveSpeed: 6
   rotateSpeed: 10
@@ -858,6 +863,7 @@ MonoBehaviour:
   roamingRangeMax: 30
   startingPosition: {x: 0, y: 0, z: 0}
   roamingPosition: {x: 0, y: 0, z: 0}
+  randomCharisma: 0
 --- !u!114 &4833404102798361122
 MonoBehaviour:
   m_ObjectHideFlags: 0
