@@ -32,10 +32,12 @@ public class FollowerManager : MonoBehaviour
     [Header("Loyalty")]
     public int startingLoyalty = 5;
     public int currentLoyalty;
+    private int maxLoyalty = 999;
 
     [Header("Violence")]
     public int startingViolence = 5;
     public int currentViolence;
+    private int maxViolence = 999;
 
     [Header("State Machine")]
     public State currentState;
@@ -130,12 +132,11 @@ public class FollowerManager : MonoBehaviour
     private void FixedUpdate()
     {
         LayerMask layerMask = LayerMask.GetMask("Characters");
-        agentsInSphere = Physics.OverlapSphere(this.transform.position, sphereRadius, layerMask);
+        agentsInSphere = Physics.OverlapSphere(transform.position, sphereRadius, layerMask);
 
         // Get all of the agents in the sphere in each FixedUpdate.
         foreach (Collider agent in agentsInSphere)
         {
-
             if (agent.tag == "Follower")
             {
                 FollowerManager agentFollower = agent.GetComponentInParent<FollowerManager>();
@@ -210,7 +211,7 @@ public class FollowerManager : MonoBehaviour
                 if (currentLeader != null)
                 {
                     FollowTarget();
-                    animator.SetBool("isWalking", true);
+                    //animator.SetBool("isWalking", true);
                     animator.speed = 1;
                 }
                 else if (currentLeader == null)
@@ -223,7 +224,7 @@ public class FollowerManager : MonoBehaviour
 
                 if (currentLeader != null)
                 {
-                    animator.SetBool("isWalking", true);
+                    //animator.SetBool("isWalking", true);
                     animator.speed = 1;
                     FollowTarget();
                 }
@@ -420,6 +421,7 @@ public class FollowerManager : MonoBehaviour
             Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, rotateSpeed * Time.deltaTime, 0.0f);
             //Debug.DrawRay(transform.position, newDirection, Color.red);
             transform.rotation = Quaternion.LookRotation(newDirection);
+            animator.SetBool("isWalking", true);
         }
         else animator.SetBool("isWalking", false);
     }
@@ -515,11 +517,13 @@ public class FollowerManager : MonoBehaviour
                 {
                     Attack(collision.gameObject.GetComponent<HitPointsManager>(), attackDamage);
                     attackCurrentTime = attackTimer;
+                    Debug.Log("Attack damage " + attackDamage);
                 }
                 else if (enemyTarget.tag == "Follower" && enemyTarget.GetComponentInParent<FollowerManager>().isConversionTarget == true)
                 {
                     Convert(collision.gameObject.GetComponentInParent<FollowerManager>(), convertDamage);
                     attackCurrentTime = attackTimer;
+                    Debug.Log("Convert damage " + convertDamage);
                 }
             }
         }
@@ -542,7 +546,7 @@ public class FollowerManager : MonoBehaviour
 
     public void Convert(FollowerManager enemy, int damage)
     {
-        enemy.ModifyLoyalty(damage);
+        enemy.ModifyLoyalty(-damage);
         Debug.Log(name + " is converting " + enemy.gameObject.name);
 
         // After converting the target, gain charisma and loyalty and return to "Follow" state.
@@ -578,7 +582,7 @@ public class FollowerManager : MonoBehaviour
     public void ModifyLoyalty(int change)
     {
         currentLoyalty += change;
-        currentLoyalty = Mathf.Min(0);
+        currentLoyalty = Mathf.Clamp(currentLoyalty, 0, maxLoyalty);
     }
     public void ModifyViolence(int change)
     {
@@ -661,7 +665,6 @@ public class FollowerManager : MonoBehaviour
         newLeader.GetComponent<TakerManager>().randomCharisma = false;
         newLeader.GetComponentInParent<SphereOfInfluence>().startingCharisma = currentCharisma;
         Destroy(gameObject);
-
 
         Debug.Log("Become leader " + name);
     }
