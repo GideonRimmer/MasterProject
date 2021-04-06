@@ -12,7 +12,8 @@ public class FollowerManager : MonoBehaviour
     //public string[] charClass = { "Citizen", "Soldier", "Intelligentsia" };
     //public GameObject takerPrefab;
     public GameObject takerPrefab;
-    private float sphereRadius = 13f;
+    private float sphereInitialRadius = 10f;
+    private float sphereCurrentRadius;
     public GameObject player;
     private Camera mainCamera;
     private SpawnEntitiesAtRandom spawnEntitiesScript;
@@ -132,7 +133,8 @@ public class FollowerManager : MonoBehaviour
     private void FixedUpdate()
     {
         LayerMask layerMask = LayerMask.GetMask("Characters");
-        agentsInSphere = Physics.OverlapSphere(transform.position, sphereRadius, layerMask);
+        sphereCurrentRadius = sphereInitialRadius + currentCharisma;
+        agentsInSphere = Physics.OverlapSphere(transform.position, sphereCurrentRadius, layerMask);
 
         // Get all of the agents in the sphere in each FixedUpdate.
         foreach (Collider agent in agentsInSphere)
@@ -162,22 +164,19 @@ public class FollowerManager : MonoBehaviour
 
                 // If this is one of the player's followers, attack a taker follower, and vice versa.
                 if ((currentLeader != null && agentFollower.currentLeader != null && currentLeader.tag != agentFollower.currentLeader.tag && agentFollower.currentState == State.Attack)
-                    || (agentFollower.isTraitor == true && agentFollower.currentLeader == currentLeader && agentFollower.gameObject != this.gameObject)
+                    //|| (agentFollower.isTraitor == true && agentFollower.currentLeader == currentLeader && agentFollower.gameObject != this.gameObject)
                     || (agentFollower.isAttackTarget == true && agentFollower.gameObject != this.gameObject && currentLeader != null && currentLeader.tag == "Player")
-                    || (agentFollower.isConversionTarget == true && agentFollower.gameObject != this.gameObject && currentLeader != null &&currentLeader.tag == "Player")
-                    || (currentLeader != null && currentLeader.tag == "Player" && agent.tag == "Innocent"))
+                    || (agentFollower.isConversionTarget == true && agentFollower.gameObject != this.gameObject && currentLeader != null && currentLeader.tag == "Player"))
                 {
                     SetAttackTarget(agent.transform);
                 }
             }
 
-            /*
             // Also attack any Innocents in range (MUWAHAHAHA).
             else if (currentLeader != null && currentLeader.tag == "Player" && agent.tag == "Innocent")
             {
                 SetAttackTarget(agent.transform);
             }
-            */
         }
     }
 
@@ -312,7 +311,7 @@ public class FollowerManager : MonoBehaviour
                 SetFollowLeader(other.transform);
             }
 
-            // If is already following a leader AND walks into Taker sphere AND new taker charisma < this.currentCharisma -> Attack.
+            // If is already following a leader AND walks into Taker sphere AND new taker charisma < this.currentCharisma -> Attack thr taker.
             //if ((currentState == State.FollowPlayer || currentState == State.FollowOther) && takerSphere.currentCharisma < currentCharisma)
             if (currentState == State.FollowPlayer && takerSphere.currentCharisma < currentCharisma)
                 {
@@ -587,7 +586,7 @@ public class FollowerManager : MonoBehaviour
     public void ModifyViolence(int change)
     {
         currentViolence += change;
-        currentViolence = Mathf.Min(0);
+        currentViolence = Mathf.Clamp(currentViolence, 0, maxViolence);
     }
 
     private void ChangeMaterial(Renderer[] parts , Material newMaterial)
@@ -611,7 +610,7 @@ public class FollowerManager : MonoBehaviour
         LayerMask layerMask = LayerMask.GetMask("Characters");
         List<Transform> context = new List<Transform>();
         // Get an array of all colliders in a the radius, using OverlapSphere.
-        Collider[] contextColliders = Physics.OverlapSphere(agent.transform.position, sphereRadius);
+        Collider[] contextColliders = Physics.OverlapSphere(agent.transform.position, sphereCurrentRadius);
         //Collider2D[] contextColliders = Physics2D.OverlapCircleAll(agent.transform.position, neighbourRadius);
 
         foreach (Collider collider in contextColliders)
@@ -663,16 +662,14 @@ public class FollowerManager : MonoBehaviour
         Debug.Log("newLeader " + newLeader.name);
 
         newLeader.GetComponent<TakerManager>().randomCharisma = false;
-        newLeader.GetComponentInParent<SphereOfInfluence>().startingCharisma = currentCharisma;
+        newLeader.GetComponentInParent<SphereOfInfluence>().startingCharisma = currentCharisma + 1;
         Destroy(gameObject);
 
         Debug.Log("Become leader " + name);
     }
 
-    /*
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(transform.position, sphereRadius);
+        Gizmos.DrawWireSphere(transform.position, sphereCurrentRadius);
     }
-    */
 }
