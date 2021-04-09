@@ -25,35 +25,11 @@ public class TakerManager : MonoBehaviour
     private PlayParticleEffect playParticleEffect;
     public bool randomCharisma;
 
-    /*
-    void Awake()
-    {
-        if (randomCharisma == true)
-        {
-            Debug.Log("Random charisma");
-            spawnEntitiesScript = FindObjectOfType<SpawnEntitiesAtRandom>();
-            if (spawnEntitiesScript != null)
-            {
-                startingCharisma = Random.Range(spawnEntitiesScript.takerMinChar, spawnEntitiesScript.takerMaxChar);
-            }
-            else
-            {
-                startingCharisma = Random.Range(minStartingCharisma, maxStartingCharisma);
-            }
-            GetComponent<SphereOfInfluence>().startingCharisma = startingCharisma;
-        }
-        else
-        {
-            Debug.Log("Inherited charisma");
-        }
-    }
-    */
-
     private void Start()
     {
         if (randomCharisma == true)
         {
-            Debug.Log("Random charisma");
+            //Debug.Log("Random charisma");
             spawnEntitiesScript = FindObjectOfType<SpawnEntitiesAtRandom>();
             if (spawnEntitiesScript != null)
             {

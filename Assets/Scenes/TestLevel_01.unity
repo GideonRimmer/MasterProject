@@ -268,7 +268,7 @@ MonoBehaviour:
   minZ: 0
   maxZ: 100
   numberOfFollowers: 50
-  numberOfTakers: 5
+  numberOfTakers: 1
   followerMinChar: 3
   followerMaxChar: 15
   takerMinChar: 9
