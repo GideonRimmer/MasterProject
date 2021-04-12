@@ -268,10 +268,10 @@ MonoBehaviour:
   minZ: 0
   maxZ: 100
   numberOfFollowers: 50
-  numberOfTakers: 1
-  followerMinChar: 3
-  followerMaxChar: 15
-  takerMinChar: 9
+  numberOfTakers: 5
+  followerMinChar: 8
+  followerMaxChar: 30
+  takerMinChar: 10
   takerMaxChar: 20
 --- !u!4 &219200107
 Transform:
