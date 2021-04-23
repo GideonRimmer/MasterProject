@@ -36,6 +36,7 @@ public class FollowerManager : MonoBehaviour
     public int currentLoyalty;
     private int maxLoyalty = 999;
     public TextMeshProUGUI loyaltyText;
+    public float chanceToBetray = 0.3f;
 
     [Header("Violence")]
     public int startingViolence = 5;
@@ -470,7 +471,7 @@ public class FollowerManager : MonoBehaviour
         // Stop attacking when running out of eligible targets.
         if (enemyTarget.tag == "Follower" && (enemyTarget == null || enemyTarget.GetComponentInParent<FollowerManager>().currentLeader == currentLeader))
         {
-            Debug.Log(name + ": Target eliminated.");
+            //Debug.Log(name + ": Target eliminated.");
             SetAttackTarget(null);
             ChangeMaterial(skin, skinMaterial);
             if (currentLeader != null && currentLeader.tag == "Player")
@@ -543,19 +544,20 @@ public class FollowerManager : MonoBehaviour
         // On collision, inflict damage on the enemy target, only if colliding with the enemy target.
         if (enemyTarget != null && collision.gameObject.name == enemyTarget.name)
         {
+            FollowerManager enemyFollower = enemyTarget.GetComponentInParent<FollowerManager>();
             // Damage the target every X seconds (attackTimer), then start a cooldown.
             attackCurrentTime -= Time.deltaTime;
             if (attackCurrentTime <= 0)
             {
                 if (enemyTarget.tag != "Follower"
-                    || (enemyTarget.tag == "Follower" && enemyTarget.GetComponentInParent<FollowerManager>().currentLeader != currentLeader && enemyTarget.GetComponentInParent<FollowerManager>().isConversionTarget == false)
-                    || (enemyTarget.tag == "Follower" && enemyTarget.GetComponentInParent<FollowerManager>().currentLeader == currentLeader && enemyTarget.GetComponentInParent<FollowerManager>().isTraitor == true))
+                    || (enemyTarget.tag == "Follower" && enemyFollower.currentLeader != currentLeader && enemyFollower.isConversionTarget == false)
+                    || (enemyTarget.tag == "Follower" && enemyFollower.currentLeader == currentLeader && enemyFollower.isTraitor == true))
                 {
                     Attack(collision.gameObject.GetComponent<HitPointsManager>(), attackDamage);
                     attackCurrentTime = attackTimer;
                     //Debug.Log("Attack damage " + attackDamage);
                 }
-                else if (enemyTarget.tag == "Follower" && enemyTarget.GetComponentInParent<FollowerManager>().isConversionTarget == true)
+                else if (enemyTarget.tag == "Follower" && enemyFollower.isConversionTarget == true)
                 {
                     Convert(collision.gameObject.GetComponentInParent<FollowerManager>(), convertDamage);
                     attackCurrentTime = attackTimer;
@@ -578,7 +580,7 @@ public class FollowerManager : MonoBehaviour
     public void Attack(HitPointsManager enemy, int damage)
     {
         enemy.RegisterHit(damage);
-        Debug.Log(name + " attacks " + enemy.gameObject.name);
+        //Debug.Log(name + " attacks " + enemy.gameObject.name);
 
         // After destroying the target, gain charisma. Follower and leader gain Violence.
         if (enemyTarget.GetComponent<HitPointsManager>().currentHitPoints <= 0)
@@ -596,7 +598,7 @@ public class FollowerManager : MonoBehaviour
     public void Convert(FollowerManager enemy, int damage)
     {
         enemy.ModifyLoyalty(-damage);
-        Debug.Log(name + " is converting " + enemy.gameObject.name);
+        //Debug.Log(name + " is converting " + enemy.gameObject.name);
 
         // After converting the target, gain charisma and loyalty and return to "Follow" state.
         if (enemy.currentLoyalty <= 0)
@@ -613,14 +615,19 @@ public class FollowerManager : MonoBehaviour
 
     public void ConvertToFollowSelf(FollowerManager target, int damage)
     {
+        if (target.isTraitor == true && currentCharisma > target.currentCharisma)
+        {
+            target.isTraitor = false;
+        }
+
         target.ModifyLoyalty(-damage);
 
         if (target.currentLoyalty <= 0)
         {
-            Debug.Log(target.name + " follow " + transform.name + " before.");
+            //Debug.Log(target.name + " follow " + transform.name + " before.");
             //target.ChangeMaterial(clothes, traitorFollowerMaterial);
             target.SetFollowLeader(this.transform);
-            Debug.Log(target.name + " follow " + transform.name + " after.");
+            //Debug.Log(target.name + " follow " + transform.name + " after.");
             ModifyCharisma(1);
             ModifyLoyalty(1);
             currentLeader.GetComponentInParent<SphereOfInfluence>().ModifyCharisma(-1);
@@ -642,6 +649,23 @@ public class FollowerManager : MonoBehaviour
     {
         currentCharisma += change;
         currentCharisma = Mathf.Clamp(currentCharisma, minCharisma, maxCharisma);
+
+        if (currentLeader != null && currentLeader.tag == "Player")
+        {
+            // Draw a number from 1 to 5. If follower charisma >= player charisma minus this number, become traitor.
+            int reqCharismaForBetrayal = player.GetComponentInParent<SphereOfInfluence>().currentCharisma - Random.Range(1, 6);
+            Debug.Log("Betrayal charisma: " + reqCharismaForBetrayal);
+            // If charisma is close to leader charisma, become traitor.
+            if (currentCharisma >= reqCharismaForBetrayal)
+            {
+                float betrayalRNG = Random.Range(0.0f, 1.0f);
+                Debug.Log("Betrayal RNG = " + betrayalRNG);
+                if (betrayalRNG <= chanceToBetray)
+                {
+                    BecomeTraitor();
+                }
+            }
+        }
 
         /*
         // If follower charisma is higher than leader charisma, the follower becomes a new leader.
@@ -742,8 +766,10 @@ public class FollowerManager : MonoBehaviour
         Debug.Log("Become leader " + name);
     }
 
+    /*
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, sphereCurrentRadius);
     }
+    */
 }
