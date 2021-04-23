@@ -20,6 +20,7 @@ public class FollowerManager : MonoBehaviour
     public bool isTraitor;
     public bool isAttackTarget;
     public bool isConversionTarget;
+    public List<GameObject> activeFollowers = new List<GameObject>();
 
     [Header("Charisma")]
     public int minCharisma;
@@ -34,6 +35,7 @@ public class FollowerManager : MonoBehaviour
     public int startingLoyalty = 5;
     public int currentLoyalty;
     private int maxLoyalty = 999;
+    public TextMeshProUGUI loyaltyText;
 
     [Header("Violence")]
     public int startingViolence = 5;
@@ -75,6 +77,7 @@ public class FollowerManager : MonoBehaviour
     public Material skinMaterial;
     public Material clickableMaterial;
     public Material traitorMaterial;
+    public Material traitorFollowerMaterial;
     public Material followPlayerMaterial;
     public Material followOtherMaterial;
     public Material attackMaterial;
@@ -164,8 +167,7 @@ public class FollowerManager : MonoBehaviour
                 */
 
                 // If this is one of the player's followers, attack a taker follower, and vice versa.
-                if ((currentLeader != null && agentFollower.currentLeader != null && currentLeader.tag != agentFollower.currentLeader.tag && agentFollower.currentState == State.Attack)
-                    //|| (agentFollower.isTraitor == true && agentFollower.currentLeader == currentLeader && agentFollower.gameObject != this.gameObject)
+                if ((currentLeader != null && agentFollower.currentLeader != null && currentLeader.tag != agentFollower.currentLeader.tag && agentFollower.currentState == State.Attack && isTraitor == false)
                     || (agentFollower.isAttackTarget == true && agentFollower.gameObject != this.gameObject && currentLeader != null && currentLeader.tag == "Player")
                     || (agentFollower.isConversionTarget == true && agentFollower.gameObject != this.gameObject && currentLeader != null && currentLeader.tag == "Player"))
                 {
@@ -178,15 +180,31 @@ public class FollowerManager : MonoBehaviour
             {
                 SetAttackTarget(agent.transform);
             }
+
+            // If the traitor has more followers than the player, attack the player.
+            if (isTraitor == true && currentLeader != null && activeFollowers.Count > currentLeader.GetComponentInParent<SphereOfInfluence>().activeFollowers.Count * 0.5)
+            {
+                foreach (GameObject follower in activeFollowers)
+                {
+                    if (follower != null)
+                    {
+                        follower.GetComponentInParent<FollowerManager>().SetAttackTarget(player.transform);
+                    }
+                }
+            }
         }
     }
 
     void Update()
     {
-        // DEBUG: Show charisma text in game.
+        // DEBUG: Show charisma and loyalty texts in game.
         charismaText.text = currentCharisma.ToString();
         charismaText.transform.LookAt(mainCamera.transform);
         charismaText.transform.rotation = Quaternion.LookRotation(mainCamera.transform.forward);
+        loyaltyText.text = currentLoyalty.ToString();
+        loyaltyText.transform.LookAt(mainCamera.transform);
+        loyaltyText.transform.rotation = Quaternion.LookRotation(mainCamera.transform.forward);
+
         if (overrideTarget == true)
         {
             currentState = State.OverrideFollow;
@@ -381,8 +399,7 @@ public class FollowerManager : MonoBehaviour
     // Acquire a new target to follow.
     public void SetFollowLeader(Transform newTarget)
     {
-        //Debug.Log(name + ": Set target " + newTarget.name);
-        if (currentLeader == null || newTarget.GetComponentInParent<SphereOfInfluence>() != null && newTarget.GetComponentInParent<SphereOfInfluence>().currentCharisma > currentLeader.GetComponentInParent<SphereOfInfluence>().currentCharisma)
+        if (currentLeader == null || (newTarget.GetComponentInParent<SphereOfInfluence>() != null && newTarget.GetComponentInParent<SphereOfInfluence>().currentCharisma > currentLeader.GetComponentInParent<SphereOfInfluence>().currentCharisma))
         {
             Debug.Log(name + ": Set target " + newTarget.name);
             newTarget.GetComponentInParent<SphereOfInfluence>().GainFollower(this.gameObject);
@@ -393,7 +410,6 @@ public class FollowerManager : MonoBehaviour
                 ChangeMaterial(skin, skinMaterial);
                 currentState = State.FollowPlayer;
             }
-            //else if (newTarget.tag == "Taker")
             else
             {
                 ChangeMaterial(clothes, followOtherMaterial);
@@ -414,6 +430,7 @@ public class FollowerManager : MonoBehaviour
         else
         {
             Debug.Log("Follow traitor");
+            ChangeMaterial(clothes, traitorFollowerMaterial);
             currentLeader = newTarget;
         }
     }
@@ -450,6 +467,7 @@ public class FollowerManager : MonoBehaviour
         // Move position a step towards to the target.
         transform.rotation = Quaternion.LookRotation(newDirection);
 
+        // Stop attacking when running out of eligible targets.
         if (enemyTarget.tag == "Follower" && (enemyTarget == null || enemyTarget.GetComponentInParent<FollowerManager>().currentLeader == currentLeader))
         {
             Debug.Log(name + ": Target eliminated.");
@@ -511,7 +529,7 @@ public class FollowerManager : MonoBehaviour
         }
     }
 
-    public void InitiateBetrayal()
+    public void BecomeTraitor()
     {
         if (currentLeader != null && currentLeader.tag == "Player")
         {
@@ -567,10 +585,14 @@ public class FollowerManager : MonoBehaviour
         {
             ModifyCharisma(2);
             ModifyViolence(1);
-            currentLeader.GetComponentInParent<SphereOfInfluence>().ModifyCharisma(1);
-            currentLeader.GetComponentInParent<SphereOfInfluence>().currentViolence += 1;
+            if (currentLeader.GetComponentInParent<SphereOfInfluence>() != null)
+            {
+                currentLeader.GetComponentInParent<SphereOfInfluence>().ModifyCharisma(1);
+                currentLeader.GetComponentInParent<SphereOfInfluence>().currentViolence += 1;
+            }
         }
     }
+
     public void Convert(FollowerManager enemy, int damage)
     {
         enemy.ModifyLoyalty(-damage);
@@ -596,11 +618,18 @@ public class FollowerManager : MonoBehaviour
         if (target.currentLoyalty <= 0)
         {
             Debug.Log(target.name + " follow " + transform.name + " before.");
+            //target.ChangeMaterial(clothes, traitorFollowerMaterial);
             target.SetFollowLeader(this.transform);
             Debug.Log(target.name + " follow " + transform.name + " after.");
             ModifyCharisma(1);
             ModifyLoyalty(1);
             currentLeader.GetComponentInParent<SphereOfInfluence>().ModifyCharisma(-1);
+
+            // Add follower to list of followers.
+            if (activeFollowers.Contains(target.gameObject) == false)
+            {
+                activeFollowers.Add(target.gameObject);
+            }
         }
     }
 
@@ -614,11 +643,13 @@ public class FollowerManager : MonoBehaviour
         currentCharisma += change;
         currentCharisma = Mathf.Clamp(currentCharisma, minCharisma, maxCharisma);
 
+        /*
         // If follower charisma is higher than leader charisma, the follower becomes a new leader.
         if (currentLeader != null && currentLeader.GetComponentInParent<SphereOfInfluence>() != null && currentCharisma > currentLeader.GetComponentInParent<SphereOfInfluence>().currentCharisma)
         {
             BecomeLeader();
         }
+        */
     }
 
     public void ModifyLoyalty(int change)
@@ -682,7 +713,7 @@ public class FollowerManager : MonoBehaviour
     public void Die()
     {
         Debug.Log(this.name + "register death");
-        if (currentLeader != null)
+        if (currentLeader != null && currentLeader.GetComponentInParent<SphereOfInfluence>() != null)
         {
             currentLeader.GetComponentInParent<SphereOfInfluence>().RemoveDeadFollower(this.gameObject);
         }
