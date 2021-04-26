@@ -12,8 +12,6 @@ public class FollowerManager : MonoBehaviour
     //public string[] charClass = { "Citizen", "Soldier", "Intelligentsia" };
     //public GameObject takerPrefab;
     public GameObject takerPrefab;
-    private float sphereInitialRadius = 10f;
-    private float sphereCurrentRadius;
     public GameObject player;
     private Camera mainCamera;
     private SpawnEntitiesAtRandom spawnEntitiesScript;
@@ -88,6 +86,8 @@ public class FollowerManager : MonoBehaviour
     public Renderer[] clothes;
 
     [Header("OverlapSphere Parameters")]
+    private float sphereInitialRadius = 10f;
+    private float sphereCurrentRadius;
     private Collider agentCollider;
     //public Collider AgentCollider { get { return agentCollider; } }
     [SerializeField] private float distanceToClosest;
