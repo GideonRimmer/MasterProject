@@ -653,7 +653,7 @@ public class FollowerManager : MonoBehaviour
         if (currentLeader != null && currentLeader.tag == "Player")
         {
             // Draw a number from 1 to 5. If follower charisma >= player charisma minus this number, become traitor.
-            int reqCharismaForBetrayal = player.GetComponentInParent<SphereOfInfluence>().currentCharisma - Random.Range(1, 6);
+            int reqCharismaForBetrayal = player.GetComponentInParent<SphereOfInfluence>().currentCharisma - Random.Range(0, 3);
             Debug.Log("Betrayal charisma: " + reqCharismaForBetrayal);
             // If charisma is close to leader charisma, become traitor.
             if (currentCharisma >= reqCharismaForBetrayal)
