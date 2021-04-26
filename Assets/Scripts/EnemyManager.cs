@@ -13,9 +13,6 @@ public class EnemyManager : MonoBehaviour
     [Header("Movement Parameters")]
     public float moveSpeed;
     public float rotateSpeed;
-    public float minDistanceToTarget;
-    //public float maxDistanceToTarget;
-    //[SerializeField] private float currentDistanceToTarget;
     public int attackDamage = 1;
     public float attackStateSpeed;
     public float attackTimer = 1.0f;
@@ -30,7 +27,7 @@ public class EnemyManager : MonoBehaviour
     {
         Idle,
         Attack,
-        Return,
+        ReturnToPosition,
     }
 
     [Header("Materials")]
@@ -43,6 +40,7 @@ public class EnemyManager : MonoBehaviour
     public Renderer[] clothes;
 
     [Header("OverlapSphere Parameters")]
+    public float sphereRadius = 10f;
     private Collider agentCollider;
     [SerializeField] Collider[] agentsInSphere;
 
@@ -51,7 +49,7 @@ public class EnemyManager : MonoBehaviour
         rigidbody = GetComponent<Rigidbody>();
         startingPosition = transform.position;
         currentState = State.Idle;
-        attackStateSpeed = moveSpeed + 4;
+        attackStateSpeed = moveSpeed + 2;
 
         // Find the player.
         player = GameObject.FindGameObjectWithTag("Player");
@@ -63,16 +61,57 @@ public class EnemyManager : MonoBehaviour
         ChangeMaterial(skin, skinMaterial);
     }
 
+    // Use FixedUpdate for OverlapSphere.
+    private void FixedUpdate()
+    {
+        LayerMask layerMask = LayerMask.GetMask("Characters");
+        agentsInSphere = Physics.OverlapSphere(transform.position, sphereRadius, layerMask);
+
+        // Get all of the agents in the sphere in each FixedUpdate.
+        foreach (Collider agent in agentsInSphere)
+        {
+            // Select a new attack targt if: Not already attacking AND agent is a player, player's follower, leaderless follower, or innocent.
+            if (currentState != State.Attack && (
+                agent.tag == "Player" ||
+                agent.tag == "Follower" && (agent.GetComponentInParent<FollowerManager>().currentLeader.tag == "Player" || agent.GetComponentInParent<FollowerManager>().currentLeader.tag == null ||
+                agent.tag == "Innocent")))
+            {
+                SetAttackTarget(agent.transform);
+            }
+        }
+    }
+
     void Update()
     {
+        // State machine.
+        switch (currentState)
+        {
+            default:
+            case State.Idle:
+                animator.SetBool("isWalking", false);
+                break;
 
+            case State.Attack:
+                if (enemyTarget != null)
+                {
+                    FollowAndAttackTarget();
+                    animator.SetBool("isWalking", true);
+                    animator.speed = 2;
+                }
+                break;
+
+            case State.ReturnToPosition:
+                animator.SetBool("isWalking", true);
+                animator.speed = 1;
+                MoveToPosition(startingPosition);
+                break;
+        }
+
+        if (GetComponent<HitPointsManager>().currentHitPoints <= 0)
+        {
+            Die();
+        }
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        
-    }
-
 
     private void FollowAndAttackTarget()
     {
@@ -90,32 +129,20 @@ public class EnemyManager : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(newDirection);
 
         // Stop attacking when running out of eligible targets.
-        if (enemyTarget.tag == "Follower" && (enemyTarget == null || enemyTarget.GetComponentInParent<FollowerManager>().currentLeader == currentLeader))
+        if (enemyTarget == null || currentDistanceToTarget >= maxDistanceToTarget)
         {
-            //Debug.Log(name + ": Target eliminated.");
-            SetAttackTarget(null);
+            enemyTarget = null;
             ChangeMaterial(skin, skinMaterial);
-            if (currentLeader != null && currentLeader.tag == "Player")
-            {
-                currentState = State.FollowPlayer;
-            }
-            else if (currentLeader != null && currentLeader.tag != "Player")
-            {
-                currentState = State.FollowOther;
-            }
-            else
-            {
-                currentState = State.Idle;
-            }
+            currentState = State.ReturnToPosition;
         }
     }
 
     public void SetAttackTarget(Transform newEnemy)
     {
+        ChangeMaterial(skin, attackMaterial);
         currentState = State.Attack;
         enemyTarget = newEnemy;
-        //Debug.Log(this.name + " attacks " + enemyTarget.name);
-        ChangeMaterial(skin, attackMaterial);
+        Debug.Log(this.name + " attacks " + enemyTarget.name);
     }
 
     private void OnCollisionStay(Collision collision)
@@ -155,6 +182,28 @@ public class EnemyManager : MonoBehaviour
             renderer.materials = mats;
         }
     }
+
+    private void MoveToPosition(Vector3 targetPosition)
+    {
+        Vector3 direction = (targetPosition - rigidbody.transform.position).normalized;
+        rigidbody.MovePosition(rigidbody.transform.position + direction * moveSpeed * Time.fixedDeltaTime);
+
+        // Auto rotate towards the target.
+        Vector3 targetDirection = targetPosition - transform.position;
+
+        Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, rotateSpeed * Time.deltaTime, 0.0f);
+        //Debug.DrawRay(transform.position, newDirection, Color.red);
+
+        // Move position a step towards to the target.
+        transform.rotation = Quaternion.LookRotation(newDirection);
+
+        float distanceToPosition = Vector3.Distance(transform.position, targetPosition);
+        if (distanceToPosition <= 1)
+        {
+            currentState = State.Idle;
+        }
+    }
+
     public void Die()
     {
         Debug.Log(this.name + "register death");
@@ -162,4 +211,8 @@ public class EnemyManager : MonoBehaviour
         Destroy(this.gameObject);
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, sphereRadius);
+    }
 }
