@@ -15,6 +15,7 @@ public class FollowerManager : MonoBehaviour
     public GameObject player;
     private Camera mainCamera;
     private SpawnEntitiesAtRandom spawnEntitiesScript;
+    public bool canBeTraitor;
     public bool isTraitor;
     public bool isAttackTarget;
     public bool isConversionTarget;
@@ -176,8 +177,8 @@ public class FollowerManager : MonoBehaviour
                 }
             }
 
-            // Also attack any Innocents in range (MUWAHAHAHA).
-            else if (currentLeader != null && currentLeader.tag == "Player" && agent.tag == "Innocent")
+            // If this is one of the player's followers, also attack any Innocents in range (MUWAHAHAHA), and enemies.
+            else if (currentLeader != null && currentLeader.tag == "Player" && (agent.tag == "Innocent" || agent.tag == "Enemy"))
             {
                 SetAttackTarget(agent.transform);
             }
@@ -650,7 +651,7 @@ public class FollowerManager : MonoBehaviour
         currentCharisma += change;
         currentCharisma = Mathf.Clamp(currentCharisma, minCharisma, maxCharisma);
 
-        if (currentLeader != null && currentLeader.tag == "Player")
+        if (currentLeader != null && currentLeader.tag == "Player" && canBeTraitor == true)
         {
             // Draw a number from 1 to 5. If follower charisma >= player charisma minus this number, become traitor.
             int reqCharismaForBetrayal = player.GetComponentInParent<SphereOfInfluence>().currentCharisma - Random.Range(0, 3);
