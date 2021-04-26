@@ -70,11 +70,12 @@ public class EnemyManager : MonoBehaviour
         // Get all of the agents in the sphere in each FixedUpdate.
         foreach (Collider agent in agentsInSphere)
         {
+            FollowerManager agentFollower = agent.GetComponentInParent<FollowerManager>();
             // Select a new attack targt if: Not already attacking AND agent is a player, player's follower, leaderless follower, or innocent.
-            if (currentState != State.Attack && (
-                agent.tag == "Player" ||
-                agent.tag == "Follower" && (agent.GetComponentInParent<FollowerManager>().currentLeader.tag == "Player" || agent.GetComponentInParent<FollowerManager>().currentLeader.tag == null ||
-                agent.tag == "Innocent")))
+            if (currentState != State.Attack &&
+               (agent.tag == "Player" ||
+               agent.tag == "Innocent" ||
+               (agent.tag == "Follower" && (agentFollower.currentLeader == null || (agentFollower.currentLeader != null && agentFollower.currentLeader.tag == "Player")))))
             {
                 SetAttackTarget(agent.transform);
             }
@@ -128,6 +129,10 @@ public class EnemyManager : MonoBehaviour
         // Move position a step towards to the target.
         transform.rotation = Quaternion.LookRotation(newDirection);
 
+        if (enemyTarget.GetComponentInParent<HitPointsManager>().currentHitPoints <= 0)
+        {
+            enemyTarget = null;
+        }
         // Stop attacking when running out of eligible targets.
         if (enemyTarget == null || currentDistanceToTarget >= maxDistanceToTarget)
         {
@@ -148,12 +153,11 @@ public class EnemyManager : MonoBehaviour
     private void OnCollisionStay(Collision collision)
     {
         // On collision, inflict damage on the enemy target, only if colliding with the enemy target.
-        if (enemyTarget != null && collision.gameObject.name == enemyTarget.name)
+        if (currentState == State.Attack && enemyTarget != null && collision.gameObject.name == enemyTarget.name)
         {
             // Damage the target every X seconds (attackTimer), then start a cooldown.
             attackCurrentTime -= Time.deltaTime;
 
-            //if (attackCurrentTime <= 0 && (enemyTarget.tag == "Player" || (enemyTarget.tag == "Follower" && (enemyTarget.GetComponentInParent<FollowerManager>().currentLeader.tag == "Player" || enemyTarget.GetComponentInParent<FollowerManager>().currentLeader.tag == null))))
             if (attackCurrentTime <= 0)
             {
                 Attack(collision.gameObject.GetComponent<HitPointsManager>(), attackDamage);
