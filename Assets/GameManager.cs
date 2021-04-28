@@ -18,5 +18,16 @@ public class GameManager : MonoBehaviour
         {
             Application.Quit();
         }
+
+        // Go to the next level by pressing L.
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            LoadNextLevel(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+    }
+
+    public void LoadNextLevel(int levelNumber)
+    {
+        SceneManager.LoadScene(levelNumber);
     }
 }
