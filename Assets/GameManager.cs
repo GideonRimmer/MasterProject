@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
         // Restart by pressing R.
         if (Input.GetKeyDown(KeyCode.R))
         {
-            SceneManager.LoadScene("TestLevel_01");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
         // Quit the game by pressing ESC.
