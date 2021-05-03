@@ -250,7 +250,7 @@ GameObject:
   - component: {fileID: 630415508843765116}
   - component: {fileID: 7130756076244104290}
   m_Layer: 0
-  m_Name: EnemyBody_01
+  m_Name: Body_Enemy_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -280,12 +280,12 @@ Rigidbody:
   m_GameObject: {fileID: 4765656884443028516}
   serializedVersion: 2
   m_Mass: 80
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Drag: 0.5
+  m_AngularDrag: 0.5
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!136 &7130756076244104290
 CapsuleCollider:
@@ -294,7 +294,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4765656884443028516}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 6dd64c0673403284c8d8366dbb2b4299, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 1.1686075
