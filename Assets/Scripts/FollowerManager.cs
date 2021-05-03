@@ -35,7 +35,7 @@ public class FollowerManager : MonoBehaviour
     public int currentLoyalty;
     private int maxLoyalty = 999;
     public TextMeshProUGUI loyaltyText;
-    public float chanceToBetray = 0.1f;
+    public float chanceToBetray = 0.3f;
 
     [Header("Violence")]
     public int startingViolence = 5;
