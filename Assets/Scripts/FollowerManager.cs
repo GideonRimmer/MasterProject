@@ -169,10 +169,13 @@ public class FollowerManager : MonoBehaviour
                 */
 
                 // If this is one of the player's followers, attack a taker follower, and vice versa.
+                // Also attack if this is a player follower, not a traitor, and agent is set as attack target.
                 if ((currentLeader != null && agentFollower.currentLeader != null && currentLeader.tag != agentFollower.currentLeader.tag && agentFollower.currentState == State.Attack && isTraitor == false)
-                    || (agentFollower.isAttackTarget == true && agentFollower.gameObject != this.gameObject && currentLeader != null && currentLeader.tag == "Player")
-                    || (agentFollower.isConversionTarget == true && agentFollower.gameObject != this.gameObject && currentLeader != null && currentLeader.tag == "Player"))
+                    || (agentFollower.gameObject != this.gameObject && currentLeader != null && currentLeader.tag == "Player" && (agentFollower.isAttackTarget == true || agentFollower.enemyTarget == this.gameObject.transform))
+                    || (agentFollower.isConversionTarget == true && agentFollower.gameObject != this.gameObject && currentLeader != null && currentLeader.tag == "Player")
+                    || (currentLeader != null && agentFollower.enemyTarget != null && agentFollower.enemyTarget == currentLeader))
                 {
+                    Debug.Log(this.name  + " Preset target " + agent);
                     SetAttackTarget(agent.transform);
                 }
             }
@@ -211,6 +214,7 @@ public class FollowerManager : MonoBehaviour
         {
             currentState = State.OverrideFollow;
         }
+
         // Align popup menu to camera.
         popupMenu.transform.LookAt(mainCamera.transform);
         popupMenu.transform.rotation = Quaternion.LookRotation(mainCamera.transform.forward);
@@ -470,9 +474,10 @@ public class FollowerManager : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(newDirection);
 
         // Stop attacking when running out of eligible targets.
-        if (enemyTarget.tag == "Follower" && (enemyTarget == null || enemyTarget.GetComponentInParent<FollowerManager>().currentLeader == currentLeader))
-        {
-            //Debug.Log(name + ": Target eliminated.");
+        if (enemyTarget.tag == "Follower" && enemyTarget == null)
+        //if (enemyTarget.tag == "Follower" && (enemyTarget == null || enemyTarget.GetComponentInParent<FollowerManager>().currentLeader == currentLeader))
+            {
+            Debug.Log(name + ": Target eliminated.");
             SetAttackTarget(null);
             ChangeMaterial(skin, skinMaterial);
             if (currentLeader != null && currentLeader.tag == "Player")
@@ -511,7 +516,7 @@ public class FollowerManager : MonoBehaviour
     {
         currentState = State.Attack;
         enemyTarget = newEnemy;
-        //Debug.Log(this.name + " attacks " + enemyTarget.name);
+        Debug.Log(this.name + " attacks " + enemyTarget.name);
         ChangeMaterial(skin, attackMaterial);
     }
 
@@ -521,6 +526,7 @@ public class FollowerManager : MonoBehaviour
         isAttackTarget = true;
         isConversionTarget = false;
     }
+
     public void SetThisAsConversionTarget()
     {
         if (currentLeader == null || currentLeader.tag != "Player")
@@ -552,7 +558,8 @@ public class FollowerManager : MonoBehaviour
             {
                 if (enemyTarget.tag != "Follower"
                     || (enemyTarget.tag == "Follower" && enemyFollower.currentLeader != currentLeader && enemyFollower.isConversionTarget == false)
-                    || (enemyTarget.tag == "Follower" && enemyFollower.currentLeader == currentLeader && enemyFollower.isTraitor == true))
+                    || (enemyTarget.tag == "Follower" && enemyFollower.currentLeader == currentLeader && enemyFollower.isAttackTarget == true)
+                    || (enemyTarget.tag == "Follower" && enemyFollower.enemyTarget == this.transform))
                 {
                     Attack(collision.gameObject.GetComponent<HitPointsManager>(), attackDamage);
                     attackCurrentTime = attackTimer;
@@ -588,6 +595,10 @@ public class FollowerManager : MonoBehaviour
         {
             ModifyCharisma(2);
             ModifyViolence(1);
+
+            // Heal one HP through the RegisterHit function.
+            GetComponentInParent<HitPointsManager>().RegisterHit(-1);
+
             if (currentLeader.GetComponentInParent<SphereOfInfluence>() != null)
             {
                 currentLeader.GetComponentInParent<SphereOfInfluence>().ModifyCharisma(1);
