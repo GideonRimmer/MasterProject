@@ -81,6 +81,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_Bulky Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 5726929388738624374, guid: f824e7ff14e01c642bf82be20e874a9b,
+        type: 3}
+      propertyPath: autoCollectFollowers
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f824e7ff14e01c642bf82be20e874a9b, type: 3}
 --- !u!114 &974853547234276885 stripped

@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     private HitPointsManager hitPointsManager;
     private PlayParticleEffect playParticleEffect;
 
+    public bool autoCollectFollowers;
+
     void Start()
     {
         isIdle = true;

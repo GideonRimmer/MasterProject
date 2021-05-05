@@ -123,10 +123,12 @@ public class SphereOfInfluence : MonoBehaviour
 
     void ConvinceInRadius(float radius)
     {
+        /*
         if (currentEnergy >= 1)
         {
             currentEnergy -= 1;
         }
+        */
 
         LayerMask layerMask = LayerMask.GetMask("Characters");
         Collider[] agentsInSphere = Physics.OverlapSphere(transform.position, radius, layerMask);
