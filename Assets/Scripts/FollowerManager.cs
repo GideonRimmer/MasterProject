@@ -29,6 +29,7 @@ public class FollowerManager : MonoBehaviour
     public int startingCharisma;
     public int currentCharisma;
     public int betrayalCharismaRange;
+    public int playerGainCharFromKill;
     public TextMeshProUGUI charismaText;
 
     [Header("Loyalty")]
@@ -42,6 +43,7 @@ public class FollowerManager : MonoBehaviour
     public int startingViolence = 5;
     public int currentViolence;
     private int maxViolence = 999;
+    [SerializeField] private int killCount = 0;
 
     [Header("State Machine")]
     public State currentState;
@@ -177,7 +179,7 @@ public class FollowerManager : MonoBehaviour
                     || (agentFollower.isConversionTarget == true && agentFollower.gameObject != this.gameObject && currentLeader != null && currentLeader.tag == "Player")
                     || (currentLeader != null && agentFollower.enemyTarget != null && agentFollower.enemyTarget == currentLeader)))
                 {
-                    //Debug.Log(this.name  + " Preset target " + agent);
+                    Debug.Log(this.name  + " attack follower " + agent);
                     SetAttackTarget(agent.transform);
                 }
             }
@@ -185,6 +187,7 @@ public class FollowerManager : MonoBehaviour
             // If this is one of the player's followers, also attack any Innocents in range (MUWAHAHAHA), and enemies.
             else if (currentState != State.Attack && currentLeader != null && currentLeader.tag == "Player" && (agent.tag == "Innocent" || agent.tag == "Enemy"))
             {
+                Debug.Log(this.name  + " attack innocent or enemy " + agent);
                 SetAttackTarget(agent.transform);
             }
 
@@ -195,6 +198,7 @@ public class FollowerManager : MonoBehaviour
                 {
                     if (follower != null)
                     {
+                        Debug.Log(this.name  + " attack player " + agent);
                         follower.GetComponentInParent<FollowerManager>().SetAttackTarget(player.transform);
                     }
                 }
@@ -323,6 +327,7 @@ public class FollowerManager : MonoBehaviour
 
             if (currentState == State.FollowOther && currentCharisma > playerSphere.currentCharisma)
             {
+                Debug.Log(this.name + " attack " + other.transform.gameObject.name);
                 SetAttackTarget(other.transform.parent.gameObject.transform);
             }
         }
@@ -331,17 +336,17 @@ public class FollowerManager : MonoBehaviour
         // OR if following another entity AND Taker charisma is higher than current leader's charisma, start following the new taker.
         if (overrideTarget == false && (other.gameObject.tag == "Taker" || (other.gameObject.tag == "Player" && other.GetComponentInParent<PlayerController>().autoCollectFollowers == true)))
         {
-            SphereOfInfluence takerSphere = other.gameObject.GetComponentInParent<SphereOfInfluence>();
-            if ((currentState == State.Idle && takerSphere.currentCharisma > currentCharisma) || ((currentState == State.FollowOther || currentState == State.FollowPlayer) && takerSphere.currentCharisma > currentLeader.GetComponentInParent<SphereOfInfluence>().currentCharisma))
+            SphereOfInfluence otherSphere = other.gameObject.GetComponentInParent<SphereOfInfluence>();
+            if ((currentState == State.Idle && otherSphere.currentCharisma > currentCharisma) || ((currentState == State.FollowOther || currentState == State.FollowPlayer) && otherSphere.currentCharisma > currentLeader.GetComponentInParent<SphereOfInfluence>().currentCharisma))
             {
                 SetFollowLeader(other.transform);
             }
 
-            // If is already following a leader AND walks into Taker sphere AND new taker charisma < this.currentCharisma -> Attack thr taker.
+            // If is already following a leader AND walks into Taker sphere AND new taker charisma < this.currentCharisma -> Attack the taker.
             //if ((currentState == State.FollowPlayer || currentState == State.FollowOther) && takerSphere.currentCharisma < currentCharisma)
-            if (currentState == State.FollowPlayer && takerSphere.currentCharisma < currentCharisma)
-                {
-                //Debug.Log(this.name + " attack " + other.transform.gameObject.name);
+            if (currentState == State.FollowPlayer && other.tag == "Taker" && otherSphere.currentCharisma < currentCharisma)
+            {
+                Debug.Log(this.name + " attack " + other.transform.gameObject.name);
                 SetAttackTarget(other.transform.parent.gameObject.transform);
             }
         }
@@ -595,15 +600,16 @@ public class FollowerManager : MonoBehaviour
         // After destroying the target, gain charisma. Follower and leader gain Violence.
         if (enemyTarget.GetComponent<HitPointsManager>().currentHitPoints <= 0)
         {
+            killCount += 1;
             ModifyCharisma(5);
             ModifyViolence(2);
 
             // Heal one HP through the RegisterHit function.
-            GetComponentInParent<HitPointsManager>().RegisterHit(-1);
+            GetComponentInParent<HitPointsManager>().RegisterHit(-2);
 
             if (currentLeader.GetComponentInParent<SphereOfInfluence>() != null)
             {
-                currentLeader.GetComponentInParent<SphereOfInfluence>().ModifyCharisma(1);
+                currentLeader.GetComponentInParent<SphereOfInfluence>().ModifyCharisma(playerGainCharFromKill);
                 currentLeader.GetComponentInParent<SphereOfInfluence>().currentViolence += 1;
             }
         }
@@ -644,7 +650,8 @@ public class FollowerManager : MonoBehaviour
             //Debug.Log(target.name + " follow " + transform.name + " after.");
             ModifyCharisma(1);
             ModifyLoyalty(1);
-            currentLeader.GetComponentInParent<SphereOfInfluence>().ModifyCharisma(-1);
+            currentLeader.GetComponentInParent<SphereOfInfluence>().LoseFollower(target.gameObject);
+            //currentLeader.GetComponentInParent<SphereOfInfluence>().ModifyCharisma(-1);
 
             // Add follower to list of followers.
             if (activeFollowers.Contains(target.gameObject) == false)
