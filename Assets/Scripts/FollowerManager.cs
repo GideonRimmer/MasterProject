@@ -182,7 +182,7 @@ public class FollowerManager : MonoBehaviour
             }
 
             // If this is one of the player's followers, also attack any Innocents in range (MUWAHAHAHA), and enemies.
-            else if (currentLeader != null && currentLeader.tag == "Player" && (agent.tag == "Innocent" || agent.tag == "Enemy"))
+            else if (currentState != State.Attack && currentLeader != null && currentLeader.tag == "Player" && (agent.tag == "Innocent" || agent.tag == "Enemy"))
             {
                 SetAttackTarget(agent.transform);
             }
@@ -328,7 +328,7 @@ public class FollowerManager : MonoBehaviour
 
         // If is in Taker range AND is idle AND Taker charisma is higher than currentCharisma,
         // OR if following another entity AND Taker charisma is higher than current leader's charisma, start following the new taker.
-        if (other.gameObject.tag == "Taker" &&  overrideTarget == false)
+        if (overrideTarget == false && (other.gameObject.tag == "Taker" || (other.gameObject.tag == "Player" && other.GetComponentInParent<PlayerController>().autoCollectFollowers == true)))
         {
             SphereOfInfluence takerSphere = other.gameObject.GetComponentInParent<SphereOfInfluence>();
             if ((currentState == State.Idle && takerSphere.currentCharisma > currentCharisma) || ((currentState == State.FollowOther || currentState == State.FollowPlayer) && takerSphere.currentCharisma > currentLeader.GetComponentInParent<SphereOfInfluence>().currentCharisma))
