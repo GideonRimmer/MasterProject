@@ -28,6 +28,7 @@ public class FollowerManager : MonoBehaviour
     public int maxStartingCharisma;
     public int startingCharisma;
     public int currentCharisma;
+    public int betrayalCharismaRange;
     public TextMeshProUGUI charismaText;
 
     [Header("Loyalty")]
@@ -594,8 +595,8 @@ public class FollowerManager : MonoBehaviour
         // After destroying the target, gain charisma. Follower and leader gain Violence.
         if (enemyTarget.GetComponent<HitPointsManager>().currentHitPoints <= 0)
         {
-            ModifyCharisma(2);
-            ModifyViolence(1);
+            ModifyCharisma(5);
+            ModifyViolence(2);
 
             // Heal one HP through the RegisterHit function.
             GetComponentInParent<HitPointsManager>().RegisterHit(-1);
@@ -666,7 +667,7 @@ public class FollowerManager : MonoBehaviour
         if (currentLeader != null && currentLeader.tag == "Player" && canBeTraitor == true)
         {
             // Draw a number from 1 to 5. If follower charisma >= player charisma minus this number, become traitor.
-            int reqCharismaForBetrayal = player.GetComponentInParent<SphereOfInfluence>().currentCharisma - Random.Range(0, 3);
+            int reqCharismaForBetrayal = player.GetComponentInParent<SphereOfInfluence>().currentCharisma - Random.Range(0, betrayalCharismaRange);
             Debug.Log("Betrayal charisma: " + reqCharismaForBetrayal);
             // If charisma is close to leader charisma, become traitor.
             if (currentCharisma >= reqCharismaForBetrayal)

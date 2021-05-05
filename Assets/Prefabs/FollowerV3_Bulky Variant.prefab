@@ -111,10 +111,45 @@ PrefabInstance:
       propertyPath: traitorFollowerMaterial
       value: 
       objectReference: {fileID: 2100000, guid: 8a0c2a1880d9d484e83dd819b280fe60, type: 2}
+    - target: {fileID: 1605260892821789234, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
+        type: 3}
+      propertyPath: betrayalCharismaRange
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1605260892821789235, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
         type: 3}
       propertyPath: m_Name
       value: FollowerV3_Bulky Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190217644561407963, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.4528302
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190217644561407963, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.087575644
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190217644561407963, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.087575644
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190217644561407963, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4279637619
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190217644561407963, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
+        type: 3}
+      propertyPath: m_enableExtraPadding
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190217644561407963, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
+        type: 3}
+      propertyPath: checkPaddingRequired
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3560064234469952118, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
         type: 3}
@@ -135,6 +170,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -4.465
+      objectReference: {fileID: 0}
+    - target: {fileID: 3812817355897990789, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.4528302
+      objectReference: {fileID: 0}
+    - target: {fileID: 3812817355897990789, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.087575644
+      objectReference: {fileID: 0}
+    - target: {fileID: 3812817355897990789, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.087575644
+      objectReference: {fileID: 0}
+    - target: {fileID: 3812817355897990789, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4279637619
+      objectReference: {fileID: 0}
+    - target: {fileID: 3812817355897990789, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
+        type: 3}
+      propertyPath: m_enableExtraPadding
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3812817355897990789, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
+        type: 3}
+      propertyPath: checkPaddingRequired
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4530958080121297527, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
         type: 3}
@@ -196,6 +261,96 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6398773187723483719, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.4528302
+      objectReference: {fileID: 0}
+    - target: {fileID: 6398773187723483719, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.087575644
+      objectReference: {fileID: 0}
+    - target: {fileID: 6398773187723483719, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.087575644
+      objectReference: {fileID: 0}
+    - target: {fileID: 6398773187723483719, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4279637619
+      objectReference: {fileID: 0}
+    - target: {fileID: 6398773187723483719, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
+        type: 3}
+      propertyPath: m_enableExtraPadding
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6398773187723483719, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
+        type: 3}
+      propertyPath: checkPaddingRequired
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6758191192701639692, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.4528302
+      objectReference: {fileID: 0}
+    - target: {fileID: 6758191192701639692, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.087575644
+      objectReference: {fileID: 0}
+    - target: {fileID: 6758191192701639692, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.087575644
+      objectReference: {fileID: 0}
+    - target: {fileID: 6758191192701639692, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4279637619
+      objectReference: {fileID: 0}
+    - target: {fileID: 6758191192701639692, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
+        type: 3}
+      propertyPath: m_enableExtraPadding
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6758191192701639692, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
+        type: 3}
+      propertyPath: checkPaddingRequired
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7520211026532066191, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.4528302
+      objectReference: {fileID: 0}
+    - target: {fileID: 7520211026532066191, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.087575644
+      objectReference: {fileID: 0}
+    - target: {fileID: 7520211026532066191, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.087575644
+      objectReference: {fileID: 0}
+    - target: {fileID: 7520211026532066191, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4279637619
+      objectReference: {fileID: 0}
+    - target: {fileID: 7520211026532066191, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
+        type: 3}
+      propertyPath: m_enableExtraPadding
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7520211026532066191, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
+        type: 3}
+      propertyPath: checkPaddingRequired
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7520211027291628952, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
         type: 3}
       propertyPath: m_IsActive
@@ -209,6 +364,36 @@ PrefabInstance:
     - target: {fileID: 8279654173430982972, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
         type: 3}
       propertyPath: m_ChildForceExpandWidth
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8473451649932663095, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.4528302
+      objectReference: {fileID: 0}
+    - target: {fileID: 8473451649932663095, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.087575644
+      objectReference: {fileID: 0}
+    - target: {fileID: 8473451649932663095, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.087575644
+      objectReference: {fileID: 0}
+    - target: {fileID: 8473451649932663095, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4279637619
+      objectReference: {fileID: 0}
+    - target: {fileID: 8473451649932663095, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
+        type: 3}
+      propertyPath: m_enableExtraPadding
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8473451649932663095, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
+        type: 3}
+      propertyPath: checkPaddingRequired
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8978855291247846464, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
