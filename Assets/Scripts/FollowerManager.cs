@@ -170,12 +170,13 @@ public class FollowerManager : MonoBehaviour
 
                 // If this is one of the player's followers, attack a taker follower, and vice versa.
                 // Also attack if this is a player follower, not a traitor, and agent is set as attack target.
-                if ((currentLeader != null && agentFollower.currentLeader != null && currentLeader.tag != agentFollower.currentLeader.tag && agentFollower.currentState == State.Attack && isTraitor == false)
+                if (currentState != State.Attack &&
+                    ((currentLeader != null && agentFollower.currentLeader != null && currentLeader.tag != agentFollower.currentLeader.tag && agentFollower.currentState == State.Attack && isTraitor == false)
                     || (agentFollower.gameObject != this.gameObject && currentLeader != null && currentLeader.tag == "Player" && (agentFollower.isAttackTarget == true || agentFollower.enemyTarget == this.gameObject.transform))
                     || (agentFollower.isConversionTarget == true && agentFollower.gameObject != this.gameObject && currentLeader != null && currentLeader.tag == "Player")
-                    || (currentLeader != null && agentFollower.enemyTarget != null && agentFollower.enemyTarget == currentLeader))
+                    || (currentLeader != null && agentFollower.enemyTarget != null && agentFollower.enemyTarget == currentLeader)))
                 {
-                    Debug.Log(this.name  + " Preset target " + agent);
+                    //Debug.Log(this.name  + " Preset target " + agent);
                     SetAttackTarget(agent.transform);
                 }
             }
@@ -516,7 +517,7 @@ public class FollowerManager : MonoBehaviour
     {
         currentState = State.Attack;
         enemyTarget = newEnemy;
-        Debug.Log(this.name + " attacks " + enemyTarget.name);
+        //Debug.Log(this.name + " attacks " + enemyTarget.name);
         ChangeMaterial(skin, attackMaterial);
     }
 

@@ -90,7 +90,7 @@ PrefabInstance:
     - target: {fileID: 1605260892821789234, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
         type: 3}
       propertyPath: chanceToBetray
-      value: 0.1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1605260892821789234, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
         type: 3}
@@ -161,6 +161,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7520211027291628952, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e, type: 3}
