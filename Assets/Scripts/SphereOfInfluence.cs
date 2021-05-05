@@ -58,6 +58,7 @@ public class SphereOfInfluence : MonoBehaviour
             ConvinceInRadius(sphereCurrentRadius);
         }
 
+        /*
         // Regenerate energy at a fixed rate.
         if (currentEnergy < maxEnergy)
         {
@@ -68,6 +69,7 @@ public class SphereOfInfluence : MonoBehaviour
                 energyRegenCurrentTime = energyRegenMaxTime;
             }
         }
+        */
     }
 
     public void ModifyCharisma(int change)
