@@ -1296,7 +1296,7 @@ PrefabInstance:
     - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
       propertyPath: canBeTraitor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1540554726716817149, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
@@ -2179,7 +2179,7 @@ PrefabInstance:
     - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
       propertyPath: canBeTraitor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1540554726716817149, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
@@ -2559,7 +2559,7 @@ PrefabInstance:
     - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
       propertyPath: canBeTraitor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
@@ -3295,7 +3295,7 @@ PrefabInstance:
     - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
       propertyPath: canBeTraitor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1540554726716817149, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
@@ -3580,7 +3580,7 @@ PrefabInstance:
     - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
       propertyPath: canBeTraitor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1540554726716817149, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
@@ -4150,7 +4150,7 @@ PrefabInstance:
     - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
       propertyPath: canBeTraitor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1540554726716817149, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
@@ -4465,7 +4465,7 @@ PrefabInstance:
     - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
       propertyPath: canBeTraitor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1540554726716817149, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
@@ -5420,7 +5420,7 @@ PrefabInstance:
     - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
       propertyPath: canBeTraitor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1540554726716817149, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
@@ -5890,7 +5890,7 @@ PrefabInstance:
     - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
       propertyPath: canBeTraitor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1540554726716817149, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
@@ -6395,7 +6395,7 @@ PrefabInstance:
     - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
       propertyPath: canBeTraitor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1540554726716817149, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
@@ -6680,7 +6680,7 @@ PrefabInstance:
     - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
       propertyPath: canBeTraitor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1540554726716817149, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
@@ -8024,7 +8024,7 @@ PrefabInstance:
     - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
       propertyPath: canBeTraitor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1540554726716817149, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
@@ -9322,7 +9322,7 @@ PrefabInstance:
     - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
       propertyPath: canBeTraitor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1540554726716817149, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
@@ -9607,7 +9607,7 @@ PrefabInstance:
     - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
       propertyPath: canBeTraitor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1540554726716817149, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
@@ -9981,7 +9981,7 @@ PrefabInstance:
     - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
       propertyPath: canBeTraitor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1540554726716817149, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
@@ -11696,7 +11696,7 @@ PrefabInstance:
     - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
       propertyPath: canBeTraitor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1540554726716817149, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
@@ -12707,7 +12707,7 @@ PrefabInstance:
     - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
       propertyPath: canBeTraitor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1540554726716817149, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
@@ -12992,7 +12992,7 @@ PrefabInstance:
     - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
       propertyPath: canBeTraitor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1540554726716817149, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
@@ -13277,7 +13277,7 @@ PrefabInstance:
     - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
       propertyPath: canBeTraitor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1540554726716817149, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
@@ -14137,7 +14137,7 @@ PrefabInstance:
     - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
       propertyPath: canBeTraitor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1540554726716817149, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
@@ -14646,7 +14646,7 @@ PrefabInstance:
     - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
       propertyPath: canBeTraitor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1540554726716817149, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
@@ -15551,7 +15551,7 @@ PrefabInstance:
     - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
       propertyPath: canBeTraitor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1540554726716817149, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
@@ -15866,7 +15866,7 @@ PrefabInstance:
     - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
       propertyPath: canBeTraitor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1540554726716817149, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
@@ -16261,7 +16261,7 @@ PrefabInstance:
     - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
       propertyPath: canBeTraitor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1540554726716817149, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
@@ -16807,7 +16807,7 @@ PrefabInstance:
     - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
       propertyPath: canBeTraitor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1540554726716817149, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
@@ -17331,7 +17331,7 @@ PrefabInstance:
     - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
       propertyPath: canBeTraitor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1540554726716817149, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
@@ -17946,7 +17946,7 @@ PrefabInstance:
     - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
       propertyPath: canBeTraitor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1540554726716817149, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
@@ -18231,7 +18231,7 @@ PrefabInstance:
     - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
       propertyPath: canBeTraitor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1540554726716817149, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
@@ -19042,7 +19042,7 @@ PrefabInstance:
     - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
       propertyPath: canBeTraitor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1540554726716817149, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
@@ -19437,7 +19437,7 @@ PrefabInstance:
     - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
       propertyPath: canBeTraitor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1540554726716817149, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
@@ -19802,7 +19802,7 @@ PrefabInstance:
     - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
       propertyPath: canBeTraitor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1540554726716817149, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
@@ -20087,7 +20087,7 @@ PrefabInstance:
     - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
       propertyPath: canBeTraitor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1540554726716817149, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
@@ -21464,7 +21464,7 @@ PrefabInstance:
     - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
       propertyPath: canBeTraitor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1540554726716817149, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
@@ -21969,7 +21969,7 @@ PrefabInstance:
     - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
       propertyPath: canBeTraitor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1540554726716817149, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
@@ -23003,7 +23003,7 @@ PrefabInstance:
     - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
       propertyPath: canBeTraitor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1540554726716817149, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
@@ -23288,7 +23288,7 @@ PrefabInstance:
     - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
       propertyPath: canBeTraitor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1540554726716817149, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
@@ -24146,7 +24146,7 @@ PrefabInstance:
     - target: {fileID: 1370094711190933243, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
       propertyPath: canBeTraitor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1540554726716817149, guid: a703df21e33c6e547b8e09cc3593c784,
         type: 3}
