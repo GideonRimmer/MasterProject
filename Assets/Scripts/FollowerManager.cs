@@ -79,6 +79,7 @@ public class FollowerManager : MonoBehaviour
     public Material idleMaterial;
     public Material skinMaterial;
     public Material clickableMaterial;
+    public Material highCharismaMaterial;
     public Material traitorMaterial;
     public Material traitorFollowerMaterial;
     public Material followPlayerMaterial;
@@ -278,7 +279,7 @@ public class FollowerManager : MonoBehaviour
                 }
                 else if (enemyTarget == null && currentLeader.CompareTag("Player"))
                 {
-                    ChangeMaterial(clothes, followPlayerMaterial);
+                    //ChangeMaterial(clothes, followPlayerMaterial);
                     ChangeMaterial(skin, skinMaterial);
                     currentState = State.FollowPlayer;
                 }
@@ -549,7 +550,7 @@ public class FollowerManager : MonoBehaviour
         if (currentLeader != null && currentLeader.CompareTag("Player"))
         {
             isTraitor = true;
-            ChangeMaterial(clothes, traitorMaterial);
+            //ChangeMaterial(clothes, traitorMaterial);
         }
     }
 
@@ -580,7 +581,7 @@ public class FollowerManager : MonoBehaviour
                 }
             }
         }
-        else if (enemyTarget == null && isTraitor == true && collision.gameObject.CompareTag("Follower") && currentLeader == collision.gameObject.GetComponentInParent<FollowerManager>().currentLeader)
+        else if (enemyTarget == null && isTraitor == true && collision.gameObject.CompareTag("Follower") && currentLeader == collision.gameObject.GetComponentInParent<FollowerManager>().currentLeader && collision.gameObject.GetComponentInParent<FollowerManager>().isTraitor == false)
         {
             attackCurrentTime -= Time.deltaTime;
             if (attackCurrentTime <= 0 && collision.gameObject.GetComponentInParent<FollowerManager>().currentLoyalty > 0)
@@ -671,19 +672,28 @@ public class FollowerManager : MonoBehaviour
         currentCharisma += change;
         currentCharisma = Mathf.Clamp(currentCharisma, minCharisma, maxCharisma);
 
-        if (currentLeader != null && currentLeader.CompareTag("Player") && canBeTraitor == true && killCount >= 1)
+        if (currentLeader != null && currentLeader.CompareTag("Player") && killCount >= 1)
         {
-            // Draw a number from 1 to 5. If follower charisma >= player charisma minus this number, become traitor.
-            int reqCharismaForBetrayal = player.GetComponentInParent<SphereOfInfluence>().currentCharisma - Random.Range(0, betrayalCharismaRange);
-            Debug.Log("Betrayal charisma: " + reqCharismaForBetrayal);
-            // If charisma is close to leader charisma, become traitor.
-            if (currentLeader.tag != "Follower" && currentCharisma >= reqCharismaForBetrayal)
+            if (currentCharisma >= player.GetComponentInParent<SphereOfInfluence>().currentCharisma - betrayalCharismaRange)
             {
-                float betrayalRNG = Random.Range(0.0f, 1.0f);
-                Debug.Log("Betrayal RNG = " + betrayalRNG);
-                if (betrayalRNG <= chanceToBetray)
+                Debug.Log(this.name + " Potential traitor");
+                ChangeMaterial(clothes, highCharismaMaterial);
+            }
+
+            if (canBeTraitor == true)
+            {
+                // Draw a number from 1 to 5. If follower charisma >= player charisma minus this number, become traitor.
+                int reqCharismaForBetrayal = player.GetComponentInParent<SphereOfInfluence>().currentCharisma - Random.Range(0, betrayalCharismaRange);
+                Debug.Log("Betrayal charisma: " + reqCharismaForBetrayal);
+                // If charisma is close to leader charisma, become traitor.
+                if (currentLeader.tag != "Follower" && currentCharisma >= reqCharismaForBetrayal)
                 {
-                    BecomeTraitor();
+                    float betrayalRNG = Random.Range(0.0f, 1.0f);
+                    Debug.Log("Betrayal RNG = " + betrayalRNG);
+                    if (betrayalRNG <= chanceToBetray)
+                    {
+                        BecomeTraitor();
+                    }
                 }
             }
         }
