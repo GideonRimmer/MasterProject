@@ -93,6 +93,7 @@ public class FollowerManager : MonoBehaviour
     [Header("OverlapSphere Parameters")]
     private float sphereInitialRadius = 10f;
     private float sphereCurrentRadius;
+    private float sphereMaxRadius = 20f;
     private Collider agentCollider;
     //public Collider AgentCollider { get { return agentCollider; } }
     [SerializeField] private float distanceToClosest;
@@ -143,7 +144,7 @@ public class FollowerManager : MonoBehaviour
     private void FixedUpdate()
     {
         LayerMask layerMask = LayerMask.GetMask("Characters");
-        sphereCurrentRadius = sphereInitialRadius + currentCharisma;
+        sphereCurrentRadius = Mathf.Min(sphereInitialRadius + currentCharisma, sphereMaxRadius);
         agentsInSphere = Physics.OverlapSphere(transform.position, sphereCurrentRadius, layerMask);
 
         // Get all of the agents in the sphere in each FixedUpdate.
@@ -181,6 +182,16 @@ public class FollowerManager : MonoBehaviour
                 {
                     Debug.Log(this.name  + " attack follower " + agent);
                     SetAttackTarget(agent.transform);
+                }
+                // If this is a traitor with higher charisma that other traitors, convert them and their followers to follow this.
+                else if (isTraitor == true && agentFollower.isTraitor == true && currentCharisma > agentFollower.currentCharisma)
+                {
+                    agentFollower.isTraitor = false;
+                    foreach (FollowerManager traitorFollower in agentFollower.activeFollowers)
+                    {
+                        ConvertToFollowSelf(traitorFollower, 100);
+                    }
+                    ConvertToFollowSelf(agentFollower, 100);
                 }
             }
 
@@ -569,13 +580,14 @@ public class FollowerManager : MonoBehaviour
                     || (enemyFollower.currentLeader == currentLeader && enemyFollower.isAttackTarget == true)
                     || enemyFollower.enemyTarget == this.transform)))
                 {
-                    Attack(collision.gameObject.GetComponent<HitPointsManager>(), attackDamage);
+                    // Damage the target on collision. Damage = Base damage + killCount.
+                    Attack(collision.gameObject.GetComponent<HitPointsManager>(), attackDamage + killCount);
                     attackCurrentTime = attackTimer;
                     //Debug.Log("Attack damage " + attackDamage);
                 }
                 else if (enemyTarget.CompareTag("Follower") && enemyFollower.isConversionTarget == true)
                 {
-                    Convert(collision.gameObject.GetComponentInParent<FollowerManager>(), convertDamage);
+                    Convert(collision.gameObject.GetComponentInParent<FollowerManager>(), convertDamage + killCount);
                     attackCurrentTime = attackTimer;
                     //Debug.Log("Convert damage " + convertDamage);
                 }
@@ -605,8 +617,8 @@ public class FollowerManager : MonoBehaviour
             ModifyCharisma(5);
             ModifyViolence(2);
 
-            // Heal one HP through the RegisterHit function.
-            GetComponentInParent<HitPointsManager>().RegisterHit(-2);
+            // Heal HP through the RegisterHit function.
+            GetComponentInParent<HitPointsManager>().RegisterHit(-(killCount + 1));
 
             if (currentLeader.GetComponentInParent<SphereOfInfluence>() != null)
             {
@@ -651,7 +663,15 @@ public class FollowerManager : MonoBehaviour
             //Debug.Log(target.name + " follow " + transform.name + " after.");
             ModifyCharisma(1);
             ModifyLoyalty(1);
-            currentLeader.GetComponentInParent<SphereOfInfluence>().LoseFollower(target.gameObject);
+
+            if (currentLeader.GetComponentInParent<SphereOfInfluence>() != null)
+            {
+                currentLeader.GetComponentInParent<SphereOfInfluence>().LoseFollower(target.gameObject);
+            }
+            else if (currentLeader.GetComponentInParent<FollowerManager>() != null)
+            {
+                currentLeader.GetComponentInParent<FollowerManager>().RemoveFollower(target);
+            }
             //currentLeader.GetComponentInParent<SphereOfInfluence>().ModifyCharisma(-1);
 
             // Add follower to list of followers.
@@ -765,13 +785,27 @@ public class FollowerManager : MonoBehaviour
     }
     */
 
+    private void RemoveFollower(FollowerManager activeFollower)
+    {
+        activeFollowers.RemoveAt(activeFollowers.IndexOf(activeFollower));
+        ModifyCharisma(-1);
+    }
+
     public void Die()
     {
         Debug.Log(this.name + "register death");
-        if (currentLeader != null && currentLeader.GetComponentInParent<SphereOfInfluence>() != null)
+        if (currentLeader != null)
         {
-            currentLeader.GetComponentInParent<SphereOfInfluence>().RemoveDeadFollower(this.gameObject);
+            if (currentLeader.GetComponentInParent<SphereOfInfluence>() != null)
+            {
+                currentLeader.GetComponentInParent<SphereOfInfluence>().RemoveDeadFollower(this.gameObject);
+            }
+            else if (currentLeader.GetComponentInParent<FollowerManager>() != null)
+            {
+                currentLeader.GetComponentInParent<FollowerManager>().RemoveFollower(this);
+            }
         }
+
 
         GetComponent<HitPointsManager>().PlayParticleSystem();
         Destroy(this.gameObject);
