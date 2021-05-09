@@ -173,9 +173,30 @@ public class FollowerManager : MonoBehaviour
                 }
                 */
 
+                /*
+                // NEW ATTACK CONDITIONS, NEED TO TEST!
+                if (currentState != State.Attack && currentLeader != null && agentFollower.gameObject != this.gameObject &&
+                    // If this is a Player follower and agentFollower isAttackTarget.
+                    ((currentLeader.CompareTag("Player") && agentFollower.isAttackTarget == true) ||
+                    // If this is a Player follower and agentFollower isConversionTarget, regardless of agentFollower.currentLeader.
+                    (currentLeader.CompareTag("Player") && agentFollower.isConversionTarget == true) ||
+                    // Attack any follower attcking this entity.
+                    (agentFollower.enemyTarget != null && agentFollower.enemyTarget == this.gameObject) ||
+                    // Attack any follower attacking this entity's leader.
+                    (agentFollower.enemyTarget != null && agentFollower.enemyTarget == currentLeader) ||
+                    // If this is a player follower, attack Taker followers.
+                    (currentLeader.CompareTag("Player") && agentFollower.currentLeader != null && agentFollower.currentLeader.CompareTag("Taker")) ||
+                    // If this is a Taker follower, attack player followers.
+                    (currentLeader.CompareTag("Taker") && agentFollower.currentLeader != null && agentFollower.currentLeader.CompareTag("Player"))))
+                {
+                    SetAttackTarget(agent.transform);
+                }
+                */
+
+                // ATTACK CONDITIONS:
                 // If this is one of the player's followers, attack a taker follower, and vice versa.
                 // Also attack if this is a player follower, not a traitor, and agent is set as attack target.
-                if (currentState != State.Attack && ((currentLeader != null && agentFollower.currentLeader != null && currentLeader.tag != agentFollower.currentLeader.tag && agentFollower.currentState == State.Attack && isTraitor == false)
+                if (currentState != State.Attack && ((currentLeader != null && agentFollower.currentLeader != null && agentFollower.currentLeader.CompareTag("Taker") && agentFollower.currentState == State.Attack && isTraitor == false)
                     || (agentFollower.gameObject != this.gameObject && currentLeader != null && currentLeader.CompareTag("Player") && (agentFollower.isAttackTarget == true || agentFollower.enemyTarget == this.gameObject.transform))
                     || (agentFollower.isConversionTarget == true && agentFollower.gameObject != this.gameObject && currentLeader != null && currentLeader.CompareTag("Player"))
                     || (currentLeader != null && agentFollower.enemyTarget != null && agentFollower.enemyTarget == currentLeader)))
@@ -561,7 +582,7 @@ public class FollowerManager : MonoBehaviour
         if (currentLeader != null && currentLeader.CompareTag("Player"))
         {
             isTraitor = true;
-            //ChangeMaterial(clothes, traitorMaterial);
+            ChangeMaterial(clothes, traitorMaterial);
         }
     }
 
