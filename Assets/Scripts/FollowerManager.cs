@@ -17,6 +17,7 @@ public class FollowerManager : MonoBehaviour
     private SpawnEntitiesAtRandom spawnEntitiesScript;
     public bool canBeTraitor;
     public bool isTraitor;
+    public bool startBetrayal;
     public bool isAttackTarget;
     public bool isConversionTarget;
     public List<FollowerManager> activeFollowers = new List<FollowerManager>();
@@ -111,6 +112,7 @@ public class FollowerManager : MonoBehaviour
         isClickable = false;
         overrideTarget = false;
         isTraitor = false;
+        startBetrayal = false;
         isAttackTarget = false;
         isConversionTarget = false;
         attackStateSpeed = moveSpeed + 4;
@@ -173,27 +175,30 @@ public class FollowerManager : MonoBehaviour
                 }
                 */
 
-                /*
                 // NEW ATTACK CONDITIONS, NEED TO TEST!
                 if (currentState != State.Attack && currentLeader != null && agentFollower.gameObject != this.gameObject &&
-                    // If this is a Player follower and agentFollower isAttackTarget.
-                    ((currentLeader.CompareTag("Player") && agentFollower.isAttackTarget == true) ||
-                    // If this is a Player follower and agentFollower isConversionTarget, regardless of agentFollower.currentLeader.
-                    (currentLeader.CompareTag("Player") && agentFollower.isConversionTarget == true) ||
-                    // Attack any follower attcking this entity.
-                    (agentFollower.enemyTarget != null && agentFollower.enemyTarget == this.gameObject) ||
-                    // Attack any follower attacking this entity's leader.
-                    (agentFollower.enemyTarget != null && agentFollower.enemyTarget == currentLeader) ||
+                    // If this is a Player follower AND the agent is set as isAttackTarget.
+                    ((currentLeader.CompareTag("Player") && agentFollower.isAttackTarget == true && startBetrayal == false) ||
+                    // If this is a Player follower AND agent is not a player follower AND agent is set as isConversionTarget.
+                    (currentLeader.CompareTag("Player") && agentFollower.currentLeader != null && agentFollower.currentLeader.tag != "Player" && agentFollower.isConversionTarget == true) ||
                     // If this is a player follower, attack Taker followers.
                     (currentLeader.CompareTag("Player") && agentFollower.currentLeader != null && agentFollower.currentLeader.CompareTag("Taker")) ||
+                    // If this is a traitor that has more followers than the player, attack the player.
+                    (isTraitor == true && startBetrayal == true && agentFollower.currentLeader != null && agentFollower.currentLeader.CompareTag("Player")) ||
+
+                    // Attack any follower attacking this entity.
+                    (agentFollower.enemyTarget != null && agentFollower.enemyTarget == this.gameObject) ||
+                    // Attack any follower attacking this entity's leader, UNLESS this entity is a traitor.
+                    (agentFollower.enemyTarget != null && agentFollower.enemyTarget == currentLeader && startBetrayal == false) ||
+
                     // If this is a Taker follower, attack player followers.
                     (currentLeader.CompareTag("Taker") && agentFollower.currentLeader != null && agentFollower.currentLeader.CompareTag("Player"))))
                 {
                     SetAttackTarget(agent.transform);
                 }
-                */
-
-                // ATTACK CONDITIONS:
+                
+                /*
+                // ATTACK CONDITIONS (OLD):
                 // If this is one of the player's followers, attack a taker follower, and vice versa.
                 // Also attack if this is a player follower, not a traitor, and agent is set as attack target.
                 if (currentState != State.Attack && ((currentLeader != null && agentFollower.currentLeader != null && agentFollower.currentLeader.CompareTag("Taker") && agentFollower.currentState == State.Attack && isTraitor == false)
@@ -204,6 +209,8 @@ public class FollowerManager : MonoBehaviour
                     Debug.Log(this.name  + " attack follower " + agent);
                     SetAttackTarget(agent.transform);
                 }
+                */
+
                 // If this is a traitor with higher charisma that other traitors, convert them and their followers to follow this.
                 else if (isTraitor == true && agentFollower.isTraitor == true && currentCharisma > agentFollower.currentCharisma)
                 {
@@ -224,8 +231,16 @@ public class FollowerManager : MonoBehaviour
             }
 
             // If the traitor has more followers than the player, attack the player.
-            if (isTraitor == true && currentLeader != null && activeFollowers.Count > currentLeader.GetComponentInParent<SphereOfInfluence>().activeFollowers.Count * 0.5)
+            if (isTraitor == true && currentLeader != null && activeFollowers.Count >= currentLeader.GetComponentInParent<SphereOfInfluence>().activeFollowers.Count * 0.5)
             {
+                startBetrayal = true;
+                // If betrayal has started and there are no other eligible targets, traitor attacks the player.
+                if (currentState != State.Attack)
+                {
+                    SetAttackTarget(player.transform);
+                }
+
+                // All traitor followers attack the player.
                 foreach (FollowerManager follower in activeFollowers)
                     {
                     if (follower != null && follower.currentState != State.Attack)
@@ -309,7 +324,7 @@ public class FollowerManager : MonoBehaviour
                     ChangeMaterial(skin, skinMaterial);
                     currentState = State.Idle;
                 }
-                else if (enemyTarget == null && currentLeader.CompareTag("Player"))
+                else if (enemyTarget == null && (currentLeader.CompareTag("Player") || currentLeader.CompareTag("Follower")))
                 {
                     //ChangeMaterial(clothes, followPlayerMaterial);
                     ChangeMaterial(skin, skinMaterial);
@@ -368,20 +383,21 @@ public class FollowerManager : MonoBehaviour
         // OR if following another entity AND Taker charisma is higher than current leader's charisma, start following the new taker.
         if (overrideTarget == false && (other.gameObject.CompareTag("Taker") || (other.gameObject.CompareTag("Player") && other.GetComponentInParent<PlayerController>().autoCollectFollowers == true)))
         {
-            SphereOfInfluence otherSphere = other.gameObject.GetComponentInParent<SphereOfInfluence>();
-            if (otherSphere != null &&
-               ((currentState == State.Idle && otherSphere.currentCharisma > currentCharisma)
-               || ((currentState == State.FollowOther || currentState == State.FollowPlayer) && otherSphere.currentCharisma > currentLeader.GetComponentInParent<SphereOfInfluence>().currentCharisma)))
+            if (other.gameObject.GetComponentInParent<SphereOfInfluence>() != null)
             {
-                SetFollowLeader(other.transform);
-            }
+                SphereOfInfluence otherSphere = other.gameObject.GetComponentInParent<SphereOfInfluence>();
+                if ((currentState == State.Idle && currentLeader == null && otherSphere.currentCharisma > currentCharisma)
+                   || currentLeader.GetComponentInParent<SphereOfInfluence>() != null && otherSphere.currentCharisma > currentLeader.GetComponentInParent<SphereOfInfluence>().currentCharisma && (currentState == State.FollowOther || (currentState == State.FollowPlayer && currentLeader.CompareTag("Player"))))
+                {
+                    SetFollowLeader(other.transform.parent.gameObject.transform);
+                }
 
-            // If is already following a leader AND walks into Taker sphere AND new taker charisma < this.currentCharisma -> Attack the taker.
-            //if ((currentState == State.FollowPlayer || currentState == State.FollowOther) && takerSphere.currentCharisma < currentCharisma)
-            if (currentState == State.FollowPlayer && other.CompareTag("Taker") && otherSphere.currentCharisma < currentCharisma)
-            {
-                Debug.Log(this.name + " attack " + other.transform.gameObject.name);
-                SetAttackTarget(other.transform.parent.gameObject.transform);
+                // If is already following a leader AND walks into Taker sphere AND new taker charisma < this.currentCharisma -> Attack the taker.
+                if (currentState == State.FollowPlayer && other.CompareTag("Taker") && otherSphere.currentCharisma < currentCharisma)
+                {
+                    Debug.Log(this.name + " attack " + other.transform.gameObject.name);
+                    SetAttackTarget(other.transform.parent.gameObject.transform);
+                }
             }
         }
     }
@@ -447,7 +463,7 @@ public class FollowerManager : MonoBehaviour
     {
         if (currentLeader == null || (newTarget.GetComponentInParent<SphereOfInfluence>() != null && newTarget.GetComponentInParent<SphereOfInfluence>().currentCharisma > currentLeader.GetComponentInParent<SphereOfInfluence>().currentCharisma))
         {
-            Debug.Log(name + ": Set target " + newTarget.name);
+            Debug.Log(name + ": Set follow target " + newTarget.name);
             newTarget.GetComponentInParent<SphereOfInfluence>().GainFollower(this.gameObject);
 
             if (newTarget.CompareTag("Player"))
@@ -582,14 +598,14 @@ public class FollowerManager : MonoBehaviour
         if (currentLeader != null && currentLeader.CompareTag("Player"))
         {
             isTraitor = true;
-            ChangeMaterial(clothes, traitorMaterial);
+            //ChangeMaterial(clothes, traitorMaterial);
         }
     }
 
     private void OnCollisionStay (Collision collision)
     {
         // On collision, inflict damage on the enemy target, only if colliding with the enemy target.
-        if (enemyTarget != null && collision.gameObject.name == enemyTarget.name)
+        if (enemyTarget != null && collision.gameObject.name == enemyTarget.name && currentState == State.Attack)
         {
             FollowerManager enemyFollower = enemyTarget.GetComponentInParent<FollowerManager>();
             // Damage the target every X seconds (attackTimer), then start a cooldown.
@@ -599,6 +615,8 @@ public class FollowerManager : MonoBehaviour
                 if (enemyTarget.tag != "Follower" || (enemyTarget.CompareTag("Follower")
                     && ((enemyFollower.currentLeader != currentLeader && enemyFollower.isConversionTarget == false)
                     || (enemyFollower.currentLeader == currentLeader && enemyFollower.isAttackTarget == true)
+                    || (enemyFollower.currentLeader == currentLeader && enemyFollower.isTraitor && enemyFollower.currentState == State.Attack)
+                    || (enemyFollower.currentLeader == currentLeader && isTraitor == true)
                     || enemyFollower.enemyTarget == this.transform)))
                 {
                     // Damage the target on collision. Damage = Base damage + killCount.
