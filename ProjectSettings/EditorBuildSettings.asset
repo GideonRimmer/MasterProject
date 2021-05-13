@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/TestLevelNew_05.unity
     guid: 9e46da2485ba87c458f9bcec1c4975e5
   - enabled: 1
+    path: Assets/Scenes/TestLevelNew_05_Traitors.unity
+    guid: d99790e524c2c3d44a5b64b16fcca7ec
+  - enabled: 1
     path: Assets/Scenes/TestLevelNew_Rally.unity
     guid: 2540f68958ff7e74ba0d7bfa49179d6a
   m_configObjects: {}
