@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: hitPointsText
       value: 
       objectReference: {fileID: 974853547234276885}
+    - target: {fileID: 1728864791, guid: f824e7ff14e01c642bf82be20e874a9b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2590243251986466937, guid: f824e7ff14e01c642bf82be20e874a9b,
         type: 3}
       propertyPath: m_fontSize
