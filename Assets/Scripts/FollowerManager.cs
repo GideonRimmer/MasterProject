@@ -245,7 +245,7 @@ public class FollowerManager : MonoBehaviour
 
                 // All traitor followers attack the player.
                 foreach (FollowerManager follower in activeFollowers)
-                    {
+                {
                     if (follower != null && follower.currentState != State.Attack)
                     {
                         Debug.Log(this.name  + " attack player " + agent);
@@ -275,7 +275,6 @@ public class FollowerManager : MonoBehaviour
         col.transform.rotation = Quaternion.LookRotation(mainCamera.transform.forward);
         collisionText.transform.LookAt(mainCamera.transform);
         collisionText.transform.rotation = Quaternion.LookRotation(mainCamera.transform.forward);
-
 
         if (overrideTarget == true)
         {
@@ -634,6 +633,8 @@ public class FollowerManager : MonoBehaviour
         {
             collisionText.text = collision.gameObject.name.ToString();
             targetText.text = enemyTarget.name.ToString();
+            Debug.Log(this.name + " collision GO " + collision.gameObject.name);
+            Debug.Log(this.name + " enemyTarget " + enemyTarget.name);
 
             FollowerManager enemyFollower = enemyTarget.GetComponentInParent<FollowerManager>();
             // Damage the target every X seconds (attackTimer), then start a cooldown.
