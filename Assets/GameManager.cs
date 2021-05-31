@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public bool gameIsPaused = false;
+
     void Update()
     {
         // Restart by pressing R.
@@ -24,10 +26,37 @@ public class GameManager : MonoBehaviour
         {
             LoadNextLevel(SceneManager.GetActiveScene().buildIndex + 1);
         }
+
+        // Pause and unpause the game by pressing P.
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (gameIsPaused == false)
+            {
+                PauseGame();
+            }
+            else
+            {
+                ResumeGame();
+            }
+        }
     }
 
     public void LoadNextLevel(int levelNumber)
     {
         SceneManager.LoadScene(levelNumber);
+    }
+
+    private void PauseGame()
+    {
+        gameIsPaused = true;
+        Time.timeScale = 0;
+    }
+
+    private void ResumeGame()
+    {
+        gameIsPaused = false;
+        {
+            Time.timeScale = 1;
+        }
     }
 }
