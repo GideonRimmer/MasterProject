@@ -11,12 +11,19 @@ public class HitPointsManager : MonoBehaviour
     public int currentHitPoints;
     private PlayParticleEffect deathEffect;
     private Camera mainCamera;
+    public TextMeshProUGUI entityName;
 
     void Start()
     {
         currentHitPoints = maxHitPoints;
         deathEffect = GetComponent<PlayParticleEffect>();
         mainCamera = Camera.main;
+
+        // DEBUG: Show entity name.
+        if (entityName != null)
+        {
+            entityName.text = this.name.ToString();
+        }
     }
 
     private void Update()
@@ -28,9 +35,16 @@ public class HitPointsManager : MonoBehaviour
             hitPointsText.transform.LookAt(mainCamera.transform);
             hitPointsText.transform.rotation = Quaternion.LookRotation(mainCamera.transform.forward);
         }
+
+        // DEBUG: Show entity name.
+        if (entityName != null)
+        {
+            entityName.transform.LookAt(mainCamera.transform);
+            entityName.transform.rotation = Quaternion.LookRotation(mainCamera.transform.forward);
+        }
     }
 
-    public void RegisterHit(int damage)
+        public void RegisterHit(int damage)
     {
         currentHitPoints -= damage;
 
