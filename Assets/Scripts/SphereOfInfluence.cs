@@ -52,13 +52,13 @@ public class SphereOfInfluence : MonoBehaviour
         charismaText.transform.LookAt(mainCamera.transform);
         charismaText.transform.rotation = Quaternion.LookRotation(mainCamera.transform.forward);
 
+        /*
         // Manifest sphere when pressing a key.
         if (Input.GetKeyDown(KeyCode.P))
         {
             ConvinceInRadius(sphereCurrentRadius);
         }
 
-        /*
         // Regenerate energy at a fixed rate.
         if (currentEnergy < maxEnergy)
         {
