@@ -21,6 +21,10 @@ public class FollowerManager : MonoBehaviour
     public bool isAttackTarget;
     public bool isConversionTarget;
     public List<FollowerManager> activeFollowers = new List<FollowerManager>();
+    public TextMeshProUGUI tar;
+    public TextMeshProUGUI targetText;
+    public TextMeshProUGUI col;
+    public TextMeshProUGUI collisionText;
 
     [Header("Charisma")]
     public int minCharisma;
@@ -106,7 +110,6 @@ public class FollowerManager : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody>();
         spawnEntitiesScript = FindObjectOfType<SpawnEntitiesAtRandom>();
-        popupMenu.SetActive(true);
 
         currentState = State.Idle;
         isClickable = false;
@@ -262,6 +265,17 @@ public class FollowerManager : MonoBehaviour
         loyaltyText.text = currentLoyalty.ToString();
         loyaltyText.transform.LookAt(mainCamera.transform);
         loyaltyText.transform.rotation = Quaternion.LookRotation(mainCamera.transform.forward);
+
+        // DEBUG: Show colllision target and attack target in game.
+        tar.transform.LookAt(mainCamera.transform);
+        tar.transform.rotation = Quaternion.LookRotation(mainCamera.transform.forward);
+        targetText.transform.LookAt(mainCamera.transform);
+        targetText.transform.rotation = Quaternion.LookRotation(mainCamera.transform.forward);
+        col.transform.LookAt(mainCamera.transform);
+        col.transform.rotation = Quaternion.LookRotation(mainCamera.transform.forward);
+        collisionText.transform.LookAt(mainCamera.transform);
+        collisionText.transform.rotation = Quaternion.LookRotation(mainCamera.transform.forward);
+
 
         if (overrideTarget == true)
         {
@@ -604,14 +618,29 @@ public class FollowerManager : MonoBehaviour
 
     private void OnCollisionStay (Collision collision)
     {
-        // On collision, inflict damage on the enemy target, only if colliding with the enemy target.
-        if (enemyTarget != null && collision.gameObject.name == enemyTarget.name && currentState == State.Attack)
+        /*
+        if (currentState == State.Attack)
         {
+            Debug.Log(this.name + " State.Attack");
+        }
+        if (enemyTarget != null)
+        {
+            Debug.Log(this.name + " enemyTarget != null");
+        }
+        */
+
+        // On collision, inflict damage on the enemy target, only if colliding with the enemy target.
+        if (currentState == State.Attack && enemyTarget != null && collision.gameObject.name == enemyTarget.name)
+        {
+            collisionText.text = collision.gameObject.name.ToString();
+            targetText.text = enemyTarget.name.ToString();
+
             FollowerManager enemyFollower = enemyTarget.GetComponentInParent<FollowerManager>();
             // Damage the target every X seconds (attackTimer), then start a cooldown.
             attackCurrentTime -= Time.deltaTime;
             if (attackCurrentTime <= 0)
             {
+                /*
                 if (enemyTarget.tag != "Follower" || (enemyTarget.CompareTag("Follower")
                     && ((enemyFollower.currentLeader != currentLeader && enemyFollower.isConversionTarget == false)
                     || (enemyFollower.currentLeader == currentLeader && enemyFollower.isAttackTarget == true)
@@ -623,6 +652,29 @@ public class FollowerManager : MonoBehaviour
                     Attack(collision.gameObject.GetComponent<HitPointsManager>(), attackDamage + killCount);
                     attackCurrentTime = attackTimer;
                     //Debug.Log("Attack damage " + attackDamage);
+                }
+                */
+
+                if (enemyTarget.tag != "Follower")
+                {
+                    // Damage the target on collision. Damage = Base damage + killCount.
+                    Attack(collision.gameObject.GetComponent<HitPointsManager>(), attackDamage + killCount);
+                    attackCurrentTime = attackTimer;
+                    Debug.Log(this.name + " attacks " + enemyTarget + ", " + enemyTarget.name);
+
+                }
+                else if (enemyTarget.CompareTag("Follower")
+                    && ((enemyFollower.currentLeader != currentLeader && enemyFollower.isConversionTarget == false)
+                    || (enemyFollower.currentLeader == currentLeader && enemyFollower.isAttackTarget == true)
+                    || (enemyFollower.currentLeader == currentLeader && enemyFollower.isTraitor && enemyFollower.currentState == State.Attack)
+                    || (enemyFollower.currentLeader == currentLeader && isTraitor == true)
+                    || enemyFollower.enemyTarget == this.transform))
+                {
+                    // Damage the target on collision. Damage = Base damage + killCount.
+                    Attack(collision.gameObject.GetComponent<HitPointsManager>(), attackDamage + killCount);
+                    attackCurrentTime = attackTimer;
+                    //Debug.Log("Attack damage " + attackDamage);
+
                 }
                 else if (enemyTarget.CompareTag("Follower") && enemyFollower.isConversionTarget == true)
                 {
@@ -659,7 +711,7 @@ public class FollowerManager : MonoBehaviour
             // Heal HP through the RegisterHit function.
             GetComponentInParent<HitPointsManager>().RegisterHit(-(killCount + 1));
 
-            if (currentLeader.GetComponentInParent<SphereOfInfluence>() != null)
+            if (currentLeader != null && currentLeader.GetComponentInParent<SphereOfInfluence>() != null)
             {
                 currentLeader.GetComponentInParent<SphereOfInfluence>().ModifyCharisma(playerGainCharFromKill);
                 currentLeader.GetComponentInParent<SphereOfInfluence>().currentViolence += 1;
