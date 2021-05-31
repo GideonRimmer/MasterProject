@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4275912863333239909}
   - component: {fileID: 5175617618613114307}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: PopupMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 6974787263087424151}
   - component: {fileID: 3035271355805580058}
   - component: {fileID: 6063263431692821486}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: ButtonIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ GameObject:
   - component: {fileID: 3527715753408781066}
   - component: {fileID: 6880622281405136265}
   - component: {fileID: 1377979885705083525}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Loyalty Num
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -250,13 +250,13 @@ MonoBehaviour:
   m_margin: {x: 95.247894, y: 22.821405, z: 95.19655, w: 22.855188}
   m_textInfo:
     textComponent: {fileID: 1377979885705083525}
-    characterCount: 3
+    characterCount: 0
     spriteCount: 0
     spaceCount: 0
-    wordCount: 1
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -284,7 +284,7 @@ GameObject:
   - component: {fileID: 5031301738682565583}
   - component: {fileID: 9116275284042690379}
   - component: {fileID: 5745109310542966009}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ArmRight_Upper.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -364,7 +364,7 @@ GameObject:
   - component: {fileID: 2475077752527724340}
   - component: {fileID: 9069342202112632680}
   - component: {fileID: 298272699738167423}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: ButtonIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -438,7 +438,7 @@ GameObject:
   - component: {fileID: 340277970396943679}
   - component: {fileID: 5089737186477634248}
   - component: {fileID: 7758433529872961815}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -543,7 +543,7 @@ GameObject:
   - component: {fileID: 6256008205007560882}
   - component: {fileID: 8769315297839243470}
   - component: {fileID: 7737328998017715284}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: LegLeft.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -622,7 +622,7 @@ GameObject:
   - component: {fileID: 2180909098824188080}
   - component: {fileID: 8459557894060447562}
   - component: {fileID: 4540301360658277272}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -699,7 +699,7 @@ GameObject:
   - component: {fileID: 5285151041209718593}
   - component: {fileID: 8788827223412036460}
   - component: {fileID: 8003971426119827046}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Hit Points Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -820,13 +820,13 @@ MonoBehaviour:
   m_margin: {x: 95.247894, y: 22.821405, z: 95.19655, w: 22.855188}
   m_textInfo:
     textComponent: {fileID: 8003971426119827046}
-    characterCount: 3
+    characterCount: 0
     spriteCount: 0
     spaceCount: 0
-    wordCount: 1
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -854,13 +854,13 @@ GameObject:
   - component: {fileID: 1158142553930358492}
   - component: {fileID: 5921200185432518880}
   - component: {fileID: 7231768204797180468}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1158142553930358492
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1009,7 +1009,7 @@ GameObject:
   - component: {fileID: 3312401514044400679}
   - component: {fileID: 6752359402250235838}
   - component: {fileID: 2588462307029761159}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: LegRight.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1089,7 +1089,7 @@ GameObject:
   - component: {fileID: 3103769445913241171}
   - component: {fileID: 6911389159482587091}
   - component: {fileID: 3904831182611807214}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: ButtonSlot (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1218,7 +1218,7 @@ GameObject:
   - component: {fileID: 7273005037513254643}
   - component: {fileID: 7526736802781048661}
   - component: {fileID: 8385410781499911147}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: ButtonIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1291,7 +1291,7 @@ GameObject:
   - component: {fileID: 5228334680302480190}
   - component: {fileID: 4730888645670268483}
   - component: {fileID: 5989539110582423120}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1369,7 +1369,7 @@ GameObject:
   - component: {fileID: 4328626099423759987}
   - component: {fileID: 3881255961450683572}
   - component: {fileID: 2191619686917809942}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: ButtonSlot (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1498,7 +1498,7 @@ GameObject:
   - component: {fileID: 2080079152647511099}
   - component: {fileID: 6128200580097101315}
   - component: {fileID: 8236574097037417270}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: LoyaltyText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1619,13 +1619,13 @@ MonoBehaviour:
   m_margin: {x: 95.247894, y: 22.821405, z: 95.19655, w: 22.855188}
   m_textInfo:
     textComponent: {fileID: 8236574097037417270}
-    characterCount: 4
+    characterCount: 0
     spriteCount: 0
     spaceCount: 0
-    wordCount: 1
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -1653,7 +1653,7 @@ GameObject:
   - component: {fileID: 838727403521586056}
   - component: {fileID: 7212301426906165885}
   - component: {fileID: 7381264476346920409}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ArmRight_Lower.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1732,7 +1732,7 @@ GameObject:
   - component: {fileID: 5788462403388504767}
   - component: {fileID: 7107318249363986393}
   - component: {fileID: 6026888609021869707}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Head.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1812,7 +1812,7 @@ GameObject:
   - component: {fileID: 3271856056820002066}
   - component: {fileID: 6942568836122263294}
   - component: {fileID: 3101709617685138424}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ArmLeft_Lower.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1891,7 +1891,7 @@ GameObject:
   - component: {fileID: 6672246387687812086}
   - component: {fileID: 3293656270607660609}
   - component: {fileID: 7920698394525889321}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1968,7 +1968,7 @@ GameObject:
   - component: {fileID: 6918694632857026440}
   - component: {fileID: 3378672944722157446}
   - component: {fileID: 3100431554602577029}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ArmLeft_Upper.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2051,7 +2051,7 @@ GameObject:
   - component: {fileID: 7899432503107119515}
   - component: {fileID: 5875649842769511458}
   - component: {fileID: 2915483205914810147}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Enemy_V01
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -2160,6 +2160,9 @@ MonoBehaviour:
   enemyTarget: {fileID: 0}
   maxDistanceToTarget: 20
   currentDistanceToTarget: 0
+  viableTargets:
+    serializedVersion: 2
+    m_Bits: 5632
   currentState: 0
   idleMaterial: {fileID: 2100000, guid: a739387216b07c14ab91f31dc638ec9c, type: 2}
   skinMaterial: {fileID: 2100000, guid: ae779ead40d6afa46962cb2dc8aba285, type: 2}
@@ -2186,7 +2189,7 @@ GameObject:
   - component: {fileID: 3910538409809462892}
   - component: {fileID: 4394413361760437546}
   - component: {fileID: 6990384419006343805}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: ButtonIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2259,7 +2262,7 @@ GameObject:
   - component: {fileID: 1116337552875284871}
   - component: {fileID: 2643726962150814322}
   - component: {fileID: 4730684032720195314}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Charisma Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2380,13 +2383,13 @@ MonoBehaviour:
   m_margin: {x: 95.247894, y: 22.821405, z: 95.19655, w: 22.855188}
   m_textInfo:
     textComponent: {fileID: 4730684032720195314}
-    characterCount: 4
+    characterCount: 0
     spriteCount: 0
     spaceCount: 0
-    wordCount: 1
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -2414,13 +2417,13 @@ GameObject:
   - component: {fileID: 5393105630951596876}
   - component: {fileID: 417220456991055057}
   - component: {fileID: 66993799184850131}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Hit Points Num
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5393105630951596876
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2569,7 +2572,7 @@ GameObject:
   - component: {fileID: 8270407377615202517}
   - component: {fileID: 216033269973519032}
   - component: {fileID: 966641612171600532}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Body.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2646,7 +2649,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8878678325268755695}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: PopupMenuPlaceholder
   m_TagString: Follower
   m_Icon: {fileID: 0}
@@ -2678,7 +2681,7 @@ GameObject:
   - component: {fileID: 7239390974224362847}
   - component: {fileID: 1207066646063181117}
   - component: {fileID: 9017429386656147374}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Nose.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2756,7 +2759,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6210690840599486013}
   - component: {fileID: 8615517260114374563}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Character01_single (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2813,7 +2816,7 @@ GameObject:
   - component: {fileID: 6158118740926352860}
   - component: {fileID: 2826149751619190554}
   - component: {fileID: 6809483141378898807}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Charisma Num
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2934,13 +2937,13 @@ MonoBehaviour:
   m_margin: {x: 95.247894, y: 22.821405, z: 95.19655, w: 22.855188}
   m_textInfo:
     textComponent: {fileID: 6809483141378898807}
-    characterCount: 3
+    characterCount: 0
     spriteCount: 0
     spaceCount: 0
-    wordCount: 1
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -2969,7 +2972,7 @@ GameObject:
   - component: {fileID: 6791364653031805552}
   - component: {fileID: 157042774949471251}
   - component: {fileID: 9207960501770976145}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: ButtonSlot (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3098,7 +3101,7 @@ GameObject:
   - component: {fileID: 6520934825536853856}
   - component: {fileID: 6930837876259228291}
   - component: {fileID: 7530319860460169827}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Click Area Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3152,7 +3155,7 @@ GameObject:
   - component: {fileID: 2537778726031317636}
   - component: {fileID: 3932822060245534943}
   - component: {fileID: 5375072380065055732}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: ButtonsParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3254,7 +3257,7 @@ GameObject:
   - component: {fileID: 5627284804393149835}
   - component: {fileID: 8821578959988728758}
   - component: {fileID: 4839863398176567565}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3332,7 +3335,7 @@ GameObject:
   - component: {fileID: 7765445059264965975}
   - component: {fileID: 438804111166139895}
   - component: {fileID: 7835272875854861759}
-  m_Layer: 5
+  m_Layer: 11
   m_Name: ButtonSlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
