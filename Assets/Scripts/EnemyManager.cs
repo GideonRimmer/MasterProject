@@ -20,6 +20,7 @@ public class EnemyManager : MonoBehaviour
     public Transform enemyTarget;
     public float maxDistanceToTarget;
     [SerializeField] private float currentDistanceToTarget;
+    public LayerMask viableTargets;
 
     [Header("State Machine")]
     public State currentState;
@@ -64,8 +65,7 @@ public class EnemyManager : MonoBehaviour
     // Use FixedUpdate for OverlapSphere.
     private void FixedUpdate()
     {
-        LayerMask layerMask = LayerMask.GetMask("Characters");
-        agentsInSphere = Physics.OverlapSphere(transform.position, sphereRadius, layerMask);
+        agentsInSphere = Physics.OverlapSphere(transform.position, sphereRadius, viableTargets);
 
         // Get all of the agents in the sphere in each FixedUpdate.
         foreach (Collider agent in agentsInSphere)
