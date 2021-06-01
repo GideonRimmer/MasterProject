@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyManager : MonoBehaviour
 {
-    private Vector3 startingPosition;
     private Rigidbody rigidbody;
+    private Vector3 startingPosition;
+    private NavMeshAgent navMeshAgent;
+    public Transform destination;
+    public float minDistanceToTarget = 0f;
     public float chaseRadius;
     public Animator animator;
     private GameObject player;
@@ -48,6 +52,7 @@ public class EnemyManager : MonoBehaviour
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
         startingPosition = transform.position;
         currentState = State.Idle;
         attackStateSpeed = moveSpeed + 2;
@@ -116,6 +121,7 @@ public class EnemyManager : MonoBehaviour
 
     private void FollowAndAttackTarget()
     {
+        /*
         Vector3 direction = (enemyTarget.position - rigidbody.transform.position).normalized;
         rigidbody.MovePosition(rigidbody.transform.position + direction * attackStateSpeed * Time.fixedDeltaTime);
         currentDistanceToTarget = Vector3.Distance(transform.position, enemyTarget.position);
@@ -128,6 +134,10 @@ public class EnemyManager : MonoBehaviour
 
         // Move position a step towards to the target.
         transform.rotation = Quaternion.LookRotation(newDirection);
+        */
+
+        destination = enemyTarget;
+        navMeshAgent.SetDestination(destination.position);
 
         if (enemyTarget.GetComponentInParent<HitPointsManager>().currentHitPoints <= 0)
         {
@@ -189,6 +199,7 @@ public class EnemyManager : MonoBehaviour
 
     private void MoveToPosition(Vector3 targetPosition)
     {
+        /*
         Vector3 direction = (targetPosition - rigidbody.transform.position).normalized;
         rigidbody.MovePosition(rigidbody.transform.position + direction * moveSpeed * Time.fixedDeltaTime);
 
@@ -200,6 +211,9 @@ public class EnemyManager : MonoBehaviour
 
         // Move position a step towards to the target.
         transform.rotation = Quaternion.LookRotation(newDirection);
+        */
+
+        navMeshAgent.SetDestination(startingPosition);
 
         float distanceToPosition = Vector3.Distance(transform.position, targetPosition);
         if (distanceToPosition <= 1)

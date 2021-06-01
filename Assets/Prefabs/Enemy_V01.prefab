@@ -2046,11 +2046,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3242353107582936827}
-  - component: {fileID: 570351094671376517}
-  - component: {fileID: 3330871519105900669}
+  - component: {fileID: 185975077526306702}
   - component: {fileID: 7899432503107119515}
+  - component: {fileID: 3330871519105900669}
   - component: {fileID: 5875649842769511458}
   - component: {fileID: 2915483205914810147}
+  - component: {fileID: 8576551159869953916}
   m_Layer: 11
   m_Name: Enemy_V01
   m_TagString: Enemy
@@ -2066,7 +2067,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5581903269753258461}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.3, y: 0, z: 4.1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8878678325268755695}
@@ -2076,7 +2077,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &570351094671376517
+--- !u!54 &185975077526306702
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2092,6 +2093,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!136 &7899432503107119515
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5581903269753258461}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2.4
+  m_Height: 6.8
+  m_Direction: 1
+  m_Center: {x: 0, y: 3.4, z: 0}
 --- !u!114 &3330871519105900669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2109,20 +2124,6 @@ MonoBehaviour:
   maxHitPoints: 5
   currentHitPoints: 0
   entityName: {fileID: 7231768204797180468}
---- !u!136 &7899432503107119515
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5581903269753258461}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 2.4894466
-  m_Height: 6.8028235
-  m_Direction: 1
-  m_Center: {x: 0, y: 3.3656576, z: 0}
 --- !u!114 &5875649842769511458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2149,6 +2150,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed67a3e26c3247c4a90f9b5034060b2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destination: {fileID: 0}
+  minDistanceToTarget: 0
   chaseRadius: 20
   animator: {fileID: 8615517260114374563}
   moveSpeed: 9
@@ -2178,6 +2181,28 @@ MonoBehaviour:
   - {fileID: 966641612171600532}
   sphereRadius: 10
   agentsInSphere: []
+--- !u!195 &8576551159869953916
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5581903269753258461}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &5954432865737333970
 GameObject:
   m_ObjectHideFlags: 0
