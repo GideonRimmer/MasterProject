@@ -6,12 +6,17 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public CharacterController controller;
+    public float speed = 9f;
+    public float turnSmoothTime = 0.1f;
+    private float turnSmoothVelocity;
+
     [SerializeField] private bool isIdle;
     [SerializeField] private bool isWalking;
     public Animator animator;
 
-    [SerializeField] float moveSpeed = 4f;
-    private Vector3 forward, right;
+    //[SerializeField] float moveSpeed = 4f;
+    //private Vector3 forward, right;
     public int startingCharisma = 5;
     [SerializeField] private int currentCharisma;
 
@@ -26,10 +31,12 @@ public class PlayerController : MonoBehaviour
         isWalking = false;
         //animator = GetComponentInChildren<Animator>();
 
+        /*
         forward = Camera.main.transform.forward;
         forward.y = 0;
         forward = Vector3.Normalize(forward);
         right = Quaternion.Euler(new Vector3(0, 90, 0)) * forward;
+        */
 
         currentCharisma = startingCharisma;
 
@@ -37,6 +44,42 @@ public class PlayerController : MonoBehaviour
         playParticleEffect = GetComponent<PlayParticleEffect>();
     }
 
+    private void Update()
+    {
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+
+        if (direction.magnitude >= 0.1f)
+        {
+            isIdle = false;
+            isWalking = true;
+            animator.SetBool("isWalking", true);
+            
+            // Move the player using that CharacterController's Move function.
+            controller.Move(direction * speed * Time.deltaTime);
+
+            // Rotate the player to face the correct direction.
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+            // Smooth the turning angle.
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+        }
+        else
+        {
+            isIdle = true;
+            isWalking = false;
+            animator.SetBool("isWalking", false);
+        }
+
+        // Kill the player if HP is 0 or below.
+        if (hitPointsManager.currentHitPoints <= 0)
+        {
+            Die();
+        }
+    }
+
+    /*
     void Update()
     {
         if (Input.anyKey)
@@ -65,6 +108,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /*
     void Move()
     {
         isIdle = false;
@@ -81,6 +125,7 @@ public class PlayerController : MonoBehaviour
         transform.position += rightMovement;
         transform.position += upMovement;
     }
+    */
 
     private void Die()
     {

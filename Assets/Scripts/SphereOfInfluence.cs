@@ -5,7 +5,6 @@ using TMPro;
 
 public class SphereOfInfluence : MonoBehaviour
 {
-    public Transform followPoint;
     [Header("Charisma")]
     public int minCharisma;
     public int maxCharisma;
