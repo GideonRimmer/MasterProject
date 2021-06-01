@@ -537,8 +537,8 @@ public class FollowerManager : MonoBehaviour
 
     private void FollowTarget()
     {
-        Vector3 direction = (currentLeader.position - rigidbody.transform.position).normalized;
-        if (Vector3.Distance(transform.position, currentLeader.position) >= minDistanceToTarget)
+        //Vector3 direction = (currentLeader.position - rigidbody.transform.position).normalized;
+        if (Vector3.Distance(transform.position, currentLeader.position) >= navMeshAgent.stoppingDistance)
         {
             /*
             rigidbody.MovePosition(rigidbody.transform.position + direction * moveSpeed * Time.fixedDeltaTime);
@@ -555,7 +555,10 @@ public class FollowerManager : MonoBehaviour
             navMeshAgent.SetDestination(destination.position);
             animator.SetBool("isWalking", true);
         }
-        else animator.SetBool("isWalking", false);
+        else
+        {
+            animator.SetBool("isWalking", false);
+        }
     }
 
     private void FollowAndAttackTarget()
@@ -932,7 +935,6 @@ public class FollowerManager : MonoBehaviour
                 currentLeader.GetComponentInParent<FollowerManager>().RemoveFollower(this);
             }
         }
-
 
         GetComponent<HitPointsManager>().PlayParticleSystem();
         Destroy(this.gameObject);
