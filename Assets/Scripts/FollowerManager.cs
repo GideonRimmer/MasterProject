@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using TMPro;
 
 public class FollowerManager : MonoBehaviour
 {
     [Header("Setup")]
     public GameObject popupMenu;
+    private NavMeshAgent navMeshAgent;
+    public Transform destination;
+    public float minDistanceToLeader = 12f;
     public Animator animator;
     private Rigidbody rigidbody;
     //public string[] charClass = { "Citizen", "Soldier", "Intelligentsia" };
@@ -74,9 +78,8 @@ public class FollowerManager : MonoBehaviour
     public float runAwaySpeed;
 
     [Header("Attack Parameters")]
-    public Collider attackCollider;
     public int attackDamage = 1;
-    public float attackStateSpeed;
+    public float attackSpeedBonus = 4;
     public float attackTimer = 1.0f;
     public int convertDamage = 1;
     [SerializeField] private float attackCurrentTime;
@@ -118,7 +121,8 @@ public class FollowerManager : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody>();
         spawnEntitiesScript = FindObjectOfType<SpawnEntitiesAtRandom>();
-        attackCollider.enabled = false;
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        navMeshAgent.SetDestination(destination.position);
 
         currentState = State.Idle;
         isClickable = false;
@@ -127,7 +131,6 @@ public class FollowerManager : MonoBehaviour
         startBetrayal = false;
         isAttackTarget = false;
         isConversionTarget = false;
-        attackStateSpeed = moveSpeed + 4;
         attackCurrentTime = attackTimer;
 
         // Generate random charisma.
@@ -315,9 +318,11 @@ public class FollowerManager : MonoBehaviour
             case State.FollowPlayer:
                 if (currentLeader != null)
                 {
-                    FollowTarget();
                     //animator.SetBool("isWalking", true);
                     animator.speed = 1;
+                    navMeshAgent.speed = moveSpeed;
+                    navMeshAgent.stoppingDistance = minDistanceToLeader;
+                    FollowTarget();
                 }
                 else if (currentLeader == null)
                 {
@@ -330,6 +335,8 @@ public class FollowerManager : MonoBehaviour
                 {
                     //animator.SetBool("isWalking", true);
                     animator.speed = 1;
+                    navMeshAgent.speed = moveSpeed;
+                    navMeshAgent.stoppingDistance = minDistanceToLeader;
                     FollowTarget();
                 }
                 else if (currentLeader == null)
@@ -341,9 +348,11 @@ public class FollowerManager : MonoBehaviour
             case State.Attack:
                 if (enemyTarget != null && currentLeader != null)
                 {
-                    FollowAndAttackTarget();
                     animator.SetBool("isWalking", true);
                     animator.speed = 2;
+                    navMeshAgent.speed = moveSpeed + attackSpeedBonus;
+                    navMeshAgent.stoppingDistance = 0;
+                    FollowAndAttackTarget();
                 }
                 else if (currentLeader == null)
                 {
@@ -370,6 +379,7 @@ public class FollowerManager : MonoBehaviour
                 if (overrideTarget == true)
                 {
                     FollowTarget();
+                    navMeshAgent.stoppingDistance = minDistanceToLeader;
                 }
                 break;
 
@@ -530,13 +540,19 @@ public class FollowerManager : MonoBehaviour
         Vector3 direction = (currentLeader.position - rigidbody.transform.position).normalized;
         if (Vector3.Distance(transform.position, currentLeader.position) >= minDistanceToTarget)
         {
+            /*
             rigidbody.MovePosition(rigidbody.transform.position + direction * moveSpeed * Time.fixedDeltaTime);
             // Auto rotate towards the target.
             Vector3 targetDirection = currentLeader.position - transform.position;
 
             Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, rotateSpeed * Time.deltaTime, 0.0f);
-            //Debug.DrawRay(transform.position, newDirection, Color.red);
+            Debug.DrawRay(transform.position, newDirection, Color.red);
             transform.rotation = Quaternion.LookRotation(newDirection);
+            animator.SetBool("isWalking", true);
+            */
+
+            destination = currentLeader;
+            navMeshAgent.SetDestination(destination.position);
             animator.SetBool("isWalking", true);
         }
         else animator.SetBool("isWalking", false);
@@ -544,8 +560,9 @@ public class FollowerManager : MonoBehaviour
 
     private void FollowAndAttackTarget()
     {
+        /*
         Vector3 direction = (enemyTarget.position - rigidbody.transform.position).normalized;
-        rigidbody.MovePosition(rigidbody.transform.position + direction * attackStateSpeed * Time.fixedDeltaTime);
+        rigidbody.MovePosition(rigidbody.transform.position + direction * (moveSpeed + attackSpeedBonus) * Time.fixedDeltaTime);
         distanceToEnemy = Vector3.Distance(transform.position, enemyTarget.position);
 
         // Auto rotate towards the target.
@@ -556,6 +573,10 @@ public class FollowerManager : MonoBehaviour
 
         // Move position a step towards to the target.
         transform.rotation = Quaternion.LookRotation(newDirection);
+        */
+
+        destination = enemyTarget;
+        navMeshAgent.SetDestination(destination.position);
 
         // Stop attacking when running out of eligible targets.
         if (enemyTarget.CompareTag("Follower") && enemyTarget == null)
@@ -602,7 +623,6 @@ public class FollowerManager : MonoBehaviour
         enemyTarget = newEnemy;
         //Debug.Log(this.name + " attacks " + enemyTarget.name);
         ChangeMaterial(skin, attackMaterial);
-        attackCollider.enabled = true;
     }
 
     public void SetThisAsAttackTarget()
@@ -701,8 +721,6 @@ public class FollowerManager : MonoBehaviour
                 Attack(collision.gameObject.GetComponent<HitPointsManager>(), attackDamage + killCount);
                 attackCurrentTime = attackTimer;
                 Debug.Log(this.name + " attacks " + enemyTarget + ", " + enemyTarget.name);
-
-                attackCollider.enabled = false;
             }
         }
     }
@@ -712,7 +730,6 @@ public class FollowerManager : MonoBehaviour
     {
         enemy.RegisterHit(damage);
         //Debug.Log(name + " attacks " + enemy.gameObject.name);
-        attackCollider.enabled = true;
 
         // After destroying the target, gain charisma. Follower and leader gain Violence.
         if (enemyTarget.GetComponent<HitPointsManager>().currentHitPoints <= 0)
@@ -724,8 +741,6 @@ public class FollowerManager : MonoBehaviour
     // After destroying the target, gain charisma. Follower and leader gain Violence.
     public void ResolveKill()
     {
-        attackCollider.enabled = false;
-
         killCount += 1;
         ModifyCharisma(5);
         ModifyViolence(2);
