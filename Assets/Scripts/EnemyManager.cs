@@ -136,6 +136,7 @@ public class EnemyManager : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(newDirection);
         */
 
+        currentDistanceToTarget = Vector3.Distance(transform.position, enemyTarget.position);
         destination = enemyTarget;
         navMeshAgent.SetDestination(destination.position);
 
