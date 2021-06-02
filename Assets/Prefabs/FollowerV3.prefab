@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6398773187723483719}
   m_Layer: 10
   m_Name: Charisma Text
-  m_TagString: Untagged
+  m_TagString: Follower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -318,7 +318,7 @@ GameObject:
   - component: {fileID: 6492400228922533881}
   m_Layer: 10
   m_Name: 'Col:'
-  m_TagString: Untagged
+  m_TagString: Follower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -475,6 +475,7 @@ GameObject:
   - component: {fileID: 1605260892821789234}
   - component: {fileID: 8978855291247846464}
   - component: {fileID: -3028409234055010523}
+  - component: {fileID: 607441668491234376}
   m_Layer: 10
   m_Name: FollowerV3
   m_TagString: Follower
@@ -514,9 +515,9 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!114 &2698435985635302165
 MonoBehaviour:
@@ -548,6 +549,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popupMenu: {fileID: 5734000806671434019}
+  destination: {fileID: 949997005770261550}
+  minDistanceToLeader: 12
   animator: {fileID: 561311042}
   takerPrefab: {fileID: 8723099091681394095, guid: 6bab3e57136850141a788f4b4f89a566,
     type: 3}
@@ -582,13 +585,12 @@ MonoBehaviour:
   isClickable: 0
   overrideTarget: 0
   currentLeader: {fileID: 0}
-  moveSpeed: 9
+  moveSpeed: 12
   rotateSpeed: 8
   minDistanceToTarget: 10
   runAwaySpeed: 0
-  attackCollider: {fileID: 650724716979508488}
   attackDamage: 1
-  attackStateSpeed: 0
+  attackSpeedBonus: 4
   attackTimer: 0.5
   convertDamage: 1
   attackCurrentTime: 0
@@ -596,19 +598,19 @@ MonoBehaviour:
   distanceToEnemy: 0
   characterLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 7680
   playerLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   followerLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
   innocentLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4096
   idleMaterial: {fileID: 2100000, guid: c5aa32d7182b2c54ea4c2712516569b7, type: 2}
   skinMaterial: {fileID: 2100000, guid: ae779ead40d6afa46962cb2dc8aba285, type: 2}
   clickableMaterial: {fileID: 2100000, guid: e4c38486527b3ad4583cfc964e5f0456, type: 2}
@@ -640,7 +642,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1605260892821789235}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 2c0c7ff127af7c24ba906c0a019735e2, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 1.7805352
@@ -661,6 +663,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particleEffect: {fileID: 9190275972324511695, guid: 0357353dccfabe44f97b68d54a29bf03,
     type: 3}
+--- !u!195 &607441668491234376
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605260892821789235}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 10
+  m_Acceleration: 10
+  avoidancePriority: 50
+  m_AngularSpeed: 480
+  m_StoppingDistance: 12
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 0
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &1691156974181444286
 GameObject:
   m_ObjectHideFlags: 0
@@ -747,7 +771,7 @@ GameObject:
   - component: {fileID: 453092343839206029}
   m_Layer: 10
   m_Name: 'Tar:'
-  m_TagString: Untagged
+  m_TagString: Follower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1469,7 +1493,7 @@ GameObject:
   - component: {fileID: 4338060477051831503}
   m_Layer: 10
   m_Name: Name
-  m_TagString: Untagged
+  m_TagString: Follower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1779,7 +1803,7 @@ GameObject:
   - component: {fileID: 1331946281307743700}
   m_Layer: 10
   m_Name: AttackPoint
-  m_TagString: Untagged
+  m_TagString: Follower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1811,7 +1835,7 @@ GameObject:
   - component: {fileID: 2681563040377803026}
   m_Layer: 10
   m_Name: Click Area Box
-  m_TagString: Untagged
+  m_TagString: Follower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1864,7 +1888,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 94909ff44bc55944a9186996c30a9932, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -1883,7 +1907,7 @@ GameObject:
   - component: {fileID: 3190217644561407963}
   m_Layer: 10
   m_Name: Hit Points Num
-  m_TagString: Untagged
+  m_TagString: Follower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2037,7 +2061,7 @@ GameObject:
   - component: {fileID: 7769942892466690276}
   m_Layer: 10
   m_Name: PopupMenu
-  m_TagString: Untagged
+  m_TagString: Follower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2213,7 +2237,7 @@ GameObject:
   - component: {fileID: 8473451649932663095}
   m_Layer: 10
   m_Name: Hit Points Text
-  m_TagString: Untagged
+  m_TagString: Follower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2368,7 +2392,7 @@ GameObject:
   - component: {fileID: 7520211026532066191}
   m_Layer: 10
   m_Name: Charisma Num
-  m_TagString: Untagged
+  m_TagString: Follower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2524,7 +2548,7 @@ GameObject:
   - component: {fileID: 7520211027291628954}
   m_Layer: 10
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: Follower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3112,7 +3136,7 @@ GameObject:
   - component: {fileID: 6758191192701639692}
   m_Layer: 10
   m_Name: Loyalty Num
-  m_TagString: Untagged
+  m_TagString: Follower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3344,7 +3368,7 @@ GameObject:
   - component: {fileID: 3812817355897990789}
   m_Layer: 10
   m_Name: LoyaltyText
-  m_TagString: Untagged
+  m_TagString: Follower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3553,6 +3577,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: -6683312565565935214, guid: a21dead1c621c2847a6237826838a92b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Follower
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a21dead1c621c2847a6237826838a92b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3658,10 +3687,20 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: -2814415710298034619, guid: a21dead1c621c2847a6237826838a92b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Follower
+      objectReference: {fileID: 0}
     - target: {fileID: -2765687900323562827, guid: a21dead1c621c2847a6237826838a92b,
         type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -2765687900323562827, guid: a21dead1c621c2847a6237826838a92b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Follower
       objectReference: {fileID: 0}
     - target: {fileID: -1907858087124857634, guid: a21dead1c621c2847a6237826838a92b,
         type: 3}
@@ -3723,6 +3762,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: a21dead1c621c2847a6237826838a92b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Follower
+      objectReference: {fileID: 0}
     - target: {fileID: -698946323640174030, guid: a21dead1c621c2847a6237826838a92b,
         type: 3}
       propertyPath: m_Layer
@@ -3772,6 +3816,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 812727117292426427, guid: a21dead1c621c2847a6237826838a92b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Follower
       objectReference: {fileID: 0}
     - target: {fileID: 1528296402085047300, guid: a21dead1c621c2847a6237826838a92b,
         type: 3}
@@ -3853,6 +3902,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 3249071299588041734, guid: a21dead1c621c2847a6237826838a92b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Follower
+      objectReference: {fileID: 0}
     - target: {fileID: 4252198567643942533, guid: a21dead1c621c2847a6237826838a92b,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -3877,6 +3931,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7977158748373060068, guid: a21dead1c621c2847a6237826838a92b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Follower
       objectReference: {fileID: 0}
     - target: {fileID: 9189162576710967013, guid: a21dead1c621c2847a6237826838a92b,
         type: 3}
@@ -3910,12 +3969,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a21dead1c621c2847a6237826838a92b, type: 3}
---- !u!1 &5251425529764065742 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: a21dead1c621c2847a6237826838a92b,
-    type: 3}
-  m_PrefabInstance: {fileID: 4305760808057333959}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9132058055152223197 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: a21dead1c621c2847a6237826838a92b,
@@ -3934,9 +3987,9 @@ MeshRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 4305760808057333959}
   m_PrefabAsset: {fileID: 0}
---- !u!23 &2599496483439557195 stripped
+--- !u!23 &5991354178422750202 stripped
 MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -6930363750515682676, guid: a21dead1c621c2847a6237826838a92b,
+  m_CorrespondingSourceObject: {fileID: 7558362087890539325, guid: a21dead1c621c2847a6237826838a92b,
     type: 3}
   m_PrefabInstance: {fileID: 4305760808057333959}
   m_PrefabAsset: {fileID: 0}
@@ -3958,9 +4011,15 @@ MeshRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 4305760808057333959}
   m_PrefabAsset: {fileID: 0}
---- !u!23 &5991354178422750202 stripped
+--- !u!1 &5251425529764065742 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: a21dead1c621c2847a6237826838a92b,
+    type: 3}
+  m_PrefabInstance: {fileID: 4305760808057333959}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &2599496483439557195 stripped
 MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 7558362087890539325, guid: a21dead1c621c2847a6237826838a92b,
+  m_CorrespondingSourceObject: {fileID: -6930363750515682676, guid: a21dead1c621c2847a6237826838a92b,
     type: 3}
   m_PrefabInstance: {fileID: 4305760808057333959}
   m_PrefabAsset: {fileID: 0}
