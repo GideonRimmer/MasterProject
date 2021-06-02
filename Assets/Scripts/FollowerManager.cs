@@ -553,6 +553,7 @@ public class FollowerManager : MonoBehaviour
             destination = currentLeader;
             navMeshAgent.SetDestination(destination.position);
             animator.SetBool("isWalking", true);
+            
             /*
             if (navMeshAgent.remainingDistance < 0.5)
             {
