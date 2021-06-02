@@ -13,7 +13,6 @@ public class FollowerManager : MonoBehaviour
     public float minDistanceToLeader = 12f;
     public Animator animator;
     private Rigidbody rigidbody;
-    //public string[] charClass = { "Citizen", "Soldier", "Intelligentsia" };
     //public GameObject takerPrefab;
     public GameObject takerPrefab;
     public GameObject player;
@@ -554,6 +553,12 @@ public class FollowerManager : MonoBehaviour
             destination = currentLeader;
             navMeshAgent.SetDestination(destination.position);
             animator.SetBool("isWalking", true);
+            /*
+            if (navMeshAgent.remainingDistance < 0.5)
+            {
+                navMeshAgent.speed = 0;
+            }
+            */
         }
         else
         {
