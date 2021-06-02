@@ -753,6 +753,7 @@ GameObject:
   - component: {fileID: -463669808109389104}
   - component: {fileID: 4833404102798361122}
   - component: {fileID: 4742330450979263831}
+  - component: {fileID: -5186099786329138252}
   m_Layer: 9
   m_Name: Taker
   m_TagString: Taker
@@ -808,9 +809,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec65d9bab838ed240890db399ca63bdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useThisScriptToDestroy: 0
   hitPointsText: {fileID: 4370342440667951282}
   maxHitPoints: 10
   currentHitPoints: 0
+  entityName: {fileID: 0}
 --- !u!114 &2993790178688201340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -892,6 +895,28 @@ CapsuleCollider:
   m_Height: 6.8028235
   m_Direction: 1
   m_Center: {x: 0, y: 3.3656576, z: 0}
+--- !u!195 &-5186099786329138252
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8723099091681394095}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1001 &3415407218112832514
 PrefabInstance:
   m_ObjectHideFlags: 0
