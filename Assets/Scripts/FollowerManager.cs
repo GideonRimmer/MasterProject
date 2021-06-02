@@ -28,6 +28,7 @@ public class FollowerManager : MonoBehaviour
     public TextMeshProUGUI targetText;
     public TextMeshProUGUI col;
     public TextMeshProUGUI collisionText;
+    public int maxHitPoints = 10;
 
     [Header("Charisma")]
     public int minCharisma;
@@ -77,7 +78,9 @@ public class FollowerManager : MonoBehaviour
     public float runAwaySpeed;
 
     [Header("Attack Parameters")]
-    public int attackDamage = 1;
+    [SerializeField] private int attackDamage;
+    private int initialDamage = 1;
+    public int maxDamage = 3;
     public float attackSpeedBonus = 4;
     public float attackTimer = 1.0f;
     public int convertDamage = 1;
@@ -131,6 +134,7 @@ public class FollowerManager : MonoBehaviour
         isAttackTarget = false;
         isConversionTarget = false;
         attackCurrentTime = attackTimer;
+        attackDamage = initialDamage;
 
         // Generate random charisma.
         if (spawnEntitiesScript != null)
@@ -666,21 +670,22 @@ public class FollowerManager : MonoBehaviour
         //if (currentState == State.Attack && enemyTarget != null && collision.gameObject.name == enemyTarget.name)
         if (currentState == State.Attack && enemyTarget != null && collision.gameObject.layer == enemyTarget.gameObject.layer)
         {
+            /*
             collisionText.text = collision.gameObject.name.ToString();
             targetText.text = enemyTarget.name.ToString();
             Debug.Log(this.name + " collision GO " + collision.gameObject.name);
             Debug.Log(this.name + " enemyTarget " + enemyTarget.name);
+            */
 
             FollowerManager enemyFollower = enemyTarget.GetComponentInParent<FollowerManager>();
             // Damage the target every X seconds (attackTimer), then start a cooldown.
             attackCurrentTime -= Time.deltaTime;
             if (attackCurrentTime <= 0)
             {
-
                 if (enemyTarget.tag != "Follower")
                 {
-                    // Damage the target on collision. Damage = Base damage + killCount.
-                    Attack(collision.gameObject.GetComponent<HitPointsManager>(), attackDamage + killCount);
+                    // Damage the target on collision.
+                    Attack(collision.gameObject.GetComponent<HitPointsManager>(), attackDamage);
                     attackCurrentTime = attackTimer;
                     Debug.Log(this.name + " attacks " + enemyTarget + ", " + enemyTarget.name);
 
@@ -693,14 +698,14 @@ public class FollowerManager : MonoBehaviour
                     || enemyFollower.enemyTarget == this.transform))
                 {
                     // Damage the target on collision. Damage = Base damage + killCount.
-                    Attack(collision.gameObject.GetComponent<HitPointsManager>(), attackDamage + killCount);
+                    Attack(collision.gameObject.GetComponent<HitPointsManager>(), attackDamage);
                     attackCurrentTime = attackTimer;
                     //Debug.Log("Attack damage " + attackDamage);
 
                 }
                 else if (enemyTarget.CompareTag("Follower") && enemyFollower.isConversionTarget == true)
                 {
-                    Convert(collision.gameObject.GetComponentInParent<FollowerManager>(), convertDamage + killCount);
+                    Convert(collision.gameObject.GetComponentInParent<FollowerManager>(), convertDamage);
                     attackCurrentTime = attackTimer;
                     //Debug.Log("Convert damage " + convertDamage);
                 }
@@ -755,7 +760,16 @@ public class FollowerManager : MonoBehaviour
         ModifyViolence(2);
 
         // Heal HP through the RegisterHit function.
-        GetComponentInParent<HitPointsManager>().RegisterHit(-(killCount + 1));
+        if (GetComponentInParent<HitPointsManager>().currentHitPoints < maxHitPoints)
+        {
+            GetComponentInParent<HitPointsManager>().RegisterHit(-2);
+        }
+
+        // Increase attackDamage.
+        if (attackDamage < maxDamage)
+        {
+            attackDamage += 1;
+        }
 
         if (currentLeader != null && currentLeader.GetComponentInParent<SphereOfInfluence>() != null)
         {
