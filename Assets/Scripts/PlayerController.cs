@@ -6,10 +6,19 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Movement")]
     public CharacterController controller;
     public float speed = 9f;
     public float turnSmoothTime = 0.1f;
     private float turnSmoothVelocity;
+
+    [Header("Gravity")]
+    public Transform groundCheck;
+    public float gravityModifier = -9.81f;
+    public float groundDistance = 0.4f;
+    public LayerMask groundMask;
+    [SerializeField] private bool isGrounded;
+    private Vector3 velocity;
 
     [SerializeField] private bool isIdle;
     [SerializeField] private bool isWalking;
@@ -17,12 +26,12 @@ public class PlayerController : MonoBehaviour
 
     //[SerializeField] float moveSpeed = 4f;
     //private Vector3 forward, right;
+
+    [Header("Charisma")]
     public int startingCharisma = 5;
     [SerializeField] private int currentCharisma;
-
     private HitPointsManager hitPointsManager;
     private PlayParticleEffect playParticleEffect;
-
     public bool autoCollectFollowers;
 
     void Start()
@@ -46,10 +55,12 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        // Movement axes.
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
+        // Movement and facing.
         if (direction.magnitude >= 0.1f)
         {
             isIdle = false;
@@ -71,6 +82,17 @@ public class PlayerController : MonoBehaviour
             isWalking = false;
             animator.SetBool("isWalking", false);
         }
+
+        // Set up the ground check, and check if the player is grounded.
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        if (isGrounded == true && velocity.y < 0)
+        {
+            velocity.y = -2f;
+        }
+
+        // Implement non-physics gravity.
+        velocity.y += gravityModifier * Time.deltaTime;
+        controller.Move(velocity * Time.deltaTime);
 
         // Kill the player if HP is 0 or below.
         if (hitPointsManager.currentHitPoints <= 0)
