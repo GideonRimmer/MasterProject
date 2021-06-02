@@ -14319,12 +14319,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1192724504}
   m_PrefabAsset: {fileID: 0}
---- !u!143 &1206218637 stripped
-CharacterController:
-  m_CorrespondingSourceObject: {fileID: 2246610313870571157, guid: b916000558734a14583cd4a3891fc5cb,
-    type: 3}
-  m_PrefabInstance: {fileID: 4735362176412095763}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1213330086 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5861233222970431151, guid: a13ba6ef999299e4d8f18d22f34c6b2d,
@@ -24538,6 +24532,7 @@ GameObject:
   - component: {fileID: 2027031852}
   - component: {fileID: 2027031851}
   - component: {fileID: 2027031850}
+  - component: {fileID: 2027031853}
   m_Layer: 13
   m_Name: Plane
   m_TagString: Ground
@@ -24620,6 +24615,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2027031848}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!95 &2027031853
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027031848}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c64383d47e50f5f43b43202e928fd999, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2028337219
 GameObject:
   m_ObjectHideFlags: 0
@@ -25972,11 +25986,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -4853767288642095237, guid: b916000558734a14583cd4a3891fc5cb,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 767975382602464738, guid: b916000558734a14583cd4a3891fc5cb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -26037,24 +26046,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_Bulky Variant 02
       objectReference: {fileID: 0}
-    - target: {fileID: 6483004690407442458, guid: b916000558734a14583cd4a3891fc5cb,
-        type: 3}
-      propertyPath: controller
-      value: 
-      objectReference: {fileID: 1206218637}
-    - target: {fileID: 6483004690407442458, guid: b916000558734a14583cd4a3891fc5cb,
-        type: 3}
-      propertyPath: speed
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 8479095689243595060, guid: b916000558734a14583cd4a3891fc5cb,
-        type: 3}
-      propertyPath: m_Height
-      value: 6.91
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: -4853767288642095237, guid: b916000558734a14583cd4a3891fc5cb, type: 3}
-    - {fileID: 4218836020243067347, guid: b916000558734a14583cd4a3891fc5cb, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b916000558734a14583cd4a3891fc5cb, type: 3}
 --- !u!1001 &5743158752197681270
 PrefabInstance:
