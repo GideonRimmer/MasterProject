@@ -1630,7 +1630,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 2246610313870571157}
-  speed: 12
+  speed: 13
   turnSmoothTime: 0.03
   groundCheck: {fileID: 7362049173026373622}
   gravityModifier: -9.81
