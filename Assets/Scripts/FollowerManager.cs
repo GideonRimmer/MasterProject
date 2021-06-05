@@ -534,10 +534,10 @@ public class FollowerManager : MonoBehaviour
         else if (distanceToLeader < minDistanceToLeader)
         {
             //Debug.Log(distanceToLeader);
-            Vector3 toLeader = currentLeader.transform.position - transform.position;
-            Vector3 targetPosition = toLeader.normalized * -navMeshAgent.speed;
-            //Vector3 targetPosition = toLeader.normalized * -minDistanceToLeader;
-            navMeshAgent.destination = targetPosition;
+            Vector3 directionToLeader = currentLeader.position - transform.position;
+            //Vector3 newPosition = directionToLeader.normalized * -navMeshAgent.speed;
+            Vector3 newPosition = directionToLeader.normalized * -minDistanceToLeader;
+            navMeshAgent.destination = newPosition;
         }
         // If the leader is between min and max distance, stop walking.
         else if (distanceToLeader >= minDistanceToLeader + 2 && distanceToLeader <= maxDistanceToLeader)
@@ -569,7 +569,7 @@ public class FollowerManager : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(newDirection);
         */
 
-        destination = enemyTarget;
+            destination = enemyTarget;
         navMeshAgent.SetDestination(destination.position);
 
         // Stop attacking when running out of eligible targets.
