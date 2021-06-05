@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyManager : MonoBehaviour
 {
-    private Rigidbody rigidbody;
+    //private Rigidbody rigidbody;
     private Vector3 startingPosition;
     private NavMeshAgent navMeshAgent;
     public Transform destination;
@@ -51,7 +51,7 @@ public class EnemyManager : MonoBehaviour
 
     void Start()
     {
-        rigidbody = GetComponent<Rigidbody>();
+        //rigidbody = GetComponent<Rigidbody>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         startingPosition = transform.position;
         currentState = State.Idle;

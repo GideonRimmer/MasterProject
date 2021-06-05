@@ -66,7 +66,6 @@ public class FollowerManager : MonoBehaviour
         FollowOther,
         Attack,
         OverrideFollow,
-        RunAway,
     }
 
     [Header("Movement Parameters")]
@@ -75,7 +74,6 @@ public class FollowerManager : MonoBehaviour
     public float rotateSpeed;
     //public float maxDistanceToTarget;
     //[SerializeField] private float currentDistanceToTarget;
-    public float runAwaySpeed;
 
     [Header("Attack Parameters")]
     [SerializeField] private int attackDamage;
@@ -240,6 +238,7 @@ public class FollowerManager : MonoBehaviour
 
     void Update()
     {
+        /*
         // DEBUG: Show charisma and loyalty texts in game.
         if (charismaText != null)
         {
@@ -263,6 +262,7 @@ public class FollowerManager : MonoBehaviour
         col.transform.rotation = Quaternion.LookRotation(mainCamera.transform.forward);
         collisionText.transform.LookAt(mainCamera.transform);
         collisionText.transform.rotation = Quaternion.LookRotation(mainCamera.transform.forward);
+        */
 
         if (overrideTarget == true)
         {
@@ -348,10 +348,6 @@ public class FollowerManager : MonoBehaviour
                 {
                     FollowTarget();
                 }
-                break;
-
-            case State.RunAway:
-                RunAway();
                 break;
         }
 
@@ -514,6 +510,8 @@ public class FollowerManager : MonoBehaviour
         else animator.SetBool("isWalking", false);
 
         //Vector3 direction = (currentLeader.position - rigidbody.transform.position).normalized;
+        
+        // Walk towards the leader if the leader is too far.
         if (distanceToLeader > maxDistanceToLeader)
         {
             /*
@@ -531,27 +529,17 @@ public class FollowerManager : MonoBehaviour
             //Debug.Log(distanceToLeader);
             destination = currentLeader;
             navMeshAgent.SetDestination(destination.position);
-            /*
-            if (animator.GetBool("isWalking") == false)
-            {
-                animator.SetBool("isWalking", true);
-            }
-            */
         }
+        // Walk away from leader of the leader is too close, to avoid blocking the way.
         else if (distanceToLeader < minDistanceToLeader)
         {
             //Debug.Log(distanceToLeader);
             Vector3 toLeader = currentLeader.transform.position - transform.position;
-            Vector3 targetPosition = toLeader.normalized * -minDistanceToLeader;
+            Vector3 targetPosition = toLeader.normalized * -navMeshAgent.speed;
+            //Vector3 targetPosition = toLeader.normalized * -minDistanceToLeader;
             navMeshAgent.destination = targetPosition;
-            /*
-            if (animator.GetBool("isWalking") == false)
-            {
-                animator.SetBool("isWalking", true);
-            }
-            */
-
         }
+        // If the leader is between min and max distance, stop walking.
         else if (distanceToLeader >= minDistanceToLeader + 2 && distanceToLeader <= maxDistanceToLeader)
         {
             //Debug.Log("STOP!");
@@ -560,7 +548,7 @@ public class FollowerManager : MonoBehaviour
         }
         else
         {
-            //animator.SetBool("isWalking", false);
+            animator.SetBool("isWalking", false);
         }
     }
 
@@ -823,11 +811,6 @@ public class FollowerManager : MonoBehaviour
                 activeFollowers.Add(target);
             }
         }
-    }
-
-    private void RunAway()
-    {
-
     }
 
     public void ModifyCharisma(int change)
