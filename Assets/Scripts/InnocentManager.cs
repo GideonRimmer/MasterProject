@@ -8,6 +8,7 @@ public class InnocentManager : MonoBehaviour
 {
     //private Rigidbody rigidbody;
     public NavMeshAgent navMeshAgent;
+    public Animator animator;
     public float moveSpeed = 4f;
     public float rotateSpeed = 8f;
     [SerializeField] private float runAwaySpeed;
@@ -29,7 +30,6 @@ public class InnocentManager : MonoBehaviour
     private void Start()
     {
         //rigidbody = GetComponent<Rigidbody>();
-        navMeshAgent = GetComponent<NavMeshAgent>();
         currentState = State.Idle;
         currentDistanceFromHostile = maxDistanceFromHostile;
         runAwaySpeed = moveSpeed + 1f;
@@ -55,6 +55,7 @@ public class InnocentManager : MonoBehaviour
         {
             default:
             case State.Idle:
+                animator.SetBool("isRunning", false);
                 break;
 
             case State.RunAway:
@@ -63,6 +64,7 @@ public class InnocentManager : MonoBehaviour
                     currentDistanceFromHostile = Vector3.Distance(currentHostile.transform.position, transform.position);
                     if (currentDistanceFromHostile < maxDistanceFromHostile)
                     {
+                        animator.SetBool("isRunning", true);
                         RunAway(currentHostile);
                     }
                     else if (currentDistanceFromHostile >= maxDistanceFromHostile)
@@ -104,18 +106,13 @@ public class InnocentManager : MonoBehaviour
 
         currentDistanceFromHostile = Vector3.Distance(hostile.transform.position, transform.position);
         // Run away from a hostile if it gets in range.
-        if (currentDistanceFromHostile <= maxDistanceFromHostile)
-        {
-            Vector3 directionToHostile = transform.position - hostile.position;
-            Vector3 newPosition = transform.position + directionToHostile;
-            navMeshAgent.SetDestination(newPosition);
+        Vector3 directionToHostile = transform.position - hostile.position;
+        Vector3 newPosition = transform.position + directionToHostile;
+        navMeshAgent.SetDestination(newPosition);
 
-            //animator.SetBool("isWalking", false);
-
-            //Debug.Log(newPosition);
-            //Debug.Log(currentDistanceFromHostile);
-            //Debug.Log(this.name + " runs away.");
-        }
+        //Debug.Log(newPosition);
+        //Debug.Log(currentDistanceFromHostile);
+        //Debug.Log(this.name + " runs away.");
     }
 
     public void Die()
