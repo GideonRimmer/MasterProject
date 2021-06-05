@@ -10,7 +10,8 @@ public class FollowerManager : MonoBehaviour
     public GameObject popupMenu;
     private NavMeshAgent navMeshAgent;
     public Transform destination;
-    public float minDistanceToLeader = 12f;
+    public float maxDistanceToLeader = 12f;
+    public float minDistanceToLeader = 2f;
     public Animator animator;
     private Rigidbody rigidbody;
     //public GameObject takerPrefab;
@@ -72,7 +73,6 @@ public class FollowerManager : MonoBehaviour
     public Transform currentLeader;
     public float moveSpeed;
     public float rotateSpeed;
-    public float minDistanceToTarget;
     //public float maxDistanceToTarget;
     //[SerializeField] private float currentDistanceToTarget;
     public float runAwaySpeed;
@@ -174,26 +174,7 @@ public class FollowerManager : MonoBehaviour
             {
                 FollowerManager agentFollower = agent.GetComponentInParent<FollowerManager>();
 
-                /*
-                // Attack conditions: IF agent is a follower, with a different leader, 
-                // IF this has higher charisma -> attacks the lower charisma. OR if the agent is currently attacking, attack it back.
-                if (currentLeader != null && agentFollower.currentLeader != null && currentLeader != agentFollower.currentLeader &&
-                   (currentCharisma > agentFollower.currentCharisma || agentFollower.currentState == State.Attack))
-                {
-                    SetAttackTarget(agent.transform);
-                }
-                */
-
-                /*
-                // Attack followers in range who are attacking your leader, OR a follower of the same leader that's marked as a traitor.
-                if ((currentLeader != null && agentFollower.currentLeader != null && currentLeader != agentFollower.currentLeader && agentFollower.currentState == State.Attack) ||
-                    (agentFollower.isTraitor == true && agentFollower.currentLeader == currentLeader && agentFollower.gameObject != this.gameObject))
-                {
-                    SetAttackTarget(agent.transform);
-                }
-                */
-
-                // NEW ATTACK CONDITIONS, NEED TO TEST!
+                // NEW ATTACK CONDITIONS.
                 if (currentState != State.Attack && currentLeader != null && agentFollower.gameObject != this.gameObject &&
                     // If this is a Player follower AND the agent is set as isAttackTarget.
                     ((currentLeader.CompareTag("Player") && agentFollower.isAttackTarget == true && startBetrayal == false) ||
@@ -215,20 +196,6 @@ public class FollowerManager : MonoBehaviour
                     SetAttackTarget(agent.transform);
                 }
                 
-                /*
-                // ATTACK CONDITIONS (OLD):
-                // If this is one of the player's followers, attack a taker follower, and vice versa.
-                // Also attack if this is a player follower, not a traitor, and agent is set as attack target.
-                if (currentState != State.Attack && ((currentLeader != null && agentFollower.currentLeader != null && agentFollower.currentLeader.CompareTag("Taker") && agentFollower.currentState == State.Attack && isTraitor == false)
-                    || (agentFollower.gameObject != this.gameObject && currentLeader != null && currentLeader.CompareTag("Player") && (agentFollower.isAttackTarget == true || agentFollower.enemyTarget == this.gameObject.transform))
-                    || (agentFollower.isConversionTarget == true && agentFollower.gameObject != this.gameObject && currentLeader != null && currentLeader.CompareTag("Player"))
-                    || (currentLeader != null && agentFollower.enemyTarget != null && agentFollower.enemyTarget == currentLeader)))
-                {
-                    Debug.Log(this.name  + " attack follower " + agent);
-                    SetAttackTarget(agent.transform);
-                }
-                */
-
                 // If this is a traitor with higher charisma that other traitors, convert them and their followers to follow this.
                 else if (isTraitor == true && agentFollower.isTraitor == true && currentCharisma > agentFollower.currentCharisma)
                 {
@@ -324,7 +291,6 @@ public class FollowerManager : MonoBehaviour
                     //animator.SetBool("isWalking", true);
                     animator.speed = 1;
                     navMeshAgent.speed = moveSpeed;
-                    navMeshAgent.stoppingDistance = minDistanceToLeader;
                     FollowTarget();
                 }
                 else if (currentLeader == null)
@@ -339,7 +305,6 @@ public class FollowerManager : MonoBehaviour
                     //animator.SetBool("isWalking", true);
                     animator.speed = 1;
                     navMeshAgent.speed = moveSpeed;
-                    navMeshAgent.stoppingDistance = minDistanceToLeader;
                     FollowTarget();
                 }
                 else if (currentLeader == null)
@@ -382,7 +347,6 @@ public class FollowerManager : MonoBehaviour
                 if (overrideTarget == true)
                 {
                     FollowTarget();
-                    navMeshAgent.stoppingDistance = minDistanceToLeader;
                 }
                 break;
 
@@ -540,10 +504,20 @@ public class FollowerManager : MonoBehaviour
 
     private void FollowTarget()
     {
+        float distanceToLeader = Vector3.Distance(transform.position, currentLeader.position);
+        navMeshAgent.stoppingDistance = minDistanceToLeader;
+
+        if (navMeshAgent.velocity != Vector3.zero)
+        {
+            animator.SetBool("isWalking", true);
+        }
+        else animator.SetBool("isWalking", false);
+
         //Vector3 direction = (currentLeader.position - rigidbody.transform.position).normalized;
-        if (Vector3.Distance(transform.position, currentLeader.position) >= navMeshAgent.stoppingDistance)
+        if (distanceToLeader > maxDistanceToLeader)
         {
             /*
+            // Move towards the target using RigidBody.
             rigidbody.MovePosition(rigidbody.transform.position + direction * moveSpeed * Time.fixedDeltaTime);
             // Auto rotate towards the target.
             Vector3 targetDirection = currentLeader.position - transform.position;
@@ -554,20 +528,39 @@ public class FollowerManager : MonoBehaviour
             animator.SetBool("isWalking", true);
             */
 
+            //Debug.Log(distanceToLeader);
             destination = currentLeader;
             navMeshAgent.SetDestination(destination.position);
-            animator.SetBool("isWalking", true);
-            
             /*
-            if (navMeshAgent.remainingDistance < 0.5)
+            if (animator.GetBool("isWalking") == false)
             {
-                navMeshAgent.speed = 0;
+                animator.SetBool("isWalking", true);
             }
             */
         }
+        else if (distanceToLeader < minDistanceToLeader)
+        {
+            //Debug.Log(distanceToLeader);
+            Vector3 toLeader = currentLeader.transform.position - transform.position;
+            Vector3 targetPosition = toLeader.normalized * -minDistanceToLeader;
+            navMeshAgent.destination = targetPosition;
+            /*
+            if (animator.GetBool("isWalking") == false)
+            {
+                animator.SetBool("isWalking", true);
+            }
+            */
+
+        }
+        else if (distanceToLeader >= minDistanceToLeader + 2 && distanceToLeader <= maxDistanceToLeader)
+        {
+            //Debug.Log("STOP!");
+            navMeshAgent.destination = transform.position;
+            animator.SetBool("isWalking", false);
+        }
         else
         {
-            animator.SetBool("isWalking", false);
+            //animator.SetBool("isWalking", false);
         }
     }
 
