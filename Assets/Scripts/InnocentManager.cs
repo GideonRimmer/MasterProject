@@ -102,26 +102,18 @@ public class InnocentManager : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(newDirection);
         */
 
-        //currentDistanceFromHostile = Vector3.Distance(hostile.transform.position, transform.position);
+        currentDistanceFromHostile = Vector3.Distance(hostile.transform.position, transform.position);
         // Run away from a hostile if it gets in range.
-        //if (currentDistanceFromHostile <= maxDistanceFromHostile)
-        //{
-            Vector3 toHostile = hostile.transform.position - transform.position;
-            Vector3 hostilePosition = toHostile * -navMeshAgent.speed;
-            navMeshAgent.destination = hostilePosition;
-            //animator.SetBool("isWalking", false);
-            Debug.Log(currentDistanceFromHostile);
-            //Debug.Log(this.name + " runs away.");
-        //}
-        // If the hostile is out of range, stop.
-        /*
-        else if (currentDistanceFromHostile >= maxDistanceFromHostile)
+        if (currentDistanceFromHostile <= maxDistanceFromHostile)
         {
-            currentState = State.Idle;
-            //navMeshAgent.destination = transform.position;
-            Debug.Log(this.name + " stopped.");
+            Vector3 directionToHostile = transform.position - hostile.position;
+            Vector3 newPosition = transform.position + directionToHostile;
+            navMeshAgent.SetDestination(newPosition);
+            //animator.SetBool("isWalking", false);
+
+            //Debug.Log(currentDistanceFromHostile);
+            //Debug.Log(this.name + " runs away.");
         }
-        */
     }
 
     public void Die()
