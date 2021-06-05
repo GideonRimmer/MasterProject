@@ -15,7 +15,7 @@ PrefabInstance:
     - target: {fileID: 607441668491234376, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
         type: 3}
       propertyPath: m_AngularSpeed
-      value: 120
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 607441668491234376, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
         type: 3}
@@ -26,6 +26,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Height
       value: 8.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 607441668491234376, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
+        type: 3}
+      propertyPath: m_AutoRepath
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 607441668491234376, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
+        type: 3}
+      propertyPath: m_Acceleration
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 949997005770261550, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
         type: 3}
