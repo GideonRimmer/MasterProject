@@ -1,17 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using System.Linq;
 
 public class InnocentManager : MonoBehaviour
 {
-    private Rigidbody rigidbody;
+    //private Rigidbody rigidbody;
+    public NavMeshAgent navMeshAgent;
     public float moveSpeed = 4f;
     public float rotateSpeed = 8f;
     [SerializeField] private float runAwaySpeed;
     public float sphereRadius = 10f;
-    public float maxDistanceFromTarget = 15f;
-    [SerializeField] private float currentDistanceFromTarget = 15f;
+    public float minDistanceFromHostile = 10f;
+    public float maxDistanceFromHostile = 15f;
+    [SerializeField] private float currentDistanceFromHostile;
 
     private enum State
     {
@@ -20,28 +23,28 @@ public class InnocentManager : MonoBehaviour
     }
     [SerializeField] private State currentState;
     [SerializeField] Collider[] agentsInSphere;
-    public Transform currentTarget;
+    public Transform currentHostile;
+    public LayerMask hostileLayers;
 
     private void Start()
     {
-        rigidbody = GetComponent<Rigidbody>();
+        //rigidbody = GetComponent<Rigidbody>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
         currentState = State.Idle;
+        currentDistanceFromHostile = maxDistanceFromHostile;
         runAwaySpeed = moveSpeed + 1f;
     }
 
     private void FixedUpdate()
     {
-        LayerMask layerMask = LayerMask.GetMask("Characters");
-        agentsInSphere = Physics.OverlapSphere(this.transform.position, sphereRadius, layerMask);
+        agentsInSphere = Physics.OverlapSphere(this.transform.position, sphereRadius, hostileLayers);
 
         // Get all of the agents in the sphere in each FixedUpdate.
         foreach (Collider agent in agentsInSphere)
         {
-            if (agent.tag == "Follower")
-            {
-                currentTarget = agent.transform;
-                currentState = State.RunAway;
-            }
+            //Debug.Log(agent.name + " is in sphere.");
+            currentHostile = agent.transform;
+            currentState = State.RunAway;
         }
     }
 
@@ -55,18 +58,26 @@ public class InnocentManager : MonoBehaviour
                 break;
 
             case State.RunAway:
-                if (currentTarget != null)
+                if (currentHostile != null)
                 {
-                    RunAway(currentTarget);
+                    currentDistanceFromHostile = Vector3.Distance(currentHostile.transform.position, transform.position);
+                    if (currentDistanceFromHostile < maxDistanceFromHostile)
+                    {
+                        RunAway(currentHostile);
+                    }
+                    else if (currentDistanceFromHostile >= maxDistanceFromHostile)
+                    {
+                        currentHostile = null;
+                    }
                 }
                 // If there is no target, or if the target is out of range, stop moving and reset target.
-                if (currentTarget == null || currentDistanceFromTarget > maxDistanceFromTarget)
+                if (currentHostile == null)
                 {
-                    currentTarget = null;
+                    //currentHostile = null;
+                    navMeshAgent.destination = transform.position;
                     currentState = State.Idle;
                 }
                 break;
-
         }
 
         if (GetComponent<HitPointsManager>().currentHitPoints <= 0)
@@ -75,8 +86,9 @@ public class InnocentManager : MonoBehaviour
         }
     }
 
-    private void RunAway(Transform target)
+    private void RunAway(Transform hostile)
     {
+        /*
         currentDistanceFromTarget = Vector3.Distance(transform.position, target.position);
         Vector3 direction = (currentTarget.position - rigidbody.transform.position).normalized;
         rigidbody.MovePosition(rigidbody.transform.position + direction * moveSpeed * -1 * Time.fixedDeltaTime);
@@ -88,6 +100,28 @@ public class InnocentManager : MonoBehaviour
         Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, rotateSpeed * Time.deltaTime, 0.0f);
         //Debug.DrawRay(transform.position, newDirection, Color.red);
         transform.rotation = Quaternion.LookRotation(newDirection);
+        */
+
+        //currentDistanceFromHostile = Vector3.Distance(hostile.transform.position, transform.position);
+        // Run away from a hostile if it gets in range.
+        //if (currentDistanceFromHostile <= maxDistanceFromHostile)
+        //{
+            Vector3 toHostile = hostile.transform.position - transform.position;
+            Vector3 hostilePosition = toHostile * -navMeshAgent.speed;
+            navMeshAgent.destination = hostilePosition;
+            //animator.SetBool("isWalking", false);
+            Debug.Log(currentDistanceFromHostile);
+            //Debug.Log(this.name + " runs away.");
+        //}
+        // If the hostile is out of range, stop.
+        /*
+        else if (currentDistanceFromHostile >= maxDistanceFromHostile)
+        {
+            currentState = State.Idle;
+            //navMeshAgent.destination = transform.position;
+            Debug.Log(this.name + " stopped.");
+        }
+        */
     }
 
     public void Die()
