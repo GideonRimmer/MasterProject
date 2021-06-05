@@ -109,8 +109,10 @@ public class InnocentManager : MonoBehaviour
             Vector3 directionToHostile = transform.position - hostile.position;
             Vector3 newPosition = transform.position + directionToHostile;
             navMeshAgent.SetDestination(newPosition);
+
             //animator.SetBool("isWalking", false);
 
+            //Debug.Log(newPosition);
             //Debug.Log(currentDistanceFromHostile);
             //Debug.Log(this.name + " runs away.");
         }
