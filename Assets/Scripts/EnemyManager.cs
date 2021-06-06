@@ -18,7 +18,7 @@ public class EnemyManager : MonoBehaviour
     public float moveSpeed;
     public float rotateSpeed;
     public int attackDamage = 1;
-    public float attackStateSpeed;
+    public float attackSpeedBonus = 4f;
     public float attackTimer = 1.0f;
     [SerializeField] private float attackCurrentTime;
     public Transform enemyTarget;
@@ -55,7 +55,6 @@ public class EnemyManager : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         startingPosition = transform.position;
         currentState = State.Idle;
-        attackStateSpeed = moveSpeed + 2;
 
         // Find the player.
         player = GameObject.FindGameObjectWithTag("Player");
@@ -101,6 +100,7 @@ public class EnemyManager : MonoBehaviour
                 if (enemyTarget != null)
                 {
                     FollowAndAttackTarget();
+                    navMeshAgent.speed = moveSpeed + attackSpeedBonus;
                     animator.SetBool("isWalking", true);
                     animator.speed = 2;
                 }
@@ -109,6 +109,7 @@ public class EnemyManager : MonoBehaviour
             case State.ReturnToPosition:
                 animator.SetBool("isWalking", true);
                 animator.speed = 1;
+                navMeshAgent.speed = moveSpeed;
                 MoveToPosition(startingPosition);
                 break;
         }

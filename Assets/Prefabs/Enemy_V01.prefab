@@ -2134,7 +2134,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 2.2
-  m_Speed: 10
+  m_Speed: 11
   m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 1000
@@ -2162,10 +2162,10 @@ MonoBehaviour:
   minDistanceToTarget: 0
   chaseRadius: 20
   animator: {fileID: 1592969666103093030}
-  moveSpeed: 9
+  moveSpeed: 11
   rotateSpeed: 8
   attackDamage: 1
-  attackStateSpeed: 0
+  attackSpeedBonus: 4
   attackTimer: 0.5
   attackCurrentTime: 0
   enemyTarget: {fileID: 0}
@@ -2186,7 +2186,7 @@ MonoBehaviour:
   - {fileID: 5786482510290860368}
   - {fileID: 1566298757959694620}
   - {fileID: 6903850942618238935}
-  sphereRadius: 10
+  sphereRadius: 15
   agentsInSphere: []
 --- !u!114 &5875649842769511458
 MonoBehaviour:
