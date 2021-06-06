@@ -80,7 +80,7 @@ PrefabInstance:
     - target: {fileID: 1546361027102263936, guid: f16c63bf37cdd364b95ec6452a2738ab,
         type: 3}
       propertyPath: m_Name
-      value: Tree_01_Burned
+      value: Tree_01_Burned Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1546361027102263936, guid: f16c63bf37cdd364b95ec6452a2738ab,
         type: 3}

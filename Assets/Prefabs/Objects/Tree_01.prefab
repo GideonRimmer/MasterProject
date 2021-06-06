@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 80707290729959935}
   - component: {fileID: 80707290729959904}
   - component: {fileID: 80707290729959905}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1288,7 +1288,7 @@ GameObject:
   - component: {fileID: 3074890573928397001}
   - component: {fileID: 7437893053462906650}
   - component: {fileID: 3560120372373849779}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tree_01
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -1358,7 +1358,7 @@ GameObject:
   - component: {fileID: 6570027749137883426}
   - component: {fileID: 4690006033627628270}
   - component: {fileID: 4370198203242343707}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2635,7 +2635,7 @@ GameObject:
   - component: {fileID: 205121196394546143}
   - component: {fileID: 7676337250515639948}
   - component: {fileID: 3958630632277279343}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3912,7 +3912,7 @@ GameObject:
   - component: {fileID: 1033195744327942661}
   - component: {fileID: 3118694751345342933}
   - component: {fileID: 7714036240874158233}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5189,7 +5189,7 @@ GameObject:
   - component: {fileID: 5436480281920824876}
   - component: {fileID: 1352019207276820925}
   - component: {fileID: 1875267122528662505}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6466,7 +6466,7 @@ GameObject:
   - component: {fileID: 807448145642508703}
   - component: {fileID: 8117282180238158698}
   - component: {fileID: 1198203423884114184}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7743,7 +7743,7 @@ GameObject:
   - component: {fileID: 8515466163571193617}
   - component: {fileID: 8060890747449695081}
   - component: {fileID: 4058081048400652114}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9020,7 +9020,7 @@ GameObject:
   - component: {fileID: 603226132349139267}
   - component: {fileID: 4132232025006323620}
   - component: {fileID: 7775054593642961899}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 26365972}
   - component: {fileID: 26365975}
   - component: {fileID: 26365974}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Window 3 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 915194703}
   - component: {fileID: 915194706}
   - component: {fileID: 915194705}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Window 3 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 1125892160}
   - component: {fileID: 1125892163}
   - component: {fileID: 1125892162}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Window 4 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 1375167001}
   - component: {fileID: 1375167004}
   - component: {fileID: 1375167003}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Window 3 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -327,7 +327,7 @@ GameObject:
   - component: {fileID: 1588157227}
   - component: {fileID: 1588157230}
   - component: {fileID: 1588157229}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Window 3 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -406,7 +406,7 @@ GameObject:
   - component: {fileID: 1647576171}
   - component: {fileID: 1647576174}
   - component: {fileID: 1647576173}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Window 3 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -485,7 +485,7 @@ GameObject:
   - component: {fileID: 5991709065993731260}
   - component: {fileID: 4736360913539829165}
   - component: {fileID: 5726684517945495977}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Window 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -564,7 +564,7 @@ GameObject:
   - component: {fileID: 2958070802316004706}
   - component: {fileID: 2340832625821555401}
   - component: {fileID: 985333578434597757}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -643,7 +643,7 @@ GameObject:
   - component: {fileID: 7407510496048193491}
   - component: {fileID: 1116818237069937776}
   - component: {fileID: 1997221857341288586}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Window 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -722,7 +722,7 @@ GameObject:
   - component: {fileID: 3875077190217168604}
   - component: {fileID: 4374799856668107127}
   - component: {fileID: 1253896528515770563}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -803,7 +803,7 @@ GameObject:
   - component: {fileID: 5101280720688349191}
   - component: {fileID: 5101280720688349190}
   - component: {fileID: 5101280720688349185}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HouseMedium_02
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -916,7 +916,7 @@ GameObject:
   - component: {fileID: 4737462161681566635}
   - component: {fileID: 4813348210202478548}
   - component: {fileID: 6786319343067295233}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Window 4 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -995,7 +995,7 @@ GameObject:
   - component: {fileID: 5274850392056732159}
   - component: {fileID: 4668319343942024812}
   - component: {fileID: 2917667882087509361}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Window 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1074,7 +1074,7 @@ GameObject:
   - component: {fileID: 6773022998340737280}
   - component: {fileID: 3880052317092246113}
   - component: {fileID: 5730048720799585946}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Window 3 (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1153,7 +1153,7 @@ GameObject:
   - component: {fileID: 6689939509440269821}
   - component: {fileID: 920104892068921579}
   - component: {fileID: 7051368188506971902}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Window 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1232,7 +1232,7 @@ GameObject:
   - component: {fileID: 9183710786546149166}
   - component: {fileID: 8144412805207741623}
   - component: {fileID: 4641826911212948499}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Door 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1311,7 +1311,7 @@ GameObject:
   - component: {fileID: 6485540105161374651}
   - component: {fileID: 6485540105161374650}
   - component: {fileID: 6485540105161374649}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HouseMedium_02 (1)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -1403,7 +1403,7 @@ GameObject:
   - component: {fileID: 4566287777524948470}
   - component: {fileID: 4152221724983287896}
   - component: {fileID: 1759208150120145451}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Window 3 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1482,7 +1482,7 @@ GameObject:
   - component: {fileID: 1264592626520874110}
   - component: {fileID: 2930502651522628655}
   - component: {fileID: 7008203737346649425}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Window 3 (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

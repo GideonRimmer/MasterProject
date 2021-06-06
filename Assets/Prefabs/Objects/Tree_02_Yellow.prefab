@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7247847300113129200}
   - component: {fileID: 7904916411768664628}
   - component: {fileID: 7370397430491400334}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1289,12 +1289,12 @@ GameObject:
   - component: {fileID: 1483198947684205951}
   - component: {fileID: 2278994991488274623}
   - component: {fileID: 9163656403977413333}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Icosphere (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4598429723508454505
 Transform:
@@ -1934,7 +1934,7 @@ GameObject:
   - component: {fileID: 4328752062696093622}
   - component: {fileID: 1403959492029773701}
   - component: {fileID: 1965886020643385075}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3211,7 +3211,7 @@ GameObject:
   - component: {fileID: 7270833079608553069}
   - component: {fileID: 4718741376643748463}
   - component: {fileID: 2914623386832984226}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4488,12 +4488,12 @@ GameObject:
   - component: {fileID: 8153650085262489797}
   - component: {fileID: 7220286555148849447}
   - component: {fileID: 5578666167663005546}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Icosphere (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &3910551532904569604
 Transform:
@@ -5133,12 +5133,12 @@ GameObject:
   - component: {fileID: 4088814869575591435}
   - component: {fileID: 7768967440960976200}
   - component: {fileID: 424325963769642942}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Icosphere (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2095706599596978801
 Transform:
@@ -5778,12 +5778,12 @@ GameObject:
   - component: {fileID: 3851754514050948469}
   - component: {fileID: 3572922779886623551}
   - component: {fileID: 367520498308447249}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Icosphere (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1405899517445140858
 Transform:
@@ -6423,7 +6423,7 @@ GameObject:
   - component: {fileID: 2269803608901034128}
   - component: {fileID: 5251311161777979430}
   - component: {fileID: 3638900841418733942}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7700,12 +7700,12 @@ GameObject:
   - component: {fileID: 5542966625245701270}
   - component: {fileID: 8504767329727508203}
   - component: {fileID: 2959901514926917150}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Icosphere (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7669877446945540409
 Transform:
@@ -8345,12 +8345,12 @@ GameObject:
   - component: {fileID: 2940220287190649537}
   - component: {fileID: 304656619673626136}
   - component: {fileID: 2054499548531355239}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Icosphere (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8183277048018695964
 Transform:
@@ -8990,7 +8990,7 @@ GameObject:
   - component: {fileID: 521209906305858831}
   - component: {fileID: 1789824932178222104}
   - component: {fileID: 2797518993487423331}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10267,7 +10267,7 @@ GameObject:
   - component: {fileID: 7809157578170044171}
   - component: {fileID: 5006758594315448181}
   - component: {fileID: 3682700358637997385}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11544,12 +11544,12 @@ GameObject:
   - component: {fileID: 3070313245396813149}
   - component: {fileID: 1623998163574965850}
   - component: {fileID: 4802596397923315166}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Icosphere (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7370914480985317506
 Transform:
@@ -12189,7 +12189,7 @@ GameObject:
   - component: {fileID: 4465956391329478260}
   - component: {fileID: 8661606971005491755}
   - component: {fileID: 5610520827285289646}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13465,7 +13465,7 @@ GameObject:
   - component: {fileID: 5778233164660797935}
   - component: {fileID: 1990897667901543843}
   - component: {fileID: 6779803033714672021}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tree_02_Yellow
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -13543,12 +13543,12 @@ GameObject:
   - component: {fileID: 866642942323621387}
   - component: {fileID: 3317024487807830640}
   - component: {fileID: 4092112366983022512}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Icosphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8748350865033637015
 Transform:
@@ -14188,7 +14188,7 @@ GameObject:
   - component: {fileID: 1872713096627450937}
   - component: {fileID: 5078982331117912906}
   - component: {fileID: 3637973499623970133}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

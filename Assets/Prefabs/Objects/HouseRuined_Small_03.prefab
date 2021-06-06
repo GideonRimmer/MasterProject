@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 1227500972709577003}
   - component: {fileID: 1227500972709577000}
   - component: {fileID: 1227500972709577001}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Door 2
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -30,7 +30,7 @@ Transform:
   m_LocalScale: {x: 0.35, y: 0.6, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1227500974147907989}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1227500972709577000
 MeshFilter:
@@ -90,9 +90,9 @@ GameObject:
   - component: {fileID: 1227500973046257302}
   - component: {fileID: 1227500973046257299}
   - component: {fileID: 1227500973046257300}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Window 3
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -109,7 +109,7 @@ Transform:
   m_LocalScale: {x: 0.1, y: 0.2, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1227500974147907989}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1227500973046257299
 MeshFilter:
@@ -169,9 +169,9 @@ GameObject:
   - component: {fileID: 1227500973240966462}
   - component: {fileID: 1227500973240966459}
   - component: {fileID: 1227500973240966460}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Window 4
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -188,7 +188,7 @@ Transform:
   m_LocalScale: {x: 0.1, y: 0.2, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1227500974147907989}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1227500973240966459
 MeshFilter:
@@ -248,9 +248,9 @@ GameObject:
   - component: {fileID: 1227500973246218129}
   - component: {fileID: 1227500973246218142}
   - component: {fileID: 1227500973246218143}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trim
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -267,7 +267,7 @@ Transform:
   m_LocalScale: {x: 1.05, y: 0.1, z: 1.05}
   m_Children: []
   m_Father: {fileID: 1227500974147907989}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1227500973246218142
 MeshFilter:
@@ -329,7 +329,7 @@ GameObject:
   - component: {fileID: 1227500974147907991}
   - component: {fileID: 1227500974147908072}
   - component: {fileID: 1227500974147908073}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HouseRuined_Small_03
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -347,6 +347,7 @@ Transform:
   m_LocalPosition: {x: 224.23, y: 5, z: 67.93}
   m_LocalScale: {x: 20, y: 10, z: 10}
   m_Children:
+  - {fileID: 4819608666615877711}
   - {fileID: 1227500973246218129}
   - {fileID: 1227500972709577003}
   - {fileID: 1227500973046257302}
@@ -464,7 +465,7 @@ GameObject:
   - component: {fileID: 4036689376784373689}
   - component: {fileID: 2652431132768878464}
   - component: {fileID: 3247538285637078435}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (19)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -483,7 +484,7 @@ Transform:
   m_LocalScale: {x: 0.041608423, y: 0.28944838, z: 0.05}
   m_Children: []
   m_Father: {fileID: 1227500974147907989}
-  m_RootOrder: 25
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2652431132768878464
 MeshFilter:
@@ -532,6 +533,85 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &4616470727959068882
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4819608666615877711}
+  - component: {fileID: 5017803880877846973}
+  - component: {fileID: 539673190284210080}
+  m_Layer: 8
+  m_Name: Cube
+  m_TagString: Obstacles
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &4819608666615877711
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4616470727959068882}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1227500974147907989}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &5017803880877846973
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4616470727959068882}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &539673190284210080
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4616470727959068882}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &5416828576530873092
 GameObject:
   m_ObjectHideFlags: 0
@@ -543,7 +623,7 @@ GameObject:
   - component: {fileID: 5416828576530873093}
   - component: {fileID: 5416828576530873089}
   - component: {fileID: 5416828576530873088}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (5)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -562,7 +642,7 @@ Transform:
   m_LocalScale: {x: 0.036674585, y: 0.6563765, z: 0.05}
   m_Children: []
   m_Father: {fileID: 1227500974147907989}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5416828576530873089
 MeshFilter:
@@ -622,7 +702,7 @@ GameObject:
   - component: {fileID: 5416828576533457949}
   - component: {fileID: 5416828576533457945}
   - component: {fileID: 5416828576533457944}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (6)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -641,7 +721,7 @@ Transform:
   m_LocalScale: {x: 0.5105414, y: 0.08484754, z: 0.05}
   m_Children: []
   m_Father: {fileID: 1227500974147907989}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5416828576533457945
 MeshFilter:
@@ -701,7 +781,7 @@ GameObject:
   - component: {fileID: 5416828576732464106}
   - component: {fileID: 5416828576732464102}
   - component: {fileID: 5416828576732464101}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (8)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -720,7 +800,7 @@ Transform:
   m_LocalScale: {x: 0.12168164, y: 1, z: 0.05}
   m_Children: []
   m_Father: {fileID: 1227500974147907989}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5416828576732464102
 MeshFilter:
@@ -780,7 +860,7 @@ GameObject:
   - component: {fileID: 5416828576765956410}
   - component: {fileID: 5416828576765956406}
   - component: {fileID: 5416828576765956405}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (7)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -799,7 +879,7 @@ Transform:
   m_LocalScale: {x: 0.05, y: 0.4582, z: 0.59212244}
   m_Children: []
   m_Father: {fileID: 1227500974147907989}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5416828576765956406
 MeshFilter:
@@ -859,7 +939,7 @@ GameObject:
   - component: {fileID: 5416828576813309564}
   - component: {fileID: 5416828576813309560}
   - component: {fileID: 5416828576813309567}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (10)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -878,7 +958,7 @@ Transform:
   m_LocalScale: {x: 0.35103938, y: 0.3887995, z: 0.05}
   m_Children: []
   m_Father: {fileID: 1227500974147907989}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5416828576813309560
 MeshFilter:
@@ -938,7 +1018,7 @@ GameObject:
   - component: {fileID: 5416828577292928952}
   - component: {fileID: 5416828577292928948}
   - component: {fileID: 5416828577292928955}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (14)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -957,7 +1037,7 @@ Transform:
   m_LocalScale: {x: 0.05, y: 0.4784, z: 0.59275436}
   m_Children: []
   m_Father: {fileID: 1227500974147907989}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5416828577292928948
 MeshFilter:
@@ -1017,7 +1097,7 @@ GameObject:
   - component: {fileID: 5416828577385228340}
   - component: {fileID: 5416828577385228336}
   - component: {fileID: 5416828577385228343}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (4)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -1036,7 +1116,7 @@ Transform:
   m_LocalScale: {x: 0.15720712, y: 0.56008255, z: 0.05}
   m_Children: []
   m_Father: {fileID: 1227500974147907989}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5416828577385228336
 MeshFilter:
@@ -1096,7 +1176,7 @@ GameObject:
   - component: {fileID: 5416828577416646528}
   - component: {fileID: 5416828577416646588}
   - component: {fileID: 5416828577416646531}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (20)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -1115,7 +1195,7 @@ Transform:
   m_LocalScale: {x: 0.088346414, y: 0.18872984, z: 0.05}
   m_Children: []
   m_Father: {fileID: 1227500974147907989}
-  m_RootOrder: 21
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5416828577416646588
 MeshFilter:
@@ -1175,7 +1255,7 @@ GameObject:
   - component: {fileID: 5416828577498486908}
   - component: {fileID: 5416828577498486904}
   - component: {fileID: 5416828577498486911}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (13)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -1194,7 +1274,7 @@ Transform:
   m_LocalScale: {x: 0.05, y: 1, z: 0.13059545}
   m_Children: []
   m_Father: {fileID: 1227500974147907989}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5416828577498486904
 MeshFilter:
@@ -1254,7 +1334,7 @@ GameObject:
   - component: {fileID: 5416828577635979875}
   - component: {fileID: 5416828577635979807}
   - component: {fileID: 5416828577635979806}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (16)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -1273,7 +1353,7 @@ Transform:
   m_LocalScale: {x: 0.17784528, y: 0.4009413, z: 0.05}
   m_Children: []
   m_Father: {fileID: 1227500974147907989}
-  m_RootOrder: 19
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5416828577635979807
 MeshFilter:
@@ -1333,7 +1413,7 @@ GameObject:
   - component: {fileID: 5416828577870445713}
   - component: {fileID: 5416828577870445709}
   - component: {fileID: 5416828577870445708}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (1)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -1352,7 +1432,7 @@ Transform:
   m_LocalScale: {x: 0.05, y: 0.7264, z: 0.4513}
   m_Children: []
   m_Father: {fileID: 1227500974147907989}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5416828577870445709
 MeshFilter:
@@ -1412,7 +1492,7 @@ GameObject:
   - component: {fileID: 5416828578023849121}
   - component: {fileID: 5416828578023849053}
   - component: {fileID: 5416828578023849052}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (9)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -1431,7 +1511,7 @@ Transform:
   m_LocalScale: {x: 0.26612294, y: 0.3993, z: 0.05}
   m_Children: []
   m_Father: {fileID: 1227500974147907989}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5416828578023849053
 MeshFilter:
@@ -1491,7 +1571,7 @@ GameObject:
   - component: {fileID: 5416828578121598215}
   - component: {fileID: 5416828578121598211}
   - component: {fileID: 5416828578121598210}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (2)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -1510,7 +1590,7 @@ Transform:
   m_LocalScale: {x: 0.1039, y: 1, z: 0.05}
   m_Children: []
   m_Father: {fileID: 1227500974147907989}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5416828578121598211
 MeshFilter:
@@ -1570,7 +1650,7 @@ GameObject:
   - component: {fileID: 5416828578135590551}
   - component: {fileID: 5416828578135590547}
   - component: {fileID: 5416828578135590546}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (3)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -1589,7 +1669,7 @@ Transform:
   m_LocalScale: {x: 0.0916, y: 1, z: 0.05}
   m_Children: []
   m_Father: {fileID: 1227500974147907989}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5416828578135590547
 MeshFilter:
@@ -1649,7 +1729,7 @@ GameObject:
   - component: {fileID: 5416828578137007292}
   - component: {fileID: 5416828578137007288}
   - component: {fileID: 5416828578137007295}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (12)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -1668,7 +1748,7 @@ Transform:
   m_LocalScale: {x: 0.05, y: 0.77664906, z: 0.34550345}
   m_Children: []
   m_Father: {fileID: 1227500974147907989}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5416828578137007288
 MeshFilter:
@@ -1728,7 +1808,7 @@ GameObject:
   - component: {fileID: 5416828578184120334}
   - component: {fileID: 5416828578184120330}
   - component: {fileID: 5416828578184120329}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (21)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -1747,7 +1827,7 @@ Transform:
   m_LocalScale: {x: 0.13646814, y: 0.65207773, z: 0.05}
   m_Children: []
   m_Father: {fileID: 1227500974147907989}
-  m_RootOrder: 22
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5416828578184120330
 MeshFilter:
@@ -1807,7 +1887,7 @@ GameObject:
   - component: {fileID: 5416828578184228925}
   - component: {fileID: 5416828578184228924}
   - component: {fileID: 5416828578184228867}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -1826,7 +1906,7 @@ Transform:
   m_LocalScale: {x: 0.05, y: 1, z: 0.28461048}
   m_Children: []
   m_Father: {fileID: 1227500974147907989}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5416828578184228924
 MeshFilter:
@@ -1886,7 +1966,7 @@ GameObject:
   - component: {fileID: 5416828578255157084}
   - component: {fileID: 5416828578255157080}
   - component: {fileID: 5416828578255157087}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (17)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -1905,7 +1985,7 @@ Transform:
   m_LocalScale: {x: 0.043580513, y: 0.8987101, z: 0.05}
   m_Children: []
   m_Father: {fileID: 1227500974147907989}
-  m_RootOrder: 20
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5416828578255157080
 MeshFilter:
@@ -1965,7 +2045,7 @@ GameObject:
   - component: {fileID: 5416828578468268934}
   - component: {fileID: 5416828578468268930}
   - component: {fileID: 5416828578468268929}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (11)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -1984,7 +2064,7 @@ Transform:
   m_LocalScale: {x: 0.1265848, y: 0.6254287, z: 0.05}
   m_Children: []
   m_Father: {fileID: 1227500974147907989}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5416828578468268930
 MeshFilter:
@@ -2045,12 +2125,12 @@ GameObject:
   - component: {fileID: 4779166653075169131}
   - component: {fileID: 7943090202884601908}
   - component: {fileID: 6038998671229682462}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2826005009930468842
 Transform:
@@ -2064,7 +2144,7 @@ Transform:
   m_LocalScale: {x: 1, y: 0.01, z: 1}
   m_Children: []
   m_Father: {fileID: 1227500974147907989}
-  m_RootOrder: 26
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4779166653075169131
 MeshFilter:
@@ -2137,7 +2217,7 @@ GameObject:
   - component: {fileID: 3179762465312402437}
   - component: {fileID: 1606305770026876801}
   - component: {fileID: 2497016323825005682}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (18)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -2156,7 +2236,7 @@ Transform:
   m_LocalScale: {x: 0.22685082, y: 0.16839878, z: 0.05}
   m_Children: []
   m_Father: {fileID: 1227500974147907989}
-  m_RootOrder: 24
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1606305770026876801
 MeshFilter:
@@ -2216,7 +2296,7 @@ GameObject:
   - component: {fileID: 8479637248845292534}
   - component: {fileID: 8479637248845292530}
   - component: {fileID: 8479637248845292531}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (15)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -2235,7 +2315,7 @@ Transform:
   m_LocalScale: {x: 0.05, y: 0.2090608, z: 1.0146177}
   m_Children: []
   m_Father: {fileID: 1227500974147907989}
-  m_RootOrder: 23
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8479637248845292530
 MeshFilter:

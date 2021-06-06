@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 552278103}
   - component: {fileID: 552278102}
   - component: {fileID: 552278101}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Window 4 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 1133868310}
   - component: {fileID: 1133868309}
   - component: {fileID: 1133868308}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Window 3 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 1976758274}
   - component: {fileID: 1976758273}
   - component: {fileID: 1976758272}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Window 3 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -250,7 +250,7 @@ GameObject:
   - component: {fileID: 975787921405778558}
   - component: {fileID: 975787921405778557}
   - component: {fileID: 975787921405778556}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HouseBig_01
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -365,7 +365,7 @@ GameObject:
   - component: {fileID: 8614682038265000738}
   - component: {fileID: 4638770227816434479}
   - component: {fileID: 8918323904070179887}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Window 1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -444,7 +444,7 @@ GameObject:
   - component: {fileID: 5777256755653050697}
   - component: {fileID: 606059970120576634}
   - component: {fileID: 6379045758224648513}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Door 1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -523,7 +523,7 @@ GameObject:
   - component: {fileID: 3142865073560245741}
   - component: {fileID: 798366399466731827}
   - component: {fileID: 7967100507680003761}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Window 2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -602,7 +602,7 @@ GameObject:
   - component: {fileID: 3278432296476484745}
   - component: {fileID: 375499648913058597}
   - component: {fileID: 2680152515785337536}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trim (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

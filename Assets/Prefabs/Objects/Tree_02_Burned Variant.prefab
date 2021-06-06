@@ -55,7 +55,7 @@ PrefabInstance:
     - target: {fileID: 1448921334311137638, guid: 929073d95843af14da0b20267544428a,
         type: 3}
       propertyPath: m_Name
-      value: Tree_02_Burned
+      value: Tree_02_Burned Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2332087007788072772, guid: 929073d95843af14da0b20267544428a,
         type: 3}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 87863422756736997}
   - component: {fileID: 539222185124894307}
   - component: {fileID: 3432787940586197255}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Window 3 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 6495463096835521363}
   - component: {fileID: 6495463096835521324}
   - component: {fileID: 6495463096835521325}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HouseSmall_01
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 6495463097322094429}
   - component: {fileID: 6495463097322094402}
   - component: {fileID: 6495463097322094403}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Window 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -286,7 +286,7 @@ GameObject:
   - component: {fileID: 6495463097519178928}
   - component: {fileID: 6495463097519178933}
   - component: {fileID: 6495463097519178934}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Door 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -365,7 +365,7 @@ GameObject:
   - component: {fileID: 6495463097740515322}
   - component: {fileID: 6495463097740515327}
   - component: {fileID: 6495463097740515320}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Window 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -444,7 +444,7 @@ GameObject:
   - component: {fileID: 6495463097745765717}
   - component: {fileID: 6495463097745765722}
   - component: {fileID: 6495463097745765723}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -523,7 +523,7 @@ GameObject:
   - component: {fileID: 6495463097948200018}
   - component: {fileID: 6495463097948200023}
   - component: {fileID: 6495463097948200016}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Window 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -602,7 +602,7 @@ GameObject:
   - component: {fileID: 6495463098059912314}
   - component: {fileID: 6495463098059912319}
   - component: {fileID: 6495463098059912312}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Window 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
