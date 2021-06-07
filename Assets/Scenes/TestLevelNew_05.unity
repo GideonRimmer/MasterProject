@@ -1167,6 +1167,11 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2318667677168196397, guid: a13ba6ef999299e4d8f18d22f34c6b2d,
+        type: 3}
+      propertyPath: currentFaction
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5861233222970431147, guid: a13ba6ef999299e4d8f18d22f34c6b2d,
         type: 3}
       propertyPath: m_Name
@@ -4071,6 +4076,11 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2318667677168196397, guid: a13ba6ef999299e4d8f18d22f34c6b2d,
+        type: 3}
+      propertyPath: currentFaction
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5861233222970431147, guid: a13ba6ef999299e4d8f18d22f34c6b2d,
         type: 3}
       propertyPath: m_Name
@@ -4565,6 +4575,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2318667677168196397, guid: a13ba6ef999299e4d8f18d22f34c6b2d,
+        type: 3}
+      propertyPath: currentFaction
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5861233222970431147, guid: a13ba6ef999299e4d8f18d22f34c6b2d,
         type: 3}
@@ -6201,6 +6216,11 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2318667677168196397, guid: a13ba6ef999299e4d8f18d22f34c6b2d,
+        type: 3}
+      propertyPath: currentFaction
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5861233222970431147, guid: a13ba6ef999299e4d8f18d22f34c6b2d,
         type: 3}
       propertyPath: m_Name
@@ -6295,6 +6315,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2318667677168196397, guid: a13ba6ef999299e4d8f18d22f34c6b2d,
+        type: 3}
+      propertyPath: currentFaction
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5861233222970431147, guid: a13ba6ef999299e4d8f18d22f34c6b2d,
         type: 3}
@@ -6710,6 +6735,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2318667677168196397, guid: a13ba6ef999299e4d8f18d22f34c6b2d,
+        type: 3}
+      propertyPath: currentFaction
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5861233222970431147, guid: a13ba6ef999299e4d8f18d22f34c6b2d,
         type: 3}
@@ -7692,6 +7722,11 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2318667677168196397, guid: a13ba6ef999299e4d8f18d22f34c6b2d,
+        type: 3}
+      propertyPath: currentFaction
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5861233222970431147, guid: a13ba6ef999299e4d8f18d22f34c6b2d,
         type: 3}
       propertyPath: m_Name
@@ -8565,6 +8600,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2318667677168196397, guid: a13ba6ef999299e4d8f18d22f34c6b2d,
+        type: 3}
+      propertyPath: currentFaction
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5861233222970431147, guid: a13ba6ef999299e4d8f18d22f34c6b2d,
         type: 3}
@@ -9797,6 +9837,11 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2318667677168196397, guid: a13ba6ef999299e4d8f18d22f34c6b2d,
+        type: 3}
+      propertyPath: currentFaction
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5861233222970431147, guid: a13ba6ef999299e4d8f18d22f34c6b2d,
         type: 3}
       propertyPath: m_Name
@@ -9995,6 +10040,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2318667677168196397, guid: a13ba6ef999299e4d8f18d22f34c6b2d,
+        type: 3}
+      propertyPath: currentFaction
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5861233222970431147, guid: a13ba6ef999299e4d8f18d22f34c6b2d,
         type: 3}
