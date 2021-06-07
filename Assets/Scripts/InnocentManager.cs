@@ -6,6 +6,7 @@ using System.Linq;
 
 public class InnocentManager : MonoBehaviour
 {
+    [Header("Setup")]
     //private Rigidbody rigidbody;
     public NavMeshAgent navMeshAgent;
     public Animator animator;
@@ -17,22 +18,42 @@ public class InnocentManager : MonoBehaviour
     public float maxDistanceFromHostile = 15f;
     [SerializeField] private float currentDistanceFromHostile;
 
+    public enum Faction
+    {
+        Neutral,
+        Enemy,
+        Follower,
+    };
+    [Header("Faction")]
+    public Faction currentFaction;
+
     private enum State
     {
         Idle,
         RunAway,
     }
+    [Header("State machine")]
     [SerializeField] private State currentState;
     [SerializeField] Collider[] agentsInSphere;
     public Transform currentHostile;
     public LayerMask hostileLayers;
 
-    private void Start()
+    [Header("Body parts")]
+    public Renderer[] clothes;
+
+    [Header("Materials")]
+    public Material neutralMaterial;
+    public Material enemyMaterial;
+    public Material followerMaterial;
+
+    private void Awake()
     {
         //rigidbody = GetComponent<Rigidbody>();
         currentState = State.Idle;
         currentDistanceFromHostile = maxDistanceFromHostile;
         runAwaySpeed = moveSpeed + 1f;
+
+        SetFaction(currentFaction);
     }
 
     private void FixedUpdate()
@@ -120,6 +141,45 @@ public class InnocentManager : MonoBehaviour
         GetComponent<HitPointsManager>().PlayParticleSystem();
         Destroy(this.gameObject);
     }
+
+    private void SetFaction(Faction newFaction)
+    {
+        foreach (Renderer part in clothes)
+        {
+            var mats = new Material[part.materials.Length];
+            for (var i = 0; i < part.materials.Length; i++)
+            {
+                if (newFaction == Faction.Neutral)
+                {
+                    mats[i] = neutralMaterial;
+                }
+                else if (newFaction == Faction.Enemy)
+                {
+                    mats[i] = enemyMaterial;
+                }
+                else if (newFaction == Faction.Follower)
+                {
+                    mats[i] = followerMaterial;
+                }
+            }
+            part.materials = mats;
+        }
+    }
+
+    private void ChangeMaterial(Renderer[] parts, Material newMaterial)
+    {
+        // Change children materials to indicate a change of state.
+        foreach (Renderer renderer in parts)
+        {
+            var mats = new Material[renderer.materials.Length];
+            for (var i = 0; i < renderer.materials.Length; i++)
+            {
+                mats[i] = newMaterial;
+            }
+            renderer.materials = mats;
+        }
+    }
+
 
     private void OnDrawGizmos()
     {

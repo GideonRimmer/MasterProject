@@ -2165,7 +2165,7 @@ MonoBehaviour:
   moveSpeed: 11
   rotateSpeed: 8
   attackDamage: 1
-  attackSpeedBonus: 4
+  attackSpeedBonus: 5
   attackTimer: 0.5
   attackCurrentTime: 0
   enemyTarget: {fileID: 0}

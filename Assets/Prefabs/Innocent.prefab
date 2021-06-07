@@ -941,12 +941,20 @@ MonoBehaviour:
   minDistanceFromHostile: 10
   maxDistanceFromHostile: 15
   currentDistanceFromHostile: 0
+  currentFaction: 0
   currentState: 0
   agentsInSphere: []
   currentHostile: {fileID: 0}
   hostileLayers:
     serializedVersion: 2
     m_Bits: 3584
+  clothes:
+  - {fileID: 6367973333881372077}
+  - {fileID: 2457433976868093802}
+  - {fileID: 159833416626803904}
+  neutralMaterial: {fileID: 2100000, guid: a2a076d4762d03d4bbebe77e78d35b94, type: 2}
+  enemyMaterial: {fileID: 2100000, guid: 61b1bd40945e94444b46489684773d14, type: 2}
+  followerMaterial: {fileID: 2100000, guid: 4f30c1adb9ec5c849b36746e980649a6, type: 2}
 --- !u!114 &7271070707928913487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1465,6 +1473,24 @@ Transform:
 --- !u!95 &8239794228400980301 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 4317602233000669811, guid: 56b99ffb7921e8643a1b7a14ae16ba37,
+    type: 3}
+  m_PrefabInstance: {fileID: 5310471198312215358}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &6367973333881372077 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1291692418378174099, guid: 56b99ffb7921e8643a1b7a14ae16ba37,
+    type: 3}
+  m_PrefabInstance: {fileID: 5310471198312215358}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &2457433976868093802 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7757479244609162324, guid: 56b99ffb7921e8643a1b7a14ae16ba37,
+    type: 3}
+  m_PrefabInstance: {fileID: 5310471198312215358}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &159833416626803904 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5441829179157948414, guid: 56b99ffb7921e8643a1b7a14ae16ba37,
     type: 3}
   m_PrefabInstance: {fileID: 5310471198312215358}
   m_PrefabAsset: {fileID: 0}

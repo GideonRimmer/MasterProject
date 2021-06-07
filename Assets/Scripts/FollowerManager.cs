@@ -207,7 +207,9 @@ public class FollowerManager : MonoBehaviour
             }
 
             // If this is one of the player's followers, also attack any Innocents in range (MUWAHAHAHA), and enemies.
-            else if (currentState != State.Attack && currentLeader != null && currentLeader.CompareTag("Player") && (agent.CompareTag("Innocent") || agent.CompareTag("Enemy")))
+            else if (currentState != State.Attack && currentLeader != null && currentLeader.CompareTag("Player") &&
+                ((agent.CompareTag("Innocent") && agent.GetComponentInParent<InnocentManager>().currentFaction == InnocentManager.Faction.Enemy)||
+                agent.CompareTag("Enemy")))
             {
                 Debug.Log(this.name  + " attack innocent or enemy " + agent);
                 SetAttackTarget(agent.transform);

@@ -78,7 +78,7 @@ public class EnemyManager : MonoBehaviour
             // Select a new attack targt if: Not already attacking AND agent is a player, player's follower, leaderless follower, or innocent.
             if (currentState != State.Attack &&
                (agent.tag == "Player" ||
-               agent.tag == "Innocent" ||
+               (agent.tag == "Innocent" && agent.GetComponentInParent<InnocentManager>().currentFaction != InnocentManager.Faction.Enemy)||
                (agent.tag == "Follower" && (agentFollower.currentLeader == null || (agentFollower.currentLeader != null && agentFollower.currentLeader.tag == "Player")))))
             {
                 SetAttackTarget(agent.transform);
