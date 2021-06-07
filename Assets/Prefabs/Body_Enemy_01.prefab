@@ -791,6 +791,7 @@ GameObject:
   - component: {fileID: 2570079998173936386}
   - component: {fileID: 630415508843765116}
   - component: {fileID: 7130756076244104290}
+  - component: {fileID: 4664835991981801062}
   m_Layer: 14
   m_Name: Body_Enemy_01
   m_TagString: Untagged
@@ -822,8 +823,8 @@ Rigidbody:
   m_GameObject: {fileID: 4765656884443028516}
   serializedVersion: 2
   m_Mass: 80
-  m_Drag: 0.5
-  m_AngularDrag: 0.5
+  m_Drag: 1
+  m_AngularDrag: 1
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -843,6 +844,20 @@ CapsuleCollider:
   m_Height: 9.51
   m_Direction: 2
   m_Center: {x: 0, y: 0.18, z: 0.96}
+--- !u!114 &4664835991981801062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4765656884443028516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c7096436b499e943bf4826c65863a09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applyRandomRotation: 1
+  angleY: 0
 --- !u!1 &4797020047917953074
 GameObject:
   m_ObjectHideFlags: 0
