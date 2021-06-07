@@ -745,7 +745,7 @@ public class FollowerManager : MonoBehaviour
         // Heal HP through the RegisterHit function.
         if (GetComponentInParent<HitPointsManager>().currentHitPoints < maxHitPoints)
         {
-            GetComponentInParent<HitPointsManager>().RegisterHit(-2);
+            GetComponentInParent<HitPointsManager>().RegisterHit(-1);
         }
 
         // Increase attackDamage.
