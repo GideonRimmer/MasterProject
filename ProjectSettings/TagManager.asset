@@ -11,6 +11,7 @@ TagManager:
   - Enemy
   - Obstacles
   - Innocent
+  - FakeFollower
   layers:
   - Default
   - TransparentFX
@@ -27,7 +28,7 @@ TagManager:
   - Innocents
   - Ground
   - GroundObjects
-  - 
+  - FakeFollower
   - 
   - 
   - 
