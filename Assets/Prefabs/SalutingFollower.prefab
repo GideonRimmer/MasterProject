@@ -2354,7 +2354,8 @@ MonoBehaviour:
   player: {fileID: 5177768760692605988, guid: b916000558734a14583cd4a3891fc5cb, type: 3}
   animator: {fileID: 7438883872170861173}
   isSaluting: 0
-  sphereRadius: 10
+  delayTime: 0.3
+  sphereRadius: 20
   agentsInSphere: []
   distanceToLeader: 0
   SaluteToLayers:
@@ -3132,22 +3133,22 @@ PrefabInstance:
     - target: {fileID: 1082400453112626897, guid: 2b69b9e8941030c4384f2a1b9b1e8af7,
         type: 3}
       propertyPath: m_Layer
-      value: 15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1388047844625943892, guid: 2b69b9e8941030c4384f2a1b9b1e8af7,
         type: 3}
       propertyPath: m_Layer
-      value: 15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1660595344913058264, guid: 2b69b9e8941030c4384f2a1b9b1e8af7,
         type: 3}
       propertyPath: m_Layer
-      value: 15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2892866704198774145, guid: 2b69b9e8941030c4384f2a1b9b1e8af7,
         type: 3}
       propertyPath: m_Layer
-      value: 15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3852555985018370194, guid: 2b69b9e8941030c4384f2a1b9b1e8af7,
         type: 3}
@@ -3157,7 +3158,7 @@ PrefabInstance:
     - target: {fileID: 4103898320162954804, guid: 2b69b9e8941030c4384f2a1b9b1e8af7,
         type: 3}
       propertyPath: m_Layer
-      value: 15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4133790586025610434, guid: 2b69b9e8941030c4384f2a1b9b1e8af7,
         type: 3}
@@ -3222,37 +3223,37 @@ PrefabInstance:
     - target: {fileID: 4946554890025980407, guid: 2b69b9e8941030c4384f2a1b9b1e8af7,
         type: 3}
       propertyPath: m_Layer
-      value: 15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5726703570829627041, guid: 2b69b9e8941030c4384f2a1b9b1e8af7,
         type: 3}
       propertyPath: m_Layer
-      value: 15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6430684957730795677, guid: 2b69b9e8941030c4384f2a1b9b1e8af7,
         type: 3}
       propertyPath: m_Layer
-      value: 15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7023516575902670416, guid: 2b69b9e8941030c4384f2a1b9b1e8af7,
         type: 3}
       propertyPath: m_Layer
-      value: 15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7060400713074405219, guid: 2b69b9e8941030c4384f2a1b9b1e8af7,
         type: 3}
       propertyPath: m_Layer
-      value: 15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7443334768884451351, guid: 2b69b9e8941030c4384f2a1b9b1e8af7,
         type: 3}
       propertyPath: m_Layer
-      value: 15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7995458307778778875, guid: 2b69b9e8941030c4384f2a1b9b1e8af7,
         type: 3}
       propertyPath: m_Layer
-      value: 15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8108216579397007582, guid: 2b69b9e8941030c4384f2a1b9b1e8af7,
         type: 3}
@@ -3262,22 +3263,22 @@ PrefabInstance:
     - target: {fileID: 8456009037789632392, guid: 2b69b9e8941030c4384f2a1b9b1e8af7,
         type: 3}
       propertyPath: m_Layer
-      value: 15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8682984153117878361, guid: 2b69b9e8941030c4384f2a1b9b1e8af7,
         type: 3}
       propertyPath: m_Layer
-      value: 15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8889908692320556614, guid: 2b69b9e8941030c4384f2a1b9b1e8af7,
         type: 3}
       propertyPath: m_Layer
-      value: 15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9163561079436590335, guid: 2b69b9e8941030c4384f2a1b9b1e8af7,
         type: 3}
       propertyPath: m_Layer
-      value: 15
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b69b9e8941030c4384f2a1b9b1e8af7, type: 3}
