@@ -30,6 +30,8 @@ public class FollowerManager : MonoBehaviour
     public TextMeshProUGUI col;
     public TextMeshProUGUI collisionText;
     public int maxHitPoints = 10;
+    private PlayRandomSound attackSound;
+    public AudioClip deathSound;
 
     [Header("Charisma")]
     public int minCharisma;
@@ -119,8 +121,9 @@ public class FollowerManager : MonoBehaviour
 
     void Start()
     {
-        rigidbody = GetComponent<Rigidbody>();
         spawnEntitiesScript = FindObjectOfType<SpawnEntitiesAtRandom>();
+        rigidbody = GetComponent<Rigidbody>();
+        attackSound = GetComponent<PlayRandomSound>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.SetDestination(destination.position);
 
@@ -725,6 +728,7 @@ public class FollowerManager : MonoBehaviour
 
     public void Attack(HitPointsManager enemy, int damage)
     {
+        //attackSound.PlayRandomClip();
         enemy.RegisterHit(damage);
         //Debug.Log(name + " attacks " + enemy.gameObject.name);
 
@@ -921,6 +925,8 @@ public class FollowerManager : MonoBehaviour
 
     public void Die()
     {
+        AudioSource.PlayClipAtPoint(deathSound, transform.position);
+
         Debug.Log(this.name + "register death");
         if (currentLeader != null)
         {

@@ -12,6 +12,7 @@ public class HitPointsManager : MonoBehaviour
     private PlayParticleEffect deathEffect;
     private Camera mainCamera;
     public TextMeshProUGUI entityName;
+    //public AudioClip deathSound;
 
     void Start()
     {
@@ -57,6 +58,8 @@ public class HitPointsManager : MonoBehaviour
     public void Die()
     {
         //Debug.Log(this.name + " died.");
+        //AudioSource.PlayClipAtPoint(deathSound, transform.position);
+
         if (deathEffect != null)
         {
             deathEffect.PlayParticleSystem();

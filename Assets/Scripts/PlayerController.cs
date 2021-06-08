@@ -34,6 +34,8 @@ public class PlayerController : MonoBehaviour
     private PlayParticleEffect playParticleEffect;
     public bool autoCollectFollowers;
 
+    public AudioClip deathSound;
+
     void Start()
     {
         isIdle = true;
@@ -151,6 +153,8 @@ public class PlayerController : MonoBehaviour
 
     private void Die()
     {
+        AudioSource.PlayClipAtPoint(deathSound, transform.position);
+
         playParticleEffect.PlayParticleSystem();
         Destroy(this.gameObject);
     }

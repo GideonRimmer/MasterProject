@@ -17,6 +17,8 @@ public class InnocentManager : MonoBehaviour
     public float minDistanceFromHostile = 10f;
     public float maxDistanceFromHostile = 15f;
     [SerializeField] private float currentDistanceFromHostile;
+    private AudioSource audioSource;
+    public AudioClip deathSound;
 
     public enum Faction
     {
@@ -52,6 +54,8 @@ public class InnocentManager : MonoBehaviour
         currentState = State.Idle;
         currentDistanceFromHostile = maxDistanceFromHostile;
         runAwaySpeed = moveSpeed + 1f;
+
+        audioSource = GetComponent<AudioSource>();
 
         SetFaction(currentFaction);
     }
@@ -138,6 +142,8 @@ public class InnocentManager : MonoBehaviour
 
     public void Die()
     {
+        //audioSource.clip = deathSound;
+        AudioSource.PlayClipAtPoint(deathSound, transform.position);
         GetComponent<HitPointsManager>().PlayParticleSystem();
         Destroy(this.gameObject);
     }

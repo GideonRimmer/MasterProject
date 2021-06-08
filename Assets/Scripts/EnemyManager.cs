@@ -13,6 +13,8 @@ public class EnemyManager : MonoBehaviour
     public float chaseRadius;
     public Animator animator;
     private GameObject player;
+    private PlayRandomSound attackSound;
+    public AudioClip deathSound;
 
     [Header("Movement Parameters")]
     public float moveSpeed;
@@ -52,6 +54,7 @@ public class EnemyManager : MonoBehaviour
     void Start()
     {
         //rigidbody = GetComponent<Rigidbody>();
+        attackSound = GetComponent<PlayRandomSound>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         startingPosition = transform.position;
         currentState = State.Idle;
@@ -181,6 +184,7 @@ public class EnemyManager : MonoBehaviour
 
     public void Attack(HitPointsManager enemy, int damage)
     {
+        //attackSound.PlayRandomClip();
         enemy.RegisterHit(damage);
         //Debug.Log(name + " attacks " + enemy.gameObject.name);
     }
@@ -226,6 +230,8 @@ public class EnemyManager : MonoBehaviour
 
     public void Die()
     {
+        AudioSource.PlayClipAtPoint(deathSound, transform.position);
+
         Debug.Log(this.name + "register death");
         GetComponent<HitPointsManager>().PlayParticleSystem();
         Destroy(this.gameObject);
