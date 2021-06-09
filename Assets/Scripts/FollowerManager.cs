@@ -87,6 +87,8 @@ public class FollowerManager : MonoBehaviour
     [SerializeField] private float attackCurrentTime;
     public Transform enemyTarget;
     [SerializeField] private float distanceToEnemy;
+    public float initialConvertCooldown = 3.0f;
+    [SerializeField] private float convertCooldown;
     public LayerMask characterLayers;
     public LayerMask playerLayer;
     public LayerMask enemyLayer;
@@ -94,6 +96,7 @@ public class FollowerManager : MonoBehaviour
     public LayerMask innocentLayer;
 
     [Header("Materials")]
+    [SerializeField] private Material defaultMaterial;
     public Material idleMaterial;
     public Material skinMaterial;
     public Material clickableMaterial;
@@ -136,6 +139,8 @@ public class FollowerManager : MonoBehaviour
         isConversionTarget = false;
         attackCurrentTime = attackTimer;
         attackDamage = initialDamage;
+        convertCooldown = initialConvertCooldown;
+
 
         // Generate random charisma.
         if (spawnEntitiesScript != null)
@@ -175,7 +180,7 @@ public class FollowerManager : MonoBehaviour
             {
                 FollowerManager agentFollower = agent.GetComponentInParent<FollowerManager>();
 
-                // NEW ATTACK CONDITIONS.
+                // Attack conditions:
                 if (currentState != State.Attack && currentLeader != null && agentFollower.gameObject != this.gameObject &&
                     // If this is a Player follower AND the agent is set as isAttackTarget.
                     ((currentLeader.CompareTag("Player") && agentFollower.isAttackTarget == true && startBetrayal == false) ||
@@ -185,18 +190,29 @@ public class FollowerManager : MonoBehaviour
                     (currentLeader.CompareTag("Player") && agentFollower.currentLeader != null && agentFollower.currentLeader.CompareTag("Taker")) ||
                     // If this is a traitor that has more followers than the player, attack the player.
                     (isTraitor == true && startBetrayal == true && agentFollower.currentLeader != null && agentFollower.currentLeader.CompareTag("Player")) ||
-
                     // Attack any follower attacking this entity.
                     (agentFollower.enemyTarget != null && agentFollower.enemyTarget == this.gameObject) ||
                     // Attack any follower attacking this entity's leader, UNLESS this entity is a traitor.
                     (agentFollower.enemyTarget != null && agentFollower.enemyTarget == currentLeader && startBetrayal == false) ||
-
                     // If this is a Taker follower, attack player followers.
                     (currentLeader.CompareTag("Taker") && agentFollower.currentLeader != null && agentFollower.currentLeader.CompareTag("Player"))))
+                    // If this is a traitor, select a non-traitor player follower to attack.
+                    //(isTraitor == true && startBetrayal == false && agentFollower.currentLeader != null && agentFollower.currentLeader.CompareTag("Player") && agentFollower.isTraitor == false)))
                 {
                     SetAttackTarget(agent.transform);
                 }
+                // If this is a traitor, select a non-traitor player follower to attack.
+                else if (currentState != State.Attack && currentLeader != null && agentFollower.gameObject != this.gameObject &&
+                    isTraitor == true && startBetrayal == false && agentFollower.currentLeader != null && agentFollower.currentLeader.CompareTag("Player") &&
+                    agentFollower.isTraitor == false && convertCooldown <= 0)
+                {
+                    Debug.Log(this.name + " converts " + agent.name);
+                    agent.GetComponentInParent<FollowerManager>().isConversionTarget = true;
+                    //SetConversionTarget(agent.transform);
+                    SetAttackTarget(agent.transform);
+                }
                 
+                /*
                 // If this is a traitor with higher charisma that other traitors, convert them and their followers to follow this.
                 else if (isTraitor == true && agentFollower.isTraitor == true && currentCharisma > agentFollower.currentCharisma)
                 {
@@ -207,6 +223,7 @@ public class FollowerManager : MonoBehaviour
                     }
                     ConvertToFollowSelf(agentFollower, 100);
                 }
+                */
             }
 
             // If this is one of the player's followers, also attack any Innocents in range (MUWAHAHAHA), and enemies.
@@ -219,7 +236,7 @@ public class FollowerManager : MonoBehaviour
             }
 
             // If the traitor has more followers than the player, attack the player.
-            if (isTraitor == true && currentLeader != null && activeFollowers.Count >= currentLeader.GetComponentInParent<SphereOfInfluence>().activeFollowers.Count * 0.5)
+            if (isTraitor == true && currentLeader != null && activeFollowers.Count >= currentLeader.GetComponentInParent<SphereOfInfluence>().activeFollowers.Count * 0.66)
             {
                 startBetrayal = true;
                 // If betrayal has started and there are no other eligible targets, traitor attacks the player.
@@ -356,6 +373,12 @@ public class FollowerManager : MonoBehaviour
                 break;
         }
 
+        if (isTraitor == true && convertCooldown > 0)
+        {
+            //Debug.Log(this.name + " convert cooldown: " + convertCooldown);
+            convertCooldown -= Time.deltaTime;
+        }
+
         if (GetComponent<HitPointsManager>().currentHitPoints <= 0)
         {
             Die();
@@ -393,7 +416,7 @@ public class FollowerManager : MonoBehaviour
             {
                 SphereOfInfluence otherSphere = other.gameObject.GetComponentInParent<SphereOfInfluence>();
                 if ((currentState == State.Idle && currentLeader == null && otherSphere.currentCharisma > currentCharisma)
-                   || currentLeader.GetComponentInParent<SphereOfInfluence>() != null && otherSphere.currentCharisma > currentLeader.GetComponentInParent<SphereOfInfluence>().currentCharisma && (currentState == State.FollowOther || (currentState == State.FollowPlayer && currentLeader.CompareTag("Player"))))
+                   || currentLeader != null && currentLeader.GetComponentInParent<SphereOfInfluence>() != null && otherSphere.currentCharisma > currentLeader.GetComponentInParent<SphereOfInfluence>().currentCharisma && (currentState == State.FollowOther || (currentState == State.FollowPlayer && currentLeader.CompareTag("Player"))))
                 {
                     SetFollowLeader(other.transform.parent.gameObject.transform);
                 }
@@ -498,6 +521,7 @@ public class FollowerManager : MonoBehaviour
         else
         {
             Debug.Log("Follow traitor");
+            isConversionTarget = false;
             ChangeMaterial(clothes, traitorFollowerMaterial);
             currentLeader = newTarget;
         }
@@ -574,7 +598,7 @@ public class FollowerManager : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(newDirection);
         */
 
-            destination = enemyTarget;
+        destination = enemyTarget;
         navMeshAgent.SetDestination(destination.position);
 
         // Stop attacking when running out of eligible targets.
@@ -676,8 +700,9 @@ public class FollowerManager : MonoBehaviour
                     Debug.Log(this.name + " attacks " + enemyTarget + ", " + enemyTarget.name);
 
                 }
-                else if (enemyTarget.CompareTag("Follower") && collision.gameObject.name == enemyTarget.name
-                    && ((enemyFollower.currentLeader != currentLeader && enemyFollower.isConversionTarget == false)
+                else if (enemyTarget.CompareTag("Follower") && collision.gameObject.name == enemyTarget.name && enemyFollower.isConversionTarget == false
+                    //&& ((enemyFollower.currentLeader != currentLeader && enemyFollower.isConversionTarget == false)
+                    && (enemyFollower.currentLeader != currentLeader
                     || (enemyFollower.currentLeader == currentLeader && enemyFollower.isAttackTarget == true)
                     || (enemyFollower.currentLeader == currentLeader && enemyFollower.isTraitor && enemyFollower.currentState == State.Attack)
                     || (enemyFollower.currentLeader == currentLeader && isTraitor == true)
@@ -686,18 +711,20 @@ public class FollowerManager : MonoBehaviour
                     // Damage the target on collision. Damage = Base damage + killCount.
                     Attack(collision.gameObject.GetComponent<HitPointsManager>(), attackDamage);
                     attackCurrentTime = attackTimer;
-                    //Debug.Log("Attack damage " + attackDamage);
-
+                    Debug.Log("Attack damage " + attackDamage);
                 }
                 else if (enemyTarget.CompareTag("Follower") && enemyFollower.isConversionTarget == true)
                 {
-                    Convert(collision.gameObject.GetComponentInParent<FollowerManager>(), convertDamage);
+                    //Convert(collision.gameObject.GetComponentInParent<FollowerManager>(), convertDamage);
+                    ConvertToFollowSelf(collision.gameObject.GetComponentInParent<FollowerManager>(), convertDamage);
                     attackCurrentTime = attackTimer;
-                    //Debug.Log("Convert damage " + convertDamage);
+                    Debug.Log("Convert damage " + convertDamage);
                 }
             }
         }
-        else if (enemyTarget == null && isTraitor == true && collision.gameObject.CompareTag("Follower") && currentLeader == collision.gameObject.GetComponentInParent<FollowerManager>().currentLeader && collision.gameObject.GetComponentInParent<FollowerManager>().isTraitor == false)
+        else if (enemyTarget == null && isTraitor == true && collision.gameObject.CompareTag("Follower") &&
+            currentLeader == collision.gameObject.GetComponentInParent<FollowerManager>().currentLeader &&
+            collision.gameObject.GetComponentInParent<FollowerManager>().isTraitor == false)
         {
             attackCurrentTime -= Time.deltaTime;
             if (attackCurrentTime <= 0 && collision.gameObject.GetComponentInParent<FollowerManager>().currentLoyalty > 0)
@@ -792,10 +819,16 @@ public class FollowerManager : MonoBehaviour
 
         target.ModifyLoyalty(-damage);
 
+        // Flash the material to signify the hit.
+        target.ChangeMaterial(clothes, traitorFollowerMaterial);
+        Invoke("ResetMaterial", 0.1f);
+
         if (target.currentLoyalty <= 0)
         {
+            enemyTarget = null;
             //Debug.Log(target.name + " follow " + transform.name + " before.");
             //target.ChangeMaterial(clothes, traitorFollowerMaterial);
+            target.enemyTarget = null;
             target.SetFollowLeader(this.transform);
             //Debug.Log(target.name + " follow " + transform.name + " after.");
             ModifyCharisma(1);
@@ -816,6 +849,9 @@ public class FollowerManager : MonoBehaviour
             {
                 activeFollowers.Add(target);
             }
+
+            // Reset the convert cooldown timer.
+            convertCooldown = initialConvertCooldown;
         }
     }
 
@@ -870,7 +906,7 @@ public class FollowerManager : MonoBehaviour
         currentViolence = Mathf.Clamp(currentViolence, 0, maxViolence);
     }
 
-    private void ChangeMaterial(Renderer[] parts , Material newMaterial)
+    public void ChangeMaterial(Renderer[] parts , Material newMaterial)
     {
         // Change children materials to indicate a change of state.
         foreach (Renderer renderer in parts)
@@ -882,6 +918,19 @@ public class FollowerManager : MonoBehaviour
             }
             renderer.materials = mats;
         }
+
+        // Store the default material to flash when getting attacked by a traitor,
+        // unless it's a traitorFollower material.
+        if (newMaterial != traitorFollowerMaterial)
+        {
+            defaultMaterial = newMaterial;
+        }
+    }
+
+    public void ResetMaterial()
+    {
+        //flashTime -= Time.deltaTime;
+        ChangeMaterial(clothes, defaultMaterial);
     }
     
     /*
