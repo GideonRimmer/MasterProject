@@ -43,6 +43,7 @@ public class FollowerManager : MonoBehaviour
     public int betrayalCharismaRange;
     public int playerGainCharFromKill;
     public TextMeshProUGUI charismaText;
+    [SerializeField] private bool leveledUp;
 
     [Header("Loyalty")]
     public int startingLoyalty = 5;
@@ -137,6 +138,7 @@ public class FollowerManager : MonoBehaviour
         startBetrayal = false;
         isAttackTarget = false;
         isConversionTarget = false;
+        leveledUp = false;
         attackCurrentTime = attackTimer;
         attackDamage = initialDamage;
         convertCooldown = initialConvertCooldown;
@@ -212,18 +214,18 @@ public class FollowerManager : MonoBehaviour
                     SetAttackTarget(agent.transform);
                 }
                 
-                /*
                 // If this is a traitor with higher charisma that other traitors, convert them and their followers to follow this.
                 else if (isTraitor == true && agentFollower.isTraitor == true && currentCharisma > agentFollower.currentCharisma)
                 {
                     agentFollower.isTraitor = false;
+                    /*
                     foreach (FollowerManager traitorFollower in agentFollower.activeFollowers)
                     {
                         ConvertToFollowSelf(traitorFollower, 100);
                     }
                     ConvertToFollowSelf(agentFollower, 100);
+                    */
                 }
-                */
             }
 
             // If this is one of the player's followers, also attack any Innocents in range (MUWAHAHAHA), and enemies.
@@ -236,7 +238,7 @@ public class FollowerManager : MonoBehaviour
             }
 
             // If the traitor has more followers than the player, attack the player.
-            if (isTraitor == true && currentLeader != null && activeFollowers.Count >= currentLeader.GetComponentInParent<SphereOfInfluence>().activeFollowers.Count * 0.66)
+            if (isTraitor == true && currentLeader != null && activeFollowers.Count >= player.GetComponentInParent<SphereOfInfluence>().activeFollowers.Count * 0.66)
             {
                 startBetrayal = true;
                 // If betrayal has started and there are no other eligible targets, traitor attacks the player.
@@ -713,7 +715,8 @@ public class FollowerManager : MonoBehaviour
                     attackCurrentTime = attackTimer;
                     Debug.Log("Attack damage " + attackDamage);
                 }
-                else if (enemyTarget.CompareTag("Follower") && enemyFollower.isConversionTarget == true)
+                // Attack to convert of this is a traitor and the target is in collision range.
+                else if (currentState == State.Attack && enemyTarget.CompareTag("Follower") && enemyFollower.isConversionTarget == true && collision.gameObject.name == enemyTarget.name)
                 {
                     //Convert(collision.gameObject.GetComponentInParent<FollowerManager>(), convertDamage);
                     ConvertToFollowSelf(collision.gameObject.GetComponentInParent<FollowerManager>(), convertDamage);
@@ -819,10 +822,6 @@ public class FollowerManager : MonoBehaviour
 
         target.ModifyLoyalty(-damage);
 
-        // Flash the material to signify the hit.
-        target.ChangeMaterial(clothes, traitorFollowerMaterial);
-        Invoke("ResetMaterial", 0.1f);
-
         if (target.currentLoyalty <= 0)
         {
             enemyTarget = null;
@@ -864,7 +863,8 @@ public class FollowerManager : MonoBehaviour
         {
             if (currentCharisma >= player.GetComponentInParent<SphereOfInfluence>().currentCharisma - betrayalCharismaRange)
             {
-                Debug.Log(this.name + " Potential traitor");
+                leveledUp = true;
+                //Debug.Log(this.name + " Potential traitor");
                 ChangeMaterial(clothes, highCharismaMaterial);
             }
 
@@ -899,7 +899,15 @@ public class FollowerManager : MonoBehaviour
     {
         currentLoyalty += change;
         currentLoyalty = Mathf.Clamp(currentLoyalty, 0, maxLoyalty);
+
+        if (currentLoyalty > 0 && change < 0)
+        {
+            // Flash the material to signify the hit.
+            ChangeMaterial(clothes, traitorFollowerMaterial);
+            Invoke("ResetMaterial", 0.1f);
+        }
     }
+
     public void ModifyViolence(int change)
     {
         currentViolence += change;
@@ -929,8 +937,14 @@ public class FollowerManager : MonoBehaviour
 
     public void ResetMaterial()
     {
-        //flashTime -= Time.deltaTime;
-        ChangeMaterial(clothes, defaultMaterial);
+        if (leveledUp == false)
+        {
+            ChangeMaterial(clothes, followPlayerMaterial);
+        }
+        if (leveledUp == true)
+        {
+            ChangeMaterial(clothes, highCharismaMaterial);
+        }
     }
     
     /*
