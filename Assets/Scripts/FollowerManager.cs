@@ -195,11 +195,9 @@ public class FollowerManager : MonoBehaviour
                     // Attack any follower attacking this entity.
                     (agentFollower.enemyTarget != null && agentFollower.enemyTarget == this.gameObject) ||
                     // Attack any follower attacking this entity's leader, UNLESS this entity is a traitor.
-                    (agentFollower.enemyTarget != null && agentFollower.enemyTarget == currentLeader && startBetrayal == false) ||
+                    (currentLeader.CompareTag("Player") && agentFollower.enemyTarget != null && agentFollower.enemyTarget == currentLeader && startBetrayal == false) ||
                     // If this is a Taker follower, attack player followers.
                     (currentLeader.CompareTag("Taker") && agentFollower.currentLeader != null && agentFollower.currentLeader.CompareTag("Player"))))
-                    // If this is a traitor, select a non-traitor player follower to attack.
-                    //(isTraitor == true && startBetrayal == false && agentFollower.currentLeader != null && agentFollower.currentLeader.CompareTag("Player") && agentFollower.isTraitor == false)))
                 {
                     SetAttackTarget(agent.transform);
                 }
