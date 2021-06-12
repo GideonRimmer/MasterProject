@@ -980,8 +980,11 @@ public class FollowerManager : MonoBehaviour
 
     private void RemoveFollower(FollowerManager activeFollower)
     {
-        activeFollowers.RemoveAt(activeFollowers.IndexOf(activeFollower));
-        ModifyCharisma(-1);
+        if (activeFollowers.Contains(activeFollower))
+        {
+            activeFollowers.RemoveAt(activeFollowers.IndexOf(activeFollower));
+            ModifyCharisma(-1);
+        }
     }
 
     public void Die()
