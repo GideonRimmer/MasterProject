@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93dc6b9ee2cf1ec439fbb45719d0fb8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleEffect: {fileID: 9190275972324511695, guid: 0357353dccfabe44f97b68d54a29bf03,
+  particleEffect: {fileID: 5511718345779705382, guid: 4f474c666710e434baf668d78e8c17a8,
     type: 3}
   explosionOrigin: {fileID: 8613248272499313053}
 --- !u!208 &2594965447543914941

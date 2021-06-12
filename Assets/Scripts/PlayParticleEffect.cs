@@ -10,6 +10,6 @@ public class PlayParticleEffect : MonoBehaviour
     public void PlayParticleSystem()
     {
         //particleEffect.Play();
-        Instantiate(particleEffect, explosionOrigin.position, Quaternion.identity);
+        Instantiate(particleEffect, explosionOrigin.position, explosionOrigin.rotation);
     }
 }
