@@ -15,6 +15,7 @@ public class EnemyManager : MonoBehaviour
     private GameObject player;
     private PlayRandomSound attackSound;
     public AudioClip deathSound;
+    private int killCount = 0;
 
     [Header("Movement Parameters")]
     public float moveSpeed;
@@ -146,7 +147,7 @@ public class EnemyManager : MonoBehaviour
 
         if (enemyTarget.GetComponentInParent<HitPointsManager>().currentHitPoints <= 0)
         {
-            enemyTarget = null;
+            ResolveKill();
         }
         // Stop attacking when running out of eligible targets.
         if (enemyTarget == null || currentDistanceToTarget >= maxDistanceToTarget)
@@ -228,6 +229,20 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
+    private void ResolveKill()
+    {
+        enemyTarget = null;
+        killCount += 1;
+        
+        // Heal one HP.
+        GetComponentInParent<HitPointsManager>().RegisterHit(-1);
+
+        if (killCount > 0)
+        {
+            attackDamage = 2;
+        }
+    }
+
     public void Die()
     {
         AudioSource.PlayClipAtPoint(deathSound, transform.position);
@@ -237,8 +252,10 @@ public class EnemyManager : MonoBehaviour
         Destroy(this.gameObject);
     }
 
+    /*
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, sphereRadius);
     }
+    */
 }
