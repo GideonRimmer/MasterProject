@@ -7,6 +7,7 @@ using TMPro;
 public class FollowerManager : MonoBehaviour
 {
     [Header("Setup")]
+    public bool drawGizmos;
     public GameObject popupMenu;
     private NavMeshAgent navMeshAgent;
     public Transform destination;
@@ -1028,10 +1029,11 @@ public class FollowerManager : MonoBehaviour
         Debug.Log("Become leader " + name);
     }
 
-    /*
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(transform.position, sphereCurrentRadius);
+        if (drawGizmos == true)
+        {
+            Gizmos.DrawWireSphere(transform.position, sphereCurrentRadius);
+        }
     }
-    */
 }

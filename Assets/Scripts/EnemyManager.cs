@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyManager : MonoBehaviour
 {
+    public bool drawGizmos;
     //private Rigidbody rigidbody;
     private Vector3 startingPosition;
     private NavMeshAgent navMeshAgent;
@@ -252,10 +253,11 @@ public class EnemyManager : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    /*
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(transform.position, sphereRadius);
+        if (drawGizmos == true)
+        {
+            Gizmos.DrawWireSphere(transform.position, sphereRadius);
+        }
     }
-    */
 }

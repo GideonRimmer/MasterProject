@@ -7,6 +7,7 @@ using System.Linq;
 public class InnocentManager : MonoBehaviour
 {
     [Header("Setup")]
+    public bool drawGizmos;
     //private Rigidbody rigidbody;
     public NavMeshAgent navMeshAgent;
     public Animator animator;
@@ -186,9 +187,11 @@ public class InnocentManager : MonoBehaviour
         }
     }
 
-
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(transform.position, sphereRadius);
+        if (drawGizmos == true)
+        {
+            Gizmos.DrawWireSphere(transform.position, sphereRadius);
+        }
     }
 }
