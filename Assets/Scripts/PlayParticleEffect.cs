@@ -9,7 +9,6 @@ public class PlayParticleEffect : MonoBehaviour
 
     public void PlayParticleSystem()
     {
-        //particleEffect.Play();
         Instantiate(particleEffect, explosionOrigin.position, explosionOrigin.rotation);
     }
 }
