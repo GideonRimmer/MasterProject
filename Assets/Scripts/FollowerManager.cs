@@ -114,7 +114,7 @@ public class FollowerManager : MonoBehaviour
     public Renderer[] clothes;
 
     [Header("OverlapSphere Parameters")]
-    private float sphereInitialRadius = 10f;
+    private float sphereInitialRadius = 12f;
     private float sphereCurrentRadius;
     private float sphereMaxRadius = 20f;
     private Collider agentCollider;
