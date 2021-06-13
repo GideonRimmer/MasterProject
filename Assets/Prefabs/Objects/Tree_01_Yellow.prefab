@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4113761863335470089}
   - component: {fileID: 401867796012726762}
   - component: {fileID: 2140103726491634195}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cylinder (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1289,7 +1289,7 @@ GameObject:
   - component: {fileID: 2351200761888406327}
   - component: {fileID: 8669150456029434702}
   - component: {fileID: 3828464687563444233}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Icosphere (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1934,7 +1934,7 @@ GameObject:
   - component: {fileID: 3261863290502207900}
   - component: {fileID: 6251917350006360569}
   - component: {fileID: 2506988082878330908}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Icosphere (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2579,7 +2579,7 @@ GameObject:
   - component: {fileID: 1506033888089493601}
   - component: {fileID: 4181567148125589999}
   - component: {fileID: 3760737198350027057}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Icosphere (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3224,7 +3224,7 @@ GameObject:
   - component: {fileID: 8917666268961677735}
   - component: {fileID: 4060331626261530455}
   - component: {fileID: -2129549753314240930}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Tree_01_Yellow
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -3316,7 +3316,7 @@ GameObject:
   - component: {fileID: 2005889932663125775}
   - component: {fileID: 6682904513276981349}
   - component: {fileID: 7248481942466467582}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Icosphere (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3961,7 +3961,7 @@ GameObject:
   - component: {fileID: 4270964177113188767}
   - component: {fileID: 8884027834233723326}
   - component: {fileID: 8459881481522277024}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cylinder (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5238,7 +5238,7 @@ GameObject:
   - component: {fileID: 4079119131031775870}
   - component: {fileID: 954763021495950344}
   - component: {fileID: 3712309401211763823}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cylinder (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6515,7 +6515,7 @@ GameObject:
   - component: {fileID: 2354646329125583748}
   - component: {fileID: 2708144979651751466}
   - component: {fileID: 8327794493871990805}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Icosphere (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7160,7 +7160,7 @@ GameObject:
   - component: {fileID: 3383165304580374269}
   - component: {fileID: 5645638751229986120}
   - component: {fileID: 8984640259200926792}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cylinder (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8437,7 +8437,7 @@ GameObject:
   - component: {fileID: 3247875323447434501}
   - component: {fileID: 2256206501993754703}
   - component: {fileID: 2900738948757467596}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9714,7 +9714,7 @@ GameObject:
   - component: {fileID: 3679017742583413307}
   - component: {fileID: 5991552411990952299}
   - component: {fileID: 5903298966504245702}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cylinder (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10991,7 +10991,7 @@ GameObject:
   - component: {fileID: 2669920135266498027}
   - component: {fileID: 269657776166099360}
   - component: {fileID: 6466951020277012673}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Icosphere (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11636,7 +11636,7 @@ GameObject:
   - component: {fileID: 5129086296754154249}
   - component: {fileID: 3286251031423883694}
   - component: {fileID: 7797453255909814848}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cylinder (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12913,7 +12913,7 @@ GameObject:
   - component: {fileID: 4208425334872590260}
   - component: {fileID: 6324774621158091354}
   - component: {fileID: 165337466796108310}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Icosphere (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13558,7 +13558,7 @@ GameObject:
   - component: {fileID: 9168308555187901865}
   - component: {fileID: 7152499159421594172}
   - component: {fileID: 1817913359955919618}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cylinder (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14835,7 +14835,7 @@ GameObject:
   - component: {fileID: 4549213665923394091}
   - component: {fileID: 9042158990589559226}
   - component: {fileID: 7192972430052907571}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Icosphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}

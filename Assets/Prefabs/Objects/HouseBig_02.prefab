@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5508103053227079529}
   - component: {fileID: 8907541517989121892}
   - component: {fileID: 4627881232059553892}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Window 1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 5185068694076722510}
   - component: {fileID: 411358742961293669}
   - component: {fileID: 150395722374243182}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Window 4 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 5166166973275589825}
   - component: {fileID: 3442456819399230351}
   - component: {fileID: 5358008871552098656}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Window 3 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -250,7 +250,7 @@ GameObject:
   - component: {fileID: 2090840201932871071}
   - component: {fileID: 2090840201932871068}
   - component: {fileID: 2090840201932871069}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: HouseBig_02
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -363,7 +363,7 @@ GameObject:
   - component: {fileID: 1680534958219308389}
   - component: {fileID: 4312856213150460993}
   - component: {fileID: 2076376810752205263}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Window 3 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -442,7 +442,7 @@ GameObject:
   - component: {fileID: 7423029841679334595}
   - component: {fileID: 5831775682656109774}
   - component: {fileID: 7731231072421729230}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Window 1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -521,7 +521,7 @@ GameObject:
   - component: {fileID: 4856676007255281123}
   - component: {fileID: 1367890732514750974}
   - component: {fileID: 4866676119612032930}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Window 3 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -600,7 +600,7 @@ GameObject:
   - component: {fileID: 4575769302660039063}
   - component: {fileID: 6967035408399406962}
   - component: {fileID: 5429377594793729838}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Window 3 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -679,7 +679,7 @@ GameObject:
   - component: {fileID: 3924738440022924851}
   - component: {fileID: 3924738440022924852}
   - component: {fileID: 3924738440022924853}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: HouseBig_01 (2)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -768,7 +768,7 @@ GameObject:
   - component: {fileID: 151320132546367255}
   - component: {fileID: 4707476241582395117}
   - component: {fileID: 2201586722111757700}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Window 4 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -847,7 +847,7 @@ GameObject:
   - component: {fileID: 4256793101870881292}
   - component: {fileID: 1989121978660878034}
   - component: {fileID: 9087782837545556304}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Window 2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -926,7 +926,7 @@ GameObject:
   - component: {fileID: 4657401018047237800}
   - component: {fileID: 1794598349732340123}
   - component: {fileID: 5190527994973898400}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Door 1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1005,7 +1005,7 @@ GameObject:
   - component: {fileID: 1622032457673416898}
   - component: {fileID: 4524925549094514542}
   - component: {fileID: 2219176907228851851}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Trim (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1084,7 +1084,7 @@ GameObject:
   - component: {fileID: 1180077247502700966}
   - component: {fileID: 3524514356999191928}
   - component: {fileID: 6155605487107232506}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Window 2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1163,7 +1163,7 @@ GameObject:
   - component: {fileID: 7959372631450629993}
   - component: {fileID: 8775561637815493639}
   - component: {fileID: 5386734329807724443}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Window 2 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1242,7 +1242,7 @@ GameObject:
   - component: {fileID: 4463574285745957736}
   - component: {fileID: 1565162587898619076}
   - component: {fileID: 3872894913013327137}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Trim (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 282907116950288359}
   - component: {fileID: 282907116950288358}
   - component: {fileID: 282907116950288353}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: HouseMedium_01
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ GameObject:
   - component: {fileID: 1765067685733056963}
   - component: {fileID: 5708067902276269135}
   - component: {fileID: 6544097540956889418}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Window 3 (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,7 +208,7 @@ GameObject:
   - component: {fileID: 1869281670300187165}
   - component: {fileID: 5324006592330594059}
   - component: {fileID: 2665298986023217438}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Window 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -287,7 +287,7 @@ GameObject:
   - component: {fileID: 3032739406125726838}
   - component: {fileID: 855530405910892079}
   - component: {fileID: 860703422616705143}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Window 4 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -366,7 +366,7 @@ GameObject:
   - component: {fileID: 5178578410662535534}
   - component: {fileID: 6751173092584498660}
   - component: {fileID: 2830623761546291078}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Door 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -445,7 +445,7 @@ GameObject:
   - component: {fileID: 1585450592357501788}
   - component: {fileID: 332310242274310733}
   - component: {fileID: 747369345905272393}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Window 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -524,7 +524,7 @@ GameObject:
   - component: {fileID: 7794421399768922754}
   - component: {fileID: 7303215241818598697}
   - component: {fileID: 5227252983988102301}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Trim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -603,7 +603,7 @@ GameObject:
   - component: {fileID: 8138828241544630933}
   - component: {fileID: 2090748976723582320}
   - component: {fileID: 2261621632754951783}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Window 3 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -682,7 +682,7 @@ GameObject:
   - component: {fileID: 3893027290309859470}
   - component: {fileID: 5971653229637633426}
   - component: {fileID: 2460862257868031885}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Window 3 (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
