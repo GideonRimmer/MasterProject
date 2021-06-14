@@ -6,6 +6,7 @@ using TMPro;
 public class SphereOfInfluence : MonoBehaviour
 {
     [Header("Charisma")]
+    public bool drawGizmos;
     public int minCharisma;
     public int maxCharisma;
     public int startingCharisma = 10;
@@ -146,6 +147,9 @@ public class SphereOfInfluence : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(transform.position, sphereCurrentRadius);
+        if (drawGizmos == true)
+        {
+            Gizmos.DrawWireSphere(transform.position, sphereCurrentRadius);
+        }
     }
 }
