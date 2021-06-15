@@ -5,6 +5,7 @@ using TMPro;
 
 public class HitPointsManager : MonoBehaviour
 {
+    public HealthBar healthBar;
     public bool useThisScriptToDestroy;
     public TextMeshProUGUI hitPointsText;
     public int maxHitPoints = 10;
@@ -24,6 +25,11 @@ public class HitPointsManager : MonoBehaviour
         if (entityName != null)
         {
             entityName.text = this.name.ToString();
+        }
+
+        if (healthBar != null)
+        {
+            healthBar.SetMaxHealth(maxHitPoints);
         }
     }
 
@@ -48,6 +54,11 @@ public class HitPointsManager : MonoBehaviour
         public void RegisterHit(int damage)
     {
         currentHitPoints -= damage;
+
+        if (healthBar != null)
+        {
+            healthBar.SetHealth(currentHitPoints);
+        }
 
         if (currentHitPoints <= 0 && useThisScriptToDestroy == true)
         {
