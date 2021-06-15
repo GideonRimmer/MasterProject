@@ -5,7 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public bool gameIsPaused = false;
+    public static bool gameIsPaused = false;
+    public bool gameOver;
+    public GameObject pauseMenu;
+    public GameObject gameOverMenu;
+    public float gameOverCountdown = 3.0f;
+    [SerializeField] private float currentCountdown;
 
     private void Start()
     {
@@ -23,7 +28,10 @@ public class GameManager : MonoBehaviour
 
         #if UNITY_STANDALONE_WIN
                 Debug.Log("Stand Alone Windows");
-        #endif
+#endif
+
+        gameOver = false;
+        currentCountdown = gameOverCountdown;
     }
 
     void Update()
@@ -37,7 +45,14 @@ public class GameManager : MonoBehaviour
         // Quit the game by pressing ESC.
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Application.Quit();
+            if (gameIsPaused)
+            {
+                ResumeGame();
+            }
+            else
+            {
+                PauseGame();
+            }
         }
 
         // Go to the next level by pressing L.
@@ -58,24 +73,62 @@ public class GameManager : MonoBehaviour
                 ResumeGame();
             }
         }
+
+        if (gameOver == true)
+        {
+            currentCountdown -= Time.deltaTime;
+            if (currentCountdown <= 0)
+            {
+                GameOver();
+            }
+        }
     }
 
     public void LoadNextLevel(int levelNumber)
     {
+        gameIsPaused = false;
+        Time.timeScale = 1f;
         SceneManager.LoadScene(levelNumber);
     }
 
     private void PauseGame()
     {
         gameIsPaused = true;
-        Time.timeScale = 0;
+        Time.timeScale = 0f;
+        pauseMenu.SetActive(true);
     }
 
-    private void ResumeGame()
+    public void ResumeGame()
     {
         gameIsPaused = false;
-        {
-            Time.timeScale = 1;
-        }
+        Time.timeScale = 1f;
+        pauseMenu.SetActive(false);
+    }
+
+    public void RestartLevel()
+    {
+        gameIsPaused = false;
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void QuitToMenu()
+    {
+        gameIsPaused = false;
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    public void GameOver()
+    {
+        gameOver = false;
+        //gameIsPaused = true;
+        //Time.timeScale = 0f;
+        gameOverMenu.SetActive(true);
     }
 }
