@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    private GameManager gameSettings;
     [Header("Movement")]
     public CharacterController controller;
     public float speed = 9f;
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        gameSettings = FindObjectOfType<GameManager>();
         isIdle = true;
         isWalking = false;
         //animator = GetComponentInChildren<Animator>();
@@ -74,6 +76,7 @@ public class PlayerController : MonoBehaviour
 
             // Rotate the player to face the correct direction.
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+
             // Smooth the turning angle.
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
@@ -156,6 +159,7 @@ public class PlayerController : MonoBehaviour
         AudioSource.PlayClipAtPoint(deathSound, transform.position);
 
         playParticleEffect.PlayParticleSystem();
+        gameSettings.gameOver = true;
         Destroy(this.gameObject);
     }
 }
