@@ -150,6 +150,8 @@ MonoBehaviour:
   gameOverMenu: {fileID: 8279830803775171751}
   gameOverCountdown: 3
   currentCountdown: 0
+  knifeCursor: {fileID: 2800000, guid: e69e40f623eae1e4ab095e9a6bf664b0, type: 3}
+  defaultCursor: {fileID: 2800000, guid: 69837018ccde91b4fa75e6ec438f64be, type: 3}
 --- !u!114 &9204060879761812741
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -12,6 +12,10 @@ public class GameManager : MonoBehaviour
     public float gameOverCountdown = 3.0f;
     [SerializeField] private float currentCountdown;
 
+    public Texture2D knifeCursor;
+    public Texture2D defaultCursor;
+
+
     private void Start()
     {
         #if UNITY_EDITOR

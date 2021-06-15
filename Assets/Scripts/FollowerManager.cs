@@ -33,6 +33,7 @@ public class FollowerManager : MonoBehaviour
     public int maxHitPoints = 10;
     private PlayRandomSound attackSound;
     public AudioClip deathSound;
+    private GameManager gameManager;
 
     [Header("Charisma")]
     public int minCharisma;
@@ -131,6 +132,7 @@ public class FollowerManager : MonoBehaviour
         attackSound = GetComponent<PlayRandomSound>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.SetDestination(destination.position);
+        gameManager = FindObjectOfType<GameManager>();
 
         currentState = State.Idle;
         isClickable = false;
@@ -1028,6 +1030,20 @@ public class FollowerManager : MonoBehaviour
 
         Debug.Log("Become leader " + name);
     }
+
+    private void OnMouseEnter()
+    {
+        Cursor.SetCursor(gameManager.knifeCursor, Vector2.zero, CursorMode.Auto);
+    }
+    private void OnMouseExit()
+    {
+        Cursor.SetCursor(gameManager.defaultCursor, Vector2.zero, CursorMode.Auto);
+    }
+    private void OnMouseDown()
+    {
+        SetThisAsAttackTarget();
+    }
+
 
     private void OnDrawGizmos()
     {

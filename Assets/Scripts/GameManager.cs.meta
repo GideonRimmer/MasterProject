@@ -3,7 +3,11 @@ guid: 71426296cdbf421408453f5add4c6455
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - pauseMenu: {instanceID: 0}
+  - gameOverMenu: {instanceID: 0}
+  - knifeCursor: {fileID: 2800000, guid: 75f1571518b411b459f414b387c170eb, type: 3}
+  - defaultCursor: {fileID: 2800000, guid: 0199352717a03324e8f437e1074e25e7, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
