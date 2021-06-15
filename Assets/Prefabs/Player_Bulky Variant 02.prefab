@@ -746,8 +746,8 @@ CharacterController:
   m_Radius: 2
   m_SlopeLimit: 30
   m_StepOffset: 0.3
-  m_SkinWidth: 0.001
-  m_MinMoveDistance: 0.001
+  m_SkinWidth: 0.1
+  m_MinMoveDistance: 0.01
   m_Center: {x: 0, y: 4.4, z: 0}
 --- !u!54 &-7913548088836157610
 Rigidbody:
@@ -760,7 +760,7 @@ Rigidbody:
   m_Mass: 80
   m_Drag: 0
   m_AngularDrag: 0
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 116
