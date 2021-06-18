@@ -11,10 +11,11 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverMenu;
     public float gameOverCountdown = 3.0f;
     [SerializeField] private float currentCountdown;
+    public float maxIdleSeconds = 300f;
+    [SerializeField] private float currentIdleSeconds;
 
     public Texture2D knifeCursor;
     public Texture2D defaultCursor;
-
 
     private void Start()
     {
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour
 
         gameOver = false;
         currentCountdown = gameOverCountdown;
+        currentIdleSeconds = 0f;
     }
 
     void Update()
@@ -84,6 +86,22 @@ public class GameManager : MonoBehaviour
             if (currentCountdown <= 0)
             {
                 GameOver();
+            }
+        }
+
+        // If the game hasn't been active for X time, go back to main menu.
+        if (Input.anyKey)
+        {
+            currentIdleSeconds = 0f;
+        }
+        else
+        {
+            // If no input, start countdown.
+            currentIdleSeconds += Time.deltaTime;
+            if (currentIdleSeconds >= maxIdleSeconds)
+            {
+                currentIdleSeconds = 0f;
+                LoadNextLevel(0);
             }
         }
     }
