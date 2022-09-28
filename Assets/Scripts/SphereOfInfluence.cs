@@ -31,10 +31,12 @@ public class SphereOfInfluence : MonoBehaviour
     private Camera mainCamera;
 
     public List<GameObject> activeFollowers = new List<GameObject>();
+    private SavePlayerData saveDataManager;
 
     private void Start()
     {
         sphereCollider = GetComponentInChildren<SphereCollider>();
+        saveDataManager = FindObjectOfType<SavePlayerData>();
         currentCharisma = startingCharisma;
         sphereCurrentRadius = sphereInitialRadius;
         sphereCollider.radius = sphereCurrentRadius;
@@ -90,6 +92,7 @@ public class SphereOfInfluence : MonoBehaviour
         }
         
         ChangeAllCharisma(1);
+        saveDataManager.SaveFollowersRecruited(1);
     }
 
     public void LoseFollower(GameObject followerName)
@@ -108,6 +111,7 @@ public class SphereOfInfluence : MonoBehaviour
     {
         Debug.Log(followerName + "index " + activeFollowers.IndexOf(followerName));
         activeFollowers.RemoveAt(activeFollowers.IndexOf(followerName));
+        saveDataManager.SaveFollowersKilled(1);
         ModifyCharisma(-1);
     }
 

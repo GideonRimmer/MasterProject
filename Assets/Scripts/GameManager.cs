@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public bool gameOver;
     public GameObject pauseMenu;
     public GameObject gameOverMenu;
+    public LevelEndMenu levelEndMenu;
     public float gameOverCountdown = 3.0f;
     [SerializeField] private float currentCountdown;
     public float maxIdleSeconds = 300f;
@@ -38,6 +39,8 @@ public class GameManager : MonoBehaviour
         gameOver = false;
         currentCountdown = gameOverCountdown;
         currentIdleSeconds = 0f;
+
+        levelEndMenu = GetComponent<LevelEndMenu>();
     }
 
     void Update()
@@ -111,6 +114,13 @@ public class GameManager : MonoBehaviour
         gameIsPaused = false;
         Time.timeScale = 1f;
         SceneManager.LoadScene(levelNumber);
+    }
+
+    public void LoadLevelEndMenu(int currentLevel)
+    {
+        // Store the previous scene number to load the next level from LevelEnd Menu.
+        //levelEndMenu.previousLevel = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene("LevelEndMenu");
     }
 
     private void PauseGame()

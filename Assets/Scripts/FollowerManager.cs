@@ -34,6 +34,7 @@ public class FollowerManager : MonoBehaviour
     private PlayRandomSound attackSound;
     public AudioClip deathSound;
     private GameManager gameManager;
+    private SavePlayerData saveDataManager;
 
     [Header("Charisma")]
     public int minCharisma;
@@ -133,6 +134,7 @@ public class FollowerManager : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.SetDestination(destination.position);
         gameManager = FindObjectOfType<GameManager>();
+        saveDataManager = FindObjectOfType<SavePlayerData>();
 
         currentState = State.Idle;
         isClickable = false;
@@ -793,6 +795,19 @@ public class FollowerManager : MonoBehaviour
         {
             currentLeader.GetComponentInParent<SphereOfInfluence>().ModifyCharisma(playerGainCharFromKill);
             currentLeader.GetComponentInParent<SphereOfInfluence>().currentViolence += 1;
+
+            if (enemyTarget.gameObject.tag == "Follower")
+            {
+                saveDataManager.SaveFollowersKilled(1);
+            }
+            if (enemyTarget.gameObject.tag == "Enemy")
+            {
+                saveDataManager.SaveEnemiesKilled(1);
+            }
+            if (enemyTarget.gameObject.tag == "Innocent")
+            {
+                saveDataManager.SaveInnocentsKilled(1);
+            }
         }
     }
 

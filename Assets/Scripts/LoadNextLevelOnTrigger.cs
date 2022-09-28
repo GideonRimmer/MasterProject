@@ -16,7 +16,8 @@ public class LoadNextLevelOnTrigger : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            gameManager.LoadNextLevel(SceneManager.GetActiveScene().buildIndex + 1);
+            Debug.Log("Active scene is " + SceneManager.GetActiveScene().buildIndex);
+            gameManager.LoadLevelEndMenu(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }

@@ -7,6 +7,6 @@ public class LevelsMenu : MonoBehaviour
 {
     public void LoadLevel(int levelNumber)
     {
-        SceneManager.LoadScene(levelNumber);
+        SceneManager.LoadScene(levelNumber + 1);
     }
 }
