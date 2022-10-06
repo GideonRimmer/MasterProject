@@ -343,8 +343,10 @@ public class FollowerManager : MonoBehaviour
             case State.Attack:
                 if (enemyTarget != null && currentLeader != null)
                 {
-                    animator.SetBool("isWalking", true);
-                    animator.speed = 2;
+                    animator.SetBool("isAttacking", true);
+                    animator.speed = 1;
+                    //animator.SetBool("isWalking", true);
+                    //animator.speed = 2;
                     navMeshAgent.speed = moveSpeed + attackSpeedBonus;
                     navMeshAgent.stoppingDistance = 0;
                     FollowAndAttackTarget();

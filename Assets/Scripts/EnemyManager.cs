@@ -106,8 +106,11 @@ public class EnemyManager : MonoBehaviour
                 {
                     FollowAndAttackTarget();
                     navMeshAgent.speed = moveSpeed + attackSpeedBonus;
-                    animator.SetBool("isWalking", true);
-                    animator.speed = 2;
+                    //animator.SetBool("isWalking", true);
+                    //animator.speed = 2;
+
+                    animator.SetBool("isAttacking", true);
+                    animator.speed = 1;
                 }
                 break;
 

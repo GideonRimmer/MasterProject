@@ -7,7 +7,7 @@ AnimationClip:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Tall_March
-  serializedVersion: 6
+  serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
   m_UseHighQualityCurve: 1
@@ -344,6 +344,7 @@ AnimationClip:
       typeID: 4
       customType: 4
       isPPtrCurve: 0
+      isIntCurve: 0
     - serializedVersion: 2
       path: 2533188237
       attribute: 4
@@ -351,6 +352,7 @@ AnimationClip:
       typeID: 4
       customType: 4
       isPPtrCurve: 0
+      isIntCurve: 0
     - serializedVersion: 2
       path: 1682372966
       attribute: 4
@@ -358,6 +360,7 @@ AnimationClip:
       typeID: 4
       customType: 4
       isPPtrCurve: 0
+      isIntCurve: 0
     - serializedVersion: 2
       path: 3512501261
       attribute: 4
@@ -365,6 +368,7 @@ AnimationClip:
       typeID: 4
       customType: 4
       isPPtrCurve: 0
+      isIntCurve: 0
     - serializedVersion: 2
       path: 2943311506
       attribute: 4
@@ -372,6 +376,7 @@ AnimationClip:
       typeID: 4
       customType: 4
       isPPtrCurve: 0
+      isIntCurve: 0
     - serializedVersion: 2
       path: 3975032041
       attribute: 4
@@ -379,6 +384,7 @@ AnimationClip:
       typeID: 4
       customType: 4
       isPPtrCurve: 0
+      isIntCurve: 0
     pptrCurveMapping: []
   m_AnimationClipSettings:
     serializedVersion: 2
