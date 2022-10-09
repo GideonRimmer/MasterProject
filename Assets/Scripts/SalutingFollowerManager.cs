@@ -27,6 +27,7 @@ public class SalutingFollowerManager : MonoBehaviour
 
     void FixedUpdate()
     {
+        /*
         agentsInSphere = Physics.OverlapSphere(this.transform.position, sphereRadius, SaluteToLayers);
 
         // Get all of the agents in the sphere in each FixedUpdate.
@@ -44,5 +45,6 @@ public class SalutingFollowerManager : MonoBehaviour
                 }
             }
         }
+        */
     }
 }
