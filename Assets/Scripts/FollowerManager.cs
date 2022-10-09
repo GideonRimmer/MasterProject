@@ -215,6 +215,8 @@ public class FollowerManager : MonoBehaviour
                     agent.GetComponentInParent<FollowerManager>().isConversionTarget = true;
                     //SetConversionTarget(agent.transform);
                     SetAttackTarget(agent.transform);
+                    //animator.SetBool("isAttacking", false);
+                    //animator.SetBool("isConverting", true);
                 }
                 
                 // If this is a traitor with higher charisma that other traitors, convert them and their followers to follow this.
@@ -315,7 +317,7 @@ public class FollowerManager : MonoBehaviour
             case State.FollowPlayer:
                 if (currentLeader != null)
                 {
-                    //animator.SetBool("isWalking", true);
+                    animator.SetBool("isWalking", true);
                     animator.speed = 1;
                     navMeshAgent.speed = moveSpeed;
                     FollowTarget();
@@ -343,7 +345,14 @@ public class FollowerManager : MonoBehaviour
             case State.Attack:
                 if (enemyTarget != null && currentLeader != null)
                 {
-                    animator.SetBool("isAttacking", true);
+                    /*
+                    if (enemyTarget.CompareTag("Follower"))
+                    {
+                        animator.SetBool("isConverting", true);
+                    }
+                    else animator.SetBool("isAttacking", true);
+                    */
+
                     animator.speed = 1;
                     //animator.SetBool("isWalking", true);
                     //animator.speed = 2;
@@ -610,11 +619,11 @@ public class FollowerManager : MonoBehaviour
 
         // Stop attacking when running out of eligible targets.
         if (enemyTarget.CompareTag("Follower") && enemyTarget == null)
-        //if (enemyTarget.tag == "Follower" && (enemyTarget == null || enemyTarget.GetComponentInParent<FollowerManager>().currentLeader == currentLeader))
-            {
+        {
             Debug.Log(name + ": Target eliminated.");
             SetAttackTarget(null);
             ChangeMaterial(skin, skinMaterial);
+
             if (currentLeader != null && currentLeader.CompareTag("Player"))
             {
                 currentState = State.FollowPlayer;
@@ -702,6 +711,7 @@ public class FollowerManager : MonoBehaviour
                 if (enemyTarget.tag != "Follower")
                 {
                     // Damage the target on collision.
+                    animator.Play("Tall_Attack", 0, 0.0f);
                     Attack(collision.gameObject.GetComponent<HitPointsManager>(), attackDamage);
                     attackCurrentTime = attackTimer;
                     Debug.Log(this.name + " attacks " + enemyTarget + ", " + enemyTarget.name);
@@ -716,14 +726,17 @@ public class FollowerManager : MonoBehaviour
                     || enemyFollower.enemyTarget == this.transform))
                 {
                     // Damage the target on collision. Damage = Base damage + killCount.
+                    animator.Play("Tall_Attack", 0, 0.0f);
                     Attack(collision.gameObject.GetComponent<HitPointsManager>(), attackDamage);
                     attackCurrentTime = attackTimer;
                     Debug.Log("Attack damage " + attackDamage);
                 }
-                // Attack to convert of this is a traitor and the target is in collision range.
+
+                // Attack to convert if this is a traitor and the target is in collision range.
                 else if (currentState == State.Attack && enemyTarget.CompareTag("Follower") && enemyFollower.isConversionTarget == true && collision.gameObject.name == enemyTarget.name)
                 {
                     //Convert(collision.gameObject.GetComponentInParent<FollowerManager>(), convertDamage);
+                    animator.SetBool("isConverting", true);
                     ConvertToFollowSelf(collision.gameObject.GetComponentInParent<FollowerManager>(), convertDamage);
                     attackCurrentTime = attackTimer;
                     Debug.Log("Convert damage " + convertDamage);

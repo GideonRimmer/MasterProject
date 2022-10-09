@@ -106,10 +106,9 @@ public class EnemyManager : MonoBehaviour
                 {
                     FollowAndAttackTarget();
                     navMeshAgent.speed = moveSpeed + attackSpeedBonus;
-                    //animator.SetBool("isWalking", true);
+                    animator.SetBool("isWalking", true);
                     //animator.speed = 2;
 
-                    animator.SetBool("isAttacking", true);
                     animator.speed = 1;
                 }
                 break;
@@ -189,6 +188,7 @@ public class EnemyManager : MonoBehaviour
 
     public void Attack(HitPointsManager enemy, int damage)
     {
+        animator.Play("Tall_Attack", 0, 0.0f);
         //attackSound.PlayRandomClip();
         enemy.RegisterHit(damage);
         //Debug.Log(name + " attacks " + enemy.gameObject.name);
