@@ -233,10 +233,17 @@ public class FollowerManager : MonoBehaviour
                 }
             }
 
-            // If this is one of the player's followers, also attack any Innocents in range (MUWAHAHAHA), and enemies.
-            else if (currentState != State.Attack && currentLeader != null && currentLeader.CompareTag("Player") &&
-                ((agent.CompareTag("Innocent") && agent.GetComponentInParent<InnocentManager>().currentFaction == InnocentManager.Faction.Enemy)||
-                agent.CompareTag("Enemy")))
+            // If this is one of the player's followers, also attack any Innocents in range (MUWAHAHAHA).
+            else if ((currentState != State.Attack && currentLeader != null && currentLeader.CompareTag("Player") && agent.CompareTag("Innocent") && agent.GetComponentInParent<InnocentManager>().currentFaction == InnocentManager.Faction.Enemy) ||
+                // Attack an enemy in range, if:
+                // A. The enemy is set as the attack target, or
+                // B. If this follower is leveled up.
+                (agent.CompareTag("Enemy") && (agent.GetComponentInParent<EnemyManager>().isAttackTarget == true || leveledUp == true)) ||
+                // Attack any enemy attacking the player.
+                // TODO: Change to "attack any enemy attacking this enetity's leader".
+                (agent.CompareTag("Enemy") && agent.GetComponentInParent<EnemyManager>().enemyTarget != null && agent.GetComponentInParent<EnemyManager>().enemyTarget.CompareTag("Player")) ||
+                // Attack Destructibles in range.
+                agent.CompareTag("Destructible"))
             {
                 Debug.Log(this.name  + " attack innocent or enemy " + agent);
                 SetAttackTarget(agent.transform);

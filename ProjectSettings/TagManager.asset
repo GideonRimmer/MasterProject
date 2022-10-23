@@ -12,6 +12,7 @@ TagManager:
   - Obstacles
   - Innocent
   - FakeFollower
+  - Destructible
   layers:
   - Default
   - TransparentFX
@@ -29,7 +30,7 @@ TagManager:
   - Ground
   - GroundObjects
   - FakeFollower
-  - 
+  - Unwalkable
   - 
   - 
   - 
