@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 74299324}
   - component: {fileID: 74299323}
   - component: {fileID: 74299322}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (2)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -28,6 +28,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -17.759995, y: 5, z: -6.863}
   m_LocalScale: {x: 0.8, y: 10, z: 2.24}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3876413253544935932}
   m_RootOrder: 8
@@ -51,10 +52,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -79,6 +82,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &77020161
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,7 +94,7 @@ GameObject:
   - component: {fileID: 77020166}
   - component: {fileID: 77020165}
   - component: {fileID: 77020164}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (20)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -107,6 +111,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -12.659988, y: 6.475, z: 7.7700043}
   m_LocalScale: {x: 8.522421, y: 1.6419058, z: 0.8}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3876413253544935932}
   m_RootOrder: 26
@@ -130,10 +135,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -158,6 +165,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &104934197
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,7 +177,7 @@ GameObject:
   - component: {fileID: 104934198}
   - component: {fileID: 104934202}
   - component: {fileID: 104934201}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (28)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -186,6 +194,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 17.600006, y: 3.436, z: -5.681}
   m_LocalScale: {x: 0.8, y: 6.8735995, z: 4.5898695}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3876413253544935932}
   m_RootOrder: 34
@@ -209,10 +218,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -237,6 +248,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &135032413
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,7 +260,7 @@ GameObject:
   - component: {fileID: 135032414}
   - component: {fileID: 135032418}
   - component: {fileID: 135032417}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (27)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -265,6 +277,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 17.600006, y: 5, z: 6.53}
   m_LocalScale: {x: 0.8, y: 10, z: 2.976}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3876413253544935932}
   m_RootOrder: 33
@@ -288,10 +301,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -316,6 +331,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &200819497
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,7 +343,7 @@ GameObject:
   - component: {fileID: 200819502}
   - component: {fileID: 200819501}
   - component: {fileID: 200819500}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (17)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -344,6 +360,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.9450073, y: 6.413, z: 7.7700043}
   m_LocalScale: {x: 3.267149, y: 1.3745012, z: 0.8}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3876413253544935932}
   m_RootOrder: 23
@@ -367,10 +384,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -395,6 +414,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &440079579
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,7 +426,7 @@ GameObject:
   - component: {fileID: 440079584}
   - component: {fileID: 440079583}
   - component: {fileID: 440079582}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (19)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -423,6 +443,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -9.279999, y: 3.39, z: 7.7700043}
   m_LocalScale: {x: 1.8206077, y: 6.7728763, z: 0.8}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3876413253544935932}
   m_RootOrder: 25
@@ -446,10 +467,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -474,6 +497,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &459267867
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,7 +509,7 @@ GameObject:
   - component: {fileID: 459267872}
   - component: {fileID: 459267871}
   - component: {fileID: 459267870}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (15)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -502,6 +526,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -6.7079773, y: 0.927, z: 7.7700043}
   m_LocalScale: {x: 22.572107, y: 1.85, z: 0.8}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3876413253544935932}
   m_RootOrder: 21
@@ -525,10 +550,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -553,6 +580,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &622544112
 GameObject:
   m_ObjectHideFlags: 0
@@ -564,7 +592,7 @@ GameObject:
   - component: {fileID: 622544117}
   - component: {fileID: 622544116}
   - component: {fileID: 622544115}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (8)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -581,6 +609,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.23001099, y: 6.552, z: -7.579998}
   m_LocalScale: {x: 11.824129, y: 1.3756, z: 0.8}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3876413253544935932}
   m_RootOrder: 14
@@ -604,10 +633,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -632,6 +663,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &664765758
 GameObject:
   m_ObjectHideFlags: 0
@@ -643,7 +675,7 @@ GameObject:
   - component: {fileID: 664765763}
   - component: {fileID: 664765762}
   - component: {fileID: 664765761}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (18)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -660,6 +692,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -3.6549988, y: 1.985, z: 7.7700043}
   m_LocalScale: {x: 1.8206077, y: 3.9664001, z: 0.8}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3876413253544935932}
   m_RootOrder: 24
@@ -683,10 +716,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -711,6 +746,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &675476933
 GameObject:
   m_ObjectHideFlags: 0
@@ -722,7 +758,7 @@ GameObject:
   - component: {fileID: 675476938}
   - component: {fileID: 675476937}
   - component: {fileID: 675476936}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (1)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -739,6 +775,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 17.600006, y: 1.233, z: 3.759}
   m_LocalScale: {x: 0.8, y: 2.4703999, z: 4.2988906}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3876413253544935932}
   m_RootOrder: 7
@@ -762,10 +799,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -790,6 +829,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &779911625
 GameObject:
   m_ObjectHideFlags: 0
@@ -801,7 +841,7 @@ GameObject:
   - component: {fileID: 779911630}
   - component: {fileID: 779911629}
   - component: {fileID: 779911628}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (6)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -818,6 +858,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 5.57901, y: 3.62, z: -7.579998}
   m_LocalScale: {x: 3.4813442, y: 7.24, z: 0.8}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3876413253544935932}
   m_RootOrder: 12
@@ -841,10 +882,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -869,6 +912,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &936273810
 GameObject:
   m_ObjectHideFlags: 0
@@ -880,7 +924,7 @@ GameObject:
   - component: {fileID: 936273815}
   - component: {fileID: 936273814}
   - component: {fileID: 936273813}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (21)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -897,6 +941,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 12.952026, y: 8.934, z: 7.7700043}
   m_LocalScale: {x: 10.093173, y: 2.1331298, z: 0.8}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3876413253544935932}
   m_RootOrder: 27
@@ -920,10 +965,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -948,6 +995,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1015014580
 GameObject:
   m_ObjectHideFlags: 0
@@ -959,7 +1007,7 @@ GameObject:
   - component: {fileID: 1015014585}
   - component: {fileID: 1015014584}
   - component: {fileID: 1015014583}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (3)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -976,6 +1024,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -16.75299, y: 5, z: 7.7700043}
   m_LocalScale: {x: 2.484, y: 10, z: 0.8}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3876413253544935932}
   m_RootOrder: 9
@@ -999,10 +1048,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1027,6 +1078,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1026407340
 GameObject:
   m_ObjectHideFlags: 0
@@ -1038,7 +1090,7 @@ GameObject:
   - component: {fileID: 1026407336}
   - component: {fileID: 1026407337}
   - component: {fileID: 1026407338}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Window 4 (2)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -1055,6 +1107,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 12.600006, y: 3.9499998, z: 8.020004}
   m_LocalScale: {x: 5.4000006, y: 3.5, z: 1.6}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3876413253544935932}
   m_RootOrder: 3
@@ -1078,10 +1131,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1106,6 +1161,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1057758077
 GameObject:
   m_ObjectHideFlags: 0
@@ -1117,7 +1173,7 @@ GameObject:
   - component: {fileID: 1057758082}
   - component: {fileID: 1057758081}
   - component: {fileID: 1057758080}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (13)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -1134,6 +1190,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 15.285004, y: 0.91, z: -7.579998}
   m_LocalScale: {x: 5.4190083, y: 1.8199999, z: 0.8}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3876413253544935932}
   m_RootOrder: 19
@@ -1157,10 +1214,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1185,6 +1244,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1225471884
 GameObject:
   m_ObjectHideFlags: 0
@@ -1196,7 +1256,7 @@ GameObject:
   - component: {fileID: 1225471885}
   - component: {fileID: 1225471889}
   - component: {fileID: 1225471888}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (24)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -1213,6 +1273,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -17.759995, y: 2.288, z: -5.639}
   m_LocalScale: {x: 0.8, y: 4.58, z: 4.6883197}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3876413253544935932}
   m_RootOrder: 30
@@ -1236,10 +1297,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1264,6 +1327,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1251690176
 GameObject:
   m_ObjectHideFlags: 0
@@ -1275,7 +1339,7 @@ GameObject:
   - component: {fileID: 1251690181}
   - component: {fileID: 1251690180}
   - component: {fileID: 1251690179}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (7)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -1292,6 +1356,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -4.799988, y: 3.62, z: -7.579998}
   m_LocalScale: {x: 2.3040001, y: 7.24, z: 0.8}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3876413253544935932}
   m_RootOrder: 13
@@ -1315,10 +1380,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1343,6 +1410,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1381919111
 GameObject:
   m_ObjectHideFlags: 0
@@ -1354,7 +1422,7 @@ GameObject:
   - component: {fileID: 1381919112}
   - component: {fileID: 1381919116}
   - component: {fileID: 1381919115}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (26)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -1371,6 +1439,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -17.759995, y: 3.689, z: 3.476}
   m_LocalScale: {x: 0.8, y: 7.38296, z: 2.4556031}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3876413253544935932}
   m_RootOrder: 32
@@ -1394,10 +1463,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1422,6 +1493,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1460577039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1433,7 +1505,7 @@ GameObject:
   - component: {fileID: 1460577044}
   - component: {fileID: 1460577043}
   - component: {fileID: 1460577042}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (10)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -1450,6 +1522,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -15.443985, y: 7.019, z: -7.579998}
   m_LocalScale: {x: 5.1078153, y: 1.0736, z: 0.8}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3876413253544935932}
   m_RootOrder: 16
@@ -1473,10 +1546,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1501,6 +1576,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1563428120
 GameObject:
   m_ObjectHideFlags: 0
@@ -1512,7 +1588,7 @@ GameObject:
   - component: {fileID: 1563428125}
   - component: {fileID: 1563428124}
   - component: {fileID: 1563428123}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (12)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -1529,6 +1605,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 6.805023, y: 2.542, z: -7.579998}
   m_LocalScale: {x: 5.9322104, y: 5.08248, z: 0.8}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3876413253544935932}
   m_RootOrder: 18
@@ -1552,10 +1629,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1580,6 +1659,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1581747495
 GameObject:
   m_ObjectHideFlags: 0
@@ -1591,7 +1671,7 @@ GameObject:
   - component: {fileID: 1581747500}
   - component: {fileID: 1581747499}
   - component: {fileID: 1581747498}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (11)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -1608,6 +1688,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -9.541992, y: 2.282, z: -7.579998}
   m_LocalScale: {x: 0.7442098, y: 4.5609775, z: 0.8}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3876413253544935932}
   m_RootOrder: 17
@@ -1631,10 +1712,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1659,6 +1742,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1582552813
 GameObject:
   m_ObjectHideFlags: 0
@@ -1670,7 +1754,7 @@ GameObject:
   - component: {fileID: 1582552809}
   - component: {fileID: 1582552810}
   - component: {fileID: 1582552811}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Window 3 (4)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -1687,6 +1771,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 3.9499998, z: 8.020004}
   m_LocalScale: {x: 5.4000006, y: 3.5, z: 1.6}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3876413253544935932}
   m_RootOrder: 1
@@ -1710,10 +1795,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1738,6 +1825,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1649436452
 GameObject:
   m_ObjectHideFlags: 0
@@ -1749,7 +1837,7 @@ GameObject:
   - component: {fileID: 1649436453}
   - component: {fileID: 1649436457}
   - component: {fileID: 1649436456}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (23)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -1766,6 +1854,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -17.759995, y: 5, z: 7.428}
   m_LocalScale: {x: 0.8, y: 10, z: 1.184128}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3876413253544935932}
   m_RootOrder: 29
@@ -1789,10 +1878,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1817,6 +1908,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1663135009
 GameObject:
   m_ObjectHideFlags: 0
@@ -1828,7 +1920,7 @@ GameObject:
   - component: {fileID: 1663135014}
   - component: {fileID: 1663135013}
   - component: {fileID: 1663135012}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (22)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -1845,6 +1937,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 14.130005, y: 8.025, z: 7.7700043}
   m_LocalScale: {x: 7.7313704, y: 3.9538124, z: 0.8}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3876413253544935932}
   m_RootOrder: 28
@@ -1868,10 +1961,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1896,6 +1991,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1698107938
 GameObject:
   m_ObjectHideFlags: 0
@@ -1907,7 +2003,7 @@ GameObject:
   - component: {fileID: 1698107943}
   - component: {fileID: 1698107942}
   - component: {fileID: 1698107941}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (14)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -1924,6 +2020,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 16.766998, y: 5, z: 7.7700043}
   m_LocalScale: {x: 2.463552, y: 10, z: 0.8}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3876413253544935932}
   m_RootOrder: 20
@@ -1947,10 +2044,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1975,6 +2074,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1746160641
 GameObject:
   m_ObjectHideFlags: 0
@@ -1986,7 +2086,7 @@ GameObject:
   - component: {fileID: 1746162685}
   - component: {fileID: 1746162686}
   - component: {fileID: 1746162687}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Window 3 (3)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -2003,6 +2103,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -12.600006, y: 3.9499998, z: 8.020004}
   m_LocalScale: {x: 5.4000006, y: 3.5, z: 1.6}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3876413253544935932}
   m_RootOrder: 2
@@ -2026,10 +2127,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2054,6 +2157,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1763229034
 GameObject:
   m_ObjectHideFlags: 0
@@ -2065,7 +2169,7 @@ GameObject:
   - component: {fileID: 1763229039}
   - component: {fileID: 1763229038}
   - component: {fileID: 1763229037}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (9)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -2082,6 +2186,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -13.669983, y: 1.586, z: -7.579998}
   m_LocalScale: {x: 8.658071, y: 3.1695466, z: 0.8}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3876413253544935932}
   m_RootOrder: 15
@@ -2105,10 +2210,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2133,6 +2240,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1981505978
 GameObject:
   m_ObjectHideFlags: 0
@@ -2144,7 +2252,7 @@ GameObject:
   - component: {fileID: 1981505979}
   - component: {fileID: 1981505983}
   - component: {fileID: 1981505982}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (29)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -2161,6 +2269,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 17.600006, y: 2.861, z: 4.548}
   m_LocalScale: {x: 0.8, y: 5.726387, z: 2.7211978}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3876413253544935932}
   m_RootOrder: 35
@@ -2184,10 +2293,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2212,6 +2323,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &2027031364
 GameObject:
   m_ObjectHideFlags: 0
@@ -2223,7 +2335,7 @@ GameObject:
   - component: {fileID: 2027031365}
   - component: {fileID: 2027031369}
   - component: {fileID: 2027031368}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (25)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -2240,6 +2352,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -17.759995, y: 2.289, z: 4.623}
   m_LocalScale: {x: 0.8, y: 4.58, z: 6.7933426}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3876413253544935932}
   m_RootOrder: 31
@@ -2263,10 +2376,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2291,6 +2406,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &2034579873
 GameObject:
   m_ObjectHideFlags: 0
@@ -2302,7 +2418,7 @@ GameObject:
   - component: {fileID: 2034579878}
   - component: {fileID: 2034579877}
   - component: {fileID: 2034579876}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (16)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -2319,6 +2435,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3.631012, y: 2.89, z: 7.7700043}
   m_LocalScale: {x: 1.896057, y: 5.7757, z: 0.8}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3876413253544935932}
   m_RootOrder: 22
@@ -2342,10 +2459,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2370,6 +2489,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &2080292976
 GameObject:
   m_ObjectHideFlags: 0
@@ -2381,7 +2501,7 @@ GameObject:
   - component: {fileID: 2080292981}
   - component: {fileID: 2080292980}
   - component: {fileID: 2080292979}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (4)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -2398,6 +2518,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 16.843018, y: 5, z: -7.579998}
   m_LocalScale: {x: 2.3040001, y: 10, z: 0.8}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3876413253544935932}
   m_RootOrder: 10
@@ -2421,10 +2542,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2449,6 +2572,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &2146535776
 GameObject:
   m_ObjectHideFlags: 0
@@ -2460,7 +2584,7 @@ GameObject:
   - component: {fileID: 2146535781}
   - component: {fileID: 2146535780}
   - component: {fileID: 2146535779}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (5)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -2477,6 +2601,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -16.774994, y: 5, z: -7.579998}
   m_LocalScale: {x: 2.4462717, y: 10, z: 0.8}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3876413253544935932}
   m_RootOrder: 11
@@ -2500,10 +2625,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2528,6 +2655,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &2686681771371951697
 GameObject:
   m_ObjectHideFlags: 0
@@ -2540,7 +2668,7 @@ GameObject:
   - component: {fileID: 6259455942072761463}
   - component: {fileID: 2061310372296250865}
   - component: {fileID: 7350848714876729990}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Floor
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -2557,6 +2685,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.108, y: 0.102, z: 0.034}
   m_LocalScale: {x: 35.326603, y: 0.099999994, z: 15.467349}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3876413253544935932}
   m_RootOrder: 36
@@ -2580,10 +2709,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2608,6 +2739,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &7350848714876729990
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2632,7 +2764,7 @@ GameObject:
   - component: {fileID: 3876413253544935932}
   - component: {fileID: 1138838000}
   - component: {fileID: 3254277052610402423}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HouseRuined_Big_01
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -2649,6 +2781,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3426897351405086407}
   - {fileID: 1582552809}
@@ -2730,7 +2863,7 @@ GameObject:
   - component: {fileID: 8614682038043119837}
   - component: {fileID: 4638770228131440848}
   - component: {fileID: 8918323904376537040}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Window 1 (1)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -2747,6 +2880,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 12.600006, y: 5, z: -7.9799957}
   m_LocalScale: {x: 5.4, y: 3, z: 1.6}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3876413253544935932}
   m_RootOrder: 5
@@ -2770,10 +2904,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2798,6 +2934,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &4820630896739210251
 GameObject:
   m_ObjectHideFlags: 0
@@ -2809,7 +2946,7 @@ GameObject:
   - component: {fileID: 5777256755321610934}
   - component: {fileID: 606059970166279557}
   - component: {fileID: 6379045758430603966}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Door 1 (1)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -2826,6 +2963,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 3, z: -7.9799957}
   m_LocalScale: {x: 7.200001, y: 6, z: 1.2}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3876413253544935932}
   m_RootOrder: 6
@@ -2849,10 +2987,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2877,6 +3017,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &6509381248773746815
 GameObject:
   m_ObjectHideFlags: 0
@@ -2888,7 +3029,7 @@ GameObject:
   - component: {fileID: 3142865073103238674}
   - component: {fileID: 798366399672408780}
   - component: {fileID: 7967100508179494222}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Window 2 (1)
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -2905,6 +3046,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -12.600006, y: 5, z: -7.9799957}
   m_LocalScale: {x: 5.4, y: 3, z: 1.6}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3876413253544935932}
   m_RootOrder: 4
@@ -2928,10 +3070,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2956,6 +3100,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &7917372122468840675
 GameObject:
   m_ObjectHideFlags: 0
@@ -2967,7 +3112,7 @@ GameObject:
   - component: {fileID: 3426897351405086407}
   - component: {fileID: 8973744279176754558}
   - component: {fileID: 6383505690121198929}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -2984,6 +3129,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 5, z: 0}
   m_LocalScale: {x: 36, y: 10, z: 16}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3876413253544935932}
   m_RootOrder: 0
@@ -3007,10 +3153,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3035,3 +3183,4 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}

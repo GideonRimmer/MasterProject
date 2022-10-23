@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4113761863335470089}
   - component: {fileID: 401867796012726762}
   - component: {fileID: 2140103726491634195}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,6 +29,7 @@ Transform:
   m_LocalRotation: {x: -0.28156763, y: 0.64862907, z: 0.29370964, w: -0.6432221}
   m_LocalPosition: {x: 0.5, y: 13.11, z: 0}
   m_LocalScale: {x: 0.3660873, y: 0.3660873, z: 0.3660873}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3127863659864199646}
   m_RootOrder: 6
@@ -52,10 +53,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -80,6 +83,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &2140103726491634195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1273,6 +1277,8 @@ MonoBehaviour:
     m_AreaError: 15
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
+  m_Mesh: {fileID: 0}
+  m_VersionIndex: 0
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1289,7 +1295,7 @@ GameObject:
   - component: {fileID: 2351200761888406327}
   - component: {fileID: 8669150456029434702}
   - component: {fileID: 3828464687563444233}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Icosphere (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1306,6 +1312,7 @@ Transform:
   m_LocalRotation: {x: -0, y: 0.38268343, z: -0, w: 0.92387956}
   m_LocalPosition: {x: -2.9199982, y: 21.36, z: 0.13999939}
   m_LocalScale: {x: 0.8578608, y: 0.49550846, z: 0.6596054}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3127863659864199646}
   m_RootOrder: 9
@@ -1329,10 +1336,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1357,6 +1366,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &3828464687563444233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1918,6 +1928,8 @@ MonoBehaviour:
     m_AreaError: 15
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
+  m_Mesh: {fileID: 0}
+  m_VersionIndex: 0
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1934,7 +1946,7 @@ GameObject:
   - component: {fileID: 3261863290502207900}
   - component: {fileID: 6251917350006360569}
   - component: {fileID: 2506988082878330908}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Icosphere (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1951,6 +1963,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.3099976, y: 17.24, z: 5.649994}
   m_LocalScale: {x: 1.1800174, y: 0.6815891, z: 0.9073101}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3127863659864199646}
   m_RootOrder: 15
@@ -1974,10 +1987,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2002,6 +2017,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &2506988082878330908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2563,6 +2579,8 @@ MonoBehaviour:
     m_AreaError: 15
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
+  m_Mesh: {fileID: 0}
+  m_VersionIndex: 0
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -2579,7 +2597,7 @@ GameObject:
   - component: {fileID: 1506033888089493601}
   - component: {fileID: 4181567148125589999}
   - component: {fileID: 3760737198350027057}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Icosphere (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2596,6 +2614,7 @@ Transform:
   m_LocalRotation: {x: -0, y: 0.38268343, z: -0, w: 0.92387956}
   m_LocalPosition: {x: -1.3099976, y: 13.06, z: -4.680008}
   m_LocalScale: {x: 1.1800175, y: 0.6815891, z: 0.9073102}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3127863659864199646}
   m_RootOrder: 13
@@ -2619,10 +2638,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2647,6 +2668,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &3760737198350027057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3208,6 +3230,8 @@ MonoBehaviour:
     m_AreaError: 15
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
+  m_Mesh: {fileID: 0}
+  m_VersionIndex: 0
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -3224,7 +3248,7 @@ GameObject:
   - component: {fileID: 8917666268961677735}
   - component: {fileID: 4060331626261530455}
   - component: {fileID: -2129549753314240930}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tree_01_Yellow
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -3241,6 +3265,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6911353809950434414}
   - {fileID: 3909540889087963761}
@@ -3316,7 +3341,7 @@ GameObject:
   - component: {fileID: 2005889932663125775}
   - component: {fileID: 6682904513276981349}
   - component: {fileID: 7248481942466467582}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Icosphere (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3333,6 +3358,7 @@ Transform:
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -3.800003, y: 14.38, z: 0.13999939}
   m_LocalScale: {x: 1.1800174, y: 0.6815891, z: 0.9073101}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3127863659864199646}
   m_RootOrder: 10
@@ -3356,10 +3382,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3384,6 +3412,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &7248481942466467582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3945,6 +3974,8 @@ MonoBehaviour:
     m_AreaError: 15
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
+  m_Mesh: {fileID: 0}
+  m_VersionIndex: 0
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -3961,7 +3992,7 @@ GameObject:
   - component: {fileID: 4270964177113188767}
   - component: {fileID: 8884027834233723326}
   - component: {fileID: 8459881481522277024}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3978,6 +4009,7 @@ Transform:
   m_LocalRotation: {x: -0.29370964, y: 0.6432221, z: -0.28156763, w: 0.64862907}
   m_LocalPosition: {x: 0.5, y: 18.279999, z: 0}
   m_LocalScale: {x: 0.2, y: 0.20000002, z: 0.2}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3127863659864199646}
   m_RootOrder: 7
@@ -4001,10 +4033,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4029,6 +4063,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &8459881481522277024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5222,6 +5257,8 @@ MonoBehaviour:
     m_AreaError: 15
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
+  m_Mesh: {fileID: 0}
+  m_VersionIndex: 0
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -5238,7 +5275,7 @@ GameObject:
   - component: {fileID: 4079119131031775870}
   - component: {fileID: 954763021495950344}
   - component: {fileID: 3712309401211763823}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5255,6 +5292,7 @@ Transform:
   m_LocalRotation: {x: -0.008585679, y: -0.0038233094, z: -0.40678248, w: 0.9134767}
   m_LocalPosition: {x: 1.0099945, y: 15.69, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3127863659864199646}
   m_RootOrder: 2
@@ -5278,10 +5316,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -5306,6 +5346,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &3712309401211763823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6499,6 +6540,8 @@ MonoBehaviour:
     m_AreaError: 15
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
+  m_Mesh: {fileID: 0}
+  m_VersionIndex: 0
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -6515,7 +6558,7 @@ GameObject:
   - component: {fileID: 2354646329125583748}
   - component: {fileID: 2708144979651751466}
   - component: {fileID: 8327794493871990805}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Icosphere (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6532,6 +6575,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3.649994, y: 10.58, z: 0.13999939}
   m_LocalScale: {x: 1.1800174, y: 0.6815891, z: 0.9073101}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3127863659864199646}
   m_RootOrder: 11
@@ -6555,10 +6599,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -6583,6 +6629,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &8327794493871990805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7144,6 +7191,8 @@ MonoBehaviour:
     m_AreaError: 15
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
+  m_Mesh: {fileID: 0}
+  m_VersionIndex: 0
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -7160,7 +7209,7 @@ GameObject:
   - component: {fileID: 3383165304580374269}
   - component: {fileID: 5645638751229986120}
   - component: {fileID: 8984640259200926792}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7177,6 +7226,7 @@ Transform:
   m_LocalRotation: {x: -0.008585679, y: -0.0038233094, z: -0.40678248, w: 0.9134767}
   m_LocalPosition: {x: 0.5, y: 7.4800005, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3127863659864199646}
   m_RootOrder: 1
@@ -7200,10 +7250,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -7228,6 +7280,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &8984640259200926792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8421,6 +8474,8 @@ MonoBehaviour:
     m_AreaError: 15
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
+  m_Mesh: {fileID: 0}
+  m_VersionIndex: 0
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -8437,7 +8492,7 @@ GameObject:
   - component: {fileID: 3247875323447434501}
   - component: {fileID: 2256206501993754703}
   - component: {fileID: 2900738948757467596}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8454,6 +8509,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3127863659864199646}
   m_RootOrder: 0
@@ -8477,10 +8533,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -8505,6 +8563,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &2900738948757467596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9698,6 +9757,8 @@ MonoBehaviour:
     m_AreaError: 15
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
+  m_Mesh: {fileID: 0}
+  m_VersionIndex: 0
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -9714,7 +9775,7 @@ GameObject:
   - component: {fileID: 3679017742583413307}
   - component: {fileID: 5991552411990952299}
   - component: {fileID: 5903298966504245702}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9731,6 +9792,7 @@ Transform:
   m_LocalRotation: {x: -0.29370964, y: 0.6432221, z: -0.28156763, w: 0.64862907}
   m_LocalPosition: {x: 0.5, y: 9.9, z: 0}
   m_LocalScale: {x: 0.30000004, y: 0.30000004, z: 0.3}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3127863659864199646}
   m_RootOrder: 5
@@ -9754,10 +9816,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -9782,6 +9846,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &5903298966504245702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10975,6 +11040,8 @@ MonoBehaviour:
     m_AreaError: 15
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
+  m_Mesh: {fileID: 0}
+  m_VersionIndex: 0
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -10991,7 +11058,7 @@ GameObject:
   - component: {fileID: 2669920135266498027}
   - component: {fileID: 269657776166099360}
   - component: {fileID: 6466951020277012673}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Icosphere (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11008,6 +11075,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.009994507, y: 23.01, z: 0.13999939}
   m_LocalScale: {x: 0.8578608, y: 0.49550846, z: 0.6596054}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3127863659864199646}
   m_RootOrder: 12
@@ -11031,10 +11099,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -11059,6 +11129,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &6466951020277012673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11620,6 +11691,8 @@ MonoBehaviour:
     m_AreaError: 15
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
+  m_Mesh: {fileID: 0}
+  m_VersionIndex: 0
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -11636,7 +11709,7 @@ GameObject:
   - component: {fileID: 5129086296754154249}
   - component: {fileID: 3286251031423883694}
   - component: {fileID: 7797453255909814848}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11653,6 +11726,7 @@ Transform:
   m_LocalRotation: {x: -0.40678248, y: 0.9134767, z: 0.008585679, w: 0.0038233094}
   m_LocalPosition: {x: 0.11000061, y: 11.77, z: 0}
   m_LocalScale: {x: 0.25000003, y: 0.25, z: 0.25}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3127863659864199646}
   m_RootOrder: 4
@@ -11676,10 +11750,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -11704,6 +11780,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &7797453255909814848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12897,6 +12974,8 @@ MonoBehaviour:
     m_AreaError: 15
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
+  m_Mesh: {fileID: 0}
+  m_VersionIndex: 0
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -12913,7 +12992,7 @@ GameObject:
   - component: {fileID: 4208425334872590260}
   - component: {fileID: 6324774621158091354}
   - component: {fileID: 165337466796108310}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Icosphere (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12930,6 +13009,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.3099976, y: 19.88, z: -3.230011}
   m_LocalScale: {x: 1.1800174, y: 0.6815891, z: 0.9073101}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3127863659864199646}
   m_RootOrder: 14
@@ -12953,10 +13033,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -12981,6 +13063,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &165337466796108310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13542,6 +13625,8 @@ MonoBehaviour:
     m_AreaError: 15
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
+  m_Mesh: {fileID: 0}
+  m_VersionIndex: 0
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -13558,7 +13643,7 @@ GameObject:
   - component: {fileID: 9168308555187901865}
   - component: {fileID: 7152499159421594172}
   - component: {fileID: 1817913359955919618}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13575,6 +13660,7 @@ Transform:
   m_LocalRotation: {x: -0.40678248, y: 0.9134767, z: 0.008585679, w: 0.0038233094}
   m_LocalPosition: {x: -0.37001038, y: 19.79, z: 0}
   m_LocalScale: {x: 0.20000003, y: 0.19999999, z: 0.2}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3127863659864199646}
   m_RootOrder: 3
@@ -13598,10 +13684,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -13626,6 +13714,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &1817913359955919618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14819,6 +14908,8 @@ MonoBehaviour:
     m_AreaError: 15
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
+  m_Mesh: {fileID: 0}
+  m_VersionIndex: 0
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -14835,7 +14926,7 @@ GameObject:
   - component: {fileID: 4549213665923394091}
   - component: {fileID: 9042158990589559226}
   - component: {fileID: 7192972430052907571}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Icosphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14852,6 +14943,7 @@ Transform:
   m_LocalRotation: {x: -0, y: 0.38268343, z: -0, w: 0.92387956}
   m_LocalPosition: {x: 3.6600037, y: 17.25, z: 0.13999939}
   m_LocalScale: {x: 1.1800175, y: 0.6815891, z: 0.9073102}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3127863659864199646}
   m_RootOrder: 8
@@ -14875,10 +14967,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -14903,6 +14997,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &7192972430052907571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15464,6 +15559,8 @@ MonoBehaviour:
     m_AreaError: 15
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
+  m_Mesh: {fileID: 0}
+  m_VersionIndex: 0
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
