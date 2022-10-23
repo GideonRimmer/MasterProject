@@ -5,9 +5,6 @@ using UnityEngine.AI;
 
 public class EnemyManager : MonoBehaviour
 {
-    public bool isAttackTarget;
-    private GameManager gameManager;
-
     public bool drawGizmos;
     //private Rigidbody rigidbody;
     private Vector3 startingPosition;
@@ -59,13 +56,10 @@ public class EnemyManager : MonoBehaviour
     void Start()
     {
         //rigidbody = GetComponent<Rigidbody>();
-        gameManager = FindObjectOfType<GameManager>();
         attackSound = GetComponent<PlayRandomSound>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         startingPosition = transform.position;
         currentState = State.Idle;
-
-        isAttackTarget = false;
 
         // Find the player.
         player = GameObject.FindGameObjectWithTag("Player");
@@ -268,24 +262,5 @@ public class EnemyManager : MonoBehaviour
         {
             Gizmos.DrawWireSphere(transform.position, sphereRadius);
         }
-    }
-
-    private void OnMouseEnter()
-    {
-        Cursor.SetCursor(gameManager.knifeCursor, Vector2.zero, CursorMode.Auto);
-    }
-    private void OnMouseExit()
-    {
-        Cursor.SetCursor(gameManager.defaultCursor, Vector2.zero, CursorMode.Auto);
-    }
-    private void OnMouseDown()
-    {
-        SetThisAsAttackTarget();
-    }
-
-    private void SetThisAsAttackTarget()
-    {
-        Debug.Log("Set this as attack target " + this.name);
-        isAttackTarget = true;
     }
 }
