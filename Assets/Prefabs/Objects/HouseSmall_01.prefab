@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 87863422756736997}
   - component: {fileID: 539222185124894307}
   - component: {fileID: 3432787940586197255}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Window 3 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.092, z: 0.5}
   m_LocalScale: {x: 0.15, y: 0.35, z: 0.1}
-  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6495463096835521361}
   m_RootOrder: 6
@@ -52,12 +51,10 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -82,7 +79,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &6495463096835521326
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,8 +92,7 @@ GameObject:
   - component: {fileID: 6495463096835521363}
   - component: {fileID: 6495463096835521324}
   - component: {fileID: 6495463096835521325}
-  - component: {fileID: -2924575193256478923}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: HouseSmall_01
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
@@ -114,7 +109,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 20, y: 10, z: 10}
-  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6495463097745765717}
   - {fileID: 6495463097519178928}
@@ -145,12 +139,10 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -175,7 +167,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &6495463096835521324
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -205,22 +196,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &-2924575193256478923
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6495463096835521326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 1
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!1 &6495463097322094430
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,7 +207,7 @@ GameObject:
   - component: {fileID: 6495463097322094429}
   - component: {fileID: 6495463097322094402}
   - component: {fileID: 6495463097322094403}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Window 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -249,7 +224,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.35, y: 0, z: -0.5}
   m_LocalScale: {x: 0.1, y: 0.2, z: 0.1}
-  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6495463096835521361}
   m_RootOrder: 3
@@ -273,12 +247,10 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -303,7 +275,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &6495463097519178929
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,7 +286,7 @@ GameObject:
   - component: {fileID: 6495463097519178928}
   - component: {fileID: 6495463097519178933}
   - component: {fileID: 6495463097519178934}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Door 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -332,7 +303,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.2, z: -0.5}
   m_LocalScale: {x: 0.35, y: 0.6, z: 0.1}
-  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6495463096835521361}
   m_RootOrder: 1
@@ -356,12 +326,10 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -386,7 +354,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &6495463097740515323
 GameObject:
   m_ObjectHideFlags: 0
@@ -398,7 +365,7 @@ GameObject:
   - component: {fileID: 6495463097740515322}
   - component: {fileID: 6495463097740515327}
   - component: {fileID: 6495463097740515320}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Window 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -415,7 +382,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.35, y: -0.092, z: 0.5}
   m_LocalScale: {x: 0.15, y: 0.35, z: 0.1}
-  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6495463096835521361}
   m_RootOrder: 5
@@ -439,12 +405,10 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -469,7 +433,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &6495463097745765718
 GameObject:
   m_ObjectHideFlags: 0
@@ -481,7 +444,7 @@ GameObject:
   - component: {fileID: 6495463097745765717}
   - component: {fileID: 6495463097745765722}
   - component: {fileID: 6495463097745765723}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Trim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -498,7 +461,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.35, z: 0}
   m_LocalScale: {x: 1.05, y: 0.1, z: 1.05}
-  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6495463096835521361}
   m_RootOrder: 0
@@ -522,12 +484,10 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -552,7 +512,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &6495463097948200019
 GameObject:
   m_ObjectHideFlags: 0
@@ -564,7 +523,7 @@ GameObject:
   - component: {fileID: 6495463097948200018}
   - component: {fileID: 6495463097948200023}
   - component: {fileID: 6495463097948200016}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Window 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -581,7 +540,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.35, y: -0.092, z: 0.5}
   m_LocalScale: {x: 0.15, y: 0.35, z: 0.1}
-  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6495463096835521361}
   m_RootOrder: 4
@@ -605,12 +563,10 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -635,7 +591,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &6495463098059912315
 GameObject:
   m_ObjectHideFlags: 0
@@ -647,7 +602,7 @@ GameObject:
   - component: {fileID: 6495463098059912314}
   - component: {fileID: 6495463098059912319}
   - component: {fileID: 6495463098059912312}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Window 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -664,7 +619,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.35, y: 0, z: -0.5}
   m_LocalScale: {x: 0.1, y: 0.2, z: 0.1}
-  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6495463096835521361}
   m_RootOrder: 2
@@ -688,12 +642,10 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -718,4 +670,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
