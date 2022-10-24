@@ -1809,6 +1809,7 @@ GameObject:
   - component: {fileID: 9204060879761812740}
   - component: {fileID: 9204060879761812741}
   - component: {fileID: 9204060879544719211}
+  - component: {fileID: 9204060879544719210}
   m_Layer: 5
   m_Name: GameSettings
   m_TagString: Untagged
@@ -1830,7 +1831,7 @@ Transform:
   m_Children:
   - {fileID: 2080204550}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9204060879761812740
 MonoBehaviour:
@@ -1889,6 +1890,20 @@ MonoBehaviour:
   followersRecruited: 0
   followersKilled: 0
   innocentsKilled: 0
+--- !u!114 &9204060879544719210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9204060879761812737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d9d1d4aa6451714bb458609a9c6b85a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagToDisable: Edge
+  meshes: []
 --- !u!1001 &2204499678193492485
 PrefabInstance:
   m_ObjectHideFlags: 0
