@@ -86,7 +86,7 @@ PrefabInstance:
     - target: {fileID: 1546361027102263936, guid: f16c63bf37cdd364b95ec6452a2738ab,
         type: 3}
       propertyPath: m_TagString
-      value: Obstacles
+      value: Tree
       objectReference: {fileID: 0}
     - target: {fileID: 1546361027102263936, guid: f16c63bf37cdd364b95ec6452a2738ab,
         type: 3}
@@ -293,6 +293,7 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: f16c63bf37cdd364b95ec6452a2738ab, type: 3}

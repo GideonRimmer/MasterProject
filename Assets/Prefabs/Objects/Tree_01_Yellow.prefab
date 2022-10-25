@@ -3247,10 +3247,9 @@ GameObject:
   - component: {fileID: 3127863659864199646}
   - component: {fileID: 8917666268961677735}
   - component: {fileID: 4060331626261530455}
-  - component: {fileID: -2129549753314240930}
   m_Layer: 8
   m_Name: Tree_01_Yellow
-  m_TagString: Obstacles
+  m_TagString: Tree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -3315,20 +3314,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.8, y: 24, z: 1.5035003}
   m_Center: {x: 0, y: 12, z: 0}
---- !u!114 &-2129549753314240930
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3087533261934102039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c7096436b499e943bf4826c65863a09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  applyRandomRotation: 1
-  angleY: 0
 --- !u!1 &3275720332731791158
 GameObject:
   m_ObjectHideFlags: 0
