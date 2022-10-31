@@ -419,7 +419,7 @@ Transform:
   - {fileID: 2704944116509465192}
   - {fileID: 427454272646645871}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &427454272329758243
 GameObject:
@@ -1052,6 +1052,11 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 427454271321515072}
     m_Modifications:
+    - target: {fileID: 1503505146859260204, guid: 9684bea18c6a07f43964bd696337bc87,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
+      objectReference: {fileID: 0}
     - target: {fileID: 2334970390687763042, guid: 9684bea18c6a07f43964bd696337bc87,
         type: 3}
       propertyPath: m_RootOrder
@@ -1111,6 +1116,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DestructibleDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334970390687763043, guid: 9684bea18c6a07f43964bd696337bc87,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
       objectReference: {fileID: 0}
     - target: {fileID: 2334970390687763064, guid: 9684bea18c6a07f43964bd696337bc87,
         type: 3}
