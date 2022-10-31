@@ -464,7 +464,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6823662730581359239}
   - {fileID: 1331946281307743700}
   - {fileID: 2103501767807032398}
   - {fileID: 7520211027291628953}
@@ -472,7 +471,7 @@ Transform:
   - {fileID: 6068940598309215446}
   - {fileID: 9095104807668444236}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &6848212740349448410
 Rigidbody:
@@ -601,6 +600,7 @@ MonoBehaviour:
   moveSpeed: 13
   rotateSpeed: 8
   attackDamage: 1
+  attackCollider: {fileID: 650724716979508488}
   maxDamage: 3
   attackSpeedBonus: 5
   attackTimer: 0.5
@@ -1243,12 +1243,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3590266748470705312}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -3.13, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 949997005770261550}
-  m_RootOrder: 0
+  m_Father: {fileID: 1331946281307743700}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &837777150041245449
 MeshFilter:
@@ -1862,7 +1862,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 3.93, z: 2.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6823662730581359239}
   m_Father: {fileID: 949997005770261550}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2599,7 +2600,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &7520211027291628954
 MonoBehaviour:
   m_ObjectHideFlags: 0

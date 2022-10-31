@@ -83,12 +83,13 @@ public class FollowerManager : MonoBehaviour
 
     [Header("Attack Parameters")]
     [SerializeField] private int attackDamage;
+    public Collider attackTrigger;
     private int initialDamage = 1;
     public int maxDamage = 3;
     public float attackSpeedBonus = 4;
     public float attackTimer = 1.0f;
-    public int convertDamage = 1;
     [SerializeField] private float attackCurrentTime;
+    public int convertDamage = 1;
     public Transform enemyTarget;
     [SerializeField] private float distanceToEnemy;
     public float initialConvertCooldown = 3.0f;
@@ -147,7 +148,7 @@ public class FollowerManager : MonoBehaviour
         attackCurrentTime = attackTimer;
         attackDamage = initialDamage;
         convertCooldown = initialConvertCooldown;
-
+        attackTrigger.enabled = false;
 
         // Generate random charisma.
         if (spawnEntitiesScript != null)
@@ -447,6 +448,107 @@ public class FollowerManager : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (isClickable == true)
+        {
+            isClickable = false;
+
+            if (currentLeader == null)
+            {
+                ChangeMaterial(clothes, idleMaterial);
+            }
+            else if (currentLeader.CompareTag("Taker"))
+            {
+                ChangeMaterial(clothes, followOtherMaterial);
+            }
+        }
+
+        /*
+        if (overrideTarget == true)
+        {
+            overrideTarget = false;
+        }
+        */
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        // If the trigger is the attack trigger, then initiate attack sequence.
+        if (//CompareTag("AttackCollider") &&
+            currentState == State.Attack && enemyTarget != null && other.gameObject.layer == enemyTarget.gameObject.layer)
+        {
+            Debug.Log("Start trigger attack");
+            FollowerManager enemyFollower = enemyTarget.GetComponentInParent<FollowerManager>();
+
+            attackCurrentTime -= Time.deltaTime;
+
+            if (attackCurrentTime <= 0)
+            {
+                //Debug.Log("Timer reset");
+                if (enemyTarget.tag != "Follower")
+                {
+                    // Damage the target on collision.
+                    animator.Play("Tall_Attack", 0, 0.0f);
+                    Attack(other.gameObject.GetComponent<HitPointsManager>(), attackDamage);
+                    attackCurrentTime = attackTimer;
+                    //Debug.Log(this.name + " attacks " + enemyTarget + ", " + enemyTarget.name);
+                }
+                else if (enemyTarget.CompareTag("Follower") && other.gameObject.name == enemyTarget.name && enemyFollower.isConversionTarget == false
+                    //&& ((enemyFollower.currentLeader != currentLeader && enemyFollower.isConversionTarget == false)
+                    && (enemyFollower.currentLeader != currentLeader
+                    || (enemyFollower.currentLeader == currentLeader && enemyFollower.isAttackTarget == true)
+                    || (enemyFollower.currentLeader == currentLeader && enemyFollower.isTraitor && enemyFollower.currentState == State.Attack)
+                    || (enemyFollower.currentLeader == currentLeader && isTraitor == true)
+                    || enemyFollower.enemyTarget == this.transform))
+                {
+                    // Damage the target on collision. Damage = Base damage + killCount.
+                    animator.Play("Tall_Attack", 0, 0.0f);
+                    Attack(other.gameObject.GetComponent<HitPointsManager>(), attackDamage);
+                    attackCurrentTime = attackTimer;
+                    Debug.Log("Attack damage " + attackDamage);
+                }
+
+                // Attack to convert if this is a traitor and the target is in collision range.
+                else if (currentState == State.Attack && enemyTarget.CompareTag("Follower") && enemyFollower.isConversionTarget == true && other.gameObject.name == enemyTarget.name)
+                {
+                    //Convert(collision.gameObject.GetComponentInParent<FollowerManager>(), convertDamage);
+                    animator.SetBool("isConverting", true);
+                    ConvertToFollowSelf(other.gameObject.GetComponentInParent<FollowerManager>(), convertDamage);
+                    attackCurrentTime = attackTimer;
+                    Debug.Log("Convert damage " + convertDamage);
+                }
+
+                // Reset the attack timer.
+                attackCurrentTime = attackTimer;
+            }
+        }
+        else if (enemyTarget == null && isTraitor == true && other.gameObject.CompareTag("Follower") &&
+            currentLeader == other.gameObject.GetComponentInParent<FollowerManager>().currentLeader &&
+            other.gameObject.GetComponentInParent<FollowerManager>().isTraitor == false)
+        {
+            attackCurrentTime -= Time.deltaTime;
+            if (attackCurrentTime == attackTimer && other.gameObject.GetComponentInParent<FollowerManager>().currentLoyalty > 0)
+            {
+                ConvertToFollowSelf(other.gameObject.GetComponentInParent<FollowerManager>(), convertDamage);
+                attackCurrentTime = attackTimer;
+                //Debug.Log("Convert damage " + convertDamage);
+            }
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        // On collision, inflict damage on the enemy target, only if colliding with the enemy target.
+        //if (currentState == State.Attack && enemyTarget != null && collision.gameObject.name == enemyTarget.name)
+        if (attackTrigger != null &&
+            currentState == State.Attack && enemyTarget != null && collision.gameObject.layer == enemyTarget.gameObject.layer)
+        {
+            FollowerManager enemyFollower = enemyTarget.GetComponentInParent<FollowerManager>();
+            attackTrigger.enabled = true;
+        }
+    }
+
     /*
     // Show popup menu on MouseOver, close menu on MouseExit.
     private void OnMouseOver()
@@ -479,29 +581,6 @@ public class FollowerManager : MonoBehaviour
     }
     */
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (isClickable == true)
-        {
-            isClickable = false;
-
-            if (currentLeader == null)
-            {
-                ChangeMaterial(clothes, idleMaterial);
-            }
-            else if (currentLeader.CompareTag("Taker"))
-            {
-                ChangeMaterial(clothes, followOtherMaterial);
-            }
-        }
-
-        /*
-        if (overrideTarget == true)
-        {
-            overrideTarget = false;
-        }
-        */
-    }
 
     // Acquire a new target to follow.
     public void SetFollowLeader(Transform newTarget)
@@ -660,7 +739,7 @@ public class FollowerManager : MonoBehaviour
     {
         currentState = State.Attack;
         enemyTarget = newEnemy;
-        //Debug.Log(this.name + " attacks " + enemyTarget.name);
+        Debug.Log(this.name + " attacks " + enemyTarget.name);
         ChangeMaterial(skin, attackMaterial);
     }
 
@@ -690,90 +769,6 @@ public class FollowerManager : MonoBehaviour
         }
     }
 
-    private void OnCollisionStay (Collision collision)
-    {
-        // On collision, inflict damage on the enemy target, only if colliding with the enemy target.
-        //if (currentState == State.Attack && enemyTarget != null && collision.gameObject.name == enemyTarget.name)
-        if (currentState == State.Attack && enemyTarget != null && collision.gameObject.layer == enemyTarget.gameObject.layer)
-        {
-            /*
-            collisionText.text = collision.gameObject.name.ToString();
-            targetText.text = enemyTarget.name.ToString();
-            Debug.Log(this.name + " collision GO " + collision.gameObject.name);
-            Debug.Log(this.name + " enemyTarget " + enemyTarget.name);
-            */
-
-            FollowerManager enemyFollower = enemyTarget.GetComponentInParent<FollowerManager>();
-            // Damage the target every X seconds (attackTimer), then start a cooldown.
-            attackCurrentTime -= Time.deltaTime;
-            if (attackCurrentTime <= 0)
-            {
-                if (enemyTarget.tag != "Follower")
-                {
-                    // Damage the target on collision.
-                    animator.Play("Tall_Attack", 0, 0.0f);
-                    Attack(collision.gameObject.GetComponent<HitPointsManager>(), attackDamage);
-                    attackCurrentTime = attackTimer;
-                    Debug.Log(this.name + " attacks " + enemyTarget + ", " + enemyTarget.name);
-
-                }
-                else if (enemyTarget.CompareTag("Follower") && collision.gameObject.name == enemyTarget.name && enemyFollower.isConversionTarget == false
-                    //&& ((enemyFollower.currentLeader != currentLeader && enemyFollower.isConversionTarget == false)
-                    && (enemyFollower.currentLeader != currentLeader
-                    || (enemyFollower.currentLeader == currentLeader && enemyFollower.isAttackTarget == true)
-                    || (enemyFollower.currentLeader == currentLeader && enemyFollower.isTraitor && enemyFollower.currentState == State.Attack)
-                    || (enemyFollower.currentLeader == currentLeader && isTraitor == true)
-                    || enemyFollower.enemyTarget == this.transform))
-                {
-                    // Damage the target on collision. Damage = Base damage + killCount.
-                    animator.Play("Tall_Attack", 0, 0.0f);
-                    Attack(collision.gameObject.GetComponent<HitPointsManager>(), attackDamage);
-                    attackCurrentTime = attackTimer;
-                    Debug.Log("Attack damage " + attackDamage);
-                }
-
-                // Attack to convert if this is a traitor and the target is in collision range.
-                else if (currentState == State.Attack && enemyTarget.CompareTag("Follower") && enemyFollower.isConversionTarget == true && collision.gameObject.name == enemyTarget.name)
-                {
-                    //Convert(collision.gameObject.GetComponentInParent<FollowerManager>(), convertDamage);
-                    animator.SetBool("isConverting", true);
-                    ConvertToFollowSelf(collision.gameObject.GetComponentInParent<FollowerManager>(), convertDamage);
-                    attackCurrentTime = attackTimer;
-                    Debug.Log("Convert damage " + convertDamage);
-                }
-            }
-        }
-        else if (enemyTarget == null && isTraitor == true && collision.gameObject.CompareTag("Follower") &&
-            currentLeader == collision.gameObject.GetComponentInParent<FollowerManager>().currentLeader &&
-            collision.gameObject.GetComponentInParent<FollowerManager>().isTraitor == false)
-        {
-            attackCurrentTime -= Time.deltaTime;
-            if (attackCurrentTime <= 0 && collision.gameObject.GetComponentInParent<FollowerManager>().currentLoyalty > 0)
-            {
-                ConvertToFollowSelf(collision.gameObject.GetComponentInParent<FollowerManager>(), convertDamage);
-                attackCurrentTime = attackTimer;
-                //Debug.Log("Convert damage " + convertDamage);
-            }
-        }
-    }
-
-    /*
-    private void OnCollisionEnter(Collision collision)
-    {
-        // On collision, inflict damage on the enemy target, only if colliding with the enemy target.
-        if (currentState == State.Attack && enemyTarget != null && collision.gameObject.name == enemyTarget.name)
-        {
-            if (enemyTarget.tag != "Follower")
-            {
-                // Damage the target on collision. Damage = Base damage + killCount.
-                Attack(collision.gameObject.GetComponent<HitPointsManager>(), attackDamage + killCount);
-                attackCurrentTime = attackTimer;
-                Debug.Log(this.name + " attacks " + enemyTarget + ", " + enemyTarget.name);
-            }
-        }
-    }
-    */
-
     public void Attack(HitPointsManager enemy, int damage)
     {
         //attackSound.PlayRandomClip();
@@ -793,6 +788,7 @@ public class FollowerManager : MonoBehaviour
         killCount += 1;
         ModifyCharisma(5);
         ModifyViolence(2);
+        attackTrigger.enabled = false;
 
         // Heal HP through the RegisterHit function.
         if (GetComponentInParent<HitPointsManager>().currentHitPoints < maxHitPoints)
