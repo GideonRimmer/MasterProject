@@ -1832,7 +1832,7 @@ Transform:
   m_Children:
   - {fileID: 2080204550}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9204060879761812740
 MonoBehaviour:
@@ -1881,6 +1881,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2fc04e24746a194aaf9e929d6ce13d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showDebugTexts: 0
+  debugTextsParent: {fileID: 1220510422}
   currentLevelNumberText: {fileID: 64362324}
   enemiesKilledText: {fileID: 1555351749}
   followersRecruitedText: {fileID: 958384183}

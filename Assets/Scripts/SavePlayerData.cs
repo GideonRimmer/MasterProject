@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class SavePlayerData : MonoBehaviour
 {
+    [Header ("Debug texts")]
+    public bool showDebugTexts;
+    public GameObject debugTextsParent;
+
     [Header ("Text Objects")]
     public TMP_Text currentLevelNumberText;
     public TMP_Text enemiesKilledText;
@@ -34,6 +38,13 @@ public class SavePlayerData : MonoBehaviour
         innocentsKilledText.text = innocentsKilled.ToString();
 
         SaveLevelNumber(SceneManager.GetActiveScene().buildIndex);
+
+        // Display debug texts if showDebugTexts var is true.
+        if (showDebugTexts)
+        {
+            debugTextsParent.SetActive(true);
+        }
+        else debugTextsParent.SetActive(false);
     }
 
     public void SaveLevelNumber(int currentLevel)
