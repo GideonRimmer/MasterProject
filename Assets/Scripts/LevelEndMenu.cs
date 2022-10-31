@@ -4,6 +4,17 @@ using UnityEngine.SceneManagement;
 public class LevelEndMenu : MonoBehaviour
 {
     public int previousLevel;
+    public GameObject nextLevelButton;
+
+    private void Start()
+    {
+        if (previousLevel >= SceneManager.sceneCount + 1)
+        {
+            nextLevelButton.SetActive(false);
+        }
+
+        //Debug.Log("Scene count: " + SceneManager.sceneCount);
+    }
 
     public void PlayNextLevel()
     {
