@@ -475,10 +475,9 @@ public class FollowerManager : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         // If the trigger is the attack trigger, then initiate attack sequence.
-        if (//CompareTag("AttackCollider") &&
-            currentState == State.Attack && enemyTarget != null && other.gameObject.layer == enemyTarget.gameObject.layer)
+        if (currentState == State.Attack && enemyTarget != null && other.gameObject.layer == enemyTarget.gameObject.layer)
         {
-            Debug.Log("Start trigger attack");
+            Debug.Log("Start follower trigger attack");
             FollowerManager enemyFollower = enemyTarget.GetComponentInParent<FollowerManager>();
 
             attackCurrentTime -= Time.deltaTime;
@@ -540,11 +539,8 @@ public class FollowerManager : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         // On collision, inflict damage on the enemy target, only if colliding with the enemy target.
-        //if (currentState == State.Attack && enemyTarget != null && collision.gameObject.name == enemyTarget.name)
-        if (attackTrigger != null &&
-            currentState == State.Attack && enemyTarget != null && collision.gameObject.layer == enemyTarget.gameObject.layer)
+        if (attackTrigger != null && currentState == State.Attack && enemyTarget != null && collision.gameObject.layer == enemyTarget.gameObject.layer)
         {
-            FollowerManager enemyFollower = enemyTarget.GetComponentInParent<FollowerManager>();
             attackTrigger.enabled = true;
         }
     }
