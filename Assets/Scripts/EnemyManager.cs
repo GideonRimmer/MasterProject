@@ -19,14 +19,17 @@ public class EnemyManager : MonoBehaviour
     [Header("Movement Parameters")]
     public float moveSpeed;
     public float rotateSpeed;
+    public float maxDistanceToTarget;
+
+    [Header("Attack Parameters")]
+    public Collider attackTrigger;
     public int attackDamage = 1;
     public float attackSpeedBonus = 4f;
     public float attackTimer = 1.0f;
     [SerializeField] private float attackCurrentTime;
     public Transform enemyTarget;
-    public float maxDistanceToTarget;
-    [SerializeField] private float currentDistanceToTarget;
     public LayerMask viableTargets;
+    [SerializeField] private float currentDistanceToTarget;
 
     [Header("State Machine")]
     public State currentState;
@@ -58,6 +61,8 @@ public class EnemyManager : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         startingPosition = transform.position;
         currentState = State.Idle;
+        attackTrigger.enabled = false;
+        attackCurrentTime = attackTimer;
 
         // Find the player.
         player = GameObject.FindGameObjectWithTag("Player");
@@ -150,6 +155,7 @@ public class EnemyManager : MonoBehaviour
         {
             ResolveKill();
         }
+
         // Stop attacking when running out of eligible targets.
         if (enemyTarget == null || currentDistanceToTarget >= maxDistanceToTarget)
         {
@@ -166,9 +172,19 @@ public class EnemyManager : MonoBehaviour
         enemyTarget = newEnemy;
         Debug.Log(this.name + " attacks " + enemyTarget.name);
     }
-
-    private void OnCollisionStay(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
+        // On collision, inflict damage on the enemy target, only if colliding with the enemy target.
+        if (attackTrigger != null && currentState == State.Attack && enemyTarget != null && collision.gameObject.layer == enemyTarget.gameObject.layer)
+        {
+            //Debug.Log(name + " attack trigger enabled.");
+
+            // Enable the attack trigger.
+            attackTrigger.enabled = true;
+        }
+
+
+        /*
         // On collision, inflict damage on the enemy target, only if colliding with the enemy target.
         if (currentState == State.Attack && enemyTarget != null && collision.gameObject.name == enemyTarget.name)
         {
@@ -182,11 +198,37 @@ public class EnemyManager : MonoBehaviour
                 //Debug.Log("Attack damage " + attackDamage);
             }
         }
+        */
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        //Debug.Log(name + " trig");
+
+        // If the trigger is the attack trigger, then initiate attack sequence.
+        //if (currentState == State.Attack && enemyTarget != null && other.gameObject.GetComponent<HitPointsManager>() != null && other.gameObject.layer == enemyTarget.gameObject.layer)
+        if (currentState == State.Attack && enemyTarget != null && other.gameObject.GetComponent<HitPointsManager>() != null)
+        {
+            Debug.Log("Start enemy trigger attack");
+            // Damage the target every X seconds (attackTimer), then start a cooldown.
+            attackCurrentTime -= Time.deltaTime;
+
+            if (attackCurrentTime <= 0)
+            {
+                Debug.Log(name + " attack!!! " + enemyTarget.name);
+                animator.Play("Tall_Attack", 0, 0.0f);
+                Attack(other.gameObject.GetComponent<HitPointsManager>(), attackDamage);
+
+                // Reset the attack timer.
+                attackCurrentTime = attackTimer;
+                //Debug.Log("Attack damage " + attackDamage);
+            }
+        }
+    }
+    
     public void Attack(HitPointsManager enemy, int damage)
     {
-        animator.Play("Tall_Attack", 0, 0.0f);
+
         //attackSound.PlayRandomClip();
         enemy.RegisterHit(damage);
         //Debug.Log(name + " attacks " + enemy.gameObject.name);
@@ -235,6 +277,7 @@ public class EnemyManager : MonoBehaviour
     {
         enemyTarget = null;
         killCount += 1;
+        attackTrigger.enabled = false;
         
         // Heal one HP.
         GetComponentInParent<HitPointsManager>().RegisterHit(-1);
