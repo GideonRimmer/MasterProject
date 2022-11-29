@@ -477,20 +477,25 @@ public class FollowerManager : MonoBehaviour
         // If the trigger is the attack trigger, then initiate attack sequence.
         if (currentState == State.Attack && enemyTarget != null && other.gameObject.layer == enemyTarget.gameObject.layer)
         {
-            Debug.Log("Start follower trigger attack");
+            //Debug.Log("Start follower trigger attack");
+            
             FollowerManager enemyFollower = enemyTarget.GetComponentInParent<FollowerManager>();
 
             attackCurrentTime -= Time.deltaTime;
 
             if (attackCurrentTime <= 0)
             {
-                //Debug.Log("Timer reset");
+                Debug.Log("Timer reset");
+
                 if (enemyTarget.tag != "Follower")
                 {
                     // Damage the target on collision.
                     animator.Play("Tall_Attack", 0, 0.0f);
-                    Attack(other.gameObject.GetComponent<HitPointsManager>(), attackDamage);
+
+                    Attack(other.gameObject.GetComponentInParent<HitPointsManager>(), attackDamage);
+
                     attackCurrentTime = attackTimer;
+
                     //Debug.Log(this.name + " attacks " + enemyTarget + ", " + enemyTarget.name);
                 }
                 else if (enemyTarget.CompareTag("Follower") && other.gameObject.name == enemyTarget.name && enemyFollower.isConversionTarget == false
@@ -503,7 +508,7 @@ public class FollowerManager : MonoBehaviour
                 {
                     // Damage the target on collision. Damage = Base damage + killCount.
                     animator.Play("Tall_Attack", 0, 0.0f);
-                    Attack(other.gameObject.GetComponent<HitPointsManager>(), attackDamage);
+                    Attack(other.gameObject.GetComponentInParent<HitPointsManager>(), attackDamage);
                     attackCurrentTime = attackTimer;
                     Debug.Log("Attack damage " + attackDamage);
                 }
@@ -527,6 +532,7 @@ public class FollowerManager : MonoBehaviour
             other.gameObject.GetComponentInParent<FollowerManager>().isTraitor == false)
         {
             attackCurrentTime -= Time.deltaTime;
+            
             if (attackCurrentTime == attackTimer && other.gameObject.GetComponentInParent<FollowerManager>().currentLoyalty > 0)
             {
                 ConvertToFollowSelf(other.gameObject.GetComponentInParent<FollowerManager>(), convertDamage);
@@ -767,9 +773,10 @@ public class FollowerManager : MonoBehaviour
 
     public void Attack(HitPointsManager enemy, int damage)
     {
+        Debug.Log(name + " attacks " + enemy.gameObject.name + ", for " + damage + " damage.");
+        
         //attackSound.PlayRandomClip();
         enemy.RegisterHit(damage);
-        //Debug.Log(name + " attacks " + enemy.gameObject.name);
 
         // After destroying the target, gain charisma. Follower and leader gain Violence.
         if (enemyTarget.GetComponent<HitPointsManager>().currentHitPoints <= 0)
