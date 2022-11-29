@@ -207,7 +207,7 @@ public class EnemyManager : MonoBehaviour
 
         // If the trigger is the attack trigger, then initiate attack sequence.
         //if (currentState == State.Attack && enemyTarget != null && other.gameObject.GetComponent<HitPointsManager>() != null && other.gameObject.layer == enemyTarget.gameObject.layer)
-        if (currentState == State.Attack && enemyTarget != null && other.gameObject.GetComponent<HitPointsManager>() != null)
+        if (currentState == State.Attack && enemyTarget != null && other.gameObject.GetComponentInParent<HitPointsManager>() != null)
         {
             Debug.Log("Start enemy trigger attack");
             // Damage the target every X seconds (attackTimer), then start a cooldown.
@@ -217,7 +217,7 @@ public class EnemyManager : MonoBehaviour
             {
                 Debug.Log(name + " attack!!! " + enemyTarget.name);
                 animator.Play("Tall_Attack", 0, 0.0f);
-                Attack(other.gameObject.GetComponent<HitPointsManager>(), attackDamage);
+                Attack(other.gameObject.GetComponentInParent<HitPointsManager>(), attackDamage);
 
                 // Reset the attack timer.
                 attackCurrentTime = attackTimer;
