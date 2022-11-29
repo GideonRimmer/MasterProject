@@ -177,7 +177,7 @@ public class EnemyManager : MonoBehaviour
         // On collision, inflict damage on the enemy target, only if colliding with the enemy target.
         if (attackTrigger != null && currentState == State.Attack && enemyTarget != null && collision.gameObject.layer == enemyTarget.gameObject.layer)
         {
-            //Debug.Log(name + " attack trigger enabled.");
+            Debug.Log(name + " attack trigger enabled.");
 
             // Enable the attack trigger.
             attackTrigger.enabled = true;
@@ -203,10 +203,10 @@ public class EnemyManager : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        //Debug.Log(name + " trig");
+        Debug.Log(name + " trig");
 
         // If the trigger is the attack trigger, then initiate attack sequence.
-        //if (currentState == State.Attack && enemyTarget != null && other.gameObject.GetComponent<HitPointsManager>() != null && other.gameObject.layer == enemyTarget.gameObject.layer)
+        //if (currentState == State.Attack && enemyTarget != null && other.gameObject.GetComponentInParent<HitPointsManager>() != null && other.gameObject.layer == enemyTarget.gameObject.layer)
         if (currentState == State.Attack && enemyTarget != null && other.gameObject.GetComponentInParent<HitPointsManager>() != null)
         {
             Debug.Log("Start enemy trigger attack");
@@ -228,10 +228,9 @@ public class EnemyManager : MonoBehaviour
     
     public void Attack(HitPointsManager enemy, int damage)
     {
-
         //attackSound.PlayRandomClip();
+        Debug.Log(name + " attacks " + enemy.gameObject.name);
         enemy.RegisterHit(damage);
-        //Debug.Log(name + " attacks " + enemy.gameObject.name);
     }
 
     private void ChangeMaterial(Renderer[] parts, Material newMaterial)

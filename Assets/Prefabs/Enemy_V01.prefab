@@ -1507,7 +1507,7 @@ Transform:
   - {fileID: 6657618550076706048}
   - {fileID: 3681013907750057632}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3330871519105900669
 MonoBehaviour:
@@ -1587,7 +1587,7 @@ MonoBehaviour:
   attackTrigger: {fileID: 4951719142764021514}
   attackDamage: 1
   attackSpeedBonus: 5
-  attackTimer: 0.5
+  attackTimer: 2
   attackCurrentTime: 0
   enemyTarget: {fileID: 0}
   viableTargets:
@@ -1747,7 +1747,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c7096436b499e943bf4826c65863a09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  applyRandomRotation: 0
+  applyRandomRotation: 1
   angleY: 0
 --- !u!1 &5954432865737333970
 GameObject:
