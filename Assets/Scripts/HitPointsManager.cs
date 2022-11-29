@@ -49,7 +49,7 @@ public class HitPointsManager : MonoBehaviour
         }
     }
 
-        public void RegisterHit(int damage)
+    public void RegisterHit(int damage)
     {
         currentHitPoints -= damage;
 
