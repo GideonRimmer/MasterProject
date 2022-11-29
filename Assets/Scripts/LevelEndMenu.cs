@@ -1,13 +1,21 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class LevelEndMenu : MonoBehaviour
 {
     public int previousLevel;
     public GameObject nextLevelButton;
 
-    private void Start()
+    public TMP_Text levelWonText;
+    public int levelWonNumber;
+
+    private void Awake()
     {
+        // Show the level number.
+        levelWonNumber = PlayerPrefs.GetInt("CurrentLevel")-1;
+        levelWonText.text = levelWonNumber.ToString();
+
         if (previousLevel >= SceneManager.sceneCount + 1)
         {
             nextLevelButton.SetActive(false);
