@@ -1531,6 +1531,7 @@ MonoBehaviour:
   deathEffect: {fileID: 9190275972324511695, guid: 0357353dccfabe44f97b68d54a29bf03,
     type: 3}
   entityName: {fileID: 7231768204797180468}
+  gotHitSound: {fileID: 8300000, guid: a601eb8bbbe11264e95462db0f06807b, type: 3}
 --- !u!136 &7899432503107119515
 CapsuleCollider:
   m_ObjectHideFlags: 0

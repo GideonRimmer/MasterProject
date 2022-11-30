@@ -91,7 +91,7 @@ PrefabInstance:
     - target: {fileID: 1605260892821789235, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
         type: 3}
       propertyPath: m_Name
-      value: FollowerV3_Bulky Variant (1)
+      value: FollowerV3_Bulky Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2698435985635302165, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
         type: 3}
@@ -105,6 +105,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 9190275972324511695, guid: 0357353dccfabe44f97b68d54a29bf03,
         type: 3}
+    - target: {fileID: 2698435985635302165, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
+        type: 3}
+      propertyPath: gotHitSound
+      value: 
+      objectReference: {fileID: 8300000, guid: a601eb8bbbe11264e95462db0f06807b, type: 3}
     - target: {fileID: 3590266748470705312, guid: f88e241d551ca8c4a8c3cee9bdc3fe2e,
         type: 3}
       propertyPath: m_Name

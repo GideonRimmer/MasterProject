@@ -8,18 +8,19 @@ public class HitPointsManager : MonoBehaviour
     public TextMeshProUGUI hitPointsText;
     public int maxHitPoints = 10;
     public int currentHitPoints;
-    //public PlayParticleEffect deathEffect;
-    //public PlayParticleEffect hitEffect;
     public ParticleSystem hitEffect;
     public ParticleSystem deathEffect;
     private Camera mainCamera;
     public TextMeshProUGUI entityName;
+    private AudioSource audioSource;
+    public AudioClip gotHitSound;
     //public AudioClip deathSound;
 
     void Start()
     {
         currentHitPoints = maxHitPoints;
-        //deathEffect = GetComponent<PlayParticleEffect>();
+        audioSource = GetComponentInParent<AudioSource>();
+
         mainCamera = Camera.main;
 
         // DEBUG: Show entity name.
@@ -64,6 +65,7 @@ public class HitPointsManager : MonoBehaviour
         {
             Debug.Log(this.name + ": hit effect spawned");
             PlayEffect(hitEffect);
+            AudioSource.PlayClipAtPoint(gotHitSound, transform.position);
         }
 
         if (healthBar != null)
@@ -93,11 +95,4 @@ public class HitPointsManager : MonoBehaviour
     {
         GetComponentInParent<PlayParticleEffect>().PlayParticleSystem(effect);
     }
-
-    /*
-    public void PlayDeathEffect()
-    {
-        deathEffect.PlayParticleSystem();
-    }
-    */
 }
