@@ -108,6 +108,10 @@ public class EnemyManager : MonoBehaviour
                 if (enemyTarget != null)
                 {
                     FollowAndAttackTarget();
+                    if(currentDistanceToTarget <= minDistanceToTarget)
+                    {
+                        StopEnemy();
+                    }
                     navMeshAgent.speed = moveSpeed + attackSpeedBonus;
                     animator.SetBool("isWalking", true);
                     //animator.speed = 2;
@@ -132,6 +136,7 @@ public class EnemyManager : MonoBehaviour
 
     private void FollowAndAttackTarget()
     {
+        navMeshAgent.isStopped = false;
         // Calculate the distance to the enemyTarget.
         currentDistanceToTarget = Vector3.Distance(transform.position, enemyTarget.position);
         // Set enemyTaget as the destination.
@@ -231,6 +236,11 @@ public class EnemyManager : MonoBehaviour
         {
             currentState = State.Idle;
         }
+    }
+
+    private void StopEnemy()
+    {
+        navMeshAgent.isStopped = true;
     }
 
     private void ResolveKill()
