@@ -244,7 +244,7 @@ public class FollowerManager : MonoBehaviour
             }
 
             // If the traitor has more followers than the player, attack the player.
-            if (isTraitor == true && currentLeader != null && activeFollowers.Count >= player.GetComponentInParent<SphereOfInfluence>().activeFollowers.Count * 0.66)
+            if (player != null && isTraitor == true && currentLeader != null && activeFollowers.Count >= player.GetComponentInParent<SphereOfInfluence>().activeFollowers.Count * 0.66)
             {
                 startBetrayal = true;
                 // If betrayal has started and there are no other eligible targets, traitor attacks the player.
@@ -302,9 +302,6 @@ public class FollowerManager : MonoBehaviour
         // Align popup menu to camera.
         popupMenu.transform.LookAt(mainCamera.transform);
         popupMenu.transform.rotation = Quaternion.LookRotation(mainCamera.transform.forward);
-
-        //List<Transform> context = GetNearbyObjects(this.gameObject);
-        //GetNearbyObjects(this.gameObject);
 
         // State machine.
         switch (currentState)
@@ -640,22 +637,12 @@ public class FollowerManager : MonoBehaviour
         // Walk towards the leader if the leader is too far.
         if (distanceToLeader > maxDistanceToLeader)
         {
-            /*
-            // Move towards the target using RigidBody.
-            rigidbody.MovePosition(rigidbody.transform.position + direction * moveSpeed * Time.fixedDeltaTime);
-            // Auto rotate towards the target.
-            Vector3 targetDirection = currentLeader.position - transform.position;
-
-            Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, rotateSpeed * Time.deltaTime, 0.0f);
-            Debug.DrawRay(transform.position, newDirection, Color.red);
-            transform.rotation = Quaternion.LookRotation(newDirection);
-            animator.SetBool("isWalking", true);
-            */
-
             //Debug.Log(distanceToLeader);
+
             destination = currentLeader;
             navMeshAgent.SetDestination(destination.position);
         }
+
         // Walk away from leader of the leader is too close, to avoid blocking the way.
         else if (distanceToLeader < minDistanceToLeader)
         {
@@ -680,21 +667,6 @@ public class FollowerManager : MonoBehaviour
 
     private void FollowAndAttackTarget()
     {
-        /*
-        Vector3 direction = (enemyTarget.position - rigidbody.transform.position).normalized;
-        rigidbody.MovePosition(rigidbody.transform.position + direction * (moveSpeed + attackSpeedBonus) * Time.fixedDeltaTime);
-        distanceToEnemy = Vector3.Distance(transform.position, enemyTarget.position);
-
-        // Auto rotate towards the target.
-        Vector3 targetDirection = enemyTarget.position - transform.position;
-
-        Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, rotateSpeed * Time.deltaTime, 0.0f);
-        //Debug.DrawRay(transform.position, newDirection, Color.red);
-
-        // Move position a step towards to the target.
-        transform.rotation = Quaternion.LookRotation(newDirection);
-        */
-
         destination = enemyTarget;
         navMeshAgent.SetDestination(destination.position);
 
@@ -977,39 +949,6 @@ public class FollowerManager : MonoBehaviour
         }
     }
     
-    /*
-    public List<Transform> GetNearbyObjects(GameObject agent)
-    {
-        //distanceToClosest = Mathf.Infinity;
-        LayerMask layerMask = LayerMask.GetMask("Characters");
-        List<Transform> context = new List<Transform>();
-        // Get an array of all colliders in a the radius, using OverlapSphere.
-        Collider[] contextColliders = Physics.OverlapSphere(agent.transform.position, sphereCurrentRadius);
-        //Collider2D[] contextColliders = Physics2D.OverlapCircleAll(agent.transform.position, neighbourRadius);
-
-        foreach (Collider collider in contextColliders)
-        {
-            if ((currentState == State.FollowPlayer || currentState == State.FollowOther) && currentCharisma > agent.GetComponent<FollowerManager>().currentCharisma && currentLeader != agent.GetComponent<FollowerManager>().currentLeader)
-            {
-                SetAttackTarget(collider.gameObject.transform);
-            }
-            // Add all of the transforms of the colliders in the sphere, except this object's (agent's) transform.
-            if (collider.gameObject != this)
-            {
-                //Debug.Log(agent.name + "in range of " + this.name);
-                context.Add(collider.transform);
-                float dist = Vector3.Distance(transform.position, collider.transform.position);
-                if (dist < distanceToClosest)
-                {
-                    distanceToClosest = dist;
-                    closestObject = collider;
-                }
-            }
-        }
-        return context;
-    }
-    */
-
     private void RemoveFollower(FollowerManager activeFollower)
     {
         if (activeFollowers.Contains(activeFollower))
