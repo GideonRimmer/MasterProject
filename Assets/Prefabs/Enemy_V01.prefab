@@ -1507,7 +1507,7 @@ Transform:
   - {fileID: 6657618550076706048}
   - {fileID: 3681013907750057632}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3330871519105900669
 MonoBehaviour:
@@ -1526,6 +1526,10 @@ MonoBehaviour:
   hitPointsText: {fileID: 66993799184850131}
   maxHitPoints: 3
   currentHitPoints: 0
+  hitEffect: {fileID: 9190275972324511695, guid: d12bf95d06733e74fa42cdde876c3647,
+    type: 3}
+  deathEffect: {fileID: 9190275972324511695, guid: 0357353dccfabe44f97b68d54a29bf03,
+    type: 3}
   entityName: {fileID: 7231768204797180468}
 --- !u!136 &7899432503107119515
 CapsuleCollider:
@@ -1620,8 +1624,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93dc6b9ee2cf1ec439fbb45719d0fb8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleEffect: {fileID: 9190275972324511695, guid: 0357353dccfabe44f97b68d54a29bf03,
-    type: 3}
   explosionOrigin: {fileID: 3681013907750057632}
 --- !u!82 &8160336652496705277
 AudioSource:

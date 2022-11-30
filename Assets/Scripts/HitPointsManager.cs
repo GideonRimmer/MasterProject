@@ -8,7 +8,10 @@ public class HitPointsManager : MonoBehaviour
     public TextMeshProUGUI hitPointsText;
     public int maxHitPoints = 10;
     public int currentHitPoints;
-    private PlayParticleEffect deathEffect;
+    //public PlayParticleEffect deathEffect;
+    //public PlayParticleEffect hitEffect;
+    public ParticleSystem hitEffect;
+    public ParticleSystem deathEffect;
     private Camera mainCamera;
     public TextMeshProUGUI entityName;
     //public AudioClip deathSound;
@@ -16,7 +19,7 @@ public class HitPointsManager : MonoBehaviour
     void Start()
     {
         currentHitPoints = maxHitPoints;
-        deathEffect = GetComponent<PlayParticleEffect>();
+        //deathEffect = GetComponent<PlayParticleEffect>();
         mainCamera = Camera.main;
 
         // DEBUG: Show entity name.
@@ -53,6 +56,11 @@ public class HitPointsManager : MonoBehaviour
     {
         currentHitPoints -= damage;
 
+        if (hitEffect != null)
+        {
+            PlayEffect(hitEffect);
+        }
+
         if (healthBar != null)
         {
             healthBar.SetHealth(currentHitPoints);
@@ -71,13 +79,20 @@ public class HitPointsManager : MonoBehaviour
 
         if (deathEffect != null)
         {
-            deathEffect.PlayParticleSystem();
+            PlayEffect(deathEffect);
         }
         Destroy(this.gameObject);
     }
 
-    public void PlayParticleSystem()
+    public void PlayEffect(ParticleSystem effect)
+    {
+        GetComponentInParent<PlayParticleEffect>().PlayParticleSystem(effect);
+    }
+
+    /*
+    public void PlayDeathEffect()
     {
         deathEffect.PlayParticleSystem();
     }
+    */
 }

@@ -195,6 +195,10 @@ MonoBehaviour:
   hitPointsText: {fileID: 56530945161805296}
   maxHitPoints: 1
   currentHitPoints: 0
+  hitEffect: {fileID: 9190275972324511695, guid: e8db58f6f23c04e47aa8c7474e0db8f6,
+    type: 3}
+  deathEffect: {fileID: 9190275972324511695, guid: 0357353dccfabe44f97b68d54a29bf03,
+    type: 3}
   entityName: {fileID: 231598284924779738}
 --- !u!136 &5861233222970431149
 CapsuleCollider:
@@ -297,8 +301,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93dc6b9ee2cf1ec439fbb45719d0fb8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleEffect: {fileID: 9190275972324511695, guid: 0357353dccfabe44f97b68d54a29bf03,
-    type: 3}
   explosionOrigin: {fileID: 9074431361862020174}
 --- !u!82 &-3380366812195662151
 AudioSource:

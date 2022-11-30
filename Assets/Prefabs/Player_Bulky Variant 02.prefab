@@ -635,7 +635,7 @@ Transform:
   - {fileID: 3234564770929238152}
   - {fileID: 4146187829320505641}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6483004690407442458
 MonoBehaviour:
@@ -683,6 +683,10 @@ MonoBehaviour:
   hitPointsText: {fileID: 8964644656623246500}
   maxHitPoints: 10
   currentHitPoints: 0
+  hitEffect: {fileID: 9190275972324511695, guid: 7c31e0b4fddb3684fa181621857298b7,
+    type: 3}
+  deathEffect: {fileID: 9190275972324511695, guid: 0357353dccfabe44f97b68d54a29bf03,
+    type: 3}
   entityName: {fileID: 6707006873182137445}
 --- !u!114 &2037084325087943532
 MonoBehaviour:
@@ -724,8 +728,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93dc6b9ee2cf1ec439fbb45719d0fb8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleEffect: {fileID: 9190275972324511695, guid: 0357353dccfabe44f97b68d54a29bf03,
-    type: 3}
   explosionOrigin: {fileID: 4146187829320505641}
 --- !u!143 &2246610313870571157
 CharacterController:

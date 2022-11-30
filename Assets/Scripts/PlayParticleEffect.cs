@@ -2,11 +2,10 @@
 
 public class PlayParticleEffect : MonoBehaviour
 {
-    public ParticleSystem particleEffect;
     public Transform explosionOrigin;
 
-    public void PlayParticleSystem()
+    public void PlayParticleSystem(ParticleSystem effect)
     {
-        Instantiate(particleEffect, explosionOrigin.position, explosionOrigin.rotation);
+        Instantiate(effect, explosionOrigin.position, explosionOrigin.rotation);
     }
 }
