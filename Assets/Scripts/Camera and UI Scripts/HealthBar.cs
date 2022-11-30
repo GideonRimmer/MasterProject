@@ -1,0 +1,23 @@
+﻿using UnityEngine;
+using UnityEngine.UI;
+
+public class HealthBar : MonoBehaviour
+{
+    public Slider slider;
+
+    //public Transform camera;
+
+    private void LateUpdate()
+    {
+        transform.LookAt(transform.position + Camera.main.transform.forward);
+    }
+    public void SetMaxHealth(int health)
+    {
+        slider.maxValue = health;
+        slider.value = health;
+    }
+    public void SetHealth(int health)
+    {
+        slider.value = health;
+    }
+}

@@ -661,11 +661,13 @@ MonoBehaviour:
   isGrounded: 0
   isIdle: 0
   isWalking: 0
-  animator: {fileID: 7393989408244452014}
   startingCharisma: 5
   currentCharisma: 0
   autoCollectFollowers: 1
   deathSound: {fileID: 8300000, guid: 72af6820b30045845a1b52a603e7fa00, type: 3}
+  animator: {fileID: 7393989408244452014}
+  deathEffect: {fileID: 9190275972324511695, guid: 0357353dccfabe44f97b68d54a29bf03,
+    type: 3}
 --- !u!114 &4049036526006682872
 MonoBehaviour:
   m_ObjectHideFlags: 0
