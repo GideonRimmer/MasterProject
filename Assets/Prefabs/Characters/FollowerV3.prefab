@@ -436,7 +436,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 949997005770261550}
-  - component: {fileID: 6848212740349448410}
   - component: {fileID: 2698435985635302165}
   - component: {fileID: 8978855291247846464}
   - component: {fileID: 607441668491234376}
@@ -473,22 +472,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &6848212740349448410
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1605260892821789235}
-  serializedVersion: 2
-  m_Mass: 80
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 116
-  m_CollisionDetection: 0
 --- !u!114 &2698435985635302165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -506,7 +489,10 @@ MonoBehaviour:
   hitPointsText: {fileID: 3190217644561407963}
   maxHitPoints: 5
   currentHitPoints: 0
+  hitEffect: {fileID: 0}
+  deathEffect: {fileID: 0}
   entityName: {fileID: 4338060477051831503}
+  gotHitSound: {fileID: 0}
 --- !u!136 &8978855291247846464
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -560,6 +546,8 @@ MonoBehaviour:
   destination: {fileID: 949997005770261550}
   maxDistanceToLeader: 12
   minDistanceToLeader: 7
+  currentDistanceToTarget: 0
+  minDistanceToTarget: 5
   animator: {fileID: 3099558106057076131}
   takerPrefab: {fileID: 8723099091681394095, guid: 6bab3e57136850141a788f4b4f89a566,
     type: 3}
@@ -600,12 +588,12 @@ MonoBehaviour:
   moveSpeed: 13
   rotateSpeed: 8
   attackDamage: 1
-  attackCollider: {fileID: 650724716979508488}
+  attackTrigger: {fileID: 0}
   maxDamage: 3
   attackSpeedBonus: 5
   attackTimer: 0.5
-  convertDamage: 1
   attackCurrentTime: 0
+  convertDamage: 1
   enemyTarget: {fileID: 0}
   distanceToEnemy: 0
   initialConvertCooldown: 3
@@ -661,8 +649,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93dc6b9ee2cf1ec439fbb45719d0fb8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleEffect: {fileID: 9190275972324511695, guid: 0357353dccfabe44f97b68d54a29bf03,
-    type: 3}
   explosionOrigin: {fileID: 9095104807668444236}
 --- !u!82 &4172001066277262209
 AudioSource:
