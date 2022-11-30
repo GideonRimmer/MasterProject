@@ -143,7 +143,6 @@ public class InnocentManager : MonoBehaviour
     {
         //audioSource.clip = deathSound;
         AudioSource.PlayClipAtPoint(deathSound, transform.position);
-        GetComponent<HitPointsManager>().PlayParticleSystem();
 
         Destroy(this.gameObject);
     }

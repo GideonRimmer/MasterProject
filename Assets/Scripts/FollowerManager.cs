@@ -1036,7 +1036,6 @@ public class FollowerManager : MonoBehaviour
             }
         }
 
-        GetComponent<HitPointsManager>().PlayParticleSystem();
         Destroy(this.gameObject);
     }
 

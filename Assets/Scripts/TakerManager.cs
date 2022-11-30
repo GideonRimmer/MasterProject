@@ -103,7 +103,6 @@ public class TakerManager : MonoBehaviour
     private void Die()
     {
         Debug.Log("Die");
-        playParticleEffect.PlayParticleSystem();
         Destroy(this.gameObject);
     }
 }

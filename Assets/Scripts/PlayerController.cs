@@ -105,59 +105,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    /*
-    void Update()
-    {
-        if (Input.anyKey)
-        {
-            if (Input.GetKey(KeyCode.Mouse0) || Input.GetKey(KeyCode.Mouse1))
-            {
-                return;
-            }
-            else Move();
-        }
-        else
-        {
-            isIdle = true;
-            isWalking = false;
-            animator.SetBool("isWalking", false);
-        }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log("Clicked space.");
-        }
-
-        if (hitPointsManager.currentHitPoints <= 0)
-        {
-            Die();
-        }
-    }
-
-    /*
-    void Move()
-    {
-        isIdle = false;
-        isWalking = true;
-        animator.SetBool("isWalking", true);
-
-        Vector3 direction = new Vector3(Input.GetAxis("HorizontalKey"), 0, Input.GetAxis("VerticalKey"));
-        Vector3 rightMovement = right * moveSpeed * Time.deltaTime * Input.GetAxis("HorizontalKey");
-        Vector3 upMovement = forward * moveSpeed * Time.deltaTime * Input.GetAxis("VerticalKey");
-
-        Vector3 heading = Vector3.Normalize(rightMovement + upMovement);
-
-        transform.forward = heading;
-        transform.position += rightMovement;
-        transform.position += upMovement;
-    }
-    */
 
     private void Die()
     {
         AudioSource.PlayClipAtPoint(deathSound, transform.position);
 
-        playParticleEffect.PlayParticleSystem();
         gameSettings.gameOver = true;
         Destroy(this.gameObject);
     }
