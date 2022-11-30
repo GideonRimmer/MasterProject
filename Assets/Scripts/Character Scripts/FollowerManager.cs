@@ -12,7 +12,9 @@ public class FollowerManager : MonoBehaviour
     private NavMeshAgent navMeshAgent;
     public Transform destination;
     public float maxDistanceToLeader = 12f;
-    public float minDistanceToLeader = 2f;
+    public float minDistanceToLeader = 5f;
+    [SerializeField] private float currentDistanceToTarget;
+    public float minDistanceToTarget = 5f;
     public Animator animator;
     private Rigidbody rigidbody;
     //public GameObject takerPrefab;
@@ -354,9 +356,13 @@ public class FollowerManager : MonoBehaviour
                     animator.speed = 1;
                     //animator.SetBool("isWalking", true);
                     //animator.speed = 2;
+                    FollowAndAttackTarget();
+                    if (currentDistanceToTarget <= minDistanceToTarget)
+                    {
+                        navMeshAgent.isStopped = true;
+                    }
                     navMeshAgent.speed = moveSpeed + attackSpeedBonus;
                     navMeshAgent.stoppingDistance = 0;
-                    FollowAndAttackTarget();
                 }
                 else if (currentLeader == null)
                 {
@@ -623,6 +629,7 @@ public class FollowerManager : MonoBehaviour
 
     private void FollowTarget()
     {
+        navMeshAgent.isStopped = false;
         float distanceToLeader = Vector3.Distance(transform.position, currentLeader.position);
         navMeshAgent.stoppingDistance = minDistanceToLeader;
 
@@ -631,8 +638,6 @@ public class FollowerManager : MonoBehaviour
             animator.SetBool("isWalking", true);
         }
         else animator.SetBool("isWalking", false);
-
-        //Vector3 direction = (currentLeader.position - rigidbody.transform.position).normalized;
         
         // Walk towards the leader if the leader is too far.
         if (distanceToLeader > maxDistanceToLeader)
@@ -667,6 +672,8 @@ public class FollowerManager : MonoBehaviour
 
     private void FollowAndAttackTarget()
     {
+        navMeshAgent.isStopped = false;
+        currentDistanceToTarget = Vector3.Distance(transform.position, enemyTarget.position);
         destination = enemyTarget;
         navMeshAgent.SetDestination(destination.position);
 
@@ -956,6 +963,11 @@ public class FollowerManager : MonoBehaviour
             activeFollowers.RemoveAt(activeFollowers.IndexOf(activeFollower));
             ModifyCharisma(-1);
         }
+    }
+
+    private void StopFollower()
+    {
+        navMeshAgent.isStopped = true;
     }
 
     public void Die()
