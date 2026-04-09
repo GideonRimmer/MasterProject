@@ -14,20 +14,20 @@ public class MoveTest : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            rigidbody.velocity = transform.forward * moveSpeed;
+            rigidbody.linearVelocity = transform.forward * moveSpeed;
             //rigidbody.velocity = transform.up * moveSpeed;
         }
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            rigidbody.velocity = transform.right * moveSpeed;
+            rigidbody.linearVelocity = transform.right * moveSpeed;
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            rigidbody.velocity = transform.right * -moveSpeed;
+            rigidbody.linearVelocity = transform.right * -moveSpeed;
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            rigidbody.velocity = transform.forward * -moveSpeed;
+            rigidbody.linearVelocity = transform.forward * -moveSpeed;
             //rigidbody.velocity = transform.up * -moveSpeed;
         }
 
